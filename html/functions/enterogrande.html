@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="enterogrande" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Convertir a EnteroGrande</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Convierte un tipo de dato a <i>EnteroGrande</i>, excepto vectores:</p>
+<ul class="content listIcon">
+	<li><i>RealDoble</i>: valor del <i>RealDoble</i> como <i>EnteroGrande</i> con pérdida de precisión si tenía decimales</li>
+	<li><i>Complejo</i>: parte real del complejo como <i>EnteroGrande</i> con pérdida de precisión si tenía decimales</li>
+	<li><i>RealGrande</i>: convierte a <i>EnteroGrande</i> con pérdida de precisión si tenía decimales</li>
+	<li><i>EnteroGrande</i>: devuelve el pripio valor</li>
+	<li>Vectores: devuelve el vector con todos los elementos convertidos a <i>EnteroGrande</i></li>
+	<li><i>Booleano</i>: 0 para <i>falso</i> y 1 para <i>verdadero</i></li>
+	<li><i>Texto</i>: convierte a <i>EnteroGrande</i> a partir de una cadena representando un entero válido en formato <b>decimal</b>, <b>hexadecimal</b> (0x|#) u <b>octal</b> (0)</li>
+</ul>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">enterogrande</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">&#x2124;b</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">enterogrande(&lt;elemento>)</p>
+
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enterogrande(pi)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 3</p>
+	<p class="content input"><span class="javaString">enterogrande(123456789123456789.5d)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 123456789123456789</p>
+	<p class="content input"><span class="javaString">enterogrande(3.5-2ui)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 3</p>
+	<p class="content input"><span class="javaString">enterogrande(verdadero,falso)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1,0]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enterogrande(20'125')</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 125125125125125125125125125125125125125125125125125125125125</p>
+	<p class="content input"><span class="javaString">enterogrande('<mark class="gray1">#</mark>FF')</span>  <span class="comment">Hexadecimal</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 255</p>
+	<p class="content input"><span class="javaString">enterogrande('<mark class="gray1">-#</mark>FF')</span>  <span class="comment">Hexadecimal</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: -255</p>
+	<p class="content input"><span class="javaString">enterogrande('<mark class="gray1">0x</mark>7FFFFFFFFFFFFFFF')</span>  <span class="comment">Hexadecimal (máximo valor aceptado)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 9223372036854775807</p>
+	<p class="content input"><span class="javaString">enterogrande('<mark class="gray1">-0x</mark>8000000000000000')</span>  <span class="comment">Hexadecimal (mínimo valor aceptado)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: -9223372036854775808</p>
+	<p class="content input"><span class="javaString">enterogrande('<mark class="gray1">0</mark>777777777777777777777')</span>  <span class="comment">Octal (máximo valor aceptado)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 9223372036854775807</p>
+	<p class="content input"><span class="javaString">enterogrande('<mark class="gray1">-0</mark>1000000000000000000000')</span>  <span class="comment">Octal (mínimo valor aceptado)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: -9223372036854775808</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enterogrande(tverdad(!p,p))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 0  1 |
+		| 1  0 |</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="booleano.html">booleano</a>,
+	<a href="realdoble.html">realdoble</a>,
+	<a href="realgrande.html">realgrande</a>,
+	<a href="complejo.html">complejo</a>,
+	<a href="entrada_texto.html">entrada texto</a>,
+	<a href="salida_texto.html">salida texto</a>,
+	<a href="matriz.html">matriz</a>,
+	<a href="conjunto.html">conjunto</a>,
+	<a href="zvector.html">zvector</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

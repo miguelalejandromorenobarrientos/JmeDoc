@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="salida, texto, stexto" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Convertir a Texto de Salida</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Convierte un tipo de dato a su salida de texto</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">stexto</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">stexto</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">stexto(&lt;elemento>)</p>
+
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">stexto(3)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '3'</p>
+	<p class="content input"><span class="javaString">stexto(3b)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '3'</p>
+	<p class="content input"><span class="javaString">stexto(3d)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '3'</p>
+	<p class="content input"><span class="javaString">stexto(-3-2ui)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '-3-2I'</p>
+	<p class="content input"><span class="javaString">stexto(falso)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'falso'</p>
+	<p class="content input"><span class="javaString">stexto(2,3,[])</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '[2,3,[]]'</p>
+	<p class="content input"><span class="javaString">stexto('Hola Mundo')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: ''Hola Mundo''</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="booleano.html">booleano</a>,
+	<a href="realdoble.html">realdoble</a>,
+	<a href="realgrande.html">realgrande</a>,
+	<a href="enterogrande.html">enterogrande</a>,
+	<a href="complejo.html">complejo</a>,
+	<a href="entrada_texto.html">entrada texto</a>,
+	<a href="matriz.html">matriz</a>,
+	<a href="conjunto.html">conjunto</a>,
+	<a href="zvector.html">zvector</a>	
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

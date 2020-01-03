@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="fibonacci, fib" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Fibonacci</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Sucesión de Fibonacci para números enteros y extensión para reales y complejos</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">fib</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">fib</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">fib(&lt;número>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content comment">con precisión RealDoble, el mayor nº de Fibonacci exacto es el 78º, y el mayor no infinito 1476º:</p>
+	<p class="content input"><span class="javaString">fib(78)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 8.944394323791464E15</p>
+	<p class="content input"><span class="javaString">fib(78b)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 8944394323791464</p>
+	<p class="content input"><span class="javaString">fib(79)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1.447233402467622E16</p>
+	<p class="content input"><span class="javaString">fib(79b)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 1447233402467622<mark class="correct">1</mark></p>
+	<p class="content input"><span class="javaString">fib(1476)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1.3069892237633987E308</p>
+	<p class="content input"><span class="javaString">fib(1476b)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 130698922376339931803631155380271983098392443907412640726006659460192793070479231740288681087777017721095463154979012276234322246936939647185366706368489362660844147449941348462800922755818969634743348982916424954062744135969865615407276492410653721774590669544801490837649161732095972658064630033793347171632</p>
+	<p class="content input"><span class="javaString">fib(1477)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: Infinity</p>
+	<p class="content input"><span class="javaString">fib(1477b)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 211475298697902185255785861961179135570552502746803252174956226558634024323947666637137823932524397611864671566211908330263377425204552074188208686993669123754004340250943108709212299180422293009765404930508242975773774612140021599477983006713536106549441161323499077298115887067363710153036315849480388057657</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sucesion([n,fib(n)],n,-10,10)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| -10  -55 |
+		| -9   34  |
+		| -8   -21 |
+		| -7   13  |
+		| -6   -8  |
+		| -5    5  |
+		| -4   -3  |
+		| -3    2  |
+		| -2   -1  |
+		| -1    1  |
+		|  0    0  |
+		|  1    1  |
+		|  2    1  |
+		|  3    2  |
+		|  4    3  |
+		|  5    5  |
+		|  6    8  |
+		|  7   13  |
+		|  8   21  |
+		|  9   34  |
+		| 10   55  |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">fib(pi)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 2.1170270579161</p>
+	<p class="content input"><span class="javaString">fib(pi-2)+fib(pi-1)=fib(pi)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">fib(ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: -4.198921841843884+2.606464767744316I</p>
+	<p class="content input"><span class="javaString">fib(ui-2)+fib(ui-1)=fib(ui)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">fib([5,6],[7,8])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 5   8  |
+		| 13  21 |</p>
+</div>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="indefinido, jmescript" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Indefinido</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Esta función permite detectar si una variable o una clave de diccionario está definida o devolver un valor opcional en caso contrario.
+<br/>El principal propósito de esta función es su uso en <i>JMEScript</i>.</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">indefinido</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">indefinido</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">indefinido(&lt;varname>[,&lt;valor_opcional>])
+          |indefinido(&lt;diccionario>,&lt;clave>[,&lt;valor_opcional>])</p>
+
+<p class="content comment">Nota: en el caso de un parámetro, es necesario escribir la variable entre corchetes (ver ejemplos)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>varname</td>
+			<td>Nombre de la variable</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>diccionario</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2|3</td>
+			<td>valor_opcional</td>
+			<td>Valor a devolver si la variable o la clave está indefinida</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>clave</td>
+			<td>Clave del diccionario que puede o no estar definida</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- RETURN VALUE -->
+<p class="subtitle">Valor devuelto</p>
+
+<ul class="content">
+	<li>Si no se introduce el valor opcional, devuelve <i><b>verdadero</b></i> si la variable o clave están definidas, <i><b>falso</b></i> en caso contrario.</li>
+	<li>Si se introduce el valor opcional, en caso de que la variable o clave estén definidas, se devuelve su valor, en caso contrario el valor opcional.</li>
+</ul>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+<p class="content">Salida en REPL:</p>
+<div class="content console">
+<p class="javaOutput">>>> indefinido(['x'])
+
+	 ==> Booleano: verdadero
+
+	(parse: 270µs(86%) / eval: 43,3µs(14%) / total: 314µs)
+
+>>> set x=100
+
+	x ==> RealDoble: 100
+
+	(parse: 128µs(91%) / eval: 12µs(9%) / total: 140µs)
+
+>>> indefinido(['x'])
+
+	 ==> Booleano: falso
+
+	(parse: 330µs(74%) / eval: 115µs(26%) / total: 446µs)
+
+>>></p>
+</div> 
+</div>
+
+<br/>
+
+<div class="example">
+<p class="content">Salida en REPL:</p>
+<div class="content console">
+<p class="javaOutput">>>> indefinido('x',pi)
+
+	 ==> RealDoble: 3.141592653589793
+
+	(parse: 688µs(91%) / eval: 65,4µs(9%) / total: 753µs)
+
+>>> set x='hola mundo'
+
+	x ==> Texto: 'hola mundo'
+
+	(parse: 101µs(93%) / eval: 7,2µs(7%) / total: 108µs)
+
+>>> indefinido('x',pi)
+
+	 ==> Texto: 'hola mundo'
+
+	(parse: 235µs(68%) / eval: 109µs(32%) / total: 345µs)
+
+>>></p>
+</div> 
+</div>
+
+<br/>
+
+<div class="example">
+<p class="content">Salida en REPL:</p>
+<div class="content console">
+<p class="javaOutput">>>> set d=dic('{x:32,y:-100}')
+
+	d ==> Diccionario: 
+
+		{ 'x': 32
+		  'y': -100 }
+
+
+	(parse: 2,9ms(5%) / eval: 56,5ms(95%) / total: 59,4ms)
+
+>>> indefinido(d,'x')
+
+	 ==> Booleano: falso
+
+	(parse: 1,7ms(69%) / eval: 757µs(31%) / total: 2,5ms)
+
+>>> indefinido(d,'z')
+
+	 ==> Booleano: verdadero
+
+	(parse: 263µs(22%) / eval: 922µs(78%) / total: 1,2ms)
+
+>>> indefinido(d,'z',0)
+
+	 ==> RealDoble: 0
+
+	(parse: 339µs(28%) / eval: 854µs(72%) / total: 1,2ms)
+
+>>> indefinido(d,'x',0)
+
+	 ==> RealDoble: 32
+
+	(parse: 169µs(21%) / eval: 637µs(79%) / total: 807µs)
+
+>>></p>
+</div> 
+</div>
+
+<br/>
+
+<div class="example">
+	<p class="content input"><span class="javaString">eval(indefinido('a',-1)+indefinido('b',-3),a,100)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 97</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.5.0</p>
+<p class="content modificado">v0.6.1</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

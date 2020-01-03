@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="factorial, doble" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Factorial Doble</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">
+	UNARIO  
+	<span class="tooltip">(máxima-1)
+		<span class="tooltiptext" style="width:240px; margin-left:-120px">java.lang.Integer.MAX_VALUE-1</span>
+	</span>
+</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content"><a href="https://es.wikipedia.org/wiki/Doble_factorial" class="tooltip">Factorial doble<span class="tooltiptext">https://es.wikipedia.org/wiki/Doble_factorial</span></a> o semifactorial de enteros positivos e impares negativos</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">!!</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">!!</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">&lt;entero>!!</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content comment">Con precisión de RealDoble el mayor semifactorial exacto es 32!! (pero 31!! no) y el mayor no infinito 300!!. Para EnteroGrande o RealGrande el resultado es exacto.</p>
+	<p class="content input"><span class="javaString">32!!</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1.371195958099968E18</p>
+	<p class="content input"><span class="javaString">32b!!</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 1371195958099968000</p>
+	<p class="content input"><span class="javaString">31!!</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1.91898783962510656E17</p>
+	<p class="content input"><span class="javaString">31b!!</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 191898783962510625</p>
+	<p class="content input"><span class="javaString">300!!</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 8.154414069380598E307</p>
+	<p class="content input"><span class="javaString">300b!!</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 81544140693805943455614969189432362136551223844617222210901524242971226177070576442833181201189972905880547639252042151746219057746287924346744582832817638116193704261939070049082799607483043802605563001224773509533899818381358134309684912674310209954493291264242855444480000000000000000000000000000000000000</p>
+	<p class="content input"><span class="javaString">301!!</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: Infinity</p>
+	<p class="content input"><span class="javaString">301b!!</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 1129735507583149711954915013607540483220725760866974691112166408543099624744230671634438336260702619366482942142221605500556865994763101982274335828644040553873676166081673542850114601848766167205207308812633067619743606485268170094068308243314827895902016700776561566234570590572869623429141938686370849609375</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[0,-3,32b]!!</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1,-1,1371195958099968000]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">-7!!</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: -0.06666666666666667</p>
+	<p class="content input"><span class="javaString">-8!!</span></p>
+	<p class="content output"><mark class="jmeType error">OperacionException</mark>: <mark class="error">&lt;&lt;&lt;OperacionException>>> en operador [ !! ]: Operacion no definida para enteros negativos pares --> (RealDoble:-8)!!</mark></p>
+	<p class="content input"><span class="javaString">sucesion([-n,enterogrande(-n)!!],n,1,49,2)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| -1                       1                      |
+		| -3                       -1                     |
+		| -5      0.3333333333333333333333333333333333    |
+		| -7     -0.06666666666666666666666666666666667   |
+		| -9     0.009523809523809523809523809523809524   |
+		| -11   -0.001058201058201058201058201058201058   |
+		| -13   0.00009620009620009620009620009620009620  |
+		| -15  -0.000007400007400007400007400007400007400 |
+		| -17    4.933338266671600004933338266671600E-7   |
+		| -19   -2.901963686277411767607846039218588E-8   |
+		| -21    1.527349308567058825056761073272941E-9   |
+		| -23   -7.273091945557422976460767015585434E-11  |
+		| -25   3.162213889372792598461203050254537E-12   |
+		| -27   -1.264885555749117039384481220101815E-13  |
+		| -29   4.684761317589322368090671185562276E-15   |
+		| -31   -1.615434937099766333824369374331819E-16  |
+		| -33   5.211080442257310754272159272038127E-18   |
+		| -35   -1.579115285532518410385502809708523E-19  |
+		| -37   4.511757958664338315387150884881496E-21   |
+		| -39   -1.219394042882253598753284022940945E-22  |
+		| -41   3.126651392005778458341753904976781E-24   |
+		| -43   -7.625979004892142581321350987748247E-26  |
+		| -45   1.773483489509800600307290927383313E-27   |
+		| -47   -3.941074421132890222905090949740696E-29  |
+		| -49   8.385264725814660048734236063278077E-31   |
+	</p>
+
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Ver también&#x2026;</p>
+
+<p class="content">
+	<a href="factorial.html">factorial</a>,
+	<a href="subfactorial.html">subfactorial</a>,
+	<a href="superfactorial.html">superfactorial</a>,
+	<a href="hiperfactorial.html">hiperfactorial</a>,
+	<a href="factorial_alternado.html">factorial alternado</a>,
+	<a href="primorial.html">primorial</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

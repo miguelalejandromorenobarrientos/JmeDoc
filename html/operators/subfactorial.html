@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="subfactorial" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Subfactorial</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">
+	UNARIO  
+	<span class="tooltip">(máxima-1)
+		<span class="tooltiptext" style="width:240px; margin-left:-120px">java.lang.Integer.MAX_VALUE-1</span>
+	</span>
+</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content"><a href="https://es.wikipedia.org/wiki/Subfactorial" class="tooltip">Subfactorial<span class="tooltiptext">(inglés) https://es.wikipedia.org/wiki/Subfactorial</span></a></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">¡</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">¡</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">¡&lt;natural></p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content comment">Con precisión de RealDoble el mayor subfactorial exacto es ¡18 y el mayor no infinito ¡170. Para EnteroGrande o RealGrande el resultado es exacto.</p>
+	<p class="content input"><span class="javaString">¡18</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 2.355301661033953E15</p>
+	<p class="content input"><span class="javaString">¡18b</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 2355301661033953</p>
+	<p class="content input"><span class="javaString">¡19</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 4.4750731559645112E16</p>
+	<p class="content input"><span class="javaString">¡19b</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 44750731559645106</p>
+	<p class="content input"><span class="javaString">¡170</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 2.6698540009084078E306</p>
+	<p class="content input"><span class="javaString">¡170b</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 2669854000908405884826495581232139582588795991419866508219845700774255214830969765919790770045738530246744326201317924694742766543832700228152902829335499252974344037732279189873094934785783380657349786349710846834966894674040219272704049949857837256627849443433949334117660028391008095785744142831369393521</p>
+	<p class="content input"><span class="javaString">¡171</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: Infinity</p>
+	<p class="content input"><span class="javaString">¡171b</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 456545034155337406305330744390695868622684114532797172905593614832397641736095829972284221677821288672193279780425365122801013078995391739014146383816370372258612830452219741468299233848368958092406813465800554808779338989260877495632392541425690170883362254827205336134119864854862384379362248424164166292090</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">¡enterogrande(rango(10,21))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1334961,14684570,176214841,2290792932,32071101049,481066515734,7697064251745,130850092279664,2355301661033953,44750731559645106,895014631192902121]</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="factorial.html">factorial</a>,
+	<a href="factorial_doble.html">factorial doble</a>,
+	<a href="superfactorial.html">superfactorial</a>,
+	<a href="hiperfactorial.html">hiperfactorial</a>,
+	<a href="factorial_alternado.html">factorial alternado</a>,
+	<a href="primorial.html">primorial</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

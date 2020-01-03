@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="logaritmo, natural, ln" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Logaritmo Natural</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Logaritmo natural para reales o complejos</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">ln</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">Ln</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">ln(<span class="nonTerminal">&lt;número></span>)
+	   <span class="nonTerminal">&lt;número></span>::= &lt;TipoJME:<i>RealDoble</i>>|&lt;TipoJME:<i>Complejo</i>>|&lt;TipoJME:<i>Vector</i>>
+</p>
+
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">ln(100)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 4.605170185988092</p>
+	<p class="content input"><span class="javaString">ln(_e)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1</p>
+	<p class="content input"><span class="javaString">ln(-100)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 4.605170185988092+3.141592653589793I</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">ln(ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 1.5707963267948966I</p>
+	<p class="content input"><span class="javaString">ln(2-2ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 1.039720770839918-0.7853981633974483I</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">ln([0,1],[_e,sqr(_e)])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| -Infinity  0 |
+		|     1      2 |</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.1</p>
+<p class="content modificado">v0.4.8</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="exponencial.html">exponencial</a>,
+	<a href="log_decimal.html">logaritmo decimal</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

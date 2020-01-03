@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="cpu" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">CPU</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Mide el tiempo en <b>nanosegundos</b> de la evaluación de una expresión</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">cpu</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">cpu</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">cpu(&lt;expresión>,&lt;iteraciones>[,&lt;resultado>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>expresión</td>
+			<td>Expresión a cronometrar</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>iteraciones</td>
+			<td>Nº de iteraciones (un número alto mejora la precisión de la medición)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>resultado</td>
+			<td><i>Booleano</i>, añade el resultado de la evaluación <small>(último resultado)</small> al diccionario</td>
+			<td>falso</td>
+		</tr>
+	</tbody>
+</table>
+
+<!--  RETURNED VALUE -->
+<p class="subtitle">Valor devuelto</p>
+
+<p class="content">La función devuelve un diccionario con las entradas
+<ul class="content">
+	<li><i class="monospace">total_ns: tiempo en nanosegundos de todas las evaluaciones</i></li>
+	<li><i class="monospace">media_ns: tiempo en nanosegundos de todas las evaluaciones</i></li>
+	<li><i class="monospace">eval_ps: evaluaciones/s</i></li>
+	<li><i class="monospace">res: resultado</i>  <small>(si <span class="monospace">&lt;resultado></span> es <i>verdadero</i>)</small></li>
+</ul>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">cpu(det([1,2],[3,4]),1e6)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'total_ns'=1036362227, 'media_ns'=1036.362227, 'eval_ps'=964913.5928995992}</p>
+	<p class="content input"><span class="javaString">cpu(det([1,2],[3,4]),1e6,verdadero)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'total_ns'=1079610975, 'media_ns'=1079.610975, 'eval_ps'=926259.5723427136, 'res'=-2}</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.3.?</p>
+<p class="content modificado">v0.4.4</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

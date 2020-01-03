@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="potencia" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Potencia</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">BINARIO (60)</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Potencia de números o matrices cuadradas 
+</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">^</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">^</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">&lt;base>^&lt;exponente></p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">2^8</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 256</p>
+	<p class="content input"><span class="javaString">_e^pi</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 23.140692632779263</p>
+	<p class="content input"><span class="javaString">1024b^6</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 1152921504606846976</p>
+	<p class="content input"><span class="javaString">rgpi^3</span></p>
+	<p class="content output"><span class="jmeType">RealGrande</span>: 31.006276680299820175476315067101395202225288565884935341984742766426424310079383827605936867721624925678054349696678077367589570042084385771058543751</p>
+	<p class="content input"><span class="javaString">(2+3ui)^4</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: -119.00000000000001-120I</p>
+	<p class="content input"><span class="javaString">(2+3ui)^4</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: -119.00000000000001-120I</p>
+	<p class="content input"><span class="javaString">cmplj(2,3)^cmplj(-1,-1)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: -0.4742600387189315-0.5694201912513911I</p>
+</div>
+
+<div class="example">
+	<p class="content comment">para vectores/matrices como exponente, se aplica cada elemento a la base</p>
+	<p class="content input"><span class="javaString">roundp(ui^rango(4))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1,I,-1,-I]</p>
+	<p class="content input"><span class="javaString">î^[î,-î]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [0.20787957635076193,4.810477380965351]</p>
+	<p class="content input"><span class="javaString">roundp(î^[[0,1],[2,3]])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 1   I  |
+		| -1  -I |</p>
+</div>
+
+<div class="example">
+	<p class="content comment">potencia de matrices cuadradas con exponente natural:</p>
+	<p class="content input"><span class="javaString">[[1,0,3],[0,1,4],[0,0,1]]^10</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 1  0  30 |
+		| 0  1  40 |
+		| 0  0  1  |
+	</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="suma.html">suma</a>,
+	<a href="diferencia.html">diferencia</a>,
+	<a href="producto.html">producto</a>,
+	<a href="cociente.html">cociente</a>,
+	<a href="cociente_entero.html">cociente entero</a>,
+	<a href="modulo.html">modulo</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

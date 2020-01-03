@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="gradiente" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Gradiente</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Gradiente de un campo escalar en un punto</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">gradiente</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">&#x2207;</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">gradiente(&lt;función{varnames}>,&lt;varnames>,&lt;punto>[,&lt;h>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>función{varnames}</td>
+			<td>Función del campo escalar</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varnames</td>
+			<td>Variable de la que depende la función o variables en la forma <span class="monospace">[x<sub>1</sub>,x<sub>2</sub>,&#x2026;]</span></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>punto</td>
+			<td>Punto de evaluación en forma de vector</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>h</td>
+			<td>Precisión.<br/>Valores entre 0.001 y 0.01 suelen dar buen resultado.<br/>Demasiado grandes o pequeños producirán errores importantes</td>
+			<td>0.01</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">gradiente(3sqr(x)+2cb(y),[x,y],[4,3])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [23.999999999999726,53.99999999999814]</p>
+	<p class="content input"><span class="javaString">gradiente(3sqr(x)+2cb(y),[x,y],[4,3],0.5)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [24,54]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sucesion(sucesion(<mark class="gray1">gradiente(inv(mod(x,y))cos(mod(x,y)),[x,y],[a,b])</mark>,a,0,1,0.2),b,0,1,0.2)$6</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		|     [0,0]          [-25.494378,0]          [-6.730167,0]          [-3.233668,0]          [-1.985299,0]          [-1.381773,0]     |
+		| [0,-25.494378]  [-9.185377,-9.185377]  [-4.897236,-2.448617]  [-2.799659,-0.933219]  [-1.832351,-0.458087]  [-1.312857,-0.262571] |
+		| [0,-6.730167]   [-2.448617,-4.897236]  [-2.535477,-2.535477]  [-1.96358,-1.309053]   [-1.479701,-0.73985]   [-1.138448,-0.455379] |
+		| [0,-3.233668]   [-0.933219,-2.799659]  [-1.309053,-1.96358]   [-1.274506,-1.274506]  [-1.105418,-0.829063]  [-0.924128,-0.554477] |
+		| [0,-1.985299]   [-0.458087,-1.832351]  [-0.73985,-1.479701]   [-0.829063,-1.105418]  [-0.800635,-0.800635]  [-0.720496,-0.576397] |
+		| [0,-1.381773]   [-0.262571,-1.312857]  [-0.455379,-1.138448]  [-0.554477,-0.924128]  [-0.576397,-0.720496]  [-0.549017,-0.549017] |</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="divergencia.html">divergencia</a>,
+	<a href="rotacional.html">rotacional</a>,
+	<a href="derivada_direccional.html">derivada direccional</a>,
+	<a href="derivada.html">derivada</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

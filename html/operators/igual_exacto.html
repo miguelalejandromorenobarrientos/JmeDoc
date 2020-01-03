@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="igual, exacto" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Igual Exacto</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">BINARIO (10)</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve <i>verdadero</i> si dos terminales son <b>exactamente</b> iguales o equivalentes (dos números de la misma magnitud se considerán iguales aunque sean de distinto tipo).</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">==</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">==</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">&lt;terminal>==&lt;terminal></p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">2=next(2)</span> <span class="comment">(2.0000000000000004)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">2==next(2)</span> <span class="comment">(2.0000000000000004)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+	<p class="content input"><span class="javaString">-1=î^2</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">-1==î^2</span> <span class="comment">(-1+1.2246467991473532E-16I)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+	<p class="content input"><span class="javaString">0=_e^(ui*pi)+1</span> <span class="comment">(identidad de Euler)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">0==_e^(ui*pi)+1</span> <span class="comment">(1.2246467991473532E-16I)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+	<p class="content input"><span class="javaString">nan==nan</span> <span class="comment">(IEEE 754 standard, la comparación con NaN debe ser falsa)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[0,1]=[cos(pi/2),1]</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">[0,1]==[cos(pi/2),1]</span> <span class="comment">([6.123233995736766E-17,1])</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.3.7.2</p>
+<p class="content modificado">v0.4.4</p>
+
+<!-- SEE ALSO  -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="igual.html">igual</a>,
+	<a href="igual_estricto.html">igual estricto</a>,
+	<a href="distinto.html">distinto</a>,
+	<a href="igualdad_conjuntos.html">igual conjuntista</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

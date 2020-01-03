@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="tiempo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Tiempo</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve parámetros de tiempo del sistema (hora,mes,año,…)</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">tiempo</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">tiempo</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">tiempo(<span class="nonTerminal">&lt;valor></span>)
+	  <span class="nonTerminal">&lt;valor></span>::= [0-16] | verdadero | falso
+</p>
+
+<table class="content dataTable" style="font-size: 0.8em">
+	<thead><tr><th colspan="3"><small>Valores permitidos</small></th></tr></thead>
+	<tbody>
+	<tr>
+		<th>Nombre</th>
+		<th>Valor</th>
+		<th>Valor devuelto*</th>
+	</tr>
+	<tr>
+		<td>ERA</td>
+		<td><b>0</b></td>
+		<td>0: AC y 1: DC</td>
+	</tr>
+	<tr>
+		<td>YEAR</td>
+		<td>1</td>
+		<td>Año</td>
+	</tr>
+	<tr>
+		<td>MONTH</td>
+		<td><b>2</b></td>
+		<td>Mes de 0 a 11</td>
+	</tr>
+	<tr>
+		<td>WEEK_OF_YEAR</td>
+		<td><b>3</b></td>
+		<td>Semana del año</td>
+	</tr>
+	<tr>
+		<td>DAY_OF_MONTH</td>
+		<td><b>5</b></td>
+		<td>Dia del mes</td>
+	</tr>
+	<tr>
+		<td>DAY_OF_YEAR</td>
+		<td><b>6</b></td>
+		<td>Dia del año</td>
+	</tr>
+	<tr>
+		<td>DAY_OF_WEEK</td>
+		<td><b>7</b></td>
+		<td>Dia de la semana (Domingo:1,Lunes:2,…)</td>
+	</tr>
+	<tr>
+		<td>DAY_OF_WEEK_IN_MONTH</td>
+		<td><b>8</b></td>
+		<td>Indica si un lunes es el primer lunes del mes, el segundo,…, por ejemplo</td>
+	</tr>
+	<tr>
+		<td>AM_PM</td>
+		<td><b>9</b></td>
+		<td>0: AM, 1: PM</td>
+	</tr>
+	<tr>
+		<td>HOUR</td>
+		<td><b>10</b></td>
+		<td>Hora AM u Hora PM, de 0 a 11</td>
+	</tr>
+	<tr>
+		<td>HOUR_OF_DAY</td>
+		<td><b>11</b></td>
+		<td>Hora 24H</td>
+	</tr>
+	<tr>
+		<td>MINUTE</td>
+		<td><b>12</b></td>
+		<td>Minuto 0-59</td>
+	</tr>
+	<tr>
+		<td>SECOND</td>
+		<td><b>13</b></td>
+		<td>Segundos 0-59</td>
+	</tr>
+	<tr>
+		<td>MILLISECOND</td>
+		<td><b>14</b></td>
+		<td>Milisegundos del segundo actual</td>
+	</tr>
+	<tr>
+		<td>ZONE_OFFSET</td>
+		<td><b>15</b></td>
+		<td>Valor de compensación GMT correcto de la zona horaria en milisegundos</td>
+	</tr>
+	<tr>
+		<td>DST_OFFSET</td>
+		<td><b>16</b></td>
+		<td>Valor de compensación de horario de verano correcto de la zona horaria en milisegundos</td>
+	</tr>
+	</tbody>
+	<tfoot>
+		<tr><th colspan="3">* El valor devuelto puede ser distinto de un sistema a otro.
+		<br/>Por ejemplo, en Android el valor de WEEK_OF_MONTH puede ser <mark>1</mark> para la primera semana y <mark>0</mark> en otras Java VM</th></tr>
+	</tfoot>
+</table>
+
+<p class="content">
+■ <i>verdadero</i> devuelve el tiempo en milisegundos desde la <a href="https://es.wikipedia.org/wiki/Tiempo_Unix">Época</a><br/>
+■ <i>falso</i> devuelve el tiempo en nanosegunodos del <a href="https://docs.oracle.com/javase/1.5.0/docs/api/java/lang/System.html#nanoTime()">'current value of the running Java Virtual Machine's high-resolution time source'</a>
+</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">tiempo(1)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 2018</p>
+	<p class="content input"><span class="javaString">enumerar(tiempo(rango(17)),0)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 0      1    |
+		| 1    2018   |
+		| 2      3    |
+		| 3     13    |
+		| 4      0    |
+		| 5      1    |
+		| 6     91    |
+		| 7      1    |
+		| 8      1    |
+		| 9      1    |
+		| 10     6    |
+		| 11    18    |
+		| 12    43    |
+		| 13    20    |
+		| 14    803   |
+		| 15  3600000 |
+		| 16  3600000 |</p>
+</div>
+
+<div class="example">
+	<p class="content comment">la constante <b>_tiempo_hora_</b> toma los valores de hora(24h), minuto, segundo y milisegundo:</p>
+	<p class="content input"><span class="javaString">tiempo(_tiempo_hora_)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [18,52,29,442]</p>
+	<p class="content comment"><br/>se puede utilizar la función <a href="format.html" class="discLink"><b>format</b></a> para la presentación del tiempo:</p>
+	<p class="content input"><span class="javaString">format('%s:%s:%s.%s',tiempo(_tiempo_hora_))</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '18:57:24.636'</p>
+	<p class="content input"><span class="javaString">format('%3$s.%4$s',tiempo(_tiempo_hora_))</span>    <small class="comment">(seg.milis)</small></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '22.538'</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">tiempo(verdadero)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 1522603854404 <small class="comment">ms</small></p>
+	<p class="content input"><span class="javaString">tiempo(falso,falso)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1094096793358535,1094096793371527] <small class="comment">ns</small></p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="bisiesto.html">bisiesto</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

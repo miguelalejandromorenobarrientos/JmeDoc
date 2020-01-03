@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="sucesion" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Sucesión</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Crea un vector a partir de una expresión y una variable de iteración</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">sucesion</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">sucesion</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">sucesion(&lt;función{varname}>,&lt;varname>,&lt;inicio>,&lt;final>[,&lt;paso>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>función{varname}</td>
+			<td>función para crear los elementos de la sucesión</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varname</td>
+			<td>Variable de iteación de la que depende la función</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>inicio</td>
+			<td>Inicio de la variable de iteración</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>final</td>
+			<td>Final de la variable de iteración</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>paso</td>
+			<td>Incremento de la variable de iteración (>0)</td>
+			<td>1</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sucesion(cb(n),n,1,10)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1,8,27,64,125,216,343,512,729,1000]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sucesion([n,sqr(n)],n,0,10,2)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 0    0  |
+		| 2    4  |
+		| 4   16  |
+		| 6   36  |
+		| 8   64  |
+		| 10  100 |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sucesion(sucesion(10*n+m,m,0,9),n,0,4)</span> <span class="comment monospace">&#x2261; matriz(rango(50),5,10)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 0   1   2   3   4   5   6   7   8   9  |
+		| 10  11  12  13  14  15  16  17  18  19 |
+		| 20  21  22  23  24  25  26  27  28  29 |
+		| 30  31  32  33  34  35  36  37  38  39 |
+		| 40  41  42  43  44  45  46  47  48  49 |</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="sucesion_condicionada.html">sucesión condicionada</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="media, cuadratica, rms" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Media Cuadrática (RMS)</span><a href="../../index.html">Volver</a></header>
+
+<p class="content" style="font-size:1.5em">
+	<span class="larger" style="vertical-align: middle">RMS(<b style="color:blue">X</b>) = <b class="larger">√</b></span>
+	<span class="frac">
+		<span class="larger">∑<b style="color:blue">X</b><sub style="color:green">i</sub><sup>2</sup></span>
+		<span></span>
+		<span class="larger">dim(<b style="color:blue">X</b>)</span>
+	</span>
+</p>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Media cuadrática, valor cuadrático medio o RMS de los elementos de un vector</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">rms</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">RMS</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">rms(&lt;vector>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">rms(1,2,3)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 2.160246899469287</p>
+	<p class="content input"><span class="javaString">rms(rango(1,101))</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 58.16786054171152</p>
+	<p class="content input"><span class="javaString">rms(2,4-2ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 3.1075479480600743-1.2871885058111652I</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="media_aritmetica.html">media aritmética</a>,
+	<a href="media_geometrica.html">media geométrica</a>,
+	<a href="media_ponderada.html">media ponderada</a>,
+	<a href="media_armonica.html">media armónica</a>,
+	<a href="media_aritmetico_geometrica.html">agm</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

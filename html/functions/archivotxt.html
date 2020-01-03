@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="archivotxt, jmescript" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Cargar Archivo de Texto</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Esta función carga el contenido de un archivo de texto en una cadena de texto o un vector de cadenas
+de texto con cada línea del archivo.</p>
+<p class="content comment">
+Para usar esta función debe estar activado el acceso a archivos en JME. 
+</p>
+
+<!-- FOR DEVELOPERS  -->
+<p class="subtitle">Para Desarroladores</p>
+<p class="content">
+Puede activarse/desactivarse la carga de archivos desde JME mediante el método <b class="monospace">CargarArchivoTxt#setActivado</b>.
+</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">archivotxt</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">archivotxt</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">archivotxt(&lt;ruta_archivo>[,&lt;una_linea>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>ruta_archivo</td>
+			<td>Ruta y nombre para localizar archivo</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>una_linea</td>
+			<td>Si es <i>verdadero</i> carga en una sola cadena de texto el archivo. Si es <i>falso</i> en un vector de cadenas</td>
+			<td>falso</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">archivotxt('/miruta/doc.jmes')</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: ['Sacrifices buried with kings','Accompany them on a journey with no end','To an afterlife that's rich with fruit of all the Gods','And to face the demons','Of their underworld haunts','','The sentient is sent to seek out all the truth','A flight to Earth that is a given from his birth','To rise from ashes of the dead','Out of the fire is sent to fulfill man's desire']
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">archivotxt('/miruta/doc.jmes',verdadero)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'Sacrifices buried with kings
+Accompany them on a journey with no end
+To an afterlife that's rich with fruit of all the Gods
+And to face the demons
+Of their underworld haunts
+
+The sentient is sent to seek out all the truth
+A flight to Earth that is a given from his birth
+To rise from ashes of the dead
+Out of the fire is sent to fulfill man's desire'
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enumerar(archivotxt('/scripts/test.jmes'),1)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 1   'a := 100'  |
+		| 2   'b := a++'  |
+		| 3   'c := a+b'  |
+		| 4  'devolver c' |</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.5.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>
