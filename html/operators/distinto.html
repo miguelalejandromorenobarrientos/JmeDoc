@@ -73,15 +73,15 @@
 	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
 	<p class="content input"><span class="javaString">î^2!=-1</span></p>
 	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
-	<p class="content input"><span class="javaString">nan=nan</span> <span class="comment">(<b>nan</b> no es igual a nada)</span></p>
-	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+	<p class="content input"><span class="javaString">nan!=nan</span> <span class="comment">(<b>nan</b> no es igual a nada)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
 </div>
 
 <div class="example">
-	<p class="content input"><span class="javaString">[1+2,pi,-inf]=[3,pi,inf*(-1)]</span></p>
-	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
-	<p class="content input"><span class="javaString">[[1,0],[0,1]]=mat1(2)</span></p>
-	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">[1+2,pi,-inf]!=[3,pi,inf*(-1)]</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+	<p class="content input"><span class="javaString">[[1,0],[0,1]]!=mat1(2)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
 </div>
 
 <div class="example">
