@@ -9,5 +9,10 @@ jme.motor
 jme.operadores
 jme.repl
 jme.script
+jme.script.appacciones
+jme.script.ctx2d
+jme.script.ctx2d.clausulas
+jme.script.sql
+jme.script.sql.clausulas
 jme.terminales
 jme.usuario

@@ -104,6 +104,7 @@ Si no escapa, el nº de iteraciones es <i>Infinity</i>.
 	<li><b>'iter'</b>, nº de iteraciones (<i>Infinity</i> si el valor no escapa)</li>
 	<li><b>'orbita'</b>, vector de valores de la órbita (vector vacío si <code>&lt;órbita></code> es <i>false</i>)</li>
 	<li><b>'zn'</b>, último valor en la iteración <i>n</i></li>
+	<li><b>'z0'</b>, punto de evaluación inicial (=puntoZ)</li>
 </ul>
 
 <!-- EXAMPLES -->
@@ -113,6 +114,7 @@ Si no escapa, el nº de iteraciones es <i>Infinity</i>.
 	<p class="content input"><span class="javaString">mandelbrot(cmplj(-1,0.1),100)</span></p>
 	<p class="content output"><span class="jmeType">Diccionario</span>:
 		{     'zn': 0.009538143987633863-0.09812808047833504I
+		      'z0': -1+0.1I
 		  'orbita': []
 		    'iter': Infinity <span class="comment">(interior del conjunto)</span>}
 	</p>
@@ -182,7 +184,7 @@ Si no escapa, el nº de iteraciones es <i>Infinity</i>.
 <!-- SINCE/MODIFIED -->
 <p class="subtitle">Desde / Última modificación</p>
 
-<p class="content modificado">v0.6.1</p>
+<p class="content modificado">v0.6.2.0</p>
 
 <!-- SEE ALSO -->
 <p class="subtitle">Véase también…</p>

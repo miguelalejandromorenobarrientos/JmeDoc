@@ -91,14 +91,15 @@ figure
 { 
 	display: table; 
 }
-
 figcaption 
 { 
 	display: table-caption; 
 	caption-side: bottom;
 	font-size: small; 
-	margin-top: 2px;
-	text-align: justify;
+	margin: 6px 0px;
+	text-align: center;
+	font-style: oblique;
+	font-weight: bold;
 }
 
 
@@ -249,7 +250,7 @@ a.withRef:after
 	color: black;
 	font-size: 1.25em;
 	padding: 3px;
-	margin-left: 10px;
+	margin-left: 30px;
 	margin-top: 24px;
 	margin-bottom: 24px;
 	border-left: 1px solid black;
@@ -518,6 +519,27 @@ img.zoom:hover
 	content: " \21B2";
 }
 
+.jmescript
+{
+	font-size: 1.2em;
+	white-space: pre;
+	margin: 2px;
+}
+.jmescript:before
+{
+	font-family: monospace;
+	font-style: italic;
+	color: black;
+	content: "JMEScript \2192  ";
+}
+.jmescript span
+{
+	font-family: monospace;
+	font-weight: bolder;
+	font-style: normal;
+	color: #005;
+	text-shadow: 2px 2px 1px #77000000;
+}
 
 .console
 {
@@ -629,6 +651,7 @@ img.zoom:hover
 	color: black;
 	padding-right: 10px;
 }
+
 
 /************************************** FRACTIONS, BINOMIAL COEFFICIENTS **************/
 

@@ -4,21 +4,21 @@ window.onload = init;
 const webName = 'JME Manual de Usuario';
 const webDeveloper = 'JME Manual del Desarrollador';
 const author = 'Miguel Alejandro Moreno Barrientos';
-const version = '0.6.1';
-const copyright = '2012-2020';
+const version = '0.6.2.0';
+const copyright = '2012-2021';
 const homepage = 'http://morenobarrientos-jme.site44.com/';
 
 function init()
 {
 	// set title
-	document.title = webName;
+	document.title = webName + (document.title === "" ? "" : ": " + document.title);
 
 	// set text on tags
 	setTextTags( "webname", webName );
 	setTextTags( "webdeveloper", webDeveloper );
 	setTextTags( "author", author );
 	setTextTags( "version", "v" + version );
-	setTextTags( "copyright", "©" + copyright );
+	setTextTags( "copyright", "(C)" + copyright );
 	
 	// set href on special links
 	var links = document.getElementsByClassName( "homepage" );
@@ -122,11 +122,14 @@ function setBuscador()
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
-    }
+	if ( document.getElementById("myBtn") !== null )
+	{
+	    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+	        document.getElementById("myBtn").style.display = "block";
+	    } else {
+	        document.getElementById("myBtn").style.display = "none";
+	    }
+	}
 }
 
 // When the user clicks on the button, scroll to the top of the document

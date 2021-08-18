@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="gr_reordenar, reordenar, grafo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Reordenar Grafo</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Reordena las etiquetas de los nodos, modificando también el orden de las filas y columnas de la matriz de adyacencia y de los datos extra.</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">gr_reordenar</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">GRAFO.reordenar</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">gr_reordenar(&lt;grafo>,&lt;etiquetas>)</p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<span class="content comment">Pseudografo no dirigido de cuatro nodos:</span>
+	<p class="content input"><span class="javaString">gr_nuevo([[0,1,1,1],[1,0,0,1],[1,0,1,0],[1,1,0,0]],['A','B','C','D'],falso,falso,verdadero,falso,['Alice','Bob','Carol','Dave'],[[nulo,5,1,3],[1,nulo,nulo,3],[3,nulo,-1,nulo],[5,6,nulo,nulo]])</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+		{     'etiquetas': ['A','B','C','D']
+		            'ady': [[0,1,1,1],[1,0,0,1],[1,0,1,0],[1,1,0,0]]
+		     'esDirigido': falso
+		    'esPonderado': falso
+		  'esPseudografo': verdadero
+		   'esMultigrafo': falso
+		       'nodoData': ['Alice','Bob','Carol','Dave']
+		     'aristaData': [['__null__',5,1,3],[1,'__null__','__null__',3],[3,'__null__',-1,'__null__'],[5,6,'__null__','__null__']] }
+	<p class="content output"><span class="jmeType">Salida JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_4nodos_pseudografo_no_dirigido.png"/><br/>
+	</p>
+	<span class="content comment">Pseudo-multigrafo no dirigido de 5 nodos usando todos los parámetros:</span>
+	<p class="content input"><span class="javaString">eval(<mark class="gray1">gr_reordenar(g,revertir(g>&lt;'etiquetas'))</mark>,g,gr_nuevo([[0,1,1,1],[1,0,0,1],[1,0,1,0],[1,1,0,0]],['A','B','C','D'],falso,falso,verdadero,falso,['Alice','Bob','Carol','Dave'],[[nulo,5,1,3],[1,nulo,nulo,3],[3,nulo,-1,nulo],[5,6,nulo,nulo]]))</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+		{     'etiquetas': ['D','C','B','A']
+		            'ady': [[0,0,1,1],[0,1,0,1],[1,0,0,1],[1,1,1,0]]
+		     'esDirigido': falso
+		    'esPonderado': falso
+		  'esPseudografo': verdadero
+		   'esMultigrafo': falso
+		       'nodoData': ['Dave','Carol','Bob','Alice']
+		     'aristaData': [['__null__','__null__',6,5],['__null__',-1,'__null__',3],[3,'__null__','__null__',1],[3,1,5,'__null__']] }
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

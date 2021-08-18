@@ -1,5 +1,5 @@
 ################################################
-## JMEScript v0.1.0: ejemplo de script
+## JMEScript v0.2.0: ejemplo de script
 ## lectura de coordenadas bidimensionales
 ################################################
 
@@ -7,11 +7,11 @@ puntos := []
 
 # introducir INTRO para finalizar
 mientras verdadero inicio:
-	leer x 'x? '
+	leer x msj 'x? '
 	si indefinido(['x']) inicio:
 		romper
 	fin
-	leer y 'y? '
+	leer y msj 'y? '
 	si indefinido(['y']) inicio:
 		romper
 	fin

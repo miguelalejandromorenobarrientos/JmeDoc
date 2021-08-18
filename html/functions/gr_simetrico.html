@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="gr_simetrico, simetrico, grafo" />
+	<title>Grafo Simétrico</title>
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script src="../../js/jme_doc.js"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Grafo Simétrico</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Comprueba si un digrafo es simétrico, es decir, su matriz de adyacencia es simétrica (todos los grafos no dirigidos son simétricos)</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">gr_simetrico</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">GRAFO.simetrico</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">gr_simetrico(&lt;grafo>)</p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<br/>
+	<span class="content comment">Digrafo de 6 nodos:</span>
+	<p class="content output"><span class="jmeType">Grafo en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" alt="grafo_6nodos_simetrico.png" src="../jmescript/images_jmes/grafo_6nodos_simetrico.png"/>
+	</p>
+	<span class="content comment">¿es simétrico?:</span>
+	<p class="content input"><span class="javaString">gr_simetrico(gr_nuevo([[0,1,1,0,0,0],[1,0,1,1,1,0],[1,1,0,1,1,0],[0,1,1,0,1,1],[0,1,1,1,0,1],[0,0,0,1,1,0]],verdadero))</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p> 
+</div>
+
+<div class="example">
+	<br/><br/>
+	<span class="content comment">Digrafo de 8 nodos:</span>
+	<p class="content output"><span class="jmeType">Grafo en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" alt="grafo_8nodos_digrafo.png" src="../jmescript/images_jmes/grafo_8nodos_digrafo.png"/>
+	</p>
+	<span class="content comment">¿es simétrico?:</span>
+	<p class="content input"><span class="javaString">gr_simetrico(gr_nuevo([[0,1,0,0,0,0,0,0],[0,0,1,0,1,1,0,0],[0,0,0,1,0,0,1,0],[0,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,1,0]],['a','b','c','d','e','f','g','h'],verdadero))</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p> 
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="gr_antisimetrico.html">gr_antisimetrico</a>
+</p>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

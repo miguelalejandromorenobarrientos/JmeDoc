@@ -40,7 +40,8 @@
 <!-- DESCRIPTION -->
 <p class="subtitle">Descripción</p>
 
-<p class="content">Devuelve el <b>capital final</b> a partir del inicial con un interés simple, compuesto o continuo</p>
+<p class="content">Devuelve un parámetro de las fórmulas del interés a partir de los otros tres
+(<b>capital final</b>, <b>capital inicial</b>, <b>tasa de interés</b>, <b>nº de períodos</b>)</p>
 
 <!-- INPUT -->
 <p class="subtitle">Cadena de entrada</p>
@@ -55,44 +56,50 @@
 <!-- USAGE -->
 <p class="subtitle">Uso</p>
 
-<p class="content bnf">interes(&lt;C<sub>i</sub>>,&lt;r>,&lt;t>,&lt;tipo>)</p>
+<p class="content bnf">interes(&lt;diccionario>)</p>
 
 <table class="dataTable content" style="font-size: small">
 	<thead>
 		<tr>
-			<th colspan="4">Parámetros</th>
+			<th colspan="4">Claves</th>
 		</tr>
 		<tr>
-			<th>#</th>
-			<th>Parámetro</th>
+			<th>Clave</th>
 			<th>Descripción</th>
 			<th>Valor por defecto</th>
+			<th>Obligatorio</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>1</td>
-			<td>C<sub>i</sub></td>
+			<td>'ci'</td>
 			<td>Capital inicial</td>
 			<td></td>
+			<td>NO (si se definen los demás parámetros)</td>
 		</tr>
 		<tr>
-			<td>2</td>
-			<td>r</td>
+			<td>'cf'</td>
+			<td>Capital final</td>
+			<td></td>
+			<td>NO (si se definen los demás parámetros)</td>
+		</tr>
+		<tr>
+			<td>'r'</td>
 			<td>Tasa de interés (en tanto por uno, NO tanto por ciento)</td>
 			<td></td>
+			<td>NO (si se definen los demás parámetros)</td>
 		</tr>
 		<tr>
-			<td>3</td>
-			<td>t</td>
+			<td>'t'</td>
 			<td>Número de periodos</td>
 			<td></td>
+			<td>NO (si se definen los demás parámetros)</td>
 		</tr>
 		<tr>
-			<td>4</td>
-			<td>tipo</td>
-			<td>Una de estas tres constantes para aplicar el tipo de interés: <b>_simple_, _comp_, _cont_</b></td>
+			<td>'tipo'</td>
+			<td>Uno de estos tres valores: <b>'simple', 'compuesto', 'continuo'</b></td>
 			<td></td>
+			<td>SI</td>
 		</tr>
 	</tbody>
 </table>
@@ -101,14 +108,32 @@
 <p class="subtitle">Ejemplos</p>
 
 <div class="example">
-	<p class="content input"><span class="javaString">interes(1000,0.01,12,_simple_)</span></p>
+	<p class="content input"><span class="javaString">interes(dic('ci',1000,'r',0.01,'t',12,'tipo','simple'))</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1120&emsp;<span class="comment">capital final (cf)</span></p>
+	<p class="content comment">misma llamada con diccionario implícito:</p>
+	<p class="content input"><span class="javaString">interes('ci',1000,'r',0.01,'t',12,'tipo','simple')</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1120</p>
+	<p class="content input"><span class="javaString">interes('{ci:1000,r:0.01,t:12,tipo:simple}')</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1120</p>
+	<p class="content input"><span class="javaString">interes('xml:&lt;ci>1000&lt;/ci>&lt;r>0.01&lt;/r>&lt;t>12&lt;/t>&lt;tipo>simple&lt;/tipo>')</span></p>
 	<p class="content output"><span class="jmeType">RealDoble</span>: 1120</p>
 </div>
 
 <div class="example">
-	<p class="content input"><span class="javaString"><a href="propagar.html" class="discLink">propagar</a>(interes(1000,4*%,12,type),type,[_simple_,_comp_,_cont_])</span></p>
+	<p class="content input"><span class="javaString"><a href="format.html" class="discLink">format</a>('r=%s%%',[interes('t',12,'cf',2000,'ci',1000,'tipo','compuesto')<a href="../operators/invporcentaje.html" class="discLink">/%</a><a href="../operators/truncar.html" class="discLink">$</a>2])</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'r=5.94%'</p>
+</div>
+
+<div class="example">
+	<p class="content comment">comparación de los mismos parámetros para cada tipo de interés:</p>
+	<p class="content input"><span class="javaString"><a href="propagar.html" class="discLink">propagar</a>(interes('ci',1000,'r',4*%,'t',12,'tipo',type),type,['simple','compuesto','continuo'])</span></p>
 	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1480,1601.0322185676814,1616.0744021928936]</p>
 </div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content modificado">v0.6.2.0</p>
 
 
 <footer>

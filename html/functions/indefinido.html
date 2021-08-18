@@ -36,7 +36,8 @@
 <!-- DESCRIPTION -->
 <p class="subtitle">Descripción</p>
 
-<p class="content">Esta función permite detectar si una variable o una clave de diccionario está definida o devolver un valor opcional en caso contrario.
+<p class="content">Esta función permite comprobar si una variable, o una clave de diccionario, o una posición de vector, está definida
+y opcionalmente devolver un valor por defecto en caso contrario.
 <br/>El principal propósito de esta función es su uso en <i>JMEScript</i>.</p>
 
 <!-- INPUT -->
@@ -53,7 +54,7 @@
 <p class="subtitle">Uso</p>
 
 <p class="content bnf">indefinido(&lt;varname>[,&lt;valor_opcional>])
-          |indefinido(&lt;diccionario>,&lt;clave>[,&lt;valor_opcional>])</p>
+          |indefinido(&lt;diccionario|vector>,&lt;clave|índice>[,&lt;valor_opcional>])</p>
 
 <p class="content comment">Nota: en el caso de un parámetro, es necesario escribir la variable entre corchetes (ver ejemplos)</p>
 
@@ -78,20 +79,20 @@
 		</tr>
 		<tr>
 			<td>1</td>
-			<td>diccionario</td>
+			<td>diccionario|vector</td>
 			<td></td>
 			<td></td>
 		</tr>
 		<tr>
 			<td>2|3</td>
 			<td>valor_opcional</td>
-			<td>Valor a devolver si la variable o la clave está indefinida</td>
+			<td>Valor a devolver si la variable, o la clave del diccionario, o la posición del vector está indefinida</td>
 			<td>∅</td>
 		</tr>
 		<tr>
 			<td>2</td>
-			<td>clave</td>
-			<td>Clave del diccionario que puede o no estar definida</td>
+			<td>clave|índice</td>
+			<td>Clave del diccionario que puede o no estar definida, o índice del vector que puede no estar dentro del tamaño de éste</td>
 			<td></td>
 		</tr>
 	</tbody>
@@ -203,6 +204,37 @@
 </div> 
 </div>
 
+<div class="example">
+<p class="content">Salida en REPL:</p>
+<div class="content console">
+<p class="javaOutput">>>> set v=[4,1]
+
+	v ==> VectorEvaluado: [4,1]
+
+	(parse: 4,1ms(13%) / eval: 27,3ms(87%) / total: 31,4ms)
+
+>>> indefinido(v,2)
+
+	 ==> Booleano: falso
+
+	(parse: 1ms(56%) / eval: 788µs(44%) / total: 1,8ms)
+
+>>> indefinido(v,3)
+
+	 ==> Booleano: verdadero
+
+	(parse: 239µs(26%) / eval: 699µs(74%) / total: 939µs)
+
+>>> indefinido(v,3,0)
+
+	 ==> RealDoble: 0
+
+	(parse: 110µs(21%) / eval: 428µs(79%) / total: 538µs)
+
+>>></p>
+</div> 
+</div>
+
 <br/>
 
 <div class="example">
@@ -214,7 +246,7 @@
 <p class="subtitle">Desde / Última modificación</p>
 
 <p class="content desde_version">v0.5.0</p>
-<p class="content modificado">v0.6.1</p>
+<p class="content modificado">v0.6.2.0</p>
 
 
 <footer>

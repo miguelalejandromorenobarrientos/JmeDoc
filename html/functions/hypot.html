@@ -13,7 +13,7 @@
 	<meta name="audience" content="all" />
 	<meta name="robots" content="index,follow" />
 	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
-	<meta name="keyword" content="hipotenusa, hypot" />
+	<meta name="keyword" content="hipotenusa, hypot, cateto" />
 	
 	<!-- ICON -->
 	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
@@ -37,7 +37,7 @@
 <p class="subtitle">Descripción</p>
 
 <p class="content">Devuelve el valor de la hipotenusa para dos reales con una precisión de 1 ulp sin desbordamiento.</p>
-<p class="content">Esta función es más lenta que <i>mod/abs(a,b)</i>, pero más precisa</p>
+<p class="content">Esta función es más lenta que <i>mod/abs(a,b)</i>, pero más precisa y sin desbordamiento para catetos menores que infinito</p>
 
 <!-- INPUT -->
 <p class="subtitle">Cadena de entrada</p>
@@ -61,6 +61,13 @@
 <div class="example">
 	<p class="content input"><span class="javaString">hypot(4,3)</span></p>
 	<p class="content output"><span class="jmeType">RealDoble</span>: 5</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">mod(1e200,1e200)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: Infinity&emsp;<span class="comment">desbordamiento</span></p>
+	<p class="content input"><span class="javaString">hypot(1e200,1e200)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1.414213562373095E200&emsp;<span class="comment">sin desbordamiento</span></p>
 </div>
 
 <div class="example">

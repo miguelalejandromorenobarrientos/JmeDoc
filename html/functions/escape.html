@@ -123,6 +123,7 @@ Si no escapa, el nº de iteraciones es <i>Infinity</i>.
 	<li><b>'iter'</b>, nº de iteraciones (<i>Infinity</i> si el valor no escapa)</li>
 	<li><b>'orbita'</b>, vector de valores de la órbita (vector vacío si <code>&lt;órbita></code> es <i>false</i>)</li>
 	<li><b>'zn'</b>, último valor en la iteración <i>n</i></li>
+	<li><b>'z0'</b>, punto de evaluación inicial (=valor_inicial)</li>
 </ul>
 
 <!-- EXAMPLES -->
@@ -132,6 +133,7 @@ Si no escapa, el nº de iteraciones es <i>Infinity</i>.
 	<p class="content input"><span class="javaString">escape(sec(z)/z,z,cmplj(-1,0),10,100)</span></p>
 	<p class="content output"><span class="jmeType">Diccionario</span>:
 		{     'zn': -3.4457670612677704
+		      'z0': -1
 		  'orbita': []
 		    'iter': Infinity }
 </p>
@@ -146,7 +148,7 @@ Si no escapa, el nº de iteraciones es <i>Infinity</i>.
 <p class="subtitle">Desde / Última modificación</p>
 
 <p class="content desde_version">v0.1</p>
-<p class="content modificado">v0.6.1</p>
+<p class="content modificado">v0.6.2.0</p>
 
 <!-- SEE ALSO -->
 <p class="subtitle">Véase también&hellip;</p>

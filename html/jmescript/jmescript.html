@@ -20,17 +20,17 @@
 	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
 	<link href="../../css/default.css" rel="stylesheet" type="text/css" />        
 
-	<!-- JAVASCRIPT -->	
-	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
-	<script type="text/javascript" src="../../js/highlight.pack.js" charset="UTF-8"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-
 	<style>
 		td, th
 		{
 			word-break: break-all !important;
 		}
 	</style>
+
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../../js/highlight.pack.js" charset="UTF-8"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
 	
 </head>
 
@@ -39,7 +39,7 @@
 <header class="title" style="align-items:center;display:flex">
 	<img src="images_jmes/jmescript_logo.png" width=48 style="min-width:48px"/>
 	<b style="margin-left: 0.75em;font-size:1.25em">JMEScript</b>  
-	<small style="margin-left: 0.5em;margin-right: 1em">v0.1.3</small>
+	<small style="margin-left: 0.5em;margin-right: 1em">v0.2.0</small>
 	<span style="margin-left:auto">
 		<a class="homepage discLink"><b>JME Homepage</b></a>
 		<a href="../../index.html" class="discLink" style="color: #335"><b>Manual de Usuario de JME</b></a> 
@@ -49,38 +49,78 @@
 
 <hr/>
 
-<table id="index" style="border: 1px solid black;max-width:340px;margin-left: 3%">
+<table id="index" style="border: 1px solid black;max-width:500px;margin-left: 3%">
 	<tr><td><a class="index">introduccion</a></td></tr>
 	<tr><td><a class="index">sentencias</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">set</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">multiset</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">devolver</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">si</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">si_no_si</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">si_no</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">mientras</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">para</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">para_cada</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">fin</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">romper</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">continuar</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">bin_op</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">unary_op</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">limpiar</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">def_func</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">def_op</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">rutina</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">llamar_a</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">imprimir</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">leer</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">eval</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">pasar</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">set</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">multiset</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">set_mut</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">swap</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">devolver</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">si</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">si_no_si</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">si_no</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">seleccionar</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">mientras</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">repetir_hasta</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">para</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">para_cada</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">fin</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">romper</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">continuar</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">bin_op</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">unary_op</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">limpiar</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">def_func</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">def_op</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">rutina</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">llamar_a</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">try</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">imprimir</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">leer</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">eval</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">pausar</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">asegurar</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">pasar</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">varmap</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">ctx2d</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_iniciar</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_finalizar</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_color</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_gradiente</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_trazo</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_punto</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_segmento</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_rectangulo</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_circunferencia</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_elipse</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_poligono</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_ruta</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_texto</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_repintar</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_limpiar</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_matriz</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_entorno</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_click</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_pulsacion</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_msj</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_leer</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_archivo</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">sql</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_conectar</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_ejecutar</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_resultado</a></td></tr>
+	<tr><td>&emsp;&emsp;&emsp;<a class="index">clsl_cerrar</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">accion</a></td></tr>
 	<tr><td><a class="index">vars</a></td></tr>
-	<tr><td>&emsp;■ <a class="index">ext_vars</a></td></tr>
+	<tr><td>&emsp;&emsp;■ <a class="index">ext_vars</a></td></tr>
 	<tr><td><a class="index">comment</a></td></tr>
 	<tr><td><b><a class="index">developers</a></b></td></tr>
-	<tr><td><b>&emsp;■ <a class="index">thread</a></b></td></tr>
-	<tr><td><b>&emsp;■ <a class="index">scriptthread</a></b></td></tr>
+	<tr><td><b>&emsp;&emsp;■ <a class="index">thread</a></b></td></tr>
+	<tr><td><b>&emsp;&emsp;■ <a class="index">scriptthread</a></b></td></tr>
+	<tr><td><b>&emsp;&emsp;■ <a class="index">abstractctx2d</a></b></td></tr>
+	<tr><td><b>&emsp;&emsp;■ <a class="index">abstractsql</a></b></td></tr>
+	<tr><td><b>&emsp;&emsp;■ <a class="index">accioncode</a></b></td></tr>
 	<tr><td><a class="index">examples</a></td></tr>
 </table>
 
@@ -101,10 +141,10 @@ del lenguaje <b>JME</b> para representación de tipos y expresiones. Es un lengu
 aunque no limitado a éste.
 </p>
 <p class="content">
-<i>JMEScript</i> es fácil de aprender, consta básicamente de;<br/>
-∎ estructuras de selección <i class="monospace">si / si no, si / si no</i><br/>
-∎ tres tipos de bucles; <i class="monospace">mientras</i>, <i class="monospace">&nbsp;para&nbsp;</i> y <i class="monospace">&nbsp;para cada</i><br/> 
-∎ creación de rutinas<br/>
+<i>JMEScript</i> es fácil de usar, consta básicamente de;<br/>
+∎ estructuras de selección;&emsp;<i class="monospace">si / si no, si / si no</i><br/>
+∎ cuatro tipos de bucles;&emsp; <i class="monospace">mientras / para / para cada / repetir hasta que</i><br/> 
+∎ procedimientos locales y globales con parámetros de entrada y de entrada/salida<br/>
 ∎ variables dinámicas que contienen tipos JME<br/>
 ∎ creación de funciones y operadores JME definidos por el usuario<br/>
 </p>
@@ -124,7 +164,7 @@ para <a href="https://notepad-plus-plus.org/download/v7.5.8.html">Notepad++</a> 
 <div class="tema content">
 <p class="content">
 Las sentencias del lenguaje <i>JMEScript</i> se sitúan cada una <b class="subSimple">en su propia línea del código fuente</b>
-del script. Los espacios y tabulaciones iniciales y finales son ignorados, pudiéndose usar el sangrado que se desee. 
+del script, aunque se pueden partir en varias líneas con el separador <b>&gt;</b>. Los espacios y tabulaciones iniciales y finales son ignorados, pudiéndose usar el sangrado que se desee. 
 </p>
 <p class="content">
 <i>JMEScript</i>, es <i class="subSimple">case-insensitive</i>, por lo que las palabras reservadas del lenguaje (<i>keywords</i>), variables, rutinas, etc.
@@ -132,20 +172,19 @@ pueden escribirse indistintamente en mayúsculas o minúsculas (el convenio usad
 la variable <span class="monospace">nombre</span> igual a <span class="monospace">NoMbRe</span>. 
 </p>
 <p class="content">
-Las sentencias que terminan en '<i>inicio:</i>' son sentencias de bloque, que ejecutan o pueden ejecutar las líneas
+Las sentencias que terminan en '<b>inicio:</b>' son sentencias de bloque, que ejecutan o pueden ejecutar las líneas
 debajo de ellas hasta llegar a su sentencia <b>fin</b> correspondiente. 
 </p>
 <p class="content">
-Las expresiones <i>JME</i> en las sentencias se pueden rodear en caso de confusión con dobles llaves; <b class="monospace">{{3x^2+1}}</b>.
+Las expresiones <i>JME</i> en las sentencias se pueden rodear en caso de ambigüedad con dobles llaves; <b class="monospace">{{3x^2+1}}</b>.
 </p>
-
 
 <br/><br/>
 <h3 class="subSection" id="set">Establecer/Borrar variable</h3>
 <br/>
 <p class="content">
-El operador <b class="larger monospace"> := </b> permite establecer el valor de una variable a una expresión JME o 
-eliminar la variable si no se especifica ninguna expresión:
+El operador <b class="larger monospace"> := </b> permite establecer el valor de una o varias variables a un único valor mediante
+una expresión JME o eliminar la/s variable/s si no se especifica ninguna expresión:
 </p>
 <hr class="content"/>
 <p class="content">
@@ -172,17 +211,33 @@ falso
 <br/>
 <p class="content">
 El operador <b class="larger monospace"> :== </b> permite establecer el valor de varias variables mediante 
-un vector JME o eliminar las variables si no se especifica ningún vector. En número de variables debe
-ser menor o igual que el número de elementos del vector.
+un vector o un diccionario o eliminar las variables.
 </p>
+<ul class="content">
+	<li style="margin-bottom: 1em">
+		Para un <span class="subSimple">vector</span>, los valores se esparcirán sobre las variables (<i>spread operator</i>).<br/>
+		El número de variables debe ser menor o igual que el número de elementos del vector.<br/>
+		Si no se especifica ningún valor, elimina las variables especificadas (al igual que el operador <b class="larger monospace"> := </b>).
+	</li>
+	<li>
+		Para un <span class="subSimple">diccionario</span>, si no se especifican variables, se convertirán las claves a nombres de variable. Si la conversión de clave a
+		nombre no puede realizarse, se ignorará esa clave (debe ser un identificador JME válido).
+		Si se especifican variables, se tomarán los valores de las claves con el mismo nombre, sin importar mayúsculas o minúsculas. Si
+		la clave no existe, la variable se elimina.
+	</li>
+</ul>
 <hr class="content"/>
 <p class="content">
 <span class="subSimple">Diagrama sintáctico:</span>
-<br/><br/>
-<img src="images_jmes/multiset.png" class="centerImg"/>
-<br/>
 </p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/multiset.png" class="centerImg"/>
+	<figcaption><code>[&lt;varname> [,&lt;varname>]*] :== [&lt;vector|diccionario>]</code></figcaption>
+</figure>
+<br/>
 <hr class="content"/>
+<p class="content subSimple">Ejemplo con vector:</p>
 <img class="content centerImg" src="images_jmes/multiset_sample.png"/>
 <br/>
 <p class="content">
@@ -192,8 +247,156 @@ ser menor o igual que el número de elementos del vector.
 <p class="javaOutput">7  I  
 2  3  4  
 <mark class="error">&lt;&lt;&lt;ScriptException>>> en la sentencia '[#6: imprimir x, y, z]': &lt;&lt;&lt;EvaluarException>>>; identificador "x" no definido. --> ...</mark></p>
-</div> 
+</div>
+<br/> 
+<p class="content subSimple">Ejemplo con diccionario:</p>
+<img class="content centerImg" src="images_jmes/multiset_sample2.png"/>
+<br/>
 <p class="content">
+<span class="subSimple">Salida en consola:</span>
+</p>
+<div class="content console">
+<p class="javaOutput"> { 'x': 100
+   'y': 200 }
+
+ {  'y': 200
+    'b': 'hola'
+   'vm': {'x'=100, 'y'=200} }</p>
+</div> 
+
+<br/><br/>
+<h3 class="subSection" id="set_mut">Establecer valor de forma mutable en vector o diccionario</h3>
+<br/>
+<p class="content">
+El operador de acceso <b class="larger monospace"> {<span style="font-weight: normal">&lt;idx></span>} </b> permite modificar/añadir/eliminar un valor 
+de un vector o diccionario <i>"IN-PLACE"</i>, es decir, modificando directamente el objeto vector/diccionario.
+</p>
+<p class="content">
+Esto puede mejorar la eficiencia en operaciones que requieran modificar grandes matrices o diccionarios sin tener que recurrir a una copia
+del objeto, pero lógicamente <b>se debe programar con cuidado como cada vez que se usa programación no funcional (inmutable)</b>. <i>JME</i> siempre
+trabaja de forma funcional para el usuario, al igual que <i>JMEScript</i> excepto mediante este operador de acceso.
+</p>
+<br/>
+<ol class="content">
+	<li>
+		<b>caso vector:</b>
+		<ul>
+			<li>modificar posición;&emsp;<code>v{3}:=5</code>&emsp;modifica la posición 3 del vector a 5</li>
+			<li>eliminar posición;&emsp;<code>v{3}:=</code>&emsp;elimina la posición 3 del vector (reduciendo su tamaño)</li>
+			<li>modificar rango;&emsp;<code>v{[2,4]}:=0</code>&emsp;establece a 0 las posiciones 2,3,4 del vector</li>
+			<li>eliminar rango;&emsp;<code>v{[2,4]}:=</code>&emsp;elimina las posiciones 2,3,4 del vector (reduciendo su tamaño)</li>
+			<li>insertar en posición;&emsp;<code>v{3b}:=5</code>&emsp;inserta en la posición 3 del vector un 5, desplazando los elementos siguientes 
+			una posición y aumentando el tamaño. Se debe especificar la posición con un <i>EnteroGrande</i></li>
+		</ul>
+	</li>
+	<li>
+		<b>caso diccionario:</b>
+		<ul>
+			<li>modificar o crear clave;&emsp;<code>d{'key'}:=5</code>&emsp;crea clave y valor {'key',5} o la modifica</li>
+			<li>eliminar clave;&emsp;<code>d{'key'}:=</code>&emsp;elimina la clave 'key' y su valor si existe, en caso contrario no tiene efecto</li>
+		</ul>
+	</li>
+</ol>
+<hr class="content"/>
+<br/>
+<p class="content">
+<span class="subSimple">Diagrama sintáctico:</span>
+</p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/set_mutable.png" class="centerImg"/>
+	<figcaption><code>&lt;varname> { &lt;idx|key> } := [&lt;valor>]</code></figcaption>
+</figure>
+<br/>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Operador sobre vector:</span>
+</p>
+<img class="content centerImg" src="images_jmes/set_mutable_sample.png"/>
+<br/>
+<p class="content">
+<span class="subSimple">Salida en consola:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">0:  ['a','b','c','d']  
+1:  ['a','z','c','d']  
+2:  ['a','c','d']  
+3:  ['inicio','a','c','d','fin']  
+4:  ['inicio','fin']  
+5:  [0,0]  
+</p>
+</div> 
+<br/>
+<p class="content">
+<span class="subSimple">Operador sobre diccionario:</span>
+</p>
+<img class="content centerImg" src="images_jmes/set_mutable_sample2.png"/>
+<br/>
+<p class="content">
+<span class="subSimple">Salida en consola:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">0:  {'p'=[1,2], 'q'=[0,1], 'r'=5, 'x'=1, 'y'=-3, 'z'=0}  
+1:  {'p'='__null__', 'q'=[0,1], 'r'=5, 'x'=1, 'y'=-3, 'z'=0}  
+2:  {'q'=[0,1], 'r'=5, 'x'=1, 'y'=-3, 'z'=0}  
+3:  {'q'=[0,1], 'r'=5, 'x'=1, 'y'=-3, 'z'=0, 'p'=[-2,-3]}  
+</p>
+</div>
+<br/> 
+<p class="content">
+<span class="subSimple">Operador sobre matriz:</span>
+</p>
+<img class="content centerImg" src="images_jmes/set_mutable_matriz_sample.png"/>
+<br/>
+<p class="content">
+<span class="subSimple">Salida en consola:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">| 8  0  8  |
+| 0  5  45 |
+| 0  0  1  |
+
+
+| 8  0   8  |
+| 0  5  100 |
+| 0  0   1  |
+</p>
+</div> 
+
+<br/><br/>
+<h3 class="subSection" id="swap">Intercambiar variables</h3>
+<br/>
+<p class="content">
+La sentencia <b>intercambiar</b> o <b>swap</b> permite intercambiar dos variables sin usar una tercera auxiliar.
+</p>
+<p class="content">
+La sentencia también intercambia si una variable está indefinida, haciendo que sea la otra la indefinida.
+</p>
+<hr class="content"/>
+<p class="content">
+<br/><span class="subSimple">Diagrama sintáctico:</span>
+</p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/swap.png" class="centerImg"/>
+	<figcaption><code>intercambio|swap &lt;var1> [,] &lt;var2></code></figcaption>
+</figure>
+<br/>
+<hr class="content"/>
+<img class="content centerImg" src="images_jmes/swap_sample.png"/>
+<br/>
+<p class="content">
+<span class="subSimple">Salida en consola:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">'a' y 'b' intercambiados:  
+a:  2  
+b:  1  
+borrar 'b' e intercambiar con 'a':  
+b:  2  
+a indefinido:  verdadero
+</p>
+</div> 
 
 <br/><br/>
 <h3 class="subSection" id="devolver">Devolver resultado</h3>
@@ -203,16 +406,17 @@ La sentencia <b>devolver</b> termina el script y devuelve opcionalmente un resul
 Si no se especifica el resultado, el valor devuelto es <b>null</b>.
 </p>
 <p class="content">
-Si se usa esta sentencia dentro de una rutina, <span class="subSimple">termina todo el script</span> (ya que la rutina no es una función).
+Si se usa esta sentencia dentro de una rutina, <span class="subSimple">termina todo el script</span> (el significado no es el mismo de <i>return</i> en otros lenguajes).
 Las rutinas se rompen con <b>romper rutina</b>.
 </p>
 <hr class="content"/>
-<p class="content">
-<span class="subSimple">Diagrama sintáctico:</span>
+<p class="content subSimple">Diagrama sintáctico:</p>
 <br/><br/>
-<img src="images_jmes/devolver.png" class="centerImg"/>
+<figure style="margin: auto">
+	<img src="images_jmes/devolver.png" class="centerImg content"/>
+	<figcaption><code>devolver [&lt;valor_devuelto>]</code></figcaption>
+</figure>
 <br/>
-</p>
 <hr class="content"/>
 <img class="content centerImg" src="images_jmes/devolver_sample.png"/>
 <br/>
@@ -299,9 +503,69 @@ a un bloque 'si' o 'si no, si'.
 <img src="images_jmes/si_no.png" class="centerImg"/>
 <br/>
 </p>
+<hr class="content"/>
 <p class="content">
 Ver ejemplo previo de la sentencia <b>si no, si</b>.
 </p>
+
+<br/><br/>
+<h3 class="subSection" id="seleccionar">Selección de casos 'Seleccionar'</h3>
+<br/>
+<p class="content">
+La sentencia <b>seleccionar</b> ejecuta el caso/casos que cumplan con la condición especificada o con el valor dado.
+</p>
+<p class="content">
+Puede definirse un caso por defecto que se ejecutará en caso de que los demás no se cumplan (en <i>multicaso</i> ejecuta siempre).
+Debe definirse <i class="subSimple">al final</i> mediante <b>caso*</b>.
+</p>
+<p class="content">
+Si se añade * a <i>seleccionar</i>, se utilizará el <b>multicaso</b>, se ejecutarán todos los casos que cumplan la condición
+en lugar de sólo el primero que la cumpla.
+</p>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/seleccionar.png" class="centerImg"/>
+	<figcaption><code>seleccionar[*] &lt;valor> inicio: [caso &lt;valor|condición> inicio:]* [caso* inicio:]</code></figcaption>
+</figure>
+<br/>
+<hr class="content"/>
+<p class="content">
+	<img class="content centerImg" src="images_jmes/seleccionar_sample.png"/>
+</p>
+<p class="content">
+<span class="subSimple">Salida:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">'>90'  
+'default'  
+'default'  
+'default'  
+'>90'  
+'default'  
+'default'  
+'default'  
+'1'  
+'default'  
+</p>
+</div>
+<br/><br/>
+<p class="content">
+	<img class="content centerImg" src="images_jmes/seleccionar_sample2.png"/>
+</p>
+<p class="content">
+<span class="subSimple">Salida:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">item: 'b'  
+  
+'b|d'  
+'a|b'
+</p>
+</div>
+
 
 <br/><br/>
 <h3 class="subSection" id="mientras">Bucle 'Mientras'</h3>
@@ -325,6 +589,30 @@ La sentencia <b>mientras</b> es un bucle pre-condición que repite un bloque de 
 </p>
 <div class="content console">
 <p class="javaOutput">[2,5,1,3,5,2,5,3,3,6]</p>
+</div>
+
+<br/><br/>
+<h3 class="subSection" id="repetir_hasta">Bucle 'Repetir hasta que'</h3>
+<br/>
+<p class="content">
+La sentencia <b>repetir hasta que</b> es un bucle post-condición que repite un bloque de código <b>hasta que la condición es verdadera</b> ejecutando una o más veces.
+</p>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<img src="images_jmes/repetir_hasta.png" class="centerImg"/>
+<br/>
+</p>
+<hr class="content"/>
+<p class="content">Este script añade tiradas de un dado hasta obtener un 6 (obsérvese que 'n' no necesita estar definida al principio del bucle):</p>
+<img class="content centerImg" src="images_jmes/repetir_hasta_sample.png"/>
+<br/>
+<p class="content">
+<span class="subSimple">Valor devuelto:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">[3,1,3,6]</p>
 </div>
 
 <br/><br/>
@@ -371,15 +659,18 @@ entradas de <b>diccionario</b> y caracteres de <b>texto</b>).
 </p>
 <p class="content">
 El bucle permite especificar, además de la variable de iteración que contiene cada elemento particular, una variable contadora.
-Si esta variable no está inicializada o está inicializada a un valor no entero, se inicializa a <b>0</b>. 
+Si esta variable no está inicializada o está inicializada a un valor no entero, se inicializa a <b>1</b> por defecto o al valor especificado. 
 </p>
 <hr class="content"/>
 <p class="content">
 <span class="subSimple">Diagrama sintáctico:</span>
-<br/><br/>
-<img src="images_jmes/para_cada.png" class="centerImg"/>
-<br/>
 </p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/para_cada.png" class="centerImg"/>
+	<figcaption><code>para cada [&lt;varidx> [:= &lt;idx>] ,] &lt;varname> en &lt;iterable> inicio:</code></figcaption>
+</figure>
+<br/>
 <hr class="content"/>
 <img class="content centerImg" src="images_jmes/para_cada_sample1.png"/>
 <br/>
@@ -685,9 +976,9 @@ indicar simbólicamente que una es auxiliar de otra, pero para el compilador es 
 de declaración, son igualmente visibles en todo el script.
 </p>
 <p class="content">
-Los parámetros formales son variables solo definidas en el ámbito de la rutina. Toda variable 
-definida dentro de la rutina es local a la rutina. Las variables del programa principal no son
-accesibles en la rutina.
+Los parámetros formales son variables solo definidas en el ámbito de la rutina. En una rutina no
+global, toda variable definida dentro de la rutina es local a la rutina. Las variables del programa 
+principal no son accesibles en la rutina.
 </p>
 <ul class="content">
 	<li>Los parámetros formales de entrada no incluyen el modificador <i><b>var</b></i>,
@@ -709,9 +1000,12 @@ y mucho más eficiente.
 <p class="content">
 <span class="subSimple">Diagrama sintáctico:</span>
 <br/><br/>
-<img src="images_jmes/rutina.png" class="centerImg"/>
-<br/>
 </p>
+<figure style="margin: auto">
+	<img src="images_jmes/rutina.png" class="centerImg"/>
+	<figcaption><code>procedimiento|rutina [global] &lt;nombre_funcion> ( [[var] &lt;param> [,[var] &lt;param>]*] ) inicio:</code></figcaption>
+</figure>
+<br/>
 <hr class="content"/>
 <img class="content centerImg" src="images_jmes/rutina_sample2.png"/>
 <br/>
@@ -730,7 +1024,42 @@ y mucho más eficiente.
 </p>
 <div class="content console">
 <p class="javaOutput">[93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000,verdadero]</p>
+<hr class="content"/>
 </div>
+<br/>
+<h3 class="content subSection" id="rutina" style="opacity: 67%">+ Rutinas globales</h3>
+<br/>
+<p class="content">
+Las rutinas o procedimientos globales (usan la cláusula <b>global</b>) difieren de las anteriores en que pueden acceder y modificar las
+variables del ámbito en el que son llamadas, además de poder definir nuevas variables en su cuerpo.
+Si son llamadas desde el <b><code>TOP-LEVEL</code></b> pueden acceder a la variables de éste, si se llaman
+desde otra rutina, pueden acceder a las de ésta.
+</p>
+<p class="content">
+Si se define una variable nueva en una rutina global, será visible también en el ámbito previo.
+</p>
+<p class="content">
+El comportamiento de los parámetros formales es idéntico al de las rutinas "locales".
+</p>
+<hr class="content"/>
+<img class="content centerImg" src="images_jmes/rutina_global_sample.png"/>
+<br/>
+<p class="content">
+<span class="subSimple">Salida en consola:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">var_outer visible en inner:  100  
+var_inner visible en outer:  []  
+var_inner no visible en TOP-LEVEL   
+var_inner visible en TOP-LEVEL:  []  
+</p>
+</div>
+<br/>
+<p class="content subSimple">Ejemplo que usa rutinas globales:</p>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/grafos_jme.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/bola_loca.jmes"><b>grafos_jme.jmes</b></a>
+</p>
 
 <br/><br/>
 <h3 class="subSection" id="llamar_a">Llamar a rutina</h3>
@@ -745,9 +1074,70 @@ con funciones <i>JME</i>. Pueden verse ejemplos en la sentencia anterior de crea
 <hr class="content"/>
 <p class="content">
 <span class="subSimple">Diagrama sintáctico:</span>
-<br/><br/>
-<img src="images_jmes/llamar_a.png" class="centerImg"/>
 </p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/llamar_a.png" class="centerImg"/>
+	<figcaption><code>[llamar a] &lt;nombre_rutina> ( [&lt;param> [, &lt;param>]*] )</code></figcaption>
+</figure>
+
+<br/><br/>
+<h3 class="subSection" id="try">Intentar/Capturar</h3>
+<br/>
+<p class="content">
+Las sentencias <b>intentar</b> y <b>capturar</b> permiten controlar excepciones ocurridas en el bloque de código dentro de <i>intentar</i>, 
+equivalentemente a los bloques <i>try/catch</i> de la mayoría de lenguajes.
+</p>
+<p class="content">
+El bloque <i>capturar</i> puede opcionalmente capturar en una variable un diccionario con la información de la excepción, con las claves
+<b><code>tipo, exmsg, sentencia, linea, causa</code></b>
+</p>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Diagramas sintácticos:</span>
+</p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/intentar.png" class="centerImg"/>
+	<figcaption><code>intentar inicio:</code></figcaption>
+	<figcaption><code>capturar [en &lt;varname>] inicio:</code></figcaption>
+</figure>
+<br/>
+<hr class="content"/>
+<img class="content centerImg" src="images_jmes/intentar_sample.png"/>
+<br/>
+<p class="content subSimple">Cuatro salidas en consola:</p>
+<div class="content console">
+<p class="javaOutput">Aseveración errónea:
+		&lt;&lt;&lt;AssertException>>> en condicion "'Hola'='HOLA'"
+</p>
+</div>
+<br/>
+<div class="content console">
+<p class="javaOutput">ScriptException:
+ {      'tipo': 'jme.script.ScriptException'
+       'causa': '__null__'
+       'exmsg': '&lt;&lt;&lt;ScriptException>>> en la sentencia [#11: a, b :== [1]]: Imposible esparcir, el nº de variables es '2' y los valores '1''
+   'sentencia': 'a,b:==[1]'
+       'linea': 11 }
+</p>
+</div>
+<br/>
+<div class="content console">
+<p class="javaOutput">error no esperado:
+ {      'tipo': 'jme.script.ScriptException'
+       'causa': {'tipo'='jme.excepciones.EvaluarException', 'causa'='__null__', 'exmsg'='&lt;&lt;&lt;EvaluarException>>>; identificador "x" no definido.'}
+       'exmsg': '&lt;&lt;&lt;ScriptException>>> en la sentencia [#8: imprimir x]: &lt;&lt;&lt;EvaluarException>>>; identificador "x" no definido.'
+   'sentencia': 'imprimir x'
+       'linea': 8 }
+</p>
+</div>
+<br/>
+<div class="content console">
+<p class="javaOutput">Operación no válida:
+		&lt;&lt;&lt;OperacionException>>> en operador [ + ] : operacion no definida --> (RealDoble:3)+(Texto:'')  
+</p>
+</div>
 
 <br/><br/>
 <h3 class="subSection" id="imprimir">Imprimir en salida por defecto</h3>
@@ -758,23 +1148,53 @@ Esta sentencia vuelca valores en el 'stream' especificado (por defecto <b class=
 <p class="content">
 Si se usa sin ningún argumento imprime un salto de línea. Una coma al final evita el salto de línea al terminar.
 </p>
+<p class="content">
+La cláusula <b>vertical</b> imprime las entradas separadas por saltos de línea en lugar de doble espacio.
+Para matrices y diccionarios, la salida es en formato vertical (más legible).
+</p>
+<p class="content">
+La cláusula <b>msj</b> imprime el tipo texto sin comillas, para el resto de datos no tiene efecto.
+</p>
+<p class="content">Nota: la salida por defecto es <b><code>System.out</code></b>, puede modificarse con el método <code>Script#setSalida</code>.
+</p>
 <hr class="content"/>
 <p class="content">
 <span class="subSimple">Diagrama sintáctico:</span>
-<br/><br/>
-<img src="images_jmes/imprimir.png" class="centerImg"/>
-<br/>
 </p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/imprimir.png" class="centerImg"/>
+	<figcaption><code>imprimir [msj] [vertical] [&lt;expresion> [, &lt;expresion>]*] [,]</code></figcaption>
+</figure>
+<br/>
+
 <hr class="content"/>
-<img class="content centerImg" src="images_jmes/imprimir_sample.png"/>
+<img class="content centerImg" src="images_jmes/imprimir_ejemplo.png"/>
 <br/>
 <p class="content">
 <span class="subSimple">Salida en consola:</span>
 </p>
 <div class="content console">
-<p class="javaOutput">2.718281828459045  
+<p class="javaOutput">Ejemplo de 'imprimir'  
+en horizontal:  
+2  3  4  
+en vertical:  
+-1
+-2
+-3
 
-0.36787944117144233  'abc'  12  1.0E100  falso  </p>
+matriz de escalada en vertical:
+| 2  0  0 |
+| 0  3  0 |
+| 0  0  1 |
+diccionario en vertical:  
+ { 'a': 3
+   'b': 100
+   'c': 21 }
+
+'FIN'  
+
+</p>
 </div>
 
 <br/><br/>
@@ -849,6 +1269,49 @@ Evalúa una expresión sin asignar resultado <small>(v0.1.1)</small>.
 <br/>
 
 <br/><br/>
+<h3 class="subSection" id="pausar">Pausar script</h3>
+<br/>
+<p class="content">
+Pausa el hilo de ejecución del script. Sólo puede ser reanudado desde otro hilo mediante el método JAVA&emsp;<b>Object#notify</b>.
+</p>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<img src="images_jmes/pausa.png" class="centerImg"/>
+<br/>
+</p>
+
+<br/><br/>
+<h3 class="subSection" id="asegurar">Asegurar</h3>
+<br/>
+<p class="content">
+Esta sentencia lanza una excepción o un mensaje dado en caso de que no se cumpla una condición <i class="comment">(assert sentence)</i>.
+</p>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Diagrama sintáctico:</span>
+</p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/asegurar.png" class="centerImg"/>
+	<figcaption><code>asegurar &lt;condición> [msj &lt;mensaje>]</code></figcaption>
+</figure>
+<br/>
+<hr class="content"/>
+<img class="content centerImg" src="images_jmes/asegurar_sample.png"/>
+<br/>
+<p class="content subSimple">Salida en consola:</p>
+<div class="content console">
+<p class="javaOutput">No es primo
+jme.script.ScriptException: &lt;&lt;&lt;ScriptException>>> en la sentencia [#5: asegurar primo(10)]: Error al asegurar [primo(10)]
+	at jme.script.Asegurar.ejecutar(Asegurar.java:116)
+	at jme.script.Script.ejecutar(Script.java:345)
+	at jme.script.ScriptThread.run(ScriptThread.java:99)
+</p>
+</div>
+
+<br/><br/>
 <h3 class="subSection" id="pasar">Sentencia vacía</h3>
 <br/>
 <p class="content">
@@ -862,10 +1325,1172 @@ Sentencia vacía, es equivalente a una línea en blanco.
 <br/>
 </p>
 
+<br/><br/>
+<h3 class="subSection" id="varmap">VarMap</h3>
+<br/>
+<p class="content">
+Esta sentencia permite acceder/modificar el mapa de variables.
+</p>
+<ul class="content">
+	<li>obtener <b>COPIA</b> del mapa:&emsp;<code>varmap en vm</code>&emsp;copia el mapa de variables en <i>vm</i></li>
+	<li>obtener valor:&emsp;<code>varmap 'x' en v</code>&emsp;obtiene el valor de 'x' en <i>v</i> si existe, en caso 
+	contrario no tiene efecto</li>
+	<li>borrar variable:&emsp;<code>varmap borrar 'x'</code>&emsp;borra variable <i>x</i> si existe,
+	en caso contrario no tiene efecto</li>
+	<li>establecer/modificar valor:&emsp;<code>varmap 'x':=100</code>&emsp;establece <i>x</i> a 100</li>
+</ul>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Diagrama sintáctico:</span>
+</p>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/varmap.png" class="centerImg"/>
+	<figcaption><code>varmap [[&lt;vartxt>] en &lt;varname>] | [borrar &lt;vartxt>] | [ &lt;vartxt> := &lt;valor> ]</code></figcaption>
+</figure>
+<br/>
+<hr class="content"/>
+<img class="content centerImg" src="images_jmes/varmap_sample.png"/>
+<br/>
+<p class="content subSimple">Salida en consola:</p>
+<div class="content console">
+<p class="javaOutput"> { 'var6': 4
+   'var5': 3
+   'var4': 5
+   'var3': 1
+   'var2': 3
+   'var1': 2 }
+
+var1 vale 2  
+  
+ { 'var6': 4
+   'var5': 3
+   'var4': 5
+   'var3': 1
+   'var2': 3 }
+</p>
+</div>
+
+<br/><br/>
+<h3 class="subSection" id="ctx2d">Sentencia de contexto gráfico</h3>
+<br/>
+<p class="content">
+Ejecuta las primitivas gráficas 2D de JMEScript; dibuja líneas, polígonos, puntos,&hellip; , muestra mensajes de usuario, 
+entrada de datos de usuario, lectura de pulsaciones, toques/clicks, &hellip;. 
+</p>
+<p class="content">
+Para ejecutar esta sentencia debe estar definido un contexto gráfico en el sistema que ejecute <i>JME/JMEScript</i>.
+En <b class="small"><a href="jmescriptgui.html" class="discLink" style="color: #335">JMEScriptGUI</a></b> para escritorio pueden ejecutarse 
+todas las primitivas. En el apartado para desarrolladores se explica como implementar un contexto gráfico para <i>JMEScript</i> 
+a partir de la clase <code>AbstractPrimitivas2D</code>. 
+</p>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d.png" class="centerImg"/>
+	<figcaption><br/><code>ctx2d [#&lt;indice-lienzo>#] &lt;claúsula-ctx2d></code></figcaption>
+</figure>
+<br/>
+<hr class="content"/>
+
+<p class="content">
+El índice del lienzo por defecto es 1, e indica el lienzo a utilizar en caso de múltiples lienzos en el script.
+</p>
+
+<div class="content">
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_iniciar">+ Cláusula <ins>iniciar</ins></h3>
+<br/>
+<div class="content">
+<p>
+La cláusula <b>iniciar</b> inicializa el contexto gráfico (típicamente crear un lienzo para el dibujo y mostrarlo).
+Permite definir el tamaño, posición y título del lienzo que lo contiene.
+</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_iniciar.png" class="centerImg"/>
+	<figcaption><br/><code>iniciar &lt;ancho> &lt;alto> [posicion &lt;posicion>] [titulo &lt;titulo>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Snippet de código de ejemplo de juego de bola móvil (ver ejemplos)</figcaption>
+	<img src="images_jmes/ctx2d_iniciar_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/bola_loca.gif" height="600" class="centerImg"/>
+</figure>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/bola_loca.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/bola_loca.jmes"><b>bola_loca.jmes</b></a>
+</p>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_finalizar">+ Cláusula <ins>finalizar</ins></h3>
+<br/>
+<div class="content">
+<p>
+La cláusula <b>finalizar</b> finaliza el contexto gráfico (típicamente cierra el lienzo o lo inhabilita) especificado.
+También permite cerrar todos los lienzos si hay más de uno con *.
+</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_finalizar.png" class="centerImg"/>
+	<figcaption><br/><code>finalizar [*]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Snippet de código de ejemplo de juego de bola móvil (ver ejemplos)</figcaption>
+	<img src="images_jmes/ctx2d_finalizar_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_color">+ Cláusula <ins>color</ins></h3>
+<br/>
+<div class="content">
+	<p>
+	Establece el color de <b>línea</b>, de <b>relleno</b> y <b>fondo</b> del lienzo.
+	</p>
+	<p>El color puede establecerse mediante</p>
+	<ul>
+		<li>un vector <code>[rojo,verde,azul]</code> o <code>[rojo,verde,azul,trasparencia]</code>,
+			con valores <code>[0-255]</code>
+		</li>
+		<li>una cadena de color HTML, ejemplo: <code>'#3F2AB0'</code>, <code>'#FFFFFF77'</code>		
+		</li>
+		<li>un entero RGBA de 32 bits con el patrón 
+			&emsp;<code>[bit 31]</code><font color="gray">■■■■■■■■</font>
+			<font color="red">■■■■■■■■</font> 
+			<font color="green">■■■■■■■■</font>
+			<font color="blue">■■■■■■■■</font><code>[bit 0]</code>
+		</li>
+	</ul>	
+	<p>Si no se establece un determinado color, se mantiene el valor previo.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_color.png" class="centerImg"/>
+	<figcaption><br/><code>color [linea &lt;color>] [relleno &lt;color>] [fondo &lt;color>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo que dibuja dos rectángulos de diferentes colores en diferentes formatos de color</figcaption>
+	<img src="images_jmes/ctx2d_color_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_color_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_gradiente">+ Cláusula <ins>gradiente</ins></h3>
+<br/>
+<section class="content">
+<p>Aplica un gradiente de color lineal o radial a relleno y trazo.</p>
+<p>El <code>inicio</code> y <code>final</code> indican el comienzo del primer color y último en gradiente lineal o centro y foco en radial.<br/>
+Las <code>fracciones</code> y <code>colores</code> son vectores de la misma dimensión conteniendo las longitudes ponderadas de cada patrón de color.<br/>
+El <code>ciclo</code> repite, refleja, o ninguna de las dos, el patrón.<br/>
+La <code>matriz</code> aplica una matriz de transformación al patrón (por defecto la identidad).
+</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_gradiente.png" class="centerImg"/>
+	<figcaption><br/><code>gradiente inicio &lt;posición> final &lt;posición> [radio &lt;radio>] fracciones &lt;fracciones> colores &lt;colores> [ciclo &lt;ciclo>] [matriz &lt;matriz>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de gradiente</figcaption>
+	<img src="images_jmes/ctx2d_gradiente_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_gradiente_resultado.png" class="centerImg"/>
+</figure>
+<br/>
+</section>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_trazo">+ Cláusula <ins>trazo</ins></h3>
+<br/>
+<div class="content">
+	<p>Establece el grosor y tipo de trazo de las líneas en las formas geométricas.</p>
+	<p>Nota: el grosor se ve afectado por la escala de la matriz de transformación.</p>
+	<p>Si no se establece un determinado parámetro, se mantiene el valor previo, excepto si sólo se especifica grosor, que establece a <code>'redondo'</code>
+	los extremos y uniones y elimina el rayado (el rayado también se elimina con <code>[0]</code>).</p>
+	<p>Los valores <code>otro1, otro2, otro3</code> permiten ampliar la implementación estándar (no tienen efecto en <i>JMEScriptGUI</i>).</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_trazo.png" class="centerImg"/>
+	<figcaption><br/><code>trazo grosor &lt;grosor> [extremo &lt;extremo>] [union &lt;union>] [inglete &lt;inglete>] [raya &lt;raya] [fase &lt;fase>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de distintos trazos</figcaption>
+	<img src="images_jmes/ctx2d_trazo_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_trazo_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_punto">+ Cláusula <ins>punto</ins></h3>
+<br/>
+<div class="content">
+	<p>Dibuja un punto en el lienzo.</p>
+	<p>Cuatro tipos de puntos pueden dibujarse en la implementación estándar; <code>pixel, rombo, cruz, mira</code>.
+	El valor por defecto es <code>pixel</code>.</p>
+	<p>Los valores <code>otro1, otro2, otro3</code> permiten ampliar la implementación estándard (no tienen efecto en <i>JMEScriptGUI</i>).</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_punto.png" class="centerImg"/>
+	<figcaption><br/><code>punto &lt;posicion> [tipo &lt;tipo>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de 4 tipos de puntos</figcaption>
+	<img src="images_jmes/ctx2d_punto_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_punto_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_segmento">+ Cláusula <ins>segmento</ins></h3>
+<br/>
+<div class="content">
+	<p>Dibuja un segmento en el lienzo.</p>
+	<p>Los parámetros <code>inicio</code> y <code>final</code> determinan los extremos del segmento.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_segmento.png" class="centerImg"/>
+	<figcaption><br/><code>segmento inicio &lt;extremo> final &lt;extremo></code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula <b>segmento</b></figcaption>
+	<img src="images_jmes/ctx2d_segmento_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_segmento_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_rectangulo">+ Cláusula <ins>rectangulo</ins></h3>
+<br/>
+<div class="content">
+	<p>Dibuja un rectángulo en el lienzo.</p>
+	<p>Los parámetros <code>inicio</code> y <code>final</code> determinan las esquinas superior izquierda e inferior derecha respectivamente.
+	   El parámetro <code>esquina</code> acepta un vector <code>[semiejeX,semiejeY]</code> que permite definir bordes redondeados.
+	   <code>relleno</code> y <code>borde</code> son flags que indican si se dibuja el interior y la frontera del rectángulo 
+	   respectivamente (por defecto, <code>borde</code> es <i>verdadero</i> si no se especifica <code>relleno</code>).
+	   <code>3d</code> indica el tipo de de relieve (<i>resaltado</i>, <i>grabado</i> o <i>ninguno (defecto)</i>).
+	   Los valores <code>otro1, otro2, otro3</code> permiten ampliar la implementación estándar (no tienen efecto en <i>JMEScriptGUI</i>). 
+	</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_rectangulo.png" class="centerImg"/>
+	<figcaption><br/><code>rectangulo inicio &lt;esquina_sup_izq> final &lt;esquina_inf_der> [esquina &lt;radio_esquinas>]
+				[relleno &lt;relleno>] [borde &lt;borde>] [3d &lt;resaltado>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula <b>rectangulo</b></figcaption>
+	<img src="images_jmes/ctx2d_rectangulo_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_rectangulo_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_circunferencia">+ Cláusula <ins>circunferencia</ins></h3>
+<br/>
+<div class="content">
+	<p>Dibuja una circunferencia, círculo o arco en el lienzo.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_circunferencia.png" class="centerImg"/>
+	<figcaption><br/><code>circunferencia centro &lt;centro> radio &lt;radio> [angulo &lt;angulo_ini>] 
+				[arco &lt;long_arco>] [cierre &lt;tipo_cierre>] [relleno &lt;relleno>] [borde &lt;borde>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula <b>circunferencia</b></figcaption>
+	<img src="images_jmes/ctx2d_circunferencia_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_circunferencia_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_elipse">+ Cláusula <ins>elipse</ins></h3>
+<br/>
+<div class="content">
+	<p>Dibuja una elipse en el lienzo.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_elipse.png" class="centerImg"/>
+	<figcaption><br/><code>elipse inicio &lt;esquina_sup_izq> final &lt;esquina_inf_der> [relleno &lt;relleno>] [borde &lt;borde>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula <b>elipse</b></figcaption>
+	<img src="images_jmes/ctx2d_elipse_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_elipse_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_poligono">+ Cláusula <ins>poligono</ins></h3>
+<br/>
+<div class="content">
+	<p>Dibuja un polígono en el lienzo.</p>
+	<p>Las coordenadas se introducen mediante un vector de coordenadas X y un vector Y (de la misma dimensión).</p>
+	<p>La cláusula <i><b>cerrar</b></i> a <i>falso</i> permite dejar abierto el polígono en los extremos <small>(defecto <i>verdadero</i>)</small>. 
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_poligono.png" class="centerImg"/>
+	<figcaption><code>poligono coordx &lt;coordx> coordy &lt;coordy> [cerrar &lt;cerrar>] [relleno &lt;relleno>] [borde &lt;borde>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula <b>poligono</b></figcaption>
+	<img src="images_jmes/ctx2d_poligono_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_poligono_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_ruta">+ Cláusula <ins>ruta</ins></h3>
+<br/>
+<section class="content">
+	<p>Dibuja una ruta genérica en el lienzo a partir de diferentes acciones.</p>
+	<p>La ruta se establece mediante una matriz <code>nx2</code> en que cada fila especifica la acción y un vector de puntos 2D:<br/>
+	<code>&emsp;| &lt;acción1> &lt;puntos1> |<br/>
+	&emsp;| &lt;acción2> &lt;puntos2> |<br/>
+	&emsp;| &lt;acción3> &lt;puntos3> |<br/>
+	&emsp;&emsp;&emsp;&emsp;&hellip;<br/>
+	&emsp;| &lt;acciónN> &lt;puntosN> |<br/></code>
+	</p> 
+	<p>Las acciones y puntos se especifican mediante:</p>
+	<ul>
+		<li><b>'mover_a'</b>: y el punto al que se desplaza el pincel sin dibujar en forma de matriz <code>[[x<sub>1</sub>,y<sub>1</sub>]]</code></li>
+		<li><b>'linea_a'</b>: y el punto al que se desplaza el pincel dibujando una línea en forma de matriz <code>[[x<sub>1</sub>,y<sub>1</sub>]]</code></li>
+		<li><b>'cuad_a'</b>: y los dos puntos que completan la curva de tres puntos en forma de matriz <code>[[x<sub>1</sub>,y<sub>1</sub>],[x<sub>2</sub>,y<sub>2</sub>]]</code></li>
+		<li><b>'curva_a'</b>: y los tres puntos que completan la curva de cuatro puntos en forma de matriz <code>[[x<sub>1</sub>,y<sub>1</sub>],[x<sub>2</sub>,y<sub>2</sub>],[x<sub>3</sub>,y<sub>3</sub>]]</code></li>
+		<li><b>'cerrar'</b>: cierra la curva si es cerrada especificando un vector vacío</li>
+	</ul>
+	<p><code>regla</code> especifica la regla de determinación del interior <i>(winding-rules)</i>, sus valores son <b>'no_cero'</b> o <b>'par_impar'</b> (por defecto)</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_ruta.png" class="centerImg"/>
+	<figcaption><br/><code>ruta &lt;matriz-acciones> [regla &lt;regla>] [relleno &lt;relleno>] [borde &lt;borde>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin:auto;">
+	<figcaption style="caption-side: top">Ejemplo de cláusula <b>ruta</b></figcaption>
+	<img src="images_jmes/ctx2d_ruta_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin:auto;">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_ruta_resultado.png" class="centerImg"/>
+</figure>
+<br/>
+</section>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_texto">+ Cláusula <ins>texto</ins></h3>
+<br/>
+<div class="content">
+	<p>Dibuja y mide texto en el lienzo.</p>
+	<p>El parámetro <code>dimension en</code> devuelve un vector <code>[ancho,alto]</code> con el tamaño del texto en la variable especificada.</p>
+	<p>Si no se especifica un parámetro relativo a la fuente, se mantiene el actual.</p>
+	<p>La cláusula <b>estilo</b> toma los valores <span class="monospace">plano, negrita, cursiva, neg_cur</span>. Los valores
+	<span class="monospace">otro1, otro2, otro3</span> permiten ampliar la implementación estándar (no tienen efecto en <i>JMEScriptGUI</i>).</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_texto.png" class="centerImg"/>
+	<figcaption><br/><code>texto [posicion &lt;posicion>]|[dimension en &lt;varname>] [tama &lt;tamaño>] [familia &lt;familia>] [estilo &lt;estilo>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'texto'</figcaption>
+	<img src="images_jmes/ctx2d_texto_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_texto_ejecucion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de sombreado</figcaption>
+	<img src="images_jmes/ctx2d_texto_ejemplo2.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/texto_sombra.gif" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_repintar">+ Cláusula <ins>repintar</ins></h3>
+<br/>
+<div class="content">
+	<p>Redibuja el lienzo con los últimos cambios</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_repintar.png" class="centerImg"/>
+	<figcaption><br/><code>repintar</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'repintar'</figcaption>
+	<img src="images_jmes/ctx2d_repintar_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/repintar.gif" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_limpiar">+ Cláusula <ins>limpiar</ins></h3>
+<br/>
+<div class="content">
+	<p>Borra el lienzo o una parte de él con el color de fondo o el color especificado.</p>
+	<p>Si no se especifica el color se tomará el color de fondo.</p>
+	<p>Si no se especifica la posición inicial y final, se limpia todo el lienzo.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_limpiar.png" class="centerImg"/>
+	<figcaption><br/><code>limpiar [inicio &lt;posicion> final &lt;posicion>] [color &lt;color>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'limpiar'</figcaption>
+	<img src="images_jmes/ctx2d_limpiar_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/limpiar.gif" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_matriz">+ Cláusula <ins>matriz</ins></h3>
+<br/>
+<section class="content">
+	<p>Establece la matriz de transformación del lienzo u obtiene la actual matriz del lienzo en formato de vector de 6 elementos.</p>
+	<p>La matriz puede establecerse de cuatro formas:</p>
+	<ul>
+		<li>matriz normalizada de 3x3:<br/>
+			<code style="white-space: pre">
+	| sx  shx tx |
+	| shy  sy ty |
+	| 0   0   1  |
+			</code>
+		</li>
+		<li>matriz 2x3:<br/>
+			<code style="white-space: pre">	
+	| sx  shx tx |
+	| shy  sy ty |
+			</code>
+		</li>
+		<li>vector de 4 elementos (sin traslación):<br/>
+			<code style="white-space: pre">	
+	[ sx shy shx sy ]
+			</code>
+		</li>
+		<li>vector de 6 elementos:<br/>
+			<code style="white-space: pre">
+	[ sx shy shx sy tx ty ]
+			</code>
+		</li>
+	</ul>
+	<p>Si se añade el modificador *, la matriz especificada se premultiplicará a la actual</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_matriz.png" class="centerImg"/>
+	<figcaption><br/><code>{matriz|matriz* &lt;matriz>|&lt;vector>}|{matriz en &lt;varname>}</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'matriz'</figcaption>
+	<img src="images_jmes/ctx2d_matriz_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_matriz_resultado.png" class="centerImg"/>
+</figure>
+<br/>
+</section>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_entorno">+ Cláusula <ins>entorno</ins></h3>
+<br/>
+<div class="content">
+	<p>Devuelve un diccionario con información del sistema, del lienzo, del lenguaje JMEScript y el parser JME
+	(no es necesario que el lienzo esté inicializado)</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_entorno.png" class="centerImg"/>
+	<figcaption><code>entorno en &lt;varname></code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'entorno'</figcaption>
+	<img src="images_jmes/ctx2d_entorno_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<p class="content">
+<span class="subSimple">Salida en consola:</span>
+</p>
+<div class="content console">
+<p class="javaOutput">
+ {                    'jme.lib_name': 'JME'
+                       'jme.version': '0.6.2.0'
+               'jmescript.lang_name': 'JMEScript'
+                 'jmescript.version': '0.2.0'
+                           'ui.name': 'JMEScriptGUI'
+                   'ui.version_name': ''
+                        'ui.version': '0.1.2.0'
+              'prim2d.lib_name.name': 'JMEScriptGUI Primitivas2D'
+      'prim2d.lib_name.version_name': 'Viviana para JMEScriptGUI'
+           'prim2d.lib_name.version': '0.1.0'
+               'lienzo.inicializado': falso
+                      'lienzo.ancho': -1
+                       'lienzo.alto': -1
+                'lienzo.color.linea': [0,0,0,255]
+              'lienzo.color.relleno': [0,0,0,255]
+                'lienzo.color.fondo': [0,0,0,255]
+                    'pantalla.ancho': 1920
+                     'pantalla.alto': 1080
+                          'user.dir': 'C:\<mark class="gray1">(...)</mark>'
+                         'user.home': 'C:\<mark class="gray1">(...)</mark>'
+                         'user.name': 'M<mark class="gray1">(...)</mark>'
+                       'java.vendor': 'Oracle Corporation'
+                 'sun.java.launcher': 'SUN_STANDARD'
+              'NUMBER_OF_PROCESSORS': '8'
+           'sun.management.compiler': 'HotSpot 64-Bit Tiered Compilers'
+   'FPS_BROWSER_USER_PROFILE_STRING': 'Default'
+                           'os.name': '<mark class="gray1">(...)</mark>'
+                        'RegionCode': 'EMEA'
+               'sun.boot.class.path': 'C:\<mark class="gray1">(...)</mark>'
+                           'PATHEXT': '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+                       'sun.desktop': '<mark class="gray1">(...)</mark>'
+      'java.vm.specification.vendor': 'Oracle Corporation'
+                              'TEMP': 'C:\<mark class="gray1">(...)</mark>'
+              'java.runtime.version': '<mark class="gray1">(...)</mark>'
+    'FPS_BROWSER_APP_PROFILE_STRING': '<mark class="gray1">(...)</mark>'
+                'CommonProgramW6432': 'C:\<mark class="gray1">(...)</mark>'
+                      'ProgramFiles': 'C:\<mark class="gray1">(...)</mark>'
+                    'OnlineServices': 'Online Services'
+                     'user.language': 'es'
+                          'OneDrive': 'C:\<mark class="gray1">(...)</mark>'
+             'sun.boot.library.path': 'C:\<mark class="gray1">(...)</mark>'
+                      'LOCALAPPDATA': 'C:\<mark class="gray1">(...)</mark>'
+                      'java.version': '1<mark class="gray1">(...)</mark>'
+                   'PROCESSOR_LEVEL': '6'
+                     'user.timezone': 'Europe/Paris'
+                          'USERNAME': 'M<mark class="gray1">(...)</mark>'
+               'sun.arch.data.model': '64'
+                'java.endorsed.dirs': 'C:\<mark class="gray1">(...)</mark>'
+                   'sun.cpu.isalist': '<mark class="gray1">(...)</mark>'
+                  'sun.jnu.encoding': 'Cp1252'
+                 'file.encoding.pkg': 'sun.io'
+                         'HOMEDRIVE': 'C:'
+                    'file.separator': '\'
+           'java.specification.name': 'Java Platform API Specification'
+                               '=::': '::\'
+                'java.class.version': '52.0'
+                      'user.country': 'ES'
+                   'ALLUSERSPROFILE': 'C:\<mark class="gray1">(...)</mark>'
+                         'java.home': 'C:\<mark class="gray1">(...)</mark>'
+                      'java.vm.info': 'mixed mode'
+                        'os.version': '<mark class="gray1">(...)</mark>'
+                      'platformcode': 'KV'
+                               'TMP': 'C:\<mark class="gray1">(...)</mark>'
+                    'path.separator': ';'
+                   'java.vm.version': '2<mark class="gray1">(...)</mark>'
+                      'user.variant': ''
+           'CommonProgramFiles(x86)': 'C:\<mark class="gray1">(...)</mark>'
+   'sun.awt.enableExtraMouseButtons': 'true'
+         'USERDOMAIN_ROAMINGPROFILE': 'H<mark class="gray1">(...)</mark>'
+               'java.awt.printerjob': 'sun.awt.windows.WPrinterJob'
+                'CommonProgramFiles': 'C:\<mark class="gray1">(...)</mark>'
+           'sun.io.unicode.encoding': 'UnicodeLittle'
+                           'ComSpec': 'C:\<mark class="gray1">(...)</mark>'
+                          'HOMEPATH': '\<mark class="gray1">(...)</mark>'
+                       'awt.toolkit': 'sun.awt.windows.WToolkit'
+                      'COMPUTERNAME': 'H<mark class="gray1">(...)</mark>'
+                       'user.script': ''
+             'VBOX_MSI_INSTALL_PATH': 'C:\<mark class="gray1">(...)</mark>'
+                            'PUBLIC': 'C:\<mark class="gray1">(...)</mark>'
+                       'ProgramData': 'C:\<mark class="gray1">(...)</mark>'
+         'java.specification.vendor': 'Oracle Corporation'
+                       'USERPROFILE': 'C:\<mark class="gray1">(...)</mark>'
+                 'java.library.path': 'C:\<mark class="gray1">(...)</mark>'
+                   'java.vendor.url': 'http://java.oracle.com/'
+                           'APPDATA': 'C:\<mark class="gray1">(...)</mark>'
+                    'java.vm.vendor': 'Oracle Corporation'
+                 'java.runtime.name': 'Java(TM) SE Runtime Environment'
+                  'sun.java.command': 'jmescriptgui.Launcher'
+                   'java.class.path': 'C:\<mark class="gray1">(...)</mark>'
+                              'Path': 'C:/<mark class="gray1">(...)</mark>'
+        'java.vm.specification.name': 'Java Virtual Machine Specification'
+            'PROCESSOR_ARCHITECTURE': '<mark class="gray1">(...)</mark>'
+              'PROCESSOR_IDENTIFIER': '<mark class="gray1">(...)</mark>'
+                       'SESSIONNAME': 'Console'
+     'java.vm.specification.version': '1.8'
+                    'sun.cpu.endian': 'little'
+                'sun.os.patch.level': ''
+                                'OS': '<mark class="gray1">(...)</mark>'
+                    'java.io.tmpdir': 'C:\<mark class="gray1">(...)</mark>'
+                 'ProgramFiles(x86)': 'C:\<mark class="gray1">(...)</mark>'
+               'java.vendor.url.bug': 'http://bugreport.sun.com/bugreport/'
+                        'SystemRoot': 'C:\<mark class="gray1">(...)</mark>'
+                           'os.arch': '<mark class="gray1">(...)</mark>'
+              'java.awt.graphicsenv': 'sun.awt.Win32GraphicsEnvironment'
+                     'java.ext.dirs': 'C:\<mark class="gray1">(...)</mark>'
+                       'LOGONSERVER': '\<mark class="gray1">(...)</mark>'
+                        'USERDOMAIN': 'H<mark class="gray1">(...)</mark>'
+                    'line.separator': '
+'
+                      'java.vm.name': 'Java HotSpot(TM) 64-Bit Server VM'
+                'PROCESSOR_REVISION': '8e0a'
+                      'ProgramW6432': 'C:\<mark class="gray1">(...)</mark>'
+                            'windir': 'C:\<mark class="gray1">(...)</mark>'
+                     'file.encoding': 'Cp1252'
+                       'SystemDrive': 'C:'
+        'java.specification.version': '1.8'
+                      'PSModulePath': 'C:\<mark class="gray1">(...)</mark>'
+                        'DriverData': 'C:\<mark class="gray1">(...)</mark>' }
+</p>
+</div>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_click">+ Cláusula <ins>click</ins></h3>
+<br/>
+<div class="content">
+	<p>Captura eventos de ratón, touchpad, toque en pantalla,&hellip;.
+	<br/>También permite ignorar todos los eventos encolados en ese momento o parte de ellos.</p>
+	<p>El valor almacenado en la variable es un diccionario con la información del evento de ratón:</p>
+	<ul>
+		<li><b>id</b>: tipo de evento; <code>[PRESSED, RELEASED, CLICKED, MOVED, DRAGGED, ENTERED, EXITED, WHEEL, OTRO1, OTRO2, OTRO3]</code></li>
+		<li><b>boton</b>: nº de botón; <code>[BOTON1, BOTON2, BOTON3, NO_BOTON, OTRO1, OTRO2, OTRO3]</code></li>
+		<li><b>clicks</b>: nº de clicks</li>
+		<li><b>posicion</b>: vector bidimensional con la posición en el lienzo (no tiene en cuenta transformaciones)</li>
+		<li><b>posicion_en_pantalla</b>: vector bidimensional con la posición respecto al dispositivo</li>
+		<li><b>timestamp</b>: marca de tiempo del evento</li>
+		<li><b>rotaciones</b>: rotaciones de la rueda (positivas o negativas), solo para evento <code>WHEEL</code></li>
+	</ul>
+	<p>Si no hay ningún evento, la variable queda <b><i>indefinida</i></b>.</p>
+	<p>La cláusula <b>consumir</b> elimina todos los eventos actuales o si se especifica un número de no descartados, 
+	elimina todos los eventos excepto los especificados.<br/>
+	<b><i>consumir 1</i></b> mantiene el último evento, <b><i>consumir 0</i></b> es igual a <b><i>consumir</i></b>.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_click.png" class="centerImg"/>
+	<figcaption><code>click [en &lt;varname>]|[consumir [&lt;eventos>]]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Snippet de cláusula 'click' del script <code>garabatos.jmes</code></figcaption>
+	<img src="images_jmes/ctx2d_click_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/click.gif" class="centerImg"/>
+</figure>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/garabatos.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/garabatos.jmes"><b>garabatos.jmes</b></a>
+</p>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/aguanta.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/aguanta.jmes"><b>aguanta.jmes</b></a>
+</p>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_pulsacion">+ Cláusula <ins>pulsacion</ins></h3>
+<br/>
+<div class="content">
+	<p>Captura eventos de teclado.
+	<br/>También permite ignorar todos los eventos encolados en ese momento o parte de ellos.</p>
+	<p>El valor almacenado en la variable es un diccionario con la información del evento de teclado:</p>
+	<ul>
+		<li><b>keycode</b>: código asociado al evento</li>
+		<li><b>modifiers</b>: modificadores del evento;
+			<table border="1" style="margin: 5px 0px 5px 20px;text-align: center">
+				<tr><th>Valor</th><th>Constante Java</th><th>Constante JME</th></tr>
+				<tr><td>64</td><td><code>AbstractKeyStroke.SHIFT</code></td><td><code><b>_shift_</b></code></td></tr>
+				<tr><td>128</td><td><code>AbstractKeyStroke.CONTROL</code></td><td><code><b>_control_</b></code></td></tr>
+				<tr><td>256</td><td><code>AbstractKeyStroke.META</code></td><td><code><b>_meta_</b></code></td></tr>
+				<tr><td>512</td><td><code>AbstractKeyStroke.ALT</code></td><td><code><b>_alt_</b></code></td></tr>
+				<tr><td>1024</td><td><code>AbstractKeyStroke.BUTTON1</code></td><td><code><b>_button1_</b></code></td></tr>
+				<tr><td>2048</td><td><code>AbstractKeyStroke.BUTTON2</code></td><td><code><b>_button2_</b></code></td></tr>
+				<tr><td>4096</td><td><code>AbstractKeyStroke.BUTTON3</code></td><td><code><b>_button3_</b></code></td></tr>
+				<tr><td>8192</td><td><code>AbstractKeyStroke.ALT_GRAPH</code></td><td><code><b>_alt_graph_</b></code></td></tr>
+				<tfoot>
+					<tr><td colspan="3">&emsp;<i>Ejemplo, comprobar mayúsculas y alt;</i>&emsp;<b><code>tecla;#;'modifiers' = (_shift_|_alt_)</code></b></td></tr>
+				</tfoot>
+			</table>
+		</li>
+		<li><b>modifierstext</b>: descripción textual de los modificadores.
+			<font color='red'><small>Nota: esta representación es dependiente de la plataforma y el idioma, y no debería usarse
+			para controlar el flujo del script</small></font></li>
+		<li><b>keychar</b>: Carácter Unicode asociado al evento (puede estar indefinido)</li>
+		<li><b>iskeyreleased</b>: <i>verdadero</i> si el evento ocurre al soltar</li>
+		<li><b>timestamp</b>: marca de tiempo del evento</li>
+		<li><b>esaccion</b>: <i>verdadero</i> si es evento de acción (SHIFT, CONTROL, NUMPAD,&hellip;)</li>
+		<li><b>localizacion</b>: localización para teclas dobles; <code>[ESTANDAR,DERECHA,IZQUIERDA,NUMPAD,DESCONOCIDA]</code></li>
+	</ul>
+	<p>Si no hay ningún evento, la variable queda <b><i>indefinida</i></b>.</p>
+	<p>La cláusula <b>consumir</b> elimina todos los eventos actuales o si se especifica un número de no descartados, 
+	elimina todos los eventos excepto los especificados.<br/>
+	<b><i>consumir 1</i></b> mantiene el último evento, <b><i>consumir 0</i></b> es igual a <b><i>consumir</i></b>.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_pulsacion.png" class="centerImg"/>
+	<figcaption><br/><code>pulsacion [en &lt;varname>]|[consumir [&lt;eventos>]]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Snippet de cláusula 'pulsacion' del script <code>2048.jmes</code></figcaption>
+	<img src="images_jmes/ctx2d_pulsacion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/2048.gif" class="centerImg"/>
+</figure>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/2048.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/2048.jmes"><b>2048.jmes</b></a>
+</p>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/lector_pulsaciones.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/lector_pulsaciones.jmes"><b>lector_pulsaciones.jmes</b></a>
+</p>
+<br/>
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_msj">+ Cláusula <ins>msj</ins></h3>
+<br/>
+<section class="content">
+<p>Muestra mensajes al usuario por el intefaz gráfico.</p>
+<p>Los mensajes <b><i>toast</i></b> se mostrarán el tiempo especificado en milisegundos.</p>
+<p>En <i>JMEScriptGUI</i>, los tipos <code>debug</code> y <code>confirm</code> son idénticos a <code>info</code> y <code>ok</code>
+sólo está disponible para <i>toast</i>, en caso contrario también es idéntico a <code>info</code>. El tipo por defecto es <code>info</code>.
+La posición sólo está disponible para <i>toast</i>, si no se especifica, aparece centrado-abajo. Los tipos <code>otro1</code>, <code>otro2</code> y
+<code>otro3</code> no forman parte del estándar y permiten ampliar la funcionalidad.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_msj.png" class="centerImg"/>
+	<figcaption><br/><code>msj &lt;msj> [tipo &lt;tipo>] [posicion &lt;posición>] [toast &lt;tiempo>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'msj'</figcaption>
+	<img src="images_jmes/ctx2d_msj_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_msj_resultado.gif" class="centerImg"/>
+</figure>
+<br/>
+</section>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_leer">+ Cláusula <ins>leer</ins></h3>
+<br/>
+<section class="content">
+<p>Permite al usuario introducir información a través del interfaz gráfico.</p>
+<ul>
+	<li>tipo <code>booleano</code>; hace una pregunta SI/NO y devuelve <i>Booleano</i>,</li>
+	<li>tipo <code>texto</code>; lee un texto y devuelve <i>Texto</i>,</li>
+	<li>tipo <code>expresion</code>; lee una expresión JME, la evalúa con las variables actuales del script y devuelve el resultado,</li>
+	<li>tipo <code>opciones</code>; ofrece un grupo de opciones y devuelve la escogida como <i>Texto</i></li>
+</ul>
+<p>Los tipos <code>otro1</code>, <code>otro2</code> y <code>otro3</code> no forman parte del estándar y permiten ampliar la funcionalidad.</p>
+<p>Si la entrada de datos se cancela, se obtiene la constante de error <b>__error1__</b>. Si se produce un error, se obtiene la constante
+<b>__error2__</b> (véase ejemplo).</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_leer.png" class="centerImg"/>
+	<figcaption><br/><code>leer en &lt;varname> [tipo &lt;tipo>] [opciones &lt;opciones>] [msj &lt;mensaje>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'leer'</figcaption>
+	<img src="images_jmes/ctx2d_leer_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/ctx2d_leer_resultado.gif" class="centerImg"/>
+</figure>
+<br/>
+</section>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_archivo">+ Cláusula <ins>archivo</ins></h3>
+<br/>
+<div class="content">
+	<p>Muestra un diálogo del sistema de archivos para la selección de uno o varios archivos/directorios.</p>
+	<p>Si no se especifica la ruta se toma la ruta por defecto del sistema. Si se usa la cadena vacía, la ruta de la última ejecución (si la hay).</p>
+	<p>El valor devuelto es un vector con las rutas de los archivos/directorios seleccionados. Si se cancela o no se selecciona ninguno, devuelve un vector vacío.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span><br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/ctx2d_archivo.png" class="centerImg"/>
+	<figcaption><br/><code>archivo en &lt;varname> [ruta &lt;ruta>] [titulo &lt;titulo>]</code></figcaption>
+</figure>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'archivo'</figcaption>
+	<img src="images_jmes/ctx2d_archivo_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI (escritorio)</figcaption>
+	<img src="images_jmes/archivo.gif" class="centerImg"/>
+</figure>
+<br/>
+</div>
+
+</div>
+
+<!-- SQL  -->
+<br/><br/>
+<h3 class="subSection" id="sql">Sentencia de acceso a SGBDR</h3>
+<br/>
+<p class="content">
+Permite conectar a una base de datos, cerrarla, acceder a la información y modificar datos. 
+</p>
+<p class="content">
+Para ejecutar esta sentencia debe estar definido un SGBDR en el sistema que permita ejecutar todas sus primitivas mediante <i>JMEScript</i>.
+En <b class="small"><a href="jmescriptgui.html" class="discLink" style="color: #335">JMEScriptGUI</a></b> para escritorio pueden ejecutarse 
+todas las primitivas usando MySQL y el Conector-J. En el apartado para desarrolladores se explica como implementar un interfaz de conexión entre la base de datos y <i>JMEScript</i> 
+a partir de la clase <code>AbstractSql</code>. 
+</p>
+<hr class="content"/>
+<p class="content">
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/sql.png" class="centerImg"/>
+	<br/><figcaption><code>sql [# &lt;indice> #] &lt;claúsula_sql></code></figcaption>
+</figure>
+<br/>
+<hr class="content"/>
+
+<p class="content">
+El índice del SGBDR por defecto es 1, e indica el SGBDR a utilizar en caso de múltiples gestores.
+</p>
+
+<hr class="content">
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/sql_visor.jmes" download><img src="images_jmes/download.png"/></a>
+	<a class="discLink monospace" href="scripts/sql_visor.jmes"><b>sql_visor.jmes</b></a>
+</p>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo completo: visor SQL para la lectura secuencial de consultas</figcaption>
+	<img src="images_jmes/sql_visor_script.gif" class="centerImg"/>
+</figure>
+
+<div class="content">
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_conectar">+ Cláusula <ins>conectar</ins></h3>
+<br/>
+<div class="content">
+<p>La cláusula <i>conectar</i> permite especificar el <b>host</b>, <b>usuario</b> (si existe), y <b>clave</b> (si existe) de la conexión a la BD,
+además de asignarle un identificador (puede ser cualquier valor JME).
+</p>
+<p><br/>El valor almacenado en la variable de la subcláusula <b>exito en</b> es <b>verdadero</b> 
+si la conexión es correcta, si no lo es, se almacena un <b>texto con el mensaje de error</b></p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/sql_conectar.png" class="centerImg"/>
+	<br/><figcaption><code>conectar exito en &lt;varname> id &lt;id_conexión> host &lt;host> [usuario &lt;user>] [clave &lt;password>]</code></figcaption>
+</figure>
+<br/>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'conectar'</figcaption>
+	<img src="images_jmes/sql_conectar_ejemplo.png" class="centerImg"/>
+</figure>
+<p><span class="subSimple">Salida en consola:</span></p>
+<div class="console">
+<p class="javaOutput">- host falso:  
+'Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.'  
+
+- necesario usuario:  
+'Access denied for user '[...]'@'[...]' (using password: NO)'  
+
+- conexión válida:  
+verdadero
+</p>
+</div>
+
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_ejecutar">+ Cláusula <ins>ejecutar</ins></h3>
+<br/>
+<div class="content">
+<p>La cláusula <i>ejecutar</i> efectúa una consulta contra la base de datos.</p>
+<p><br/>La cláusula toma el identificador de la conexión en <b>id</b> y asigna un identificador de consulta en <b>sentencia</b> (cualquier valor JME).</p>
+<p>El valor almacenado en la variable de la subcláusula <b>exito en</b> es un booleano si la consulta es correcta, 
+si no lo es, se almacena un <b>texto con el mensaje de error</b>. El valor booleano es <code>verdadero</code> si la consulta
+es de selección, y <code>falso</code> si es de acción</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/sql_ejecutar.png" class="centerImg"/>
+	<br/><figcaption><code>ejecutar exito en &lt;varname> id &lt;id_conexión> sentencia &lt;id_sent> consulta &lt;consulta_sql></code></figcaption>
+</figure>
+<br/>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'ejecutar'</figcaption>
+	<img src="images_jmes/sql_ejecutar_ejemplo.png" class="centerImg"/>
+</figure>
+<p><span class="subSimple">Salida en consola:</span></p>
+<div class="console">
+<p class="javaOutput">- consulta 1:  
+falso  'consulta de acción'  
+
+- consulta 2:  
+verdadero  'consulta de selección'  
+
+- consulta 3:  
+'Table 'ej6_catastro_municipal.inexistente' doesn't exist'  
+
+- consulta 4:  
+'You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'desde vivienda' at line 1'  
+</p>
+</div>
+
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_resultado">+ Cláusula <ins>resultado</ins></h3>
+<br/>
+<div class="content">
+<p>La cláusula <i>resultado</i> lee secuencialmente los registros o número de actualizaciones de una consulta a partir del identificador de consulta.</p>
+<p><br/>La cláusula toma el identificador de la conexión en <b>id</b> y el identificador de consulta en <b>sentencia</b>
+de la sentencia <i>ejecutar</i>.</p>
+<p>La subcláusula <b>columnas</b> permite especificar la columnas devueltas en una selección. Columnas individuales se especifican con el nombre
+de la columna (ej. <code>'nombre'</code>), múltiples con un vector de columnas (ej. <code>['nombre','apellidos']</code>). 
+Por defecto es <code>'*'</code>, que muestra todas las columnas especificadas en la consulta.</p>
+<p>El valor almacenado en la variable de la subcláusula <b>registro en</b> es</p>
+<ul>
+	<li>un diccionario si la lectura de una consulta de selección es correcta,</li>
+	<li>un entero si es una consulta de acción correcta,</li>
+	<li>valor <i>nulo</i> si se ha terminado la lectura del conjunto de resultados,</li>
+	<li>un texto distinto de <i>nulo</i> con el mensaje de error si ha ocurrido un error en la lectura</li>
+</ul>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/sql_resultado.png" class="centerImg"/>
+	<br/><figcaption><code>resultado id &lt;id_conexión> sentencia &lt;id_sent> [columnas &lt;columnas>] registro en &lt;varname></code></figcaption>
+</figure>
+<br/>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'resultado'</figcaption>
+	<img src="images_jmes/sql_resultado_ejemplo.png" class="centerImg"/>
+</figure>
+<p><span class="subSimple">Salida en consola:</span></p>
+<div class="console">
+<p class="javaOutput"> {         'calle': 'Damasco'
+          'numero': 20
+   'tipo_vivienda': 'B'
+   'codigo_postal': 14500
+          'metros': 120
+     'od_vivienda': 0
+     'nombre_zona': 'SECTOR SUR' }
+
+ {         'calle': 'Guerra'
+          'numero': 2
+   'tipo_vivienda': 'C'
+   'codigo_postal': 14500
+          'metros': 150
+     'od_vivienda': 0
+     'nombre_zona': 'SUBURBIO TERMINAL' }
+
+ {         'calle': 'Urbanización las Lomas'
+          'numero': 53
+   'tipo_vivienda': 'C'
+   'codigo_postal': 14009
+          'metros': 250
+     'od_vivienda': 0
+     'nombre_zona': 'TRASIERRA' }
+
+-- terminado --  
+</p>
+</div>
+
+</div>
+
+<br/>
+<h3 class="subSection" style="opacity: 66%" id="clsl_cerrar">+ Cláusula <ins>cerrar</ins></h3>
+<br/>
+<section class="content">
+<p>La cláusula <i>cerrar</i> cierra la conexión con la base de datos especificada por el identificador.</p>
+<p>La subcláusula <b>exito en</b> permite almacenar en una variable el resultado de la operación; <b>verdadero</b> si la conexión
+se cerró correctamente o un mensaje de error en caso contrario.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/sql_cerrar.png" class="centerImg"/>
+	<br/><figcaption><code>cerrar [exito en &lt;varname>] id &lt;id_conexión></code></figcaption>
+</figure>
+<br/>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de cláusula 'cerrar'</figcaption>
+	<img src="images_jmes/sql_cerrar_ejemplo.png" class="centerImg"/>
+</figure>
+<p><span class="subSimple">Salida en consola:</span></p>
+<div class="console">
+<p class="javaOutput">'Cerrada conexión con1'</p>
+</div>
+
+</section>
+
+<!-- ACCIONES  -->
+<br/><br/>
+<h3 class="subSection" id="accion">Acciones en el entorno de ejecución</h3>
+<br/>
+<section class="content">
+<p>
+La sentencia <b>accion</b> permite ejecutar acciones preprogramadas en la propia aplicación JAVA donde ejecuta el script de <i>JMEScript</i>. 
+</p>
+<p>Si la aplicación implementa el interfaz <code>AbstractAppAcciones</code> con un mapa de acciones definidas por su identificador <code>(String)</code>,
+pueden ejecutarse esas acciones mediante esta sentencia, recibir parámetros y devolver un valor convertido a tipo JME. Esto aporta a la aplicación
+mucho más que simplemente la creación de macroinstrucciones (MACROS), ya que incluye toda la funcionalidad del lenguaje <i>JMEScript</i>, y no sólo acciones
+secuenciales predefinidas (similarmente a <i>VBA</i> en el paquete <i>Office</i>).
+</p>
+<p>En la sección de <a href="#accioncode">desarrolladores</a>, puede verse un ejemplo de implementación del interfaz <code>AbstractAppAcciones</code> usado por el IDE <i>JMEScriptGUI</i>.</p>
+<p>Nota: existe otra forma de ejecución de operaciones de la aplicación y de la API de JAVA, en este caso funcional, mediante la función
+<a href="../functions/java.html" class="discLink"><b>java</b></a>.</p>
+<hr/>
+<span class="subSimple">Diagrama sintáctico:</span>
+<br/><br/>
+<figure style="margin: auto">
+	<img src="images_jmes/accion.png" class="centerImg"/>
+	<figcaption><br/><code>accion &lt;accion_id> [params &lt;parámetros>] [retorno en &lt;varname>]</code></figcaption>
+</figure>
+<br/>
+<hr/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de sentencia 'accion' en JMEScriptGUI</figcaption>
+	<img src="images_jmes/accion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI</figcaption>
+	<img src="images_jmes/accion_resultado.gif" class="centerImg"/>
+</figure>
+
+
+</section>
+
+</div>
+
+</div> <!-- Sentencias -->
 
 <!-- VARIABLES -->
 <br/>
-<h2 class="subtitle" id="vars">Variables en <i>JMEScript</i></h2>
+<h2 class="subtitle" id="vars">Variables en <i>JMEScript</i></h2><br/>
+
+<div class="tema content">
 <p class="content">
 Las variables en <i>JMEScript</i> pueden almacenar cualquier tipo de terminal <i>JME</i> o estar
 indefinidas. Su valor se puede cambiar por el de cualquier otro tipo al ser un lenguaje débilmente
@@ -873,13 +2498,17 @@ tipado, o eliminarse y posteriormente asignar un nuevo valor. La función <i>JME
 permite comprobar si la variable está definida o asignar un valor por defecto.
 </p>
 <p class="content">
+El nombre de las variables, como cualquier identificador JME, debe estar formado por un carácter inicial que debe ser
+una letra o _ , y seguido por cualquier número de carácteres alfanuméricos o _ . 
+</p>
+<p class="content">
 Las variables son accesibles en todo el script a partir del punto en que se definen
-(si son externas desde el principio) hasta el final del script, excepto dentro de las rutinas, 
+(si son externas desde el principio) hasta el final del script, excepto dentro de las rutinas 'locales', 
 a menos que se eliminen mediante los operadores <b>:=</b> y <b>:==</b> o la sentencia <b>limpiar</b>.  
 </p>
 <p class="content">
 Existen por lo tanto dos <b>ámbitos</b> en las variables de <i>JMEScript</i>, el del programa principal y el 
-de las rutinas que tienen su propio diccionario de variables. Las variables definidas en bloques o 
+de las rutinas 'locales' (no globales), que tienen su propio diccionario de variables. Las variables definidas en bloques o 
 sentencias siguen siendo visibles posteriormente.
 </p>
 
@@ -923,20 +2552,33 @@ externa '<i>text</i>':
 
 	(parse: 2,8ms(16%) / eval: 14,3ms(84%) / total: 17,1ms)</p>
 </div>
-
+</div>
 
 <!-- COMENTARIOS -->
 <br/><br/>
-<h2 class="subtitle" id="comment">Comentarios y líneas en blanco</h2>
-<p class="content">
-Los comentarios en <i>JMEScript</i> son comentarios de una línea que comienzan con el carácter <b class="larger">#</b>.
-Pueden ir precedidos por espacios y al igual que las líneas en blanco, son ignorados por el proceso de compilación.
-</p>
+<h2 class="subtitle" id="comment">Comentarios, líneas en blanco y multilínea</h2><br/>
 
+<div class="tema content">
+<p class="content">
+Los comentarios en <i>JMEScript</i> son comentarios de una línea que comienzan con el carácter <b class="larger">#</b>.<br/>
+Pueden ir precedidos por espacios o ir al final de una sentencia, y al igual que las líneas en blanco, son ignorados por el proceso de compilación.
+</p>
+<p class="content">
+	<img src="images_jmes/comentario_ejemplo.png" class="centerImg"/>
+</p>
+<p class="content">
+Una sentencia <i>JMEScript</i> muy larga puede fragmentarse simplemente añadiendo&emsp;<b class="larger">&gt;</b>&emsp;al principio de la siguiente línea por
+cualquier parte de la misma.
+<p class="content">
+	<img src="images_jmes/multilinea_ejemplo.png" class="centerImg"/>
+</p>
+</div>
 
 <!--  DESARROLLADORES -->
 <br/><br/>
-<h2 class="subtitle" id="developers">JMEScript para Desarrolladores</h2>
+<h2 class="subtitle" id="developers">JMEScript para Desarrolladores</h2><br/>
+
+<div class="tema content">
 <p class="content">
 La clase <b class="monospace larger">jme.script.Script</b> es la clase principal de los scripts <i>JMEScript</i>.
 Consta de dos constructores, uno para una cadena con el código fuente (con saltos de línea en cada instrucción),
@@ -948,7 +2590,7 @@ y otro con las líneas del código fuente como array de cadenas:
 	 * @param script código fuente
 	 * @throws ScriptException error al compilar script
 	 */
-	public Script( @NotNull String script ) throws ScriptException 
+	public Script( String script ) throws ScriptException 
 </code></pre>
 
 <pre><code class="content java">	/**
@@ -957,7 +2599,7 @@ y otro con las líneas del código fuente como array de cadenas:
 	 * @param lineas array con las líneas del script
 	 * @throws ScriptException error al compilar script
 	 */
-	public Script( @NotNull String[] lineas ) throws ScriptException 
+	public Script( String[] lineas ) throws ScriptException 
 </code></pre>
 
 <p class="content">
@@ -965,7 +2607,7 @@ Los constructores de la clase <b>Script</b> compilan e inicializan el script (id
 </p>
 <p class="content">
 El script puede ser ejecutado con los métodos <b class="monospace">Script#ejecutar</b>, que ejecuta el script sin ninguna variable externa,
-y <b class="monospace">Script#ejecutar( @Nullable HashMap&lt;String,Token> varMapIni )</b> que permite inicializar con un mapa de variables externas.
+y <b class="monospace">Script#ejecutar( HashMap&lt;String,Token> varMapIni )</b> que permite inicializar con un mapa de variables externas.
 </p>
 <p class="content">
 El script se puede ejecutar múltiples veces. Evitar compilar el mismo script más de una vez (por ejemplo en un bucle), ya que
@@ -1009,7 +2651,7 @@ y <b class="monospace">Script#setSalida</b>, permiten establecer los stream de e
 <p class="content">Ejemplo de ejecución del siguiente script en Java:</p>
 
 <p class="content">
-<img src="images_jmes/primos_gemelos.png" class="centerImg content"/>
+	<img src="images_jmes/primos_gemelos.png" class="centerImg content" width="67%"/>
 </p>
 
 <div class="content console">
@@ -1082,8 +2724,8 @@ El segundo permite añadir el tiempo máximo aproximado de ejecución:
  * @param script Script compilado
  * @param varMap mapa de variables iniciales o {@code null}
  */
-public ScriptThread( @NotNull Script script, 
-		     @Nullable HashMap&lt;String,Token> varMap )
+public ScriptThread( Script script, 
+		     HashMap&lt;String,Token> varMap )
 
 
 /**
@@ -1094,8 +2736,8 @@ public ScriptThread( @NotNull Script script,
  * @param varMap mapa de variables iniciales o {@code null}
  * @param maxTiempo tiempo antes de parar el script en milisegundos
  */
-public ScriptThread( @NotNull Script script, 
-		     @Nullable HashMap&lt;String,Token> varMap,
+public ScriptThread( Script script, 
+		     HashMap&lt;String,Token> varMap,
 		     long maxTiempo )
 </code></pre>
 
@@ -1157,9 +2799,399 @@ catch ( Throwable e )
 &lt;&lt;&lt;FuncionException>>> en funcion "randint": Tiempo expirado --> randint(Vector:[1,6])</mark></p>
 </div>
 
+<br/><br/>
+<h3 class="subSection" id="abstractctx2d">Implementación de soporte gráfico</h3>
+<section class="content">
+<br/>
+<p><b>Sección en construcción, disculpe las molestias :(</b></p>
+</section>
+
+<br/><br/>
+<h3 class="subSection" id="abstractsql">Implementación de soporte SQL</h3>
+<section class="content">
+<br/>
+<p>
+Para implementar soporte SQL a una aplicación que use <code>JMEScript</code>, sólo es necesario implentar el interfaz 
+<code>jme.script.sql.AbstractSQL</code>, y asigne la clase implementante al script, antes de ejecutarlo, mediante <code>Script#getListaSgbdrSql#add</code>, 
+o <code>Script#setListaSgbdrSql</code> para asignar una lista de SGBDR.
+</p>
+<pre><code class="java">package jme.script.sql;
+
+/**
+ * Interfaz para la representación abstracta de una conexión a SGBDR mediante SQL
+ * @author Miguel Alejandro Moreno Barrientos, (C)2020-2021
+ * @since 0.6.2.0, JMEScript 0.2.0
+ */
+public interface AbstractSql
+</code></pre>
+<p>Este interfaz contiene cinco métodos para implentar la apertura, cierre, ejecución de consultas y lectura de datos de la consulta. Al final de esta
+sección se muesta un ejemplo de implementación para MySQL con el Conector-J que utiliza <i>JMEScriptGUI</i>.</p>
+<ul>
+<li>El método <b>conectar</b> establece la conexión con la base de datos y en caso de fallo lanza una excepción apropiada
+<pre><code class="java">/**
+ * Conectar a la BBDD
+ * @param idConexion identificador de conexión, para diferenciarla de múltiples conexiones
+ * @param host host de la BBDD
+ * @param usuario nombre de usuario de la BBDD
+ * @param password contraseña de la BBDD
+ * @throws Throwable error en la conexión
+ */
+void conectar( Object idConexion, String host, String usuario, String password ) throws Throwable;
+</code></pre>
+</li>
+<li>El método <b>cerrar</b> termina la conexión con la base de datos a partir del identificador de conexión del método <i>conectar</i>. En caso de fallo
+lanza una excepción apropiada
+<pre><code class="java">/**
+ * Cerrar la conexión 
+ * @param idConexion identificador de conexión
+ * @throws Throwable error al cerrar la conexión
+ */
+void cerrar( Object idConexion ) throws Throwable;
+</code></pre>
+</li>
+<li>El método <b>ejecutar</b> efectúa una consulta contra la base de datos y le asigna un identificador, y en caso de fallo lanza la excepción apropiada
+<pre><code class="java">/**
+ * Ejecuta una sentencia SQL
+ * @param idConexion identificador de conexión
+ * @param idSentencia identificador de la sentencia, para poder acceder a sus resultados 
+ *        particulares
+ * @param sql sentencia SQL del SGBDR utilizado
+ * @return {@code true} si el valor devuelto es un conjunto de resultados o {@code false} si
+ * no hay resultados o es conteo de actualizaciones
+ * @throws Throwable error en la sentencia
+ */
+boolean ejecutar( Object idConexion, Object idSentencia, String sql ) throws Throwable;
+</code></pre>
+</li>
+<li>El método <b>getData</b> (sin columnas) devuelve secuencialmente los registros de una consulta o conteo de actualizaciones
+para una sola columna o para todas si se asigna a <code>nombreCol</code> la cadena '*', y en caso de fallo lanza la excepción apropiada
+<pre><code class="java">/**
+ * Devuelve el siguiente registro (fila) del resultado de la sentencia, 
+ * o el conteo de actualizaciones para una sola columna de la tabla o para todas <b>'*'</b>
+ * @param idConexion identificador de conexión
+ * @param idSentencia identificador de sentencia
+ * @param nombreCol nombre de la columna de la que se quiere obtener información
+ * @return registro o conteo de actualizaciones (int) o {@code null} si no hay más registros
+ * @throws Throwable no se pueden obtener más resultados o la sentencia está terminada
+ * @see #getData(Object, Object, String[])
+ */
+Object getData( Object idConexion, Object idSentencia, String nombreCol ) throws Throwable;
+</code></pre>
+</li>
+<li>El método <b>getData</b> (con columnas) hace lo mismo que el método anterior para las columnas especificadas
+<pre><code class="java">/**
+ * Devuelve el siguiente registro (fila) del resultado de la sentencia, 
+ * o el conteo de actualizaciones para las columnas seleccionadas
+ * @param idConexion identificador de conexión
+ * @param idSentencia identificador de sentencia
+ * @param arrayCol nombres de las columnas de las que se quiere obtener información
+ * @return registro o conteo de actualizaciones
+ * @throws Throwable no se pueden obtener más resultados o la sentencia está terminada
+ * @see #getData(Object, Object, String)
+ */
+Object getData( Object idConexion, Object idSentencia, String[] arrayCol ) throws Throwable;
+</code></pre>
+</li>
+</ul>
+<br/>
+<hr/>
+<br/>
+<p>La clase <code>jmescriptgui.MySql</code> es una implementación de <code>AbstractSql</code> para <i>JMEScriptGUI</i> usando
+el <a href="https://dev.mysql.com/downloads/connector/j/">Conector-J</a> para MySQL:</p>
+<pre><code class="java">package jmescriptgui;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import jme.script.sql.AbstractSql;
+
+/**
+ * Implementación MySQL del interfaz de conexión ente SGBDR y JMEScript para JMEScriptGUI.&lt;br>
+ * Usa el Conector-J 
+ * @author Miguel Alejandro Moreno Barrientos, (C)2020-2021
+ */
+public class MySql implements AbstractSql 
+{
+	/** Las conexiones activas se guardan aquí */
+	private final Map&lt;Object,Connection> mapaConexiones = new HashMap&lt;>();
+	/** Las sentencias en activo se guardan aquí */
+	private final Map&lt;Object,Map&lt;Object,Statement>> mapaSentencias = new HashMap&lt;>();
+	
+	@Override
+	public void conectar( Object idConexion, String host, String usuario, String password ) throws SQLException
+	{
+		// crear conexión
+		final Connection con = DriverManager.getConnection( host, usuario, password );
+		// si no ha habido excepción, mapear la conexión
+		mapaConexiones.put( idConexion, con );
+		mapaSentencias.put( idConexion, new HashMap&lt;Object,Statement>() );
+	}
+	
+	@Override
+	public void cerrar( Object idConexion ) throws SQLException
+	{
+		// accede y comprueba la conexión especificada
+		final Connection con = mapaConexiones.get( idConexion );
+		if ( con == null )
+			throw new SQLException( "Conexion " + idConexion + " inexistente" );
+		// intenta cerrarla (SQLException if a database access error occurs)
+		con.close();
+		// si no ha habido excepción, elimina la conexión y sentencias del mapa 
+		mapaConexiones.remove( idConexion );
+		mapaSentencias.remove( idConexion );
+	}
+
+	@Override
+	public boolean ejecutar( Object idConexion, Object idSentencia, String sql ) throws SQLException
+	{
+		// accede y comprueba la conexión especificada
+		final Connection con = mapaConexiones.get( idConexion );
+		if ( con == null )
+			throw new SQLException( "Conexion " + idConexion + " inexistente" );
+		// crea y ejecuta la sentencia
+		final Statement stmt = con.createStatement();		
+		final boolean res = stmt.execute( sql );
+		// guarda la sentencia en su conexión
+		mapaSentencias.get( idConexion ).put( idSentencia, stmt );
+		
+		return res;
+	}
+	
+	@Override
+	public Object getData( Object idConexion, Object idSentencia, String nombreCol ) throws Throwable 
+	{
+		if ( mapaConexiones.get( idConexion ) == null )
+			throw new SQLException( "Conexion " + idConexion + " inexistente" );
+
+		final Statement stmt = mapaSentencias.get( idConexion ).get( idSentencia );
+		if ( stmt == null )
+			throw new SQLException( "Sentencia " + idSentencia + " inexistente" );
+		
+		if ( stmt.getUpdateCount() >= 0 )
+			return stmt.getUpdateCount();
+
+		// leer nombre de columnas
+		final int numColumnas = stmt.getResultSet().getMetaData().getColumnCount();
+		final String[] arrayCol = new String[ numColumnas ];
+		for ( int i = 1; i &lt;= numColumnas; i++ )
+			arrayCol[i-1] = stmt.getResultSet().getMetaData().getColumnName(i);
+
+		// leer siguiente registro
+		if ( stmt.getResultSet().next() )
+		{
+			return nombreCol.trim().equals("*")
+				   ? getData( idConexion, idSentencia, arrayCol )
+				   : stmt.getResultSet().getObject( nombreCol );
+		}
+		// limpiar sentencia del mapa de sentencias
+		else
+		{
+			mapaSentencias.get( idConexion ).remove( idSentencia );
+			
+			return null;
+		}
+	}
+	
+	@Override
+	public Object getData( Object idConexion, Object idSentencia, String[] arrayCol ) throws Throwable 
+	{
+		// obtener sentencia
+		if ( mapaConexiones.get( idConexion ) == null )
+			throw new SQLException( "Conexion " + idConexion + " inexistente" );
+
+		final Statement stmt = mapaSentencias.get( idConexion ).get( idSentencia );
+		if ( stmt == null )
+			throw new SQLException( "Sentencia " + idSentencia + " inexistente" );
+
+		// leer siguiente registro 
+		if ( stmt.getResultSet().next() )
+		{
+			// diccionario columna/dato
+			final Map&lt;String,Object> res = new LinkedHashMap&lt;>();
+
+			for ( String col : arrayCol )
+				res.put( col, stmt.getResultSet().getObject( col ) );
+			
+			return res;
+		}
+		// limpiar sentencia del mapa de sentencias
+		else
+		{
+			mapaSentencias.get( idConexion ).remove( idSentencia );
+			
+			return null;
+		}
+	}
+}
+</code></pre>
+Asignación de un gestor MySQl en <i>JMEScriptGUI</i> antes del lanzamiento del script,
+<pre><code class="java">&hellip;
+// iniciar gestor de bases de datos relacional (1 gestor mysql)
+gui.runningScript.getListaSgbdrSql().add( new MySql() );
+&hellip;
+</code></pre>
+</section>
+
+<br/><br/>
+<h3 class="subSection" id="accioncode">Implementación de acciones</h3>
+<section class="content">
+<br/>
+<p>
+Una aplicación que quiera utilizar acciones personalizadas sobre la propia aplicación debe implementar el interfaz <code>AbstractAppAcciones</code> y
+cargar la clase implementante en el script, antes de lanzarlo, mediante el método <code>Script#setAppAcciones</code>
+</p>
+<pre><code class="java">package jme.script.appacciones;
+
+/**
+ * Interfaz para la implementación de acciones reconocibles por JMEScript
+ * @author Miguel Alejandro Moreno Barrientos
+ * @since 0.6.2.0, JMEScript 0.2.0
+ */
+public interface AbstractAppAcciones 
+{
+	/**
+	 * Realiza la acción seleccionada y pasa/recibe opcionalmente parámetros 
+	 * y resultado de la acción
+	 * @param accionID identificador único de la acción
+	 * @param parametros parámetro o parámetros como array que requiere la acción (o null)
+	 * @return valor devuelto por la acción (o null)
+	 */
+	Object efectuarAccion( String accionID, Object parametros );
+}
+</code></pre>
+<p>El método <code>#efectuarAccion</code> puede ejecutar la acción especificada mediante un mapa de acciones, o un simple <code>switch</code>, o cualquier
+método que se desee implementar para efectuar la acción.</p>
+<p>En <i>JMEScriptGUI</i>, la clase <code>JMEScriptGuiAppAcciones</code> implementa éste interfaz mediante un simple <code>switch</code>:
+<pre><code class="java">package jmescriptgui;
+
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
+import com.sun.istack.internal.Nullable;
+
+import jme.Expresion;
+import jme.excepciones.ConversionException;
+import jme.script.appacciones.AbstractAppAcciones;
+
+/**
+ * Implementación para JMEScriptGUI de {@code AbstractAppAcciones} para la ejecución de acciones
+ * sobre el IDE mediante script
+ * @author Miguel Alejandro Moreno Barrientos, (C)2020-2021
+ * @since JMEScriptGUI 0.1.2.0
+ */
+public class JMEScriptGuiAppAcciones implements AbstractAppAcciones
+{
+	private final GUI gui;
+	
+	JMEScriptGuiAppAcciones( GUI gui ) 
+	{
+		this.gui = gui;
+	}
+	
+	@Override
+	public @Nullable Object efectuarAccion( String accionID, @Nullable Object parametros ) 
+	{
+		switch( accionID.toLowerCase() )
+		{
+			case "accion.cerrar": gui.dispatchEvent( new WindowEvent( gui, WindowEvent.WINDOW_CLOSING ) ); break;
+
+			case "accion.flush": gui.actionMap.get( "flush" ).actionPerformed( null ); break;			
+			
+			case "set.mul_implicita": Expresion.setMultiplicacionImplicita( (boolean) parametros ); 
+									  break;  // !Nota: no tiene efecto en la primera ejecución
+			case "get.mul_implicita": return Expresion.isMultiplicacionImplicita();
+			
+			case "accion.maximizar": gui.setExtendedState( JFrame.MAXIMIZED_BOTH ); break;
+			case "accion.minimizar": gui.setExtendedState( JFrame.ICONIFIED ); break;
+			
+			case "get.console": return System.out != gui.defOut;
+			case "accion.console": gui.actionMap.get( "console" ).actionPerformed( 
+						    new ActionEvent( gui.togConsole, ActionEvent.ACTION_PERFORMED, null ) );
+			
+			case "get.flip": return gui.outerSplitPanel.getOrientation();			
+			case "accion.flip": gui.actionMap.get( "flip" ).actionPerformed( 
+							   new ActionEvent( gui.btnFlip, ActionEvent.ACTION_PERFORMED, null ) );
+
+			case "get.wrap": return gui.taConsola.getLineWrap();			
+			case "accion.wrap": gui.actionMap.get( "wrap_console" ).actionPerformed( 
+				  			   new ActionEvent( gui.togWrap, ActionEvent.ACTION_PERFORMED, null ) );
+
+			case "set.font_consola":
+			{
+				final Map<?,?> fontParam = (Map<?,?>) parametros;
+				gui.taConsola.setFont( new Font( fontParam.get( "name" ).toString(),
+											 	 ((Number) fontParam.get( "style" )).intValue(),
+											 	 ((Number) fontParam.get( "size" )).intValue() ) );
+				break;
+			}
+			
+			case "get.spin_salida": return EnhancedMapUtils.putIntoMap( 
+										   new LinkedHashMap<Object,Object>(),
+										   "value", gui.spinSalidaMenu.getValue(),
+										   "next_value", gui.spinSalidaMenu.getNextValue(),
+										   "previousValue", gui.spinSalidaMenu.getPreviousValue() );
+			case "set.spin_salida":
+			{
+				try
+				{
+					final int value = ((Number) parametros).intValue();
+					SwingUtilities.invokeLater( () -> gui.spinSalidaMenu.setValue( value ) );
+				}
+				catch ( ClassCastException e )
+				{
+					throw new ConversionException( "Al establecer longitud de salida en consola", 
+												   Integer.class, parametros.getClass(), e );
+				}
+				break;
+			}		
+			
+			case "debug.threads":
+			{
+				final Thread[] tarray = new Thread[ Thread.activeCount()+1 ];
+				Thread.enumerate( tarray );
+
+				return Arrays.stream( tarray )
+							 .filter( Objects::nonNull )
+							 .map( t -> t.toString() + ": " + t.getState() )
+							 .toArray( String[]::new );
+			}
+		}
+		
+		return null;
+	}
+	
+}  // JMEScriptGuiAppAcciones
+</code></pre>
+<p>Cargar en el script, antes de ejecutar, la clase anterior:</p>
+<pre><code class="java">&hellip;
+// añadir control de acciones de la aplicación
+gui.runningScript.setAppAcciones( new JMEScriptGuiAppAcciones( gui ) );
+&hellip;
+</code></pre>
+
+</section>
+
+</div>  <!-- DEVELOPERS -->
+
+
 <!-- EJEMPLOS -->
 <br/><br/>
-<h2 class="subtitle" id="examples">Ejemplos de script para descargar</h2>
+<h2 class="subtitle" id="examples">Ejemplos de script para descargar</h2><br/>
+
+<div class="tema content">
 <p class="content" style="font-size: 1.5em">
 	<a href="scripts/factorial.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
 	<a class="discLink monospace" href="scripts/factorial.jmes"><b>factorial.jmes</b></a>
@@ -1188,10 +3220,34 @@ catch ( Throwable e )
 	<a href="scripts/frase_invertida.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
 	<a class="discLink monospace" href="scripts/frase_invertida.jmes"><b>frase_invertida.jmes</b></a>
 </p>
-<br/>
-<img style="margin-top:64px" class="centerImg" src="images_jmes/jmescript_logo.png" width=128px/>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/bola_loca.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/bola_loca.jmes"><b>bola_loca.jmes</b></a>
+</p>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/aguanta.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/aguanta.jmes"><b>aguanta.jmes</b></a>
+</p>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/2048.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/2048.jmes"><b>2048.jmes</b></a>
+</p>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/sql_visor.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/sql_visor.jmes"><b>sql_visor.jmes</b></a>
+</p>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/pong.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/pong.jmes"><b>pong.jmes</b></a>
+</p>
+<p class="content" style="font-size: 1.5em">
+	<a href="scripts/grafos_jme.jmes" download><img src="images_jmes/download.png"/></a>&nbsp;&nbsp;
+	<a class="discLink monospace" href="scripts/grafos_jme.jmes"><b>grafos_jme.jmes</b></a>
+</p>
 </div>
 
+<br/>
+<img style="margin-top:64px" class="centerImg" src="images_jmes/jmescript_logo.png" width=128px/>
 
 <hr/>
 
@@ -1200,7 +3256,7 @@ catch ( Throwable e )
 
 
 <footer>
-	<p>JMEScript language <span>v0.1.3</span> // <span class="author">Miguel Alejandro Moreno Barrientos</span>, <span>(C) 2018-2019</span></p>
+	<p>JMEScript language <span>v0.2.0</span> // <span class="author">Miguel Alejandro Moreno Barrientos</span>, <span>(C) 2018-2021</span></p>
 </footer>
 
 </body>
