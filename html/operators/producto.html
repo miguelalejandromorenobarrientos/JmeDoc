@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="producto" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Producto</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">BINARIO (50)</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Producto entre factores…</p> 
+<ul class="content">
+	<li>… escalares reales/complejos</li>
+	<li>… escalares reales/complejos y vector/matriz</li>
+	<li>… vectores <small>(producto escalar)</small></li>
+	<li>… matrices de MxN y NxP</li>
+	<li>… natural y texto <small>(repetición de cadena)</small></li>
+</ul>
+<p class="content">
+	En el caso de números, el resultado se ajustará al número más preciso, 
+	excepto para números complejos, en que el resultado será complejo.
+</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">*</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">*</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">&lt;factor>*&lt;factor></p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">3*5</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 15</p>
+	<p class="content input"><span class="javaString">-2b*4</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: -8</p>
+	<p class="content input"><span class="javaString">3*4e10d</span></p>
+	<p class="content output"><span class="jmeType">RealGrande</span>: 120000000000</p>
+	<p class="content input"><span class="javaString">î*(2-3î)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 3+2I</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">3*[1,3]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [3,9]</p>
+	<p class="content input"><span class="javaString">ui*[[1,2,3],[4,5,6]]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| I   2I  3I |
+		| 4I  5I  6I |</p>
+</div>
+
+<div class="example">
+	<p class="content comment">Producto escalar</p>
+	<p class="content input"><span class="javaString">[1,2,3]*[4,5,6]</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 32</p>
+	<p class="content comment">Producto escalar complejo; <span class="monospace">v·<span style="border-top: 1px solid black">w</span></span></p>
+	<p class="content input"><span class="javaString">[2+3î,-î,4,î]*[2î,-1,2,î]</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 15-3I</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[[2,3],[4,5]]*[[1,1,1],[0,1,3]]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 2  5  11 |
+		| 4  9  19 |</p>
+	<p class="content input"><span class="javaString">[[2,3,1],[4,5,0]]*[[1,1,1],[0,1,3]]</span></p>
+	<p class="content output"><span class="jmeType"><mark class="error">OperacionException</mark></span>: <mark class="error">&lt;&lt;&lt;OperacionException>>> en operador [ * ] : el numero de columnas de la primera matriz debe ser igual a las filas de la segunda (3&lt;>2) --> (VectorEvaluado:[[2,3,1],[4,5,0]])*(VectorEvaluado:[[1,1,1],[0,1,3]])</mark></p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">5*'&lt;Hola Mundo>'</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '&lt;Hola Mundo>&lt;Hola Mundo>&lt;Hola Mundo>&lt;Hola Mundo>&lt;Hola Mundo>'</p>
+	<p class="content input"><span class="javaString">'&lt;Hola Mundo>'*0</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: ''</p>
+</div>
+
+<div class="example">
+	<p class="content comment">La multiplicación implícita (si está activada) permite prescindir de este operador en ciertos casos:</p>
+	<p class="content input"><span class="javaString">2pi</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 6.283185307179586</p>
+	<p class="content input"><span class="javaString">î(2-3î)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 3+2I</p>
+	<p class="content input"><span class="javaString">2cos(pi)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: -2</p>
+	<p class="content input"><span class="javaString">3[1,2]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [3,6]</p>
+	<p class="content input"><span class="javaString">[1,2][3,î]</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 3+2I</p>
+	<p class="content input"><span class="javaString">3'a'</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'aaa'</p>
+	<p class="content input"><span class="javaString">eval(2x+1,x,3)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 7</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="suma.html">suma</a>,
+	<a href="diferencia.html">diferencia</a>,
+	<a href="cociente.html">cociente</a>,
+	<a href="cociente_entero.html">cociente entero</a>,
+	<a href="modulo.html">modulo</a>,
+	<a href="potencia.html">potencia</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

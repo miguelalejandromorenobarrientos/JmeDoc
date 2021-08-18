@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="const, sucesion, constante" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Sucesión constante</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Crea un vector a partir de un elemento determinado con el nº de repeticiones determinado</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">const</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">const</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">const([&lt;item>,]&lt;repeticiones>[,&lt;clonar>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>item</td>
+			<td>Item a iterar</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>repeticiones</td>
+			<td>Nº de repeticiones del item</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>clonar</td>
+			<td>Si es <i>verdadero</i>, se utiliza el método <code>clone</code> del item original, creando copias en cada posición.<br/>
+			Si es <i>falso</i>, el item original es utilizado en cada posición. Esto aumenta la eficiencia y tiene poca relevancia
+			en JME, al ser un lenguaje funcional con elementos <b><i>no mutables</i></b>.<br/>Pero si el <i>item</i> es un vector o diccionario
+			y se modifica en <i>JMEScript</i> o <i>JAVA</i> (<i>en los que <b>pueden utilizarse de forma mutable</b></i>), puede tener efectos colaterales.</td>
+			<td><i>verdadero</i></td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">const(10)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [0,0,0,0,0,0,0,0,0,0]</p>
+	<p class="content input"><span class="javaString">const(const(3),3)</span>&emsp;<span class="comment">matriz nula de 3x3</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 0  0  0 |
+		| 0  0  0 |
+		| 0  0  0 |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">const(verdadero,4)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [verdadero,verdadero,verdadero,verdadero]</p>
+</div>
+
+<div class="example">
+	<p class="content jmescript"><span>
+	# desactivar el clonado es más eficiente, pero si se hacen mutaciones puede provocar resultados no deseados
+	para cada flag en [verdadero,falso] inicio:
+	    m := const( [2,3,4], 5, flag )
+	    imprimir msj 'Matriz con cloneado ' + if(flag,'activado:','desactivado:')
+	    imprimir vertical m,
+	    imprimir msj 'Modificada fila 1, columna 2:'
+	    fila1 := m;#;1
+	    fila1{2} := 100
+	    imprimir vertical m,
+	fin
+	</span></p>
+	<p class="content output"> 
+	Matriz con cloneado activado:  
+	| 2  3  4 |
+	| 2  3  4 |
+	| 2  3  4 |
+	| 2  3  4 |
+	| 2  3  4 |
+	
+	Modificada fila 1, columna 2:  
+	| 2  100  4 |
+	| 2   3   4 |
+	| 2   3   4 |
+	| 2   3   4 |
+	| 2   3   4 |
+	
+	Matriz con cloneado desactivado:  
+	| 2  3  4 |
+	| 2  3  4 |
+	| 2  3  4 |
+	| 2  3  4 |
+	| 2  3  4 |
+	
+	Modificada fila 1, columna 2:  
+	| 2  100  4 |
+	| 2  100  4 |
+	| 2  100  4 |
+	| 2  100  4 |
+	| 2  100  4 |
+	</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content modificado">v0.6.2.0</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="sucesion.html">sucesión</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="gr_grado, grado, grafo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Grado de un Nodo</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve el grado de un nodo de un grafo no dirigido o los 
+grados de entrada, salida, total y neto de un nodo en un digrafo en la forma <code>[g-(n),g+(n),g_t(n),g_n(n)]</code></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">gr_grado</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">GRAFO.grado</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">gr_nodo(&lt;grafo>,&lt;idx|etiqueta>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<span class="content comment">Grafo de 9 nodos no dirigido:</span>
+	<p class="content input"><span class="javaString">gr_nuevo([[0,0,1,0,0,0,0,0,0],[0,0,0,1,0,0,0,0,0],[1,0,0,1,1,0,0,0,0],[0,1,1,0,0,1,0,0,0],[0,0,1,0,0,1,1,0,0],[0,0,0,1,1,0,0,1,0],[0,0,0,0,1,0,0,0,1],[0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,1,0,0]],falso)</span></p>
+	<p class="content output"><span class="jmeType">Salida en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_9nodos_no_dirigido.png"/>
+	</p>
+	<span class="content comment">Grado de todos los nodos del grafo anterior:</span>
+	<p class="content input"><span class="javaString">eval(enumerar(sucesion(<mark class="gray1">gr_grado(g,n)</mark>,n,0,gr_orden(g)--),g>&lt;'etiquetas'),g,gr_nuevo([[0,0,1,0,0,0,0,0,0],[0,0,0,1,0,0,0,0,0],[1,0,0,1,1,0,0,0,0],[0,1,1,0,0,1,0,0,0],[0,0,1,0,0,1,1,0,0],[0,0,0,1,1,0,0,1,0],[0,0,0,0,1,0,0,0,1],[0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,1,0,0]],falso))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 'v0'  1 |
+		| 'v1'  1 |
+		| 'v2'  3 |
+		| 'v3'  3 |
+		| 'v4'  3 |
+		| 'v5'  3 |
+		| 'v6'  2 |
+		| 'v7'  1 |
+		| 'v8'  1 |</p>
+</div>
+
+<div class="example">
+	<span class="content comment">Digrafo de 8 nodos:</span>
+	<p class="content input"><span class="javaString">gr_nuevo([[0,1,0,0,0,0,0,0],[0,0,1,0,1,1,0,0],[0,0,0,1,0,0,1,0],[0,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,1,0]],['a','b','c','d','e','f','g','h'],verdadero)</span></p>
+	<p class="content output"><span class="jmeType">Salida en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_8nodos_dirigido.png"/>
+	</p>
+	<span class="content comment">Grados del nodo 'f':</span>
+	<p class="content input"><span class="javaString">enumerar(gr_grado(gr_nuevo([[0,1,0,0,0,0,0,0],[0,0,1,0,1,1,0,0],[0,0,0,1,0,0,1,0],[0,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,1,0]],['a','b','c','d','e','f','g','h'],verdadero),'f'),['g-','g+','g_t','g_n'])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 'g-'   3 |
+		| 'g+'   1 |
+		| 'g_t'  4 |
+		| 'g_n'  2 |</p>
+	<span class="content comment">Grados del nodo 'd':</span>
+	<p class="content input"><span class="javaString">enumerar(gr_grado(gr_nuevo([[0,1,0,0,0,0,0,0],[0,0,1,0,1,1,0,0],[0,0,0,1,0,0,1,0],[0,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,1,0]],['a','b','c','d','e','f','g','h'],verdadero),'d'),['g-','g+','g_t','g_n'])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 'g-'   2 |
+		| 'g+'   2 |
+		| 'g_t'  4 |
+		| 'g_n'  0 |</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="gr_grado_max.html">gr_grado_max</a>,
+	<a href="gr_grado_min.html">gr_grado_min</a>
+</p>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

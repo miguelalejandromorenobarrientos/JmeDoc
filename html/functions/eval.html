@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="eval" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Eval</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Evalúa una expresión asignando un valor a una variable o 'n' valores a 'n' variables</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">eval</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">eval</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">eval(&lt;función{varnames}>,&lt;varnames>,&lt;valores>)
+	  | eval(&lt;texto>[[,&lt;varnames>,&lt;valores>],&lt;globalVars>])
+</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>función{varnames}</td>
+			<td>Expresión que depende de una o varias variables a sustituir</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>texto</td>
+			<td>Expresión introducida en forma de cadena de texto que puede ser evaluado con o sin variables (locales a la función o globales)</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varnames</td>
+			<td>Variable o variables en la forma <span class="monospace">[x<sub>1</sub>,x<sub>2</sub>,&#x2026;]</span></td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>valores</td>
+			<td>Valor o valores a asignar a las variables</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>2|4</td>
+			<td>globalVars</td>
+			<td>Booleano que si es <i>falso</i> no añade variables de entorno a la expresión de la cadena (ver ejemplo abajo)</td>
+			<td>verdadero</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content comment">una variable:</p>
+	<p class="content input"><span class="javaString">eval(3x^3+x^2-2x+3,x,-1)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3</p>
+	<p class="content input"><span class="javaString">eval(dist(v,[0,0]),v,[3,4])</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 5</p>
+</div>
+
+<div class="example">
+	<p class="content comment">varias variables:</p>
+	<p class="content input"><span class="javaString">eval(centro+radio[cos(ang),sin(ang)],[centro,radio,ang],[[1,1],2,pi])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [-1,1.0000000000000002]</p>
+</div>
+
+<div class="example">
+	<p class="content comment">desde cadena de texto:</p>
+	<p class="content input"><span class="javaString">eval('2pi+1')</span>  <small class="comment">sin variables locales ni de entorno</small></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 7.283185307179586</p>
+	<p class="content input"><span class="javaString">sucesion(eval('y+1',y,n/2,verdadero),n,1,4)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1.5,2,2.5,3]</p>
+	<p class="content input"><span class="javaString">sucesion(eval('y+1',y,n/2,<mark class="gray1">falso</mark>),n,1,4)</span>  <small class="comment">(sin incorporar la variable de entorno 'n')</small></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">&lt;&lt;&lt;FuncionException>>> en funcion "sucesion": &lt;&lt;&lt;FuncionException>>> en funcion "eval": &lt;&lt;&lt;EvaluarException>>>; identificador "n" no definido. --> eval(Vector:['y+1',y,n/2,falso]) --> sucesion(Vector:[eval('y+1',y,n/2,falso),n,1,4])</mark></p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.1</p>
+<p class="content modificado">v0.4.2</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="evaldic.html">evaldic</a>,
+	<a href="propagar.html">propagar</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

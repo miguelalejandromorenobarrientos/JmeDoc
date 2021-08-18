@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="gr_bep, bep, dfs, grafo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Búsqueda en Profundidad <code>(BEP/DFS)</code></span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Búsqueda en profundidad</p>
+
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">gr_bep</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">GRAFO.bep</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">gr_bep(&lt;grafo>,&lt;nodo_inicial>)</p>
+	
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>grafo</td>
+			<td>Diccionario válido de grafo</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>nodo_inicial</td>
+			<td>Nodo desde el que se inicia la búsqueda
+			</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<br/><br/>
+	<span class="content comment">Grafo de 5 nodos conexo:</span>
+	<p class="content input"><span class="javaString">gr_nuevo([[0,1,0,1,1],[1,0,1,0,0],[0,1,0,1,1],[1,0,1,0,1],[1,0,1,1,0]],falso)</span></p>
+	<p class="content output"><span class="jmeType">Salida en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_5nodos_conexo.png"/>
+	</p>
+	<span class="content comment">Árbol recubridor empezando en 0:</span>
+	<p class="content input"><span class="javaString">gr_bep(gr_nuevo([[0,1,0,1,1],[1,0,1,0,0],[0,1,0,1,1],[1,0,1,0,1],[1,0,1,1,0]],falso),0)</span></p>
+	<p class="content output"><span class="jmeType">Salida en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_5nodos_conexo_arbol_bep.png"/>
+	</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="gr_beppost.html">gr_beppost</a>,
+	<a href="gr_bea.html">gr_bea</a>,
+	<a href="gr_prim.html">gr_prim</a>
+</p>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

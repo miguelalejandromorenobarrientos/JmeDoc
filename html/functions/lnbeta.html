@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="beta, ln, log, lnbeta" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Logaritmo de la Beta de Euler</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Logaritmo de la Beta de Euler para reales o complejos.</p>
+<p class="content">Esta función permite aproximar la función para valores <b>reales</b> de los parámetros <b>muy grandes</b> en 
+los que <span class="monospace">ln(beta(big_a,big_b))</span> devolvería <i>NaN</i>.<br/>Para el resto de valores
+el resultado es igual a <span class="monospace">ln(beta(a,b))</span></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">lnbeta</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">LnB</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">beta(&lt;a>,&lt;b>)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>a</td>
+			<td>Parámetro real o complejo</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>b</td>
+			<td>Parámetro real o complejo</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">lnbeta(1/2,1/2)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1.1447298858494004</p>
+	<p class="content input"><span class="javaString">lnbeta(1e5,2e6)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: -402037.38523948815</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">lnbeta(î,î)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 1.26737956838716-2.3037232840397506I</p>
+	<p class="content input"><span class="javaString">lnbeta(2-3î,15)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: -7.302327218005834-0.15868899363997513I</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.4.8</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="beta.html">Beta de Euler</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

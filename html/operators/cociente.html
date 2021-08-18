@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="cociente, división" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Cociente</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">BINARIO (50)</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Cociente (división) entre numerador y denominador&#x2026;</p>
+<ul>
+	<li>&#x2026; escalares reales/complejos</li>
+	<li>&#x2026; vector/matriz y escalares reales/complejos</li>
+	<li>&#x2026; vectores</li>
+	<li>&#x2026; matrices de MxN/NxN</li>
+</ul>
+<p class="content">
+	En el caso de números, el resultado se ajustará al número más preciso, 
+	excepto para números complejos, en que el resultado será complejo.
+</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">/</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">/</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">&lt;numerador>/&lt;denominador></p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">3/5</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.6</p>
+	<p class="content input"><span class="javaString">-2b/4</span></p>
+	<p class="content output"><span class="jmeType">RealGrande</span>: -0.5</p>
+	<p class="content input"><span class="javaString">3/4e10d</span></p>
+	<p class="content output"><span class="jmeType">RealGrande</span>: 7.5E-11</p>
+	<p class="content input"><span class="javaString">î/(2-3î)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: -0.23076923076923078+0.15384615384615385I</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[9,3]/3</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [3,1]</p>
+	<p class="content input"><span class="javaString">[[1,2,3],[4,5,6]]/ui</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| -I   -2I  -3I |
+		| -4I  -5I  -6I |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">1/[3,4]</span> <span class="comment">(vector inverso respecto al producto escalar <b class="monospace">1/v=v/|v|<sup>2</sup></b>)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [0.12,0.16]</p>
+	<p class="content input"><span class="javaString">[3,4]/[3,4]</span> <span class="comment">(vector por su inverso = 1)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">1/[[2,3],[4,5]]</span> <span class="comment">(matriz inversa, puede usarse también <b class="monospace">inv([2,3],[4,5])</b>)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| -2.5  1.5 |
+		|  2    -1  |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[[1,2],[3,4],[5,6]]/[[1,2],[3,4]]</span> <span class="comment">(matriz numerador por inversa del denominador)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 1   0 |
+		| 0   1 |
+		| -1  2 |</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="suma.html">suma</a>,
+	<a href="diferencia.html">diferencia</a>,
+	<a href="producto.html">producto</a>,
+	<a href="cociente_entero.html">cociente entero</a>,
+	<a href="modulo.html">modulo</a>,
+	<a href="potencia.html">potencia</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

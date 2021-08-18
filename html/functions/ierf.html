@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="ierf" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">ERF<sup>-1</sup></span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content"><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_error" class="tooltip">Función error recíproca (ERF<sup>-1</sup>)<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_error</span></a></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">ierf</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">ERF^-1</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">ierf(<span class="nonTerminal">&lt;x></span>)
+          <span class="nonTerminal">&lt;x></span>::= <span class="ebnfSpecial">x∈[-1,1]</span></p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">ierf(0.5)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.47699602437932237</p>
+	<p class="content input"><span class="javaString">erf(ierf(0.5))</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.5000537366114719</p>
+	<p class="content input"><span class="javaString">ierf(-1,1,2)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [-Infinity,Infinity,NaN]</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.4.7</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="erf.html">erf</a>,
+	<a href="erfc.html">erfc</a>,
+	<a href="normal.html">normal</a>,
+	<a href="distribucion_normal.html">distribución normal</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

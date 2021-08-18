@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="set" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Set</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<ul class="listIcon">
+	<li>Reemplaza un elemento de un vector, en una posición dada, por otro elemento</li>
+	<li>Añade/reemplaza/elimina una entrada de un diccionario</li>
+</ul>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">set</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">set</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">set(&lt;vector>,&lt;posición>,&lt;valor>)
+          | set(&lt;diccionario>,&lt;clave>[,&lt;valor>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>vector|diccionario</td>
+			<td>vector|diccionario de datos</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>posición|clave</td>
+			<td>Posición del vector a reemplazar en [1,dim(&lt;vector>)] o entrada nueva o antigua(reemplazo) del diccionario</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>valor</td>
+			<td>Nuevo valor para esa posición|clave</td>
+			<td>∅ <br/><small class="comment">(eliminar entrada)</small></td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">set(rango(10),5,inf)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [0,1,2,3,Infinity,5,6,7,8,9]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">set(dic(<mark class="gray1">'x',3</mark>,'y',2),'x',-10)</span>&emsp;<small class="comment">modificar entrada</small></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {<mark class="gray1">'x'=-10</mark>, 'y'=2}</p>
+	<p class="content input"><span class="javaString">set(dic('x',3,'y',2),'z',-10)</span>&emsp;<small class="comment">añadir entrada</small></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'x'=3, 'y'=2, <mark class="gray1">'z'=-10</mark>}</p>
+	<p class="content input"><span class="javaString">set(dic('x',3,'y',2),'x')</span>&emsp;<small class="comment">eliminar entrada</small></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'y': 2}</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">set(mat1(4),3,[-10,-10,-10,-10])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		|  1    0    0    0  |
+		|  0    1    0    0  |
+		| -10  -10  -10  -10 |
+		|  0    0    0    1  |</p>
+	<p class="content input"><span class="javaString">trasp(set(trasp(mat1(4)),3,[-10,-10,-10,-10]))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 1  0  -10  0 |
+		| 0  1  -10  0 |
+		| 0  0  -10  0 |
+		| 0  0  -10  1 |</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.3.7.1</p>
+<p class="content modificado">v0.6.0.2</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="swap.html">swap</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

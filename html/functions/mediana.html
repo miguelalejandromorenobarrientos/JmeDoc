@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="mediana" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Mediana Muestral</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Mediana muestral de los elementos de un vector.</p>
+<p class="content">El resultado será el elemento central de la serie de datos 
+si es impar o la media de los dos centrales si es par.</p>
+<p class="content">Los valores del vector deben ser números reales</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">mediana</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">mediana</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">mediana(&lt;vectorReal>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">mediana(2,6,-1,6,0,5,3,10)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 8  <span class="comment">(media de los centrales 3 y 5 en el vector ordenado <b class="monospace nonItalic">[-1,0,2,<mark class="gray1">3,5</mark>,6,6,10]</b>)</span></p>
+	<p class="content input"><span class="javaString">mediana(-3,0,0b,3,1,9,7d)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1  <span class="comment">(central en el vector ordenado <b class="monospace nonItalic">[-3,0,0b,<mark class="gray1">1</mark>,3,7d,9]</b>)</span></p>
+	<p class="content input"><span class="javaString">mediana(rango(1,101))</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 50.5</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="moda.html">moda</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="subconjunto" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Subconjunto</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">
+	BINARIO  
+	<span class="tooltip">(máxima)
+		<span class="tooltiptext" style="width:240px; margin-left:-120px">java.lang.Integer.MAX_VALUE</span>
+	</span>
+</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve <i>verdadero</i> si el primer vector/conjunto/cadena/diccionario está contenido en el segundo vector/conjunto/cadena/diccionario</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">{i}</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">&#x2282;</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">&lt;vector_sub>|&lt;texto_sub>|&lt;diccionario_sub>{i}&lt;vector>|&lt;texto>|&lt;diccionario></p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[1,2]{i}[4,2,1,3]</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">[3,1,3]{i}[6/2,2+1,1,2-1,10]</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">and([]{i}[],[]{i}rango(10),[]{i}[false])</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero <small class="comment">(&#x2205; es subconjunto de cualquier conjunto)</small></p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">dic('a',3){i}dic('x',10,'a',3)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">dic('a',3){i}dic('x',10,'a',2)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+	<p class="content input"><span class="javaString">dic([]){i}dic('',nan)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">'Mundo'{i}'Hola Mundo'</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">''{i}'Hola Mundo'</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero  <small class="comment">(la cadena vacía esta contenida en toda cadena)</small></p>
+	<p class="content input"><span class="javaString">'mundo'{i}'Hola Mundo'</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content modificado">v0.4.4</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Ver también…</p>
+	
+<p class="content">
+	<a href="pertenencia.html">pertenencia</a>,
+	<a href="primera_ocurrencia.html">primera ocurrencia</a>,
+	<a href="encontrar_todas.html">encontrar todas</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

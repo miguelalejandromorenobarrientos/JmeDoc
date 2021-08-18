@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="esféricas, cilindricas, cil_a_esf" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Cilíndricas a Esféricas</span><a href="../../index.html">Volver</a></header>
+
+<p class="content monospace" style="font-size:2em">
+	<b>ρ</b>=√(<font color=red>ρ</font>²+<font color=blue>z</font>²)<br/>
+	<b>θ</b>=<font color=green>φ</font><br/>
+	<b>φ</b>=arctan <span class="frac"><span style="color:red">ρ</span><span style="color:blue">z</span></span>
+</p>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Convierte un punto en coordenadas cilíndricas a esféricas</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">cil_a_esf</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">cil_a_esf</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">cil_a_esf(&lt;ρ>,&lt;φ>,&lt;z>)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>ρ</td>
+			<td>Coordenada radial <i>ρ</i> (real)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td class="monospace">φ</td>
+			<td>Coordenada azimutal <i class="monospace">φ</i> (real)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>z</td>
+			<td>Coordenada vertical o altura <i>z</i> (real)</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- RETURNED VALUE -->
+<p class="subtitle">Valor devuelto</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Tipo: <i>Vector</i></th>
+		</tr>
+		<tr>
+			<th>Componente</th>
+			<th>Nombre</th>
+			<th>Descripción</th>
+			<th>Tipo</th>
+			<th>Rango</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>ρ</td>
+			<td>Coordenada radial</td>
+			<td><i>RealDoble</i></td>
+			<td class="monospace">0≤ρ&lt;∞</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>θ</td>
+			<td>Coordenada azimutal</td>
+			<td><i>RealDoble</i></td>
+			<td class="monospace">0≤θ&lt;2π</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td class="monospace">φ</td>
+			<td>Ángulo polar</td>
+			<td><i>RealDoble</i></td>
+			<td class="monospace">0≤φ≤π</td>
+		</tr>
+	</tbody>
+</table>
+
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">cil_a_esf(4,pi/2,3)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [5,1.5707963267948966,0.9272952180016122]</p>
+	<p class="content input"><span class="javaString">cil_a_esf(10,0,5)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [11.180339887498949,0,1.1071487177940904]</p>
+	<p class="content input"><span class="javaString">cil_a_esf(0,0,0)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [0,0,0]</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="esf_a_cil.html">esféricas a cilíndricas</a>,
+	<a href="car_a_esf.html">cartesianas a esféricas</a>,
+	<a href="esf_a_car.html">esféricas a cartesianas</a>,
+	<a href="car_a_cil.html">cartesianas a cilíndricas</a>,
+	<a href="cil_a_car.html">cilíndricas a cartesianas</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

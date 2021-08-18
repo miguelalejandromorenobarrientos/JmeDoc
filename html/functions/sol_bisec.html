@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="biseccion, sol_bisec" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Método de la Bisección</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Método de la bisección para la búsqueda de un cero de una función univariable.</p>
+<p class="content">El método de la bisección siempre encuentra una y solo una solución en un intervalo abierto (a,b) de una 
+función continua en la que exista solución y que la imagen de los extremos tenga signos distintos, <span class="monospace">f(a)f(b)&lt;0</span>.
+<br/>Si los extremos tienen mismo signo la convergencia no está asegurada aunque exista solución en el intervalo abierto</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">sol_bisec</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">sol_bisec</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">sol_bisec(&lt;función>,&lt;varname>,&lt;extremo_inf>,&lt;extremo_sup>[,&lt;error>|&lt;maxiter>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>función</td>
+			<td>Función de una variable a encontrar raiz</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varname</td>
+			<td>Variable de la que depende la función</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>extremo_inf</td>
+			<td>Extremo inferior de la búsqueda</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>extremo_sup</td>
+			<td>Extremo superior de la búsqueda</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>error</td>
+			<td>Valor flotante del margen de error en la aproximación de la raiz.
+				<br/>Si se introduce un valor grande de este parámetro, se puede obtener una aproximación de la raiz
+				<br/>que pueda ser usado por otro método (como el de Newton o secante)
+			</td>
+			<td>1E-15</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>maxiter</td>
+			<td>Si se introduce un <b><i>EnteroGrande</i></b> como quinto parámetro, será el máximo de iteraciones.
+				<br/>Si se introduce un valor pequeño de este parámetro, se puede obtener una aproximación de la raiz
+				<br/>que pueda ser usado por otro método (como el de Newton o secante)
+			</td>
+			<td class="monospace">⌈log<sub>2</sub>(b-a)-log<sub>2</sub>(error)⌉</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sol_bisec(cos(x)-x,x,-pi,pi)</span>    <b class="comment nonItalic monospace">cos(x)=x</b></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.7390851332151608</p>
+	<p class="content input"><span class="javaString">sol_bisec(x^2-1,x,0,10)</span>    <b class="comment nonItalic monospace">cos(x)=x</b></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sol_bisec(cos(x)-x,x,-pi,pi,0.01)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.739<mark class="error">378739760879</mark></p>
+	<p class="content input"><span class="javaString">sol_bisec(cos(x)-x,x,-pi,pi,5b)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.6872233929727672</p>
+</div>
+
+<div class="example">
+	<p class="content comment">cuando f(a)f(b)>=0 la convergencia no está asegurada:</p>
+	<p class="content input"><span class="javaString">sol_bisec(cos(x)+0.999,x,-4,<mark class="gray1">-3</mark>)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: -3.1863177407585255</p>
+	<p class="content input"><span class="javaString">sol_bisec(cos(x)+0.999,x,-4,<mark class="gray1">0</mark>)</span></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">&lt;&lt;&lt;FuncionException>>> en funcion "sol_bisec": Solucion no encontrada --> sol_bisec(Vector:[cos(x)+0.999,x,-4,0])</mark></p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="newton.html">método de Newton</a>,
+	<a href="sol_newton.html">método de Newton usando derivada</a>,
+	<a href="sol_sec.html">método de la secante</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-language" content="es"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="distribution" content="Global" />
+    <meta name="audience" content="all" />
+    <meta name="robots" content="index,follow" />
+
+	<!-- icon -->
+    <link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	<link href="../../css/default.css" rel="stylesheet" type="text/css" />        
+
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../../js/highlight.pack.js" charset="UTF-8"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	<style>
+		td, th
+		{
+			word-break: break-all !important;
+		}
+	</style>
+	
+</head>
+
+<body>
+	
+<header class="title" style="align-items:center;display:flex">
+	<img src="../../images/jme_logo.png" width=48 style="min-width:48px"/>
+	<span  style="margin-left: 0.75em;font-size:1.25em"class="webdeveloper"></span>  
+	<small style="margin-left: 0.5em;margin-right: 1em" class="version"></small>
+	<span style="margin-left:auto">   
+		<small><small><a href="../javadoc/index.html" class="discLink"><i>javadoc</i></a></small></small> 
+		<a href="../jmescript/jmescript.html" class="discLink" style="color: #335"><b>JMEScript</b></a>
+		<a href="../../index.html" class="discLink" style="color: #335"><b>Manual de Usuario</b></a> 
+		<a class="homepage discLink"><b>JME Homepage</b></a>
+	</span>
+</header>
+
+<hr/>
+
+<table id="index" style="border: 1px solid black;max-width:340px;margin-left: 3%">
+	<tr><td><a class="index">introduccion</a></td></tr>
+	<tr><td><a class="index">version</a></td></tr>
+	<tr><td><a class="index">entrada</a></td></tr>
+	<tr><td><a class="index">tipos</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">realdoble</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">complejo</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">enterogrande</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">realgrande</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">booleano</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">texto</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">vector</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">diccionario</a></td></tr>
+	<tr><td><a class="index">var_const</a></td></tr>
+	<tr><td><a class="index">thread</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">expthread</a></td></tr>
+	<tr><td><a class="index">operadores</a></td></tr>
+	<tr><td><a class="index">operadores_usuario</a></td></tr>
+	<tr><td><a class="index">funciones</a></td></tr>
+	<tr><td><a class="index">funciones_usuario</a></td></tr>
+	<tr><td><a class="index">constantes</a></td></tr>
+	<tr><td><a class="index">entrada_tostring</a></td></tr>
+	<tr><td><a class="index">repl</a></td></tr>
+	<tr><td><a class="index">csv</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">import_csv</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">export_csv</a></td></tr>
+	<tr><td><a class="index">html_table</a></td></tr>
+	<tr><td><a class="index">dependencies</a></td></tr>
+	<tr><td><a class="index">considerations</a></td></tr>
+</table>
+
+<hr/>
+
+
+
+
+<!-- INTRODUCTION -->
+<br/>
+<h2 class="subtitle" id="introduccion">Introducción a JME</h2>
+
+<br/>
+<div class="tema content">
+<p class="content">
+<b><i>Java Math Expression</i> 'JME'</b> es una biblioteca <i>freeware</i> ejecutable
+<small><i>(incluye una consola <b>REPL</b>)</i></small> para el lenguaje Java que implementa un potente evaluador matemático
+de expresiones matemáticas introducidas en tiempo de ejecución en forma de cadena (<i>Math Parser</i> en inglés).</p>
+<p class="content">
+La utilización de la biblioteca JME es sencilla y el lenguaje matemático que utiliza es muy similar al
+lenguaje matemático usual y al utilizado en muchos programas de cálculo y los propios lenguajes de
+programación.</p>
+<p class="content">
+JME realiza cálculos numéricos, <b>no</b> es una biblioteca de cálculo simbólico (CAS), por lo que <b>no</b>
+simplificará expresiones o resolverá ecuaciones algebraicamente (si algunas numéricas). En lugar de eso
+devolverá como resultado los tipos de datos del lenguaje.</p>
+<p class="content">
+El lenguaje JME es el lenguaje implementado por la biblioteca JME. Es un lenguaje <b>case insensitive</b>,
+por lo que todas las variables, constantes, funciones y caracteres en general no diferencian mayúsculas-minúsculas
+(excepto para el tipo <i>Texto</i> y ciertos operadores). Los tokens del lenguaje están formados por 
+distintas clases de números, operadores, funciones, identificadores, paréntesis, booleanos, vectores y cadenas.
+JME <b>no es thread-safe</b>, por lo que el programador debe encargarse de la programación multihilo.</p>
+<p class="content">
+La clase <b><i>jme.Expresion</i></b> es la clase principal de la biblioteca JME, encargada de crear, almacenar y evaluar
+las expresiones.</p>
+</div>
+
+
+
+
+<!-- VERSION -->
+<br/>
+<h2 class="subtitle" id="version">Versión de Java VM</h2>
+
+<br/>
+<div class="tema content">
+<p class="content">
+JME mantiene la compatibilidad con <b>Java 6</b> para soportar portabilidad con Android y está testado 
+en <b>Java 7, 8</b>. JME podría migrar a Java 8+ dependiendo de la portabilidad en Android.</p>
+</div>
+
+
+
+
+<!-- INPUT -->
+<br/>
+<h2 class="subtitle" id="entrada">Entrada de expresiones</h2>
+<br/>
+
+<div class="tema content">
+<p class="content">
+Las expresiones JME se introducen mediante una cadena al constructor de la clase <b><i>jme.Expresion</i></b>:</p>
+<pre><code class="java content">// inicialización de una expresión (parseo)
+try
+{
+    Expresion exp = new Expresion( "2*sqrt(3^2+4^2)" );
+}
+catch ( ExpresionException e ) { /*...*/ }</code></pre>
+<p class="content">
+<b><i>ExpresionException</i></b> es la excepción base de todas las excepciones JME y hereda de <i>RuntimeException</i>,
+por lo que no es obligatorio capturarla pero si recomendable.</p>
+<p class="content">
+El método <b>Expresion#evaluar</b> evalúa la expresión y devuelve un objeto de tipo <b><i>Terminal</i></b>,
+que es la clase base de todos los tipos de datos JME que se tratarán en la próxima sección.
+<div class="content console">
+<pre><code class="java">// evaluación
+try
+{
+    Expresion exp = new Expresion( "2*sqrt(3^2+4^2)" );
+    System.out.println( exp.evaluar() );  // (llamada implícita a toString del resultado)
+}
+catch ( ExpresionException e ) { /*...*/ }</code></pre>
+<span class="javaOutput">10</span>
+</div>
+
+<p class="content">
+Los <b>espacios</b> y <b>tabuladores</b> son ignorados, en general, en las expresiones JME, exceptuando el tipo <b><i>Texto</i></b> y
+pueden separarse factores (mediante multiplicación implícita) con espacios <span class="monospace" style="white-space:nowrap">"3+4 6" → 27.</span></p>
+</div>
+
+
+
+
+<!-- TYPES -->
+<br/>
+<h2 class="subtitle" id="tipos">Tipos de datos</h2>
+<br/>
+
+<div class="tema content">
+<p class="content">
+JME implementa 8 tipos de datos; <b><i>RealDoble, Complejo, EnteroGrande, RealGrande, VectorEvaluado, Diccionario, Booleano</i></b> y <b><i>Texto</i></b>. 
+Además de dos pseudo-tipos; <i>matrices</i> y <i>conjuntos</i>. El diagrama de clases de la jerarquía de tipos es el siguiente:</p>
+<br/>
+<img src="../../images/uml_jme_types.png" class="centerImg"/>
+<br/><br/>
+<p class="content">
+Como puede verse en el diagrama, todos los tipos de datos heredan de la clase <b><i>Terminal</i></b>, que es la clase base
+de todos los tipos. Esta clase abstracta define métodos de comprobación de tipo y un método estático <b>Terminal#castToJME</b> que permite
+convertir un tipo u objeto cualquiera a tipo JME con las siguientes conversiones:</p>
+<ul class="content listIcon"> 
+	 <li><i>long | BigInteger → <b>EnteroGrande</b></i></li>
+	 <li><i>BigDecimal → <b>RealGrande</b></i></li>
+	 <li>otro número <i>→ <b>RealDoble</b></i></li>
+	 <li><i>boolean → <b>Booleano</b></i></li>
+	 <li><i>char | String → <b>Texto</b></i></li>
+	 <li>array <i>→ <b>VectorEvaluado</b></i> con los objetos internos convertidos con las mismas reglas</li>
+	 <li><i>Map → <b>Diccionario</b></i> con las claves y valores internos convertidos con las mismas reglas</li>
+	 <li>otro objeto <i>→ <b>Texto</b></i> (usando <b>#toString</b>)</li>
+</ul>
+<p class="content">
+Además especifica el método <b>Terminal#castToJava</b> para cada tipo de dato JME, que convierte éste a objeto Java con
+las siguientes conversiones:</p>
+<ul class="content listIcon"> 
+	 <li><i>RealDoble → <b>double</b></i></li>
+	 <li><i>EnteroGrande → <b>BigInteger</b></i></li>
+	 <li><i>RealGrande → <b>BigDecimal</b></i></li>
+	 <li><i>Complejo → <b>Map&lt;String,Double></b></i> <small>(mapa con valor real e imaginario)</small></li>
+	 <li><i>Booleano → <b>boolean</b></i></li>
+	 <li><i>Texto → <b>String</b></i></li>
+	 <li><i>Vector → <b>Object[]</b></i>, con las mismas conversiones en los elementos</li>
+	 <li><i>Diccionario → <b>Map&lt;Object,Object></b></i>, con las mismas conversiones en las claves y valores</li>
+</ul>
+<br/>
+<p class="content">
+Todos los terminales implementan <i>Cloneable</i> y todas las clases JME <i>Serializable</i>.</p>
+<p class="content">
+Los 4 tipos de números heredan de la clase <i><b>Numero</b></i>, que especifica métodos de conversión a tipos Java y <i><b>Complejo</b></i>.</p>
+
+<br/>
+<h3 class="subSection" id="realdoble">RealDoble</h3>
+<br/>
+<p class="content">
+El tipo <b><i>RealDoble</i></b> es el wrapper JME para el tipo <i>double</i> de Java. Puede instanciarse un
+<i>RealDoble</i> en Java mediante un constructor que recibe un valor <i>double</i>:</p>
+<pre><code class="java content">RealDoble rd = new RealDoble(Math.PI);  // puede obtenerse también mediante la constante RealDoble.PI</code></pre>
+<p class="content">
+La distintas formas de entrada de un valor <i>RealDoble</i> en una expresión JME pueden encontrarse en el
+<a href="../../index.html#realdoble">manual de usuario#realdoble</a>:</p>
+<div class="example">
+	<p class="content input"><span class="javaString">1E15(1+pi)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 4.141592653589793E15</p>
+</div>
+
+<br/>
+<table class="content dataTable">
+	<thead>
+	<tr>
+		<th colspan="4">E/S y conversiones de <b><i>RealDoble</i></b></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Método</th>
+		<th>Tipo de retorno</th>
+		<th>Conversión</th>
+		<th>Posible pérdida de precisión</th>
+	</tr>
+	<tr>
+		<td>entrada</td>
+		<td><i>String</i></td>
+		<td>Devuelve la representación usual de un <i>double</i>, pero eliminando el punto cero final en enteros <b class="monospace">(<span style="text-decoration:line-through">2.0</span> → 2)</b>. Los valores especiales se introducen como <b>inf</b>,<b>-inf</b> y <b>nan</b></td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>toString</td>
+		<td><i>String</i></td>
+		<td>Devuelve la representación usual de un <i>double</i>, pero eliminando el punto cero final en enteros <b class="monospace">(<span style="text-decoration:line-through">2.0</span> → 2)</b></td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>doble</td>
+		<td><i>double</i></td>
+		<td>Devuelve el propio valor que representa el <i>RealDoble</i></td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>re</td>
+		<td><i>double</i></td>
+		<td>Igual que <i>doble()</i></td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>im</td>
+		<td><i>double</i></td>
+		<td>Devuelve 0.</td>
+		<td>NO <small>(obviamente se pierde la parte real, pero la imaginaria es exacta)</small></td>
+	</tr>
+	<tr>
+		<td>complejo</td>
+		<td><i>Complejo</i></td>
+		<td>Devuelve un complejo con parte real igual al <i>RealDoble</i> e imaginaria 0.</td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>longint</td>
+		<td><i>long</i></td>
+		<td>Devuelve la parte entera del <i>RealDoble</i> como entero largo</td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>ent</td>
+		<td><i>int</i></td>
+		<td>Devuelve la parte entera del <i>RealDoble</i> como entero</td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>biginteger</td>
+		<td><i>BigInteger</i></td>
+		<td>Devuelve la parte entera del <i>RealDoble</i> como <i>BigInteger</i> <small>(valores no finitos no pueden convertirse a <i>BigInteger</i>)</small></td>
+		<td>SI <small>(si es entero NO)</small></td>
+	</tr>
+	<tr>
+		<td>bigdecimal</td>
+		<td><i>BigDecimal</i></td>
+		<td>Devuelve el <i>RealDoble</i> como <i>BigDecimal</i> <small>(valores no finitos no pueden convertirse a <i>BigDecimal</i>)</small></td>
+		<td>NO</td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+<h3 class="subSection" id="complejo">Complejo</h3>
+<br/>
+<p class="content">
+El tipo <b><i>Complejo</i></b> implementa números complejos a partir de dos <i>double</i> de Java. Puede instanciarse un
+<i>Complejo</i> en Java mediante un constructor que recibe los valores <i>double</i> de la parte real e imaginaria, o solo
+parte imaginaria para imaginarios puros:</p>
+<pre><code class="java content">Complejo z1 = new Complejo(-1,2);  // -1+2i
+Complejo z2 = new Complejo(-3);  // -3i
+</code></pre>
+<p class="content">
+El token <b>î</b> y la constante <b>ui</b> representan a la unidad imaginaria. La salida se muestra como <b>I</b>.</p>
+<p class="content">
+La distintas formas de entrada de un valor <i>Complejo</i> en una expresión JME pueden encontrarse en el
+<a href="../../index.html#complejo">manual de usuario#complejo</a>:</p>
+<div class="example">
+	<p class="content input"><span class="javaString">cmplj(2,3)^polar(1,pi/2)+3-2ui</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 3.106419568690621-1.6411846545785433I</p>
+</div>
+
+<br/>
+<table class="content dataTable">
+	<thead>
+	<tr>
+		<th colspan="4">E/S y conversiones de <b><i>Complejo</i></b></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Método</th>
+		<th>Tipo de retorno</th>
+		<th>Conversión</th>
+		<th>Posible pérdida de precisión</th>
+	</tr>
+	<tr>
+		<td>entrada</td>
+		<td><i>String</i></td>
+		<td>Representación en la forma <b class="monospace">a+bî</b> del complejo</td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>toString</td>
+		<td><i>String</i></td>
+		<td>Representación en la forma <b class="monospace">a+bI</b> del complejo</td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>doble</td>
+		<td><i>double</i></td>
+		<td>Igual que <i>re()</i></td>
+		<td>NO <small>(obviamente se pierde la parte imaginaria, pero la real es exacta)</small></td>
+	</tr>
+	<tr>
+		<td>re</td>
+		<td><i>double</i></td>
+		<td>Devuelve la parte real del complejo</td>
+		<td>NO <small>(obviamente se pierde la parte imaginaria, pero la real es exacta)</small></td>
+	</tr>
+	<tr>
+		<td>im</td>
+		<td><i>double</i></td>
+		<td>Devuelve la parte imaginaria del complejo</td>
+		<td>NO <small>(obviamente se pierde la parte real, pero la imaginaria es exacta)</small></td>
+	</tr>
+	<tr>
+		<td>complejo</td>
+		<td><i>Complejo</i></td>
+		<td>Devuelve el propio complejo</td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>longint</td>
+		<td><i>long</i></td>
+		<td>Devuelve la parte entera de la parte real como entero largo</td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>ent</td>
+		<td><i>int</i></td>
+		<td>Devuelve la parte entera de la parte real como entero</td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>biginteger</td>
+		<td><i>BigInteger</i></td>
+		<td>Devuelve la parte entera de la parte real como <i>BigInteger</i> <small>(valores no finitos no pueden convertirse a <i>BigInteger</i>)</small></td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>bigdecimal</td>
+		<td><i>BigDecimal</i></td>
+		<td>Devuelve la parte real como <i>BigDecimal</i> <small>(valores no finitos no pueden convertirse a <i>BigDecimal</i>)</small></td>
+		<td>NO <small>(obviamente se pierde la parte imaginaria, pero la real es exacta)</small></td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+<h3 class="subSection" id="enterogrande">EnteroGrande</h3>
+<br/>
+<p class="content">
+El tipo <b><i>EnteroGrande</i></b> es el wrapper JME para la clase <i>BigInteger</i> de Java. Puede instanciarse un
+<i>EnteroGrande</i> en Java mediante una cadena, un <i>BigInteger</i> o un entero:</p>
+<pre><code class="java content">EnteroGrande n1 = new EnteroGrande( "123456789012345678901234567890" );
+EnteroGrande n2 = new EnteroGrande( BigInteger.valueOf(3L) );
+EnteroGrande n3 = new EnteroGrande(3);
+EnteroGrande n4 = new EnteroGrande(3L);
+</code></pre>
+<p class="content">
+La distintas formas de entrada de un valor <i>EnteroGrande</i> en una expresión JME pueden encontrarse en el
+<a href="../../index.html#enterogrande">manual de usuario#enterogrande</a>:</p>
+<div class="example">
+	<p class="content input"><span class="javaString">3b^50*enterogrande(80)!</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 51379569193711263672749930673071572699596143108424836522265297582329006950023338319748268146554922091327716819073018804305920000000000000000000</p>
+</div>
+
+<br/>
+<table class="content dataTable">
+	<thead>
+	<tr>
+		<th colspan="4">E/S y conversiones de <b><i>EnteroGrande</i></b></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Método</th>
+		<th>Tipo de retorno</th>
+		<th>Conversión</th>
+		<th>Posible pérdida de precisión</th>
+	</tr>
+	<tr>
+		<td>entrada</td>
+		<td><i>String</i></td>
+		<td>Representación del entero más un sufijo <b>b</b> al final</td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>toString</td>
+		<td><i>String</i></td>
+		<td>Representación del entero</td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>doble</td>
+		<td><i>double</i></td>
+		<td>Devuelve un valor <i>double</i> a partir del <i>EnteroGrande</i></td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>re</td>
+		<td><i>double</i></td>
+		<td>Igual que <i>doble()</i></td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>im</td>
+		<td><i>double</i></td>
+		<td>0.</td>
+		<td>NO <small>(obviamente se pierde la parte real, pero la imaginaria es exacta)</small></td>
+	</tr>
+	<tr>
+		<td>complejo</td>
+		<td><i>Complejo</i></td>
+		<td>Devuelve complejo con parte real <i>double</i> a partir del <i>EnteroGrande</i> e imaginaria igual a 0.</td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>longint</td>
+		<td><i>long</i></td>
+		<td>Convierte a <i>long</i></td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>ent</td>
+		<td><i>int</i></td>
+		<td>Convierte a <i>int</i></td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>biginteger</td>
+		<td><i>BigInteger</i></td>
+		<td>Devuelve el propio valor que representa el <i>EnteroGrande</i></td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>bigdecimal</td>
+		<td><i>BigDecimal</i></td>
+		<td>Devuelve el valor como <i>BigDecimal</i> con escala 0</td>
+		<td>NO</td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+<h3 class="subSection" id="realgrande">RealGrande</h3>
+<br/>
+<p class="content">
+El tipo <b><i>RealGrande</i></b> es el wrapper JME para la clase <i>BigDecimal</i> de Java. Puede instanciarse un
+<i>RealGrande</i> en Java mediante una cadena, un <i>BigDecimal</i> o un flotante:</p>
+<pre><code class="java content">RealGrande x1 = new RealGrande( "1.2345678901234567890123456789" );
+RealGrande x2 = new RealGrande( BigDecimal.valueOf(Math.PI) );
+RealGrande x3 = new RealGrande(3);
+RealGrande x4 = new RealGrande(3L);
+RealGrande x5 = new RealGrande(3.1f);
+RealGrande x6 = new RealGrande(3.2d);
+</code></pre>
+<p class="content">
+La distintas formas de entrada de un valor <i>RealGrande</i> en una expresión JME pueden encontrarse en el
+<a href="../../index.html#realgrande">manual de usuario#realgrande</a>:</p>
+<div class="example">
+	<p class="content input"><span class="javaString">100d!/realgrande(5+95)¡</span></p>
+	<p class="content output"><span class="jmeType">RealGrande</span>: 2.718281828459045235360287471352662</p>
+</div>
+
+<br/>
+<table class="content dataTable">
+	<thead>
+	<tr>
+		<th colspan="4">E/S y conversiones de <b><i>RealGrande</i></b></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Método</th>
+		<th>Tipo de retorno</th>
+		<th>Conversión</th>
+		<th>Posible pérdida de precisión</th>
+	</tr>
+	<tr>
+		<td>entrada</td>
+		<td><i>String</i></td>
+		<td>Representación del número más un sufijo <b>d</b> al final</td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>toString</td>
+		<td><i>String</i></td>
+		<td>Representación del número</td>
+		<td>NO</td>
+	</tr>
+	<tr>
+		<td>doble</td>
+		<td><i>double</i></td>
+		<td>Convierte a <i>double</i></td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>re</td>
+		<td><i>double</i></td>
+		<td>Igual que <i>doble()</i></td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>im</td>
+		<td><i>double</i></td>
+		<td>0.</td>
+		<td>NO <small>(obviamente se pierde la parte real, pero la imaginaria es exacta)</small></td>
+	</tr>
+	<tr>
+		<td>complejo</td>
+		<td><i>Complejo</i></td>
+		<td>Devuelve complejo con parte real <i>double</i> a partir del <i>RealGrande</i> e imaginaria igual a 0.</td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>longint</td>
+		<td><i>long</i></td>
+		<td>Devuelve la parte entera convertida a entero largo</td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>ent</td>
+		<td><i>int</i></td>
+		<td>Devuelve la parte entera convertida a entero</td>
+		<td>SI</td>
+	</tr>
+	<tr>
+		<td>biginteger</td>
+		<td><i>BigInteger</i></td>
+		<td>Devuelve la parte entera como <i>BigInteger</i></td>
+		<td>SI (si es entero NO)</td>
+	</tr>
+	<tr>
+		<td>bigdecimal</td>
+		<td><i>BigDecimal</i></td>
+		<td>Devuelve el propio valor</td>
+		<td>NO</td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+<h3 class="subSection" id="booleano">Booleano</h3>
+<br/>
+<p class="content">
+El tipo <b><i>Booleano</i></b> es el wrapper JME para el tipo <i>boolean</i> de Java. No puede instanciarse,
+sino que se emplea mediante el doubleton <b>Booleano.VERDADERO</b> y <b>Booleano.FALSO</b> o <b><i>Booleano#booleano(boolean)</i></b>:</p>
+<pre><code class="java content">Booleano b1 = Booleano.VERDADERO;
+Booleano b2 = Booleano.FALSO;
+Booleano b3 = Booleano.booleano(true);
+Booleano b4 = Booleano.booleano(false);
+</code></pre>
+<p class="content">
+La distintas formas de entrada de un valor <i>Booleano</i> en una expresión JME pueden encontrarse en el
+<a href="../../index.html#booleano">manual de usuario#booleano</a>:</p>
+<div class="example">
+	<p class="content input"><span class="javaString">[true,false,verdadero,falso,booleano('mentira'),booleano('SI')]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [verdadero,falso,verdadero,falso,falso,verdadero]</p>
+</div>
+
+<br/>
+<table class="content dataTable">
+	<thead>
+	<tr>
+		<th colspan="4">E/S y conversiones de <b><i>Booleano</i></b></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Método</th>
+		<th>Tipo de retorno</th>
+		<th>Conversión</th>
+	</tr>
+	<tr>
+		<td>entrada</td>
+		<td><i>String</i></td>
+		<td>Si el flag de inglés está desactivado "verdadero"|"falso", si no "true"|"false"</td>
+	</tr>
+	<tr>
+		<td>toString</td>
+		<td><i>String</i></td>
+		<td>Igual que <i>entrada()</i></td>
+	</tr>
+	<tr>
+		<td>booleano</td>
+		<td><i>boolean</i></td>
+		<td>Devuelve el valor del <i>Booleano</i></td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+<p class="content">
+EL método estático <b>Booleano#setIngles(true)</b> hace que la salida de <i>Booleano</i> sea en inglés;
+<i>true</i>|<i>false</i> (la entrada puede ser en español/inglés siempre).</p> 
+
+<br/>
+<h3 class="subSection" id="texto">Texto</h3>
+<br/>
+<p class="content">
+El tipo <b><i>Texto</i></b> es el wrapper JME para la clase <i>String</i> de Java. Puede instanciarse mediante
+un constructor que recibe la cadena a envolver:</p>
+<pre><code class="java content">Texto t = new Texto( "Hola Mundo" );
+Texto t0 = Texto.VACIO;  // cadena vacía
+</code></pre>
+<p class="content">
+La distintas formas de entrada de un valor <i>Texto</i> en una expresión JME pueden encontrarse en el
+<a href="../../index.html#texto">manual de usuario#texto</a>:</p>
+<div class="example">
+	<p class="content input"><span class="javaString">'Foo Mc\'Bar '+stexto(pi)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'Foo Mc'Bar 3.141592653589793'</p>
+</div>
+<p class ="content">Tanto las <span class="subSimple">comillas simples</span> como la barra <span class="subSimple">"\"</span> deben escaparse con "\".</p>
+
+<br/>
+<table class="content dataTable">
+	<thead>
+	<tr>
+		<th colspan="4">E/S y conversiones de <b><i>Texto</i></b></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Método</th>
+		<th>Tipo de retorno</th>
+		<th>Conversión</th>
+	</tr>
+	<tr>
+		<td>entrada</td>
+		<td><i>String</i></td>
+		<td>Devuelve la propia cadena con comillas simples a inicio y fin y antepone carácter '\' a comillas simples y barras internas</td>
+	</tr>
+	<tr>
+		<td>toString</td>
+		<td><i>String</i></td>
+		<td>Devuelve la propia cadena con comillas simples a inicio y fin</td>
+	</tr>
+	<tr>
+		<td>textoPlano</td>
+		<td><i>String</i></td>
+		<td>Devuelve texto original (sin comillas)</td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+<p class="content">
+EL método estático <b>Booleano#setIngles(true)</b> hace que la salida de <i>Booleano</i> sea en inglés;
+<i>true</i>|<i>false</i> (la entrada puede ser en español/inglés siempre).</p> 
+
+<br/>
+<h3 class="subSection" id="vector">Vector / VectorEvaluado</h3>
+<br/>
+<p class="content">
+La clase <i>Vector</i> representa a una lista de <i><b>Token</b></i> JME. Los vectores JME pueden contener expresiones,
+por tanto no son datos finales, sino que deben evaluarse para obtener un <b><i>VectorEvaluado</i></b>, que es una lista
+de <b><i>Terminal</i></b>, y es el tipo devuelto al obtener un vector como resultado de evaluar una expresión. La clase 
+<i>Vector</i> es usualmente usada internamente. Los vectores y diccionarios son los únicos tipos JME <b>mutables</b>.
+Puede instanciarse un <i>VectorEvaluado</i> mediante el constructor por defecto o un array de terminales:</p>
+<div class="content console">
+<pre><code class="java" style="margin: 0px">VectorEvaluado v1 = new VectorEvaluado();
+v1.nuevoComponente( RealDoble.DOS );
+v1.nuevoComponente( Booleano.FALSO );
+
+VectorEvaluado v2 = new VectorEvaluado( RealDoble.DOS, Booleano.FALSO );
+
+System.out.println( "     v1: " + v1 );
+System.out.println( "     v2: " + v2 );
+System.out.println( "  v2[1]: " + v2.getComponente(1) );
+System.out.println( "dim(v1): " + v1.dimension() );
+</code></pre>
+<p class="javaOutput">     v1: [2,falso]
+     v2: [2,falso]
+  v2[1]: falso
+dim(v1): 2</p>
+</div>
+
+<br/>
+<p class="content">
+La distintas formas de entrada de un valor vectorial en una expresión JME pueden encontrarse en el
+<a href="../../index.html#vector">manual de usuario#vector</a>:</p>
+<div class="example">
+	<p class="content input"><span class="javaString">[1,4b,5,ui,[],[2,3,4]]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1,4,5,I,[],[2,3,4]]</p>
+</div>
+
+<br/>
+<table class="content dataTable">
+	<thead>
+	<tr>
+		<th colspan="4">E/S y conversiones de <b><i>VectorEvaluado</i></b></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Método</th>
+		<th>Tipo de retorno</th>
+		<th>Conversión</th>
+	</tr>
+	<tr>
+		<td>entrada</td>
+		<td><i>String</i></td>
+		<td>Devuelve la entrada de los elementos del vector entre corchetes separados por comas</td>
+	</tr>
+	<tr>
+		<td>toString</td>
+		<td><i>String</i></td>
+		<td>Devuelve la salida de los elementos del vector entre corchetes separados por comas</td>
+	</tr>
+	<tr>
+		<td>toArray</td>
+		<td><i>Terminal[]</i></td>
+		<td>Devuelve los elementos del vector en un array de terminales</td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+<p class="content">
+El tipo <i>Vector</i> permite la introducción de matrices y conjuntos, que aunque no son tipos JME
+existen funciones que permiten la manipulación de vectores como matrices o conjuntos.
+<br/>Puede verse la forma de entrada en <a href="../../index.html#matriz">manual de usuario#matriz</a>
+y <a href="../../index.html#conjunto">manual de usuario#conjunto</a>.</p>
+
+
+<br/>
+<h3 class="subSection" id="diccionario">Diccionario</h3>
+<br/>
+<p class="content">
+La clase <i>Diccionario</i> representa un mapa de pares de terminales JME. Los pares o entradas
+están formados por dos terminales; una <b><i>clave única</i></b> y un <b><i>valor</i></b>.
+Puede instanciarse un <i>Diccionario</i> mediante el constructor por defecto, un array de terminales 
+con un número par de elementos, un mapa de terminales, una cadena JSON con el método <b>Diccionario#fromJSON</b>
+o una cadena XML con el método Diccionario#fromXML:</p>
+
+<div class="content console">
+<pre><code class="java">Diccionario d1 = new Diccionario();  // diccionario vacío
+Diccionario d2 = new Diccionario( new LinkedHashMap&lt;Terminal,Terminal>() );  // diccionario vacío
+d2.getMap().put( new Texto("libname"), new Texto("JME") );
+Diccionario d3 = new Diccionario( new Texto("a"), RealDoble._INF,
+                                  new Texto("b"), RealDoble.NAN,
+                                  new Texto("c"), RealDoble._UNO );
+Diccionario d4 = Diccionario.fromJSON( "{x:100,y:-1,z:0,state:false}" );
+Diccionario d5 = Diccionario.fromXML( "&lt;x>100&lt;/x>&lt;y>-1&lt;/y>&lt;z>0&lt;/z>&lt;state>false&lt;/state>" );
+		
+System.out.println( String.format( "d1: %s\nd2: %s\nd3: %s\nd4: %s\nd5: %s", d1, d2, d3, d4, d5 ) );</code></pre>
+<p class="javaOutput">d1: {}
+d2: {'libname'='JME'}
+d3: {'a'=-Infinity, 'b'=NaN, 'c'=-1}
+d4: {'x'=100, 'y'=-1, 'z'=0, 'state'=falso}
+d5: {'x'=100, 'y'=-1, 'z'=0, 'state'=falso}</p>
+</div>
+<br/>
+<p class="content">
+La distintas formas de entrada de un diccionario en una expresión JME pueden encontrarse en el
+<a href="../../index.html#diccionario">manual de usuario#diccionario</a>:</p>
+<div class="example">
+	<p class="content input"><span class="javaString">dic('x',100,'y',nan,'z',inf)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'x'=100, 'y'=NaN, 'z'=Infinity}</p>
+	<p class="content input"><span class="javaString">dic(rango(10))</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {0=1, 2=3, 4=5, 6=7, 8=9}</p>
+</div>
+<br/>
+<table class="content dataTable">
+	<thead>
+	<tr>
+		<th colspan="4">E/S de <b><i>Diccionario</i></b></th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Método</th>
+		<th>Tipo de retorno</th>
+		<th>Conversión</th>
+	</tr>
+	<tr>
+		<td>entrada</td>
+		<td><i>String</i></td>
+		<td>Devuelve la entrada del diccionario usando la función dic en forma vectorial; <span class="monospace">dic(c1,v1,c2,v2,...)</span></td>
+	</tr>
+	<tr>
+		<td>toString</td>
+		<td><i>String</i></td>
+		<td>Devuelve la salida de los pares clave/valor en forma de mapa Java  <span class="monospace">{c1=v1, c2=v2,...}</span></td>
+	</tr>
+	</tbody>
+</table>
+<br/>
+<p class="content">
+El método <b>Diccionario#getMap</b> devuelve el mapa que respalda el tipo <b>Diccionario</b> y permite modificar el
+diccionario (los diccionarios son <b><i>mutables</i></b>).
+</div>
+
+
+
+
+<!-- VARS AND CONSTS -->
+<br/>
+<h2 class="subtitle" id="var_const">Variables y constantes</h2>
+<br/>
+
+<div class="content tema">
+<p class="content">
+Las variables y constantes en JME son identificadores que pueden sustituirse en la expresión por
+cualquier tipo de dato JME o por otra subexpresión. Su sintaxis consta siempre de una letra/guión-bajo inicial y
+cero o más cifras, letras, o guión bajo; <b class="monospace">&lt;letra>|_[&lt;letra>|&lt;cifra>|_]*</b>.</p>
+<p class="content">
+JME es <b>case insensitive</b>, por lo que las variables <b>X</b> y <b>x</b> o <b>valor</b> y <b>VaLoR</b>, son iguales.</p>
+<p class="content">
+La diferencia entre las variables y constantes en JME, es que <b>las variables se almacenan en un mapa</b>
+y pueden modificarse y eliminarse para una misma expresión cuantas veces se quiera para evaluar
+la expresión varias veces con distintos valores. <b>Las constantes no se pueden modificar una vez
+establecidas</b>, y no se almacenan en un mapa sino que <b>modifican directamente los identificadores de la
+expresión</b>, siendo por tanto ligeramente más eficientes a la hora de evaluar.</p>
+<p class="content">
+Se debe tener en cuenta que <b>no se deben dar nombres de función a variables o constantes</b>.</p>
+<p class="content">
+Los métodos para introducir variables y constantes son respectivamente <b>Expresion#setVariable</b> y
+<b>Expresion#setConstante</b>. Ambos métodos están sobrecargados para añadir fácilmente distintos datos 
+JME y Java:</p>
+
+<p class="content">
+■ <b><i>void setVariable( String nombre, Token valor )</i></b> : establece la variable <i>nombre</i> con el valor de
+un determinado Token de JME. Este objeto Token puede ser cualquier dato JME u otra expresión:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "x^2-x-1" );
+exp.setVariable( "x", new RealDoble(3) );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">5</span>
+</div>
+<br/>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "p->q" ); // p implica q
+exp.setVariable( "p", Booleano.VERDADERO );
+exp.setVariable( "q", Booleano.FALSO );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">falso</span>
+</div>
+<br/>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "sub^2" );
+exp.setVariable( "sub", new Expresion( "x+2" ) );
+exp.setVariable( "x", new Complejo( 2, 3 ) );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">7+23.999999999999996I</span>
+</div>
+<br/>
+<p class="content">
+■ <b><i>void setVariable( String nombre, double valor )</i></b> : forma más cómoda de introducir una variable
+<i>RealDoble</i>. Es equivalente a <span class="monospace">setVariable( nombre, new RealDoble(valor) )</span>:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "x+1" );
+exp.setVariable( "x", 1/2. );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">1.5</span>
+</div>
+<br/>
+<p class="content">
+■ <b><i>void setVariable( String nombre, double re, double im )</i></b> : forma más cómoda de introducir una
+variable compleja. Es equivalente a <span class="monospace">setVariable( nombre, new Complejo(re,im) )</span>:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "cos(z)" );
+exp.setVariable( "z", 1, -1 );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">0.8337300251311491+0.9888977057628651I</span>
+</div>
+<br/>
+<p class="content">
+■ <b><i>void setVariable( String nombre, boolean bool )</i></b> : forma más cómoda de introducir una variable
+<i>Booleano</i>. Es equivalente a <span class="monospace">setVariable( nombre, bool ? Booleano.VERDADERO:Booleano.FALSO )</span>:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "true->p" );
+exp.setVariable( "p", false );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">falso</span>
+</div>
+<br/>
+<p class="content">
+■ <b><i>void setVariable( String nombre, BigInteger bigint )</i></b> : forma más cómoda de introducir una
+variable <i>EnteroGrande</i>. Es equivalente a <span class="monospace">setVariable( nombre, new EnteroGrande( bigint ) )</span>:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "x!" );
+exp.setVariable( "x", new BigInteger( "100" ) );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000</span>
+</div>
+<br/>
+<p class="content">
+■ <i><b>void setVariable( String nombre, BigDecimal bigdec )</b></i>: forma más cómoda de introducir una
+variable <i>RealGrande</i>. Es equivalente a <span class="monospace">setVariable( nombre, new RealGrande( bigdec ) )</span>:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "2/x" );
+exp.setVariable( "x", new BigDecimal( "1E1000" ) );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">2E-1000</span>
+</div>
+<br/>
+<p class="content">
+■ <b><i>void setVariable( String nombre, Token… elementos )</i></b> : forma de introducir una variable vectorial
+a partir de un array:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "v+[0,1,2]" );
+exp.setVariable( "v", RealDoble.CERO, RealDoble.DOS, new RealDoble(1.5) );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">[0,3,3.5]</span>
+</div>
+<br/>
+<p class="content">
+■ <b><i>void setVariable( String nombre, String expresion )</i></b> : introduce una subexpresión en una variable
+a partir de una cadena. <i>Nota: no comprueba excepciones en la creación de la subexpresión</i>:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "sub/mod(sub)" ); // vector normalizado (=unit(sub))
+exp.setVariable( "sub", "[1,2,3]" );
+System.out.println( exp.evaluar() );</code></pre>
+<span class="javaOutput">[0.2672612419124244,0.5345224838248488,0.8017837257372732]</span>
+</div>
+<br/>
+<p class="content">
+■ <b><i>void setVariable<mark>Texto</mark>( String nombre, String cadena )</i></b> : introduce una cadena de texto en una variable.
+Es equivalente a <span class="monospace">setVariable( nombre, new Texto( cadena ) )</span>:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "s$A$" );
+exp.setVariableTexto( "s", "Hola Mundo" );
+System.out.println( exp.evaluar() );
+</code></pre>
+<span class="javaOutput">'HOLA MUNDO'</span>
+</div>
+<br/>
+<p class="content">
+Los métodos <b>Expresion#setConstante</b> se utilizan de la misma forma que los métodos setVariable.
+Todas las variables o constantes de una expresión deben ser establecidas para poder evaluar, salvo que sea
+una variable local de una función (como el sumatorio, la integral, etc). De lo contrario se obtendrá una
+excepción.</p>
+<p class="content">
+Los métodos <b>Expresion#borrarVariable</b> y <b>Expresion#borrarVariables</b> permiten eliminar una o todas las
+variables de una expresión respectivamente:</p>
+<pre><code class="content java">exp1.borrarVariable( "miVar" );
+exp2.borrarVariables();
+</code></pre>
+<p class="content">
+También puede obtenerse el mapa de variables que tienen su valor establecido en la expresión mediante el
+método <b>Expresion#getVariables</b>, y establecerse mediante un mapa mediante el método <b>Expresion#setVariables</b>.</p>
+<p class="content">
+Si se quieren obtener los identificadores de la expresión que pueden sustituirse por variables o
+constantes, se puede usar el método <b>Expresion#getIdentificadores</b>, o <b>Expresion#getIdentificadoresOrden</b>,
+que devuelve un vector de identificadores en orden lexicográfico. El método <b>Expresion#getIdentificadoresDeclarados</b>, devuelve
+según un parámetro booleano, los identificadores para los cuales existe un valor declarado o los que no:</p>
+<div class="console content">
+<pre><code class="java">Expresion exp = new Expresion( "z*sum(n^2,n,1,10)-m" );
+exp.setVariable( "z", -1 );
+System.out.println( "                       identificadores: " + Arrays.toString( exp.getIdentificadores() ) ); 
+System.out.println( "              identificadores en orden: " + Arrays.toString( exp.getIdentificadoresOrden() ) ); 
+System.out.println( "   identificadores con valor declarado: " + Arrays.toString( exp.getIdentificadoresDeclarados(true) ) ); 
+System.out.println( "identificadores con valor no declarado: " + Arrays.toString( exp.getIdentificadoresDeclarados(false) ) );</code></pre> 
+<p class="javaOutput">                       identificadores: [z, m, n]
+              identificadores en orden: [m, n, z]
+   identificadores con valor declarado: [z]
+identificadores con valor no declarado: [m, n]     <b class="comment" style="color:gray">('n' es local a 'sum' y no necesita iniciarse)</b></p>
+</div>
+<p class="content">
+Puede sustituirse el nombre de una variable por otra en una expresión usando <b>Expresion#setConstante</b>:</p>
+<div class="console content">
+<pre><code class="java">exp = new Expresion( "m[j,sum(sqr(k),k,1,3)]" );
+exp.setConstante( "m", new Identificador("a") )
+   .setConstante( "j", new Identificador("b") )
+   .setConstante( "k", new Identificador("c") );
+exp.setVariable( "a", 2 )
+   .setVariable( "b", 3 );
+System.out.println( "entrada: " + exp.entrada() );
+System.out.println( "  valor: " + exp.evaluar() );</code></pre>
+<p class="javaOutput">entrada: a*[b,sum(sqr(c),c,1,3)]
+  valor: [6,28]
+</p>
+</div>
+</div>
+
+
+
+
+<!-- THREADS -->
+<br/>
+<h2 class="subtitle" id="thread">Ejecución en hilo</h2>
+<br/>
+
+<div class="content tema">
+<p class="content">
+Algunas expresiones pueden necesitar de una gran cantidad de tiempo para evaluarse (en algunos casos años), como un factorial extremadamente
+grande, o una operación pesada sobre muchos elementos. Por eso es preferible usar un hilo para evaluar las expresiones, que se detendrán
+en un hilo interrumpido con <b>Thread#interrupt</b>.  
+</p>
+
+<br/>
+<h3 class="subSection" id="expthread">Clase ExpresionThread</h3>
+<br/>
+<p class="content">
+Puede utilizarse cualquier tipo de hilo para evaluar una expresión <i>JME</i> (en Java 8+, por ejemplo, un <i>FutureTask</i>
+sería una buena opción), pero la clase <b>jme.ExpresionThread</b> permite evaluar fácilmente una expresión, incluyendo la
+posibilidad de un temporizador.
+</p>
+<p class="content">
+<b>ExpresonThread</b> incluye dos constructores, inicializando a partir de una expresión parseada.
+El segundo permite añadir el tiempo máximo aproximado de evaluación:
+</p>
+<pre><code class="content java">/**
+ * Crea un hilo para evaluar la expresión dada
+ * 
+ * @param exp expresión parseada
+ */
+public ExpresionThread( @NotNull Expresion exp )
+
+/**
+ * Crea un hilo para evaluar la expresión dada con límite de tiempo
+ * (en milisegundos)
+ * 
+ * @param exp expresión parseada
+ * @param maxTiempo límite aproximado en milisegundos de evaluación
+ */
+public ExpresionThread( @NotNull Expresion exp, long maxTiempo )
+</code></pre>
+
+<p class="content">
+El método <b>ExpresionThread#getExpresion</b> permite obtener la instancia de la expresión, y <b>ExpresionThread#getException</b> la excepción
+producida en caso de error o interrupción.
+</p>
+<p class="content">
+El método <b>ExpresionThread#alTerminar</b> es una rutina vacía en la clase base que ejecuta al terminar la evaluación de la expresión haya excepción o no.
+Puede reescribirse para ejecutar cualquier código que se desee al terminar (avisar al hilo principal, imprimir un mensaje,...).
+</p>
+<p class="content">
+El método <b>ExpresionThread#startAndJoin</b>, lanza el hilo del script y realiza un '<i>join</i>' del hilo padre a la espera del resultado
+y puede capturar una excepción de tipo <i>Throwable</i> (generalmente una <i>ExpresionException</i>) en caso de error o interrupción.
+</p>
+<br/>
+<p class="content">
+Ejemplo de evaluación de expresión con temporizador en 2 segundos:
+</p>
+
+<div class="console content">
+<pre><code class="java">ExpresionThread expThread = new ExpresionThread(
+	new Expresion( "enterogrande(n)#" ).setVariable( "n", 1000 ),
+	2000 );
+
+try
+{
+    Terminal resultado = expThread.startAndJoin();
+    System.out.println( "Resultado: " + resultado );
+}
+catch ( Throwable e )
+{
+    System.err.println( e.getMessage() );
+}
+</code></pre>
+<small style="color:yellow">Ejecución con n=1000:</small><br/>
+<p class="javaOutput">Resultado: 19590340644999083431262508198206381046123972390589368223882605328968666316379870661851951648789482321596229559115436019149189529725215266728292282990852649023362731392404017939142010958261393634959471483757196721672243410067118516227661133135192488848989914892157188308679896875137439519338903968094905549750386407106033836586660683539201011635917900039904495065203299749542985993134669814805318474080581207891125910</p>
+<br/>
+<small style="color:yellow">Ejecución con n=1E6:</small><br/>
+<p class="javaOutput"><mark class="error">&lt;&lt;&lt;OperacionException>>> en operador [ # ]: Tiempo expirado --> (EnteroGrande:1000000b)#</mark></p>
+</div>
+</div>
+
+<!-- OPERATORS -->
+<br/>
+<h2 class="subtitle" id="operadores">Operadores</h2>
+<br/>
+
+<div class="content tema">
+<p class="content">
+Los operadores de JME puede ser unarios (actúan sobre un operando) o binarios (actúan sobre dos).
+Todos los operadores de JME constan de uno a tres caracteres a lo sumo.
+Puede encontrarse la descripción actualizada de todos los operadores JME en
+<a href="../../index.html#opTable">manual de usuario#operadores</a></p>
+
+<div class="console content">
+<pre><code class="java">System.out.println( new Expresion( "<span style="letter-spacing: 1px">[4<span class="subSimple">!</span><span class="subDouble">+</span>m<span class="subSimple">#</span><span class="subDouble">+</span>n<span class="subDouble">^</span>5,v<span class="subDouble">;#;</span>[2,4],s<span class="subSimple">$A$</span><span class="subDouble">+</span>'!!!']</span>" )
+			.setVariable( "m", 5 )
+			.setVariable( "n", 2 )
+			.setVariable( "v", "[5,23,55,2,-1]" )
+			.setVariableTexto( "s", "Hola Mundo" )
+			.evaluar() );
+</code></pre>
+<p class="javaOutput">[86,[23,55,2],'HOLA MUNDO!!!']</p>
+</div>
+</div>
+
+
+
+
+<!-- OPERATORS DEFINED BY USER -->
+<br/>
+<h2 class="subtitle" id="operadores_usuario">Operadores definidos por el usuario</h2>
+<br/>
+
+<div class="content tema">
+<p class="content">
+Pueden definirse nuevos operadores mediante el método <b>Expresion#nuevaOperacion</b>. Este método
+esta sobrecargado permitiendo varias formas de introducir la definición del operador.</p>
+<p class="content">
+Todos los operadores definidos por el usuario tienen tres caracteres (excepto en el caso de carácter
+nulo <b>'\0'</b>, que permite definir un operador <b class="monospace larger">::</b>). El primer y tercer carácter siempre es <b>':'</b>,
+por lo que todos tendrán la forma <b class="monospace larger">:&lt;carácter>:</b>, siendo <b>&lt;carácter></b> cualquier carácter unicode.</p>
+<br/>
+<h3 class="content">Primera forma:</h3>
+<p class="content">
+Método <b class="monospace larger">Expresion.nuevaOperacion( Operador op )</b>:
+Este método recibe como parámetros un objeto de la clase <b><i>OperadorBinarioDefinidaPorUsuario</i></b> u
+<b><i>OperadorUnarioDefinidoPorUsuario</i></b>, que heredan de la clase abstracta <b><i>Operador</i></b>. Estas clases reciben
+como parámetros del constructor el carácter de la nueva operación, uno o dos nombres de variable, la
+prioridad como entero y la expresión JME que representa al operador y opcionalmente una descripción
+del operador:</p>
+<div class="console content">
+<pre><code class="java">Expresion.nuevaOperacion( new OperadorBinarioDefinidoPorUsuario(
+				'\0', "x", "y", 1000, new Expresion( "sqrt(sqr(x)+sqr(y))" ) ) );
+System.out.println( Expresion.evaluar( "3::4" ) );</code></pre>
+<p class="javaOutput">5</p>
+</div>
+<br/><br/>
+<h3 class="content">Segunda forma:</h3>
+<p class="content">
+Método <b class="monospace larger">Expresion.nuevaOperacion( String declaracion )</b>:
+En esta segunda forma se introduce la declaración del operador en una cadena con la sintaxis</p>
+<p class="bnf content">&lt;def_operador_binario> ::= &lt;var1>:&lt;simbolo>:&lt;var2>(&lt;prioridad>):=&lt;expresion_jme></p>
+<p class="bnf content">&lt;def_operador_unario> ::= &lt;var>:&lt;simbolo>:(&lt;prioridad>):=&lt;expresion_jme>
+				       | :&lt;simbolo>:&lt;var>(&lt;prioridad>):=&lt;expresion_jme></p>
+<div class="content console">
+<pre><code class="java">Expresion.nuevaOperacion( "a:.:b(1000):=rango(a,b+1)" );
+Expresion.nuevOperador( "v:&lt;:(900):=revertir(v)" );
+System.out.println( Expresion.evaluar( "10:.:15:&lt;:" ) );</code></pre>
+<p class="javaOutput">[15,14,13,12,11,10]</p>
+</div>
+<p class="content">
+Las variables en la definición del operador son abstractas, únicamente definen la expresión del operador.<br/>
+El método <b>Expresion#quitarOperadoresUsuario</b> permite eliminar todos los operadores de usuario.
+<b>Expresion#quitarOperador</b> permite eliminar el operador especificado (de usuario o no).</p>
+</div>
+
+
+
+<!-- FUNCTIONS -->
+<br/>
+<h2 class="subtitle" id="funciones">Funciones</h2>
+<br/>
+
+<div class="content tema">
+<p class="content">
+Las funciones predefinidas en JME se escriben mediante un nombre de función y parámetros
+separados por comas encerrados entre paréntesis como en la mayoría de lenguajes de programación y
+el propio lenguaje matemático. Aunque en realidad las funciones JME sólo aceptan un parámetro, pero
+pueden utilizarse vectores para el paso de parámetros, y el analizador léxico se encarga de hacer
+transparente la entrada de éste vector si así se desea:</p>
+<div class="content console">
+<pre><code class="java">System.out.println( new Expresion( "max(5,6,76b,32,2.3d,0)" ).evaluar() );
+System.out.println( new Expresion( "max([5,6,76b,32,2.3d,0])" ).evaluar() );</code></pre>
+<p class="javaOutput">76
+76</p>
+</div>
+<p class="content">
+Las dos formas de llamar a la función <b>max</b> (máximo) son equivalentes.
+Puede encontrarse la descripción actualizada de todas las funciones JME en
+<a href="../../index.html#funcTable" class="nobreakable">manual de usuario#funciones</a></p>
+</div>
+
+
+
+
+<!-- FUNCTIONS DEFINED BY USER -->
+<br/>
+<h2 class="subtitle" id="funciones_usuario">Funciones definidas por el usuario</h2>
+
+<br/>
+
+<div class="content tema">
+<p class="content">
+Se pueden definir nuevas funciones a partir de una expresión JME y el método estático <b>Expresion#nuevaFuncion</b>.
+Este método está sobrecargado para permitir dos formas equivalentes de introducir la función;</p>
+<br/>
+<h3 class="content">Primera forma:</h3>
+<p class="content">
+Método <b class="monospace larger">Expresion.nuevaFuncion( FuncionDefinidaPorUsuario fdpu )</b>:
+Este método recibe como parámetros un objeto de la clase <b><i>FuncionDefinidaPorUsuario</i></b>, que hereda
+de la clase abstracta <b><i>Funcion</i></b>. Esta clase recibe como parámetros del constructor el nombre de la nueva
+función, un vector de variables o parámetros formales, la expresión JME que representa a la función y
+opcionalmente una descripción de la función:</p>
+<div class="content console">
+<pre><code class="java">Expresion.nuevaFuncion( new FuncionDefinidaPorUsuario( 
+			"col", new String[] { "mat", "index" }, 
+			new Expresion( "_catch_(trasp(mat);#;index,format('Error al acceder a la columna %2$s de la matriz %1$s',[mat,index]))",
+			"Obtener columna de matriz" ) ) );
+Expresion exp = new Expresion( "col(m,i)" );
+System.out.println( exp
+                    .setVariable( "m", "[[1,2,3],[4,5,6]]" )
+                    .setVariable( "i", 3 )
+                    .evaluar() );
+System.out.println( exp
+                    .setVariable( "i", 0 )
+                    .evaluar() );</code></pre>
+<p class="javaOutput">[3,6]
+'Error al acceder a la columna 0 de la matriz [[1,2,3],[4,5,6]]'</p>
+</div>
+<br/><br/>
+<h3 class="content">Segunda forma:</h3>
+<p class="content">
+Método <b class="monospace larger">Expresion.nuevaFuncion( String declaracion )</b>:
+En esta segunda forma se introduce la declaración de la función en una cadena con la sintaxis</p>
+<p class="bnf content">&lt;def_funcion> ::= &lt;nombre_funcion>(&lt;variable>[,&lt;variable>]*):=&lt;expresion_jme></p>
+<div class="content console">
+<pre><code class="java">Expresion.nuevaFuncion( "col(mat,index):=_catch_(trasp(mat);#;index,format('Error al acceder a la columna %2$s de la matriz %1$s',[mat,index]))",
+                        "Obtener columna de matriz" );
+Expresion exp = new Expresion( "col(m,i)" );
+System.out.println( exp
+                    .setVariable( "m", "[[1,2,3],[4,5,6]]" )
+                    .setVariable( "i", 3 )
+                    .evaluar() );
+System.out.println( exp
+                    .setVariable( "i", 0 )
+                    .evaluar() );</code></pre>
+<p class="javaOutput">[3,6]
+'Error al acceder a la columna 0 de la matriz [[1,2,3],[4,5,6]]'</p>
+</div>
+<p class="content">
+El segundo parámetro, la descripción, es opcional.
+Las variables o parámetros formales de la expresión usada como nueva función son abstractas, únicamente definen la expresión de la función.<br/>
+La función puede redefinirse cuantas veces se quiera llamando de nuevo al método <b>Expresion#nuevaFuncion</b>
+con una función con el mismo nombre, o puede eliminarse con el método estático <b>Expresion#quitarFuncion</b> (ejemplo:  <i class="monospace">Expresion.quitarFuncion( "col" )</i> ).
+El método <b>Expresion#quitarFuncionesUsuario</b> elimina todas las funciones definidas por el usuario del mapa.
+</p>
+</div>
+
+
+
+
+<!-- CONSTANTS -->
+<br/>
+<h2 class="subtitle" id="constantes">Constantes predefinidas y definidas por el usuario</h2>
+
+<br/>
+
+<div class="content tema">
+<p class="content">
+JME incorpora varias constantes predefinidas que actúan como constantes globales a todas las
+expresiones JME. Además se pueden incorporar nuevas constantes al mapa de constantes globales que
+se encuentra en la clase <b>Expresion</b>, y que puede obtenerse mediante el método estático
+<b>Expresion#getConstantes</b>. Las constantes predefinidas y de usuario son siempre objetos <i>Terminal</i> o derivadas.</p>
+<p class="content">
+Puede encontrarse la descripción actualizada de todas las constantes predefinidas JME en
+<a href="../../index.html#constTable" class="nobreakable">manual de usuario#constantes</a></p>
+<p class="content">
+Además de estas constantes también existen otras como parámetros predefinidos para
+ciertas funciones, como <b>_simpson_</b> para indicar el método de integración numérica de Simpson
+(ejemplo: <i class="monospace">int(phi*x+1,x,-pi,pi,1000,<b>_simpson_</b>)</i>. El valor de estas constantes
+es irrelevante, excepto para la función para la que están definidas.</p>
+<p class="content">
+El usuario puede introducir nuevas constantes globales mediante el método
+<b>Expresion#nuevaConstante( String nombre, Terminal valor )</b>. También pueden eliminarse mediante
+<b>Expresion#quitarConstante</b>.</p>
+<div class="content console">
+<pre><code class="java">Expresion.nuevaConstante( "rt11", new RealDoble( Math.sqrt(11) ) );
+System.out.println( new Expresion( "rt11*cos(rt11)" ).evaluar() );</code></pre>
+<p class="javaOutput">-3.2659498915472995</p>
+</div>
+</div>
+
+
+
+
+<!-- entrada&toString -->
+<br/>
+<h2 class="subtitle" id="entrada_tostring">Los métodos <i>#entrada</i> y <i>#toString</i></h2>
+
+<br/>
+
+<div class="content tema">
+<p class="content">
+Los métodos <i>#entrada</i> y <i>#toString</i> pertenecen a todos los token de JME (<i>toString</i> a todos los objetos Java).
+En la sección de tipos de datos ya se introdujeron estos dos métodos para los terminales JME, pero pertenecen a todos los token 
+e incluso a la clase <b>Expresion</b>.</p>
+<p class="content">
+El método <i>#entrada</i>, representa la forma de entrada del token en JME, es decir, la cadena que será reconocible por el
+analizador léxico para la introducción de ese token. El método <i>#toString</i> representa la forma en que se muestra el token a la salida.
+En muchas ocasiones ambas cadenas coinciden. En otras, son diferentes. Por ejemplo, un entero grande debe
+introducirse con una '<b>b</b>' final, pero se muestra sin ella a la salida (<i>entrada</i>: <b>1234567890<mark>b</mark></b>, <i>salida</i>: <b>1234567890</b>).</p>
+<p class="content">
+Una expresión completa también tiene método de entrada y salida:</p>
+<div class="content console">
+<pre><code class="java">Expresion exp = new Expresion( "3b+î-[3,4];#;2" );
+System.out.println( " entrada: " + exp.entrada() );
+System.out.println( "toString: " + exp );</code></pre>
+<p class="javaOutput"> entrada: 3b+î-[3,4];#;2
+toString: 3+I-[3,4] sub 2</p>
+</div>
+<p class="content">
+Si se quiere editar una expresión JME para volver a introducirla debe usarse <i>#entrada</i>, ya que será
+reconocida por el analizador léxico, mientras que <i>#toString</i> en general no.</p>
+<p class="content">
+Puede crearse una expresión a partir de otra usando la entrada:</p>
+<div class="content console">
+<pre><code class="java">Expresion exp = new Expresion( "3b+î-[3,4];#;2" );
+System.out.println( " entrada: " + exp.entrada() );
+System.out.println( "toString: " + exp );</code></pre>
+<p class="javaOutput"> entrada: cos(3b+î-[3,4];#;2)
+toString: cos(3+I-[3,4] sub 2)</p>
+</div>
+</div>
+
+
+
+
+<!-- REPL -->
+<br/>
+<h2 class="subtitle" id="repl">Modo REPL</h2>
+
+<br/>
+
+<div class="content tema">
+<p class="content">
+La biblioteca JME se distibuye en un <i>jar</i> ejecutable que contiene un terminal
+<b>REPL</b> (Read/Eval/Print/Loop) o modo consola de comandos que permite introducir y evaluar expresiones JME
+y comandos propios del modo REPL. </p>
+<p class="content subSimple">Algunas funciones:</p>
+<ul class="content listIcon" style="padding: 2px">
+<li>La variable <b>ans</b> permite utilizar el último resultado. Colocar '<b>@</b>' antes de la expresión no modifica el valor del <b>ans</b> ( Ej.: <i class="monospace">@cos(ans)</i> mantiene el valor previo ).</li>
+<li>Iniciar la expresión con la cadena '<b>&lt;&lt;</b>' permite guardar el resultado en la variable <b>mem</b> (Ej.: <i class="monospace">&lt;&lt;cos(ans)</i> guarda el valor hasta que se vuelva a sobreescribir <b>mem</b>).</li>
+<li>El carácter '<b>|</b>' al final de la expresión evita la salida matricial en matrices, monstrándolas como vector indexado (Ej.: <i class="monospace">mat1(3)|</i>).
+<li>Los caracteres '<b>||</b>' al final de la expresión no muestran la salida de la operación (no <i>echo</i>).</li>
+<li>Los caracteres '<b>>></b>' al final de la expresión, muestran la cadena de entrada del resultado en lugar de la de salida.</li>
+<li class="subSimple">Para el resto de comandos, prefijos y sufijos del modo REPL introducir <b>-h</b>:</li>
+</ul>
+<br/>
+<div class="content">
+<img style="width: 100%" class="centerImg" src="../../images/repl1.png"/>
+</div>
+<br/><br/>
+<p class="content">Captura de operaciones del REPL:</p>
+<div class="content">
+<img style="width: 100%" class="centerImg" src="../../images/repl2.png"/>
+</div>
+<br/><br/>
+<p class="content">Uso del <i>jar</i> como calculadora desde terminal sin entrar en modo REPL:</p>
+<div class="content">
+<img style="width: 100%" class="centerImg" src="../../images/repl3.png"/>
+</div>
+</div>
+
+
+
+
+<!-- IMPORT/EXPORT CSV -->
+<br/>
+<h2 class="subtitle" id="csv">Importar/Exportar CSV</h2>
+<br/>
+
+<div class="content tema">
+<p class="content">La clase <b>Vector</b> incluye un método estático para la importación desde CSV a un vector/matriz JME y
+un método para la conversión de cualquier vector/matriz JME a CSV. Estas operaciones también se
+pueden realizar desde el modo REPL.</p>
+<br/>
+
+<h3 class="subSection" id="import_csv">Importar</h3>
+<br/>
+<p class="content">
+El método estático <b>Vector#fromCSV</b> recibe una cadena con contenido CSV (obtenido por ejemplo
+leyendo un archivo de texto CSV). Cada línea del texto CSV es convertido en fila de la matriz, y cada valor
+de la fila en un elemento de la matriz. El segundo parámetro del método indica si debe ignorarse la
+primera fila del texto CSV (los encabezados de tablas de datos de un archivo CSV no son en general
+legibles en JME).</p>
+<p class="content">
+El texto debe ser CSV <b>estricto</b>, con valores separados por comas y expresiones JME válidas. Por el
+contrario, la exportación descrita en la siguiente subsección permite formatos CSV no estrictos (que no
+pueden ser importados a JME posteriormente). Si el contenido CSV no puede convertirse a Vector JME
+el método lanza una <b>ExpresionException</b>.</p>
+<div class="console content">
+<pre><code class="java">System.out.println( Vector.fromCSV( "12,sqrt(3),exp(2)\n"
+                                    + "_e,1+3ui,0\n"
+                                    + "-2,[],nan\n"
+                                    + "falso,falso,inf\n",
+                                    false ).evaluar().toStringMatriz() );</code></pre>
+<p class="javaOutput">|        12          1.7320508075688772  7.38905609893065 |
+| 2.718281828459045         1+3I                0         |
+|        -2                  []                NaN        |
+|       falso              falso             Infinity     |</p>
+</div>
+<br/>
+<p class="content subSimple">Usando el REPL de JME:</p>
+<div class="console content">
+<p class="javaOutput">>>> <i style="background: #020">import csv archivo=foo.csv varname=csv_vector</i>
+csv_vector -> [[[1,1,1]],[[1,1,2]],[[1,1,3]],[[1,2,1]],[[1,2,2]],[[1,2,3]],[[1,3,1]],
+[[1,3,2]],[[1,3,3]],[[2,1,1]],[[2,1,2]],[[2,1,3]],[[2,2,1]],[[2,2,2]],[[2,2,3]],
+[[2,3,1]],[[2,3,2]],[[2,3,3]],[[3,1,1]],[[3,1,2]],[[3,1,3]],[[3,2,1]],[[3,2,2]],
+[[3,2,3]],[[3,3,1]],[[3,3,2]],[[3,3,3]]]
+>>> <i>csv_vector</i>
+
+	==> VectorEvaluado:
+		| [1,1,1] |
+		| [1,1,2] |
+		| [1,1,3] |
+		| [1,2,1] |
+		| [1,2,2] |
+		| [1,2,3] |
+		| [1,3,1] |
+		| [1,3,2] |
+		| [1,3,3] |
+		| [2,1,1] |
+		| [2,1,2] |
+		     …
+		| [3,3,3] |</p>
+</div>
+
+<br/>
+
+<h3 class="subSection" id="export_csv">Exportar</h3>
+<br/>
+
+<p class="content">
+El método <b>Vector#toCSV</b> tiene la siguiente declaración:</p>
+<pre><code class="content java">/**
+ * Convierte un vector a formato CSV, siendo cada elemento una fila, y si
+ * el elemento es otro vector, cada elemento suyo una columna de datos
+ * @param filter filtro a aplicar a los tokens del vector. OUTPUT_FILTER, INPUT_FILTER o un FlterToken personalizado
+ * @param separador delimitador entre datos
+ * @param quote carácteres para envolver texto literal
+ * @param numLinea incluir primera columna como nºs de línea
+ * @param encabezados array de encabezados en la primera fila
+ * @return texto CSV con los datos del vector
+ */
+public String toCSV( @NotNull final FilterToken filter,
+                     @NotNull final String separador,
+                     final char quote,
+                     boolean numLinea, 
+                     @Nullable String... encabezados )</code></pre>
+<p class="content">
+El parámetro <i>filter</i> acepta un objeto que implemente la interfaz funcional <b>Util.FilterToken</b>, cuyo
+método <i>FilterToken#filter</i> recibe un token JME y devuelve la cadena que el usuario defina para ese token. Las
+contantes <b><i>Vector.OUTPUT_FILTER</i></b> y <b><i>Vector.INPUT_FILTER</i></b> devuelven la cadena de salida/entrada
+estándar del token respectivamente.</p>
+<p class="content">
+El parámetro <i>separador</i> establece el separador entre items de la salida CSV. En CSV estricto, este
+separador debe ser una coma “,”.</p>
+<p class="content">
+El parámetro <i>quote</i> recibe un carácter para texto literal que generalmente es el entrecomillado.</p>
+<p class="content">
+El booleano <i>numLinea</i> especifica que se añada una primera columna contadora de líneas.</p>
+<p class="content">
+El array de encabezados permite añadir una primera fila de texto para cabeceras de columna.
+Si se introduce (String[]) null no se añadirá fila de encabezados.</p>
+<br/>
+<p class="content subSimple">Ejemplo 1; Tabla de verdad con encabezados:</p>
+<div class="console content">
+<pre><code class="java">System.out.println( ((Vector) new Expresion( "tverdad((p&amp;&amp;r)->q,p,q,r)" ).evaluar())
+                    .toCSV( Vector.OUTPUT_FILTER, 
+                            ",", 
+                            '\"', 
+                            true, 
+                            "nº", "p", "q", "r", "(p&amp;&amp;r)->q" ) );</code></pre>
+<p class="javaOutput">"nº","p","q","r","(p&amp;&amp;r)->q"
+1,falso,falso,falso,verdadero
+2,falso,falso,verdadero,verdadero
+3,falso,verdadero,falso,verdadero
+4,falso,verdadero,verdadero,verdadero
+5,verdadero,falso,falso,verdadero
+6,verdadero,falso,verdadero,falso
+7,verdadero,verdadero,falso,verdadero
+8,verdadero,verdadero,verdadero,verdadero</p>
+</div>
+<br/>
+<p class="content subSimple">Usando el REPL de JME:</p>
+<div class="console content">
+<p class="javaOutput">>>> <i style="background: #020">export csv archivo=foo.csv jme=tverdad((p&amp;&amp;r)->q,p,q,r) separador="," comillas=""" nums=si filtro=output encabezados="nº","p","q","r","(p&amp;&amp;r)->q"</i>
+>>> <i>exec type foo.csv</i>  <small class="comment" style="color:#66F">('type' en Windows, use 'cat' en Linux)</small>
+"nº","p","q","r","(p&amp;&amp;r)->q"
+1,falso,falso,falso,verdadero
+2,falso,falso,verdadero,verdadero
+3,falso,verdadero,falso,verdadero
+4,falso,verdadero,verdadero,verdadero
+5,verdadero,falso,falso,verdadero
+6,verdadero,falso,verdadero,falso
+7,verdadero,verdadero,falso,verdadero
+8,verdadero,verdadero,verdadero,verdadero
+>>></p>
+</div>
+
+<br/>
+<p class="content subSimple">Ejemplo 2; Secuencias de longitud 3 del array [1,2,3] separadas por punto y coma:</p>
+<div class="console content">
+<pre><code class="java">System.out.println( ((Vector) new Expresion( "[1,2,3];s;3" ).evaluar())
+                    .toCSV( Vector.OUTPUT_FILTER, 
+                            ";", 
+                            '\"', 
+                            false, 
+                            (String[]) null ) );</code></pre>
+<p class="javaOutput">1;1;1
+1;1;2
+1;1;3
+1;2;1
+1;2;2
+1;2;3
+1;3;1
+1;3;2
+1;3;3
+2;1;1
+2;1;2
+2;1;3
+2;2;1
+2;2;2
+  …
+3;2;3
+3;3;1
+3;3;2
+3;3;3</p>
+</div>
+<br/>
+<p class="content subSimple">Usando el REPL de JME:</p>
+<div class="console content">
+<p class="javaOutput">>>> <i style="background: #020">export csv archivo=foo.csv jme=[1,2,3];s;3 separador=";"</i>
+>>> <i>exec type foo.csv</i>  <small class="comment" style="color:#66F">('type' en Windows, use 'cat' en Linux)</small>
+1;1;1
+1;1;2
+1;1;3
+1;2;1
+1;2;2
+1;2;3
+1;3;1
+  …
+3;3;3
+>>>
+</p>
+</div>
+</div>
+
+
+
+
+<!-- EXPORT HTML -->
+<br/>
+<h2 class="subtitle" id="html_table">Exportar a HTML &lt;table></h2>
+<br/>
+
+<div class="content tema">
+<p class="content">
+El método <b>Vector#toHtmlTable</b> transforma un vector/matriz en una etiqueta table de HTML con el
+contenido del vector/matriz. Esta operación también se puede realizar desde el modo REPL. La
+declaración del método es como sigue:</p>
+<pre><code class="content java">/**
+ * Convierte un vector a formato tabla de HTML, siendo cada elemento una
+ * fila, y si el elemento es otro vector, cada elemento suyo una columna de datos
+ * @param filter filtro a aplicar a los tokens del vector. OUTPUT_FILTER, INPUT_FILTER o un FlterToken personalizado
+ * @param salto carácter a añadir como salto de línea tras cada etiqueta HTML ("" para nada)
+ * @param numLinea incluir primera columna como nºs de línea
+ * @param encabezados array de encabezados en la primera fila
+ * @return texto HTML con los datos del vector
+ */
+public String toHtmlTable( @NotNull final FilterToken filter, 
+                           String salto,
+                           boolean numLinea, 
+                           @Nullable String... encabezados )</code></pre>
+<p class="content">
+El parámetro <i>filter</i> acepta un objeto que implemente la interfaz funcional <b>Util.FilterToken</b>, cuyo
+método filter recibe un token JME y devuelve la cadena que el usuario defina para ese token. Las
+contantes <b><i>Vector.OUTPUT_FILTER</i></b> y <b><i>Vector.INPUT_FILTER</i></b> devuelven la cadena de salida/entrada
+estándar del token respectivamente.</p>
+<p class="content">
+El parámetro <i>salto</i> añade una cadena de texto al final de cada etiqueta, que puede ser el salto de línea o la cadena vacía típicamente.</p>
+<p class="content">
+El booleano <i>numLinea</i> especifica que se añada una primera columna contadora de líneas.</p>
+<p class="content">
+El array de encabezados permite añadir una primera fila de texto para cabeceras de columna. Si se introduce
+(String[]) null no se añadirá fila de encabezados.</p>
+<br/>
+<p class="content subSimple">Ejemplo; Tabla de verdad con encabezados:</p>
+<div class="content console">
+<pre><code class="java">System.out.println( ((Vector) new Expresion( "tverdad((p&amp;&amp;r)->q,p,q,r)" ).evaluar())
+                    .toHtmlTable( Vector.OUTPUT_FILTER,  /* filtro */
+                                  "",  /* salto */ 
+                                  true, /* números de línea */
+                                  "nº", "p", "q", "r", "(p&amp;&amp;r)->q" ) /* encabezados */ );</code></pre>
+<pre class="javaOutput">&lt;table>&lt;tr>&lt;th>nº&lt;/th>&lt;th>p&lt;/th>&lt;th>q&lt;/th>&lt;th>r&lt;/th>&lt;th>(p&amp;&amp;r)->q&lt;/th>&lt;/tr>&lt;tr>&lt;td>1&lt;/td>&lt;td>falso&lt;/td>&lt;td>falso&lt;/td>&lt;td>falso&lt;/td>&lt;td>verdadero&lt;/td>&lt;/tr>&lt;tr>&lt;td>2&lt;/td>&lt;td>falso&lt;/td>&lt;td>falso&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>verdadero&lt;/td>&lt;/tr>&lt;tr>&lt;td>3&lt;/td>&lt;td>falso&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>falso&lt;/td>&lt;td>verdadero&lt;/td>&lt;/tr>&lt;tr>&lt;td>4&lt;/td>&lt;td>falso&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>verdadero&lt;/td>&lt;/tr>&lt;tr>&lt;td>5&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>falso&lt;/td>&lt;td>falso&lt;/td>&lt;td>verdadero&lt;/td>&lt;/tr>&lt;tr>&lt;td>6&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>falso&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>falso&lt;/td>&lt;/tr>&lt;tr>&lt;td>7&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>falso&lt;/td>&lt;td>verdadero&lt;/td>&lt;/tr>&lt;tr>&lt;td>8&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>verdadero&lt;/td>&lt;td>verdadero&lt;/td>&lt;/tr>&lt;/table>
+</pre>
+</div>
+
+
+<p class="content"><small><i>En navegador sin formato:</i></small></p>
+<table class="content"><tr><th>nº</th><th>p</th><th>q</th><th>r</th><th>(p&amp;&amp;r)->q</th></tr><tr><td>1</td><td>falso</td><td>falso</td><td>falso</td><td>verdadero</td></tr><tr><td>2</td><td>falso</td><td>falso</td><td>verdadero</td><td>verdadero</td></tr><tr><td>3</td><td>falso</td><td>verdadero</td><td>falso</td><td>verdadero</td></tr><tr><td>4</td><td>falso</td><td>verdadero</td><td>verdadero</td><td>verdadero</td></tr><tr><td>5</td><td>verdadero</td><td>falso</td><td>falso</td><td>verdadero</td></tr><tr><td>6</td><td>verdadero</td><td>falso</td><td>verdadero</td><td>falso</td></tr><tr><td>7</td><td>verdadero</td><td>verdadero</td><td>falso</td><td>verdadero</td></tr><tr><td>8</td><td>verdadero</td><td>verdadero</td><td>verdadero</td><td>verdadero</td></tr></table>
+
+<br/>
+<p class="content subSimple">Usando el REPL de JME con salto de línea:</p>
+<div class="console content">
+<p class="javaOutput">>>> <i style="background: #020">export html jme=tverdad((p&amp;&amp;r)->q,p,q,r) salto=si nums=si encabezados="nº","p","q","r","(p&amp;&amp;r)->q"</i></p>
+<pre class="javaOutput">&lt;table>
+&lt;tr>
+&lt;th>nº&lt;/th>
+&lt;th>p&lt;/th>
+&lt;th>q&lt;/th>
+&lt;th>r&lt;/th>
+&lt;th>(p&amp;&amp;r)->q&lt;/th>
+&lt;/tr>
+&lt;tr>
+&lt;td>1&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>5&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>6&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>7&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>falso&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>8&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;td>verdadero&lt;/td>
+&lt;/tr>
+&lt;/table>
+</pre>
+<p class="javaOutput">>>></p>
+</div>
+</div>
+
+
+
+
+<!-- DEPENDENCIES -->
+<br/>
+<h2 class="subtitle" id="dependencies">Dependencias de la biblioteca</h2>
+<br/>
+
+<div class="content tema">
+<p class="content">
+A partir de la versión 0.4.4, JME utiliza para el parseo de objetos JME desde/hacia objetos JSON y XML de la biblioteca
+<b><a href="https://github.com/stleary/JSON-java">JSON-java</a></b>, incluida en el jar ejecutable.</p>
+<br/>
+<p class="content">
+A partir de la versión 0.4.7, JME utiliza para la evaluación de funciones que dependen de 
+las funciones especiales tipo <i>Gamma</i> y <i>Beta</i>, de los archivos fuente <b>Gamma.java</b>, <b>Beta.java</b> y <b>ContinuedFraction.java</b>
+de <b><i>Apache Common Math</i></b>. Estos tres archivos están incluidos y modificados en el paquete <b><i>jme.extlibs</i></b>. 
+
+</div>
+
+
+<!-- CONSIDERATIONS -->
+<br/>
+<h2 class="subtitle" id="considerations">Consideraciones sobre JME</h2>
+<br/>
+
+<div class="content tema">
+<p class="content">Algunas consideraciones en el uso de JME:</p>
+<ul class="content">
+<li>
+Si se desea modificar el valor de una variable de una expresión en un bucle, no se debe introducir 
+la creación de la expresión dentro del bucle, ya que se estaría parseando la misma expresión cada vez:
+<pre><code class="java">// El resultado de este fragmento de código es correcto pero muy poco eficiente
+for ( float x = 0f; x &lt; 10f; x += 0.1f )
+{
+    /* ... */
+    <mark class="error">Expresion exp = new Expresion( <b>"x^2-x-1"</b> );</mark>  // ¡MAL!
+    exp.setVariable( "x", x );
+    /* evaluar expresión */
+    /* ... */
+}</code></pre>
+<pre><code class="java">// forma correcta
+<mark class="correct">Expresion exp = new Expresion( "x^2-x-1" );</mark>  // ¡OK!
+for ( float x = 0f; x &lt; 10f; x += 0.1f )
+{
+    /* ... */
+    exp.setVariable( "x", x );
+    /* evaluar expresión */
+    /* ... */
+}</code></pre>
+</li>
+<li>
+Aunque la principal forma de uso de JME es la evaluación en tiempo de ejecución
+de expresiones matemáticas, JME puede usarse como lenguaje matemático interno en la codificación de 
+una aplicación. La principal motivación para ello es aprovechar la capacidad de cálculo de JME para 
+ahorrar trabajo y líneas de código al programador. Sin embargo, debe tenerse en cuenta que la
+implementación del desarrollador de un algoritmo eficiente para un determinado cálculo será en 
+general más rápido que la versión declarativa del cálculo en JME (siempre depende del cálculo y algoritmo,
+lógicamente). Ejemplo:<br/>
+<div class="console" style="margin-top: 1em; margin-bottom: 1em">
+<pre><code class="java">// nºs primos hasta 100
+Vector primos = (Vector) new Expresion( "[2];;condsuc(primo(n),n,n,3,100,2)" ).evaluar();
+System.out.println( primos + "\n"+ primos.dimension() + " nºs primos" );</code></pre>
+<p class="javaOutput">[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
+25 nºs primos</p>
+</div>
+En este fragmento de código se obtiene la lista de los nºs primos entre los cien primeros naturales.<br/>
+Es el siguiente fragmento se obtendría el mismo resultado con un código Java que usualmente implementaría
+cualquier programador Java, presuponiendo la existencia de una función '<i>esPrimo</i>' que efectúa el test de primalidad: 
+<div class="console" style="margin-top: 1em; margin-bottom: 1em">
+<pre><code class="java">// nºs primos hasta 100
+ArrayList&lt;Long> primos = new ArrayList&lt;Long>();
+primos.add( 2L );
+for ( long n = 3L; n &lt;= 100L; n += 2L )
+    if ( <mark>esPrimo</mark>( n ) )
+        primos.add( n );
+System.out.println( primos + "\n" + primos.size() + " nºs primos" );
+</code></pre>
+<p class="javaOutput">[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]
+25 nºs primos</p>
+</div>
+Como se puede ver el código usual que no utiliza JME es más largo, incluso sin contar que debe implementarse
+la función '<i>esPrimo</i>'. Sin embargo, si la función '<i>esPrimo</i>' es eficiente, éste código debería ser
+más rápido que JME.<br/>
+Por tanto JME puede ser una opción interesante en aquellas segmentos de código matemático de una apliación que 
+no sean críticas en eficiencia.<br/><br/>
+</li>
+<li>
+Respecto al conocimiento requerido por la mayoría de desarrolladores para la utilización de JME, la
+mayor parte de los posibles casos de uso de JME sólo será necesario conocer la utilización de la
+clase <b>Expresion</b> y se recomienda también las clases de los tipos de datos manejados por JME.
+</li>
+</ul>
+<br/>
+<img style="margin-top:64px" class="centerImg" src="../../images/jme_logo.png" width=128px/>
+</div>
+
+
+
+
+<hr/>
+
+<button onclick="topFunction()" id="myBtn" title="Ir arriba">^</button>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

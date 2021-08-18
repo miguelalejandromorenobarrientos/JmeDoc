@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="signo, sgn" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Signo</span><a href="../../index.html">Volver</a></header>
+
+<table class="content monospace" style="font-size: 2em;vertical-align: middle">
+	<tr>
+		<td>sgn(x)= </td>
+		<td style="font-size:3em; vertical-align: top">{</td>
+		<td>
+			<ul style="list-style-type:none; padding-left: 0">
+				<li><small><b>-1</b>, ∀x∈ℝ / x&lt;0</small></li>
+				<li><small>&nbsp;<b>0</b>, x=0</small></li>
+				<li><small>&nbsp;<b>1</b>, ∀x∈ℝ / x>0</small></li>
+			</ul>
+		</td>
+		<td style="padding-left: 2em">sgn(z)= </td>
+		<td style="font-size:3em; vertical-align: top">{</td>
+		<td>
+			<ul style="list-style-type:none; padding-left: 0">
+				<li><small><b class="frac"><span>z</span><span></span><span>|z|</span></b>, ∀z∈ℂ<sup>*</sup></small></li>
+				<li><small>&nbsp;<b>0</b>, z=0</small></li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Función signo (sgn).</p>
+<p class="content">La función signo cumple que <b class="monospace">∀n, abs(n)sgn(n)=n</b></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">sgn</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">sgn</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">sgn(&lt;número>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sgn(-inf,-10,0,10,inf,nan)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [-1,-1,0,1,1,NaN]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sgn(4+3î)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 0.8+0.6I</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="intervalo.html">intervalo</a>,
+	<a href="escalon.html">escalón de Heaviside</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

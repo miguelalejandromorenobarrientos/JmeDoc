@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="elsif, else, if" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Else-If</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Selecciona un valor a partir de una sentencia if-elsif*-else.
+<br/><span class="comment">Nota: los valores y condiciones posteriores al caso seleccionado no se evaluarán</span></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">elsif</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">elsif</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">elsif(&lt;cond_if>,&lt;caso_if>[,&lt;cond_else-if>,&lt;caso_else-if>]*[,&lt;caso_else>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>cond_if</td>
+			<td>Condición para seleccionar el primer valor(V) o pasar al siguiente caso(F)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>caso_if</td>
+			<td>Valor devuelto si la condición <i>if</i> es verdadera</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>1+2i</td>
+			<td>cond_else-if{i}</td>
+			<td>Condición para seleccionar el caso siguiente</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>2(i+1)</td>
+			<td>caso_else-if{i}</td>
+			<td>Valor devuelto si la condición anterior es verdadera</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>n</td>
+			<td>caso_else</td>
+			<td>Valor devuelto si las demás condiciones fallan.<br/>Si estas condiciones fallan y no se define <i class="monospace">&lt;caso_else></i>, se lanzará una excepción</td>
+			<td>∅</td>
+		</tr>
+	</tbody>
+	<tfoot><tr><td colspan="4">i:[1...nº else-if], n:nº params</td></tr></tfoot>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sucesion([x,elsif(<mark class="gray1">x&lt;0,0</mark>,<mark class="gray2">x&lt;=20,x</mark>,<mark class="gray2">x&lt;30,20</mark>,<mark class="black">50-x</mark>)],x,-20,40,5)</span> <small><small class="comment">(<mark class="gray1">sentencia if </mark>,<mark class="gray2">sentencia else-if </mark>, <mark class="black">sentencia else </mark>)</small></small></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| -20  0  |
+		| -15  0  |
+		| -10  0  |
+		| -5   0  |
+		|  0   0  |
+		|  5   5  |
+		| 10   10 |
+		| 15   15 |
+		| 20   20 |
+		| 25   20 |
+		| 30   20 |
+		| 35   15 |
+		| 40   10 |</p>
+	<p class="content input"><span class="javaString">elsif(x&lt;0,0,x&lt;=20,x,x&lt;30,20,50-x)</span></p>
+	<p class="content output"><span class="jmeType">(Gráfica JGE)</span>: <img class="zoom" src="../../images/elsif1.png"/></p>	 
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">elsif(primo(7),pi)</span> <span class="comment">(forma más corta de <i>elsif</i>, sin caso else ni else-if)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3.141592653589793</p>
+	<p class="content input"><span class="javaString">elsif(primo(8),pi)</span></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">&lt;&lt;&lt;FuncionException>>> en funcion "elsif": Caso Else no contemplado --> elsif(Vector:[primo(8),3.141592653589793])</mark></p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="if.html">if</a>,
+	<a href="seccion.html">sección</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>
