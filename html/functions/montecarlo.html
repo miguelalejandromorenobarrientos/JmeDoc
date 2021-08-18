@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="montecarlo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Método de Montecarlo</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Aplica el método de Monte Carlo</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">montecarlo</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">montecarlo</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">montecarlo(&lt;vars>,&lt;prob_func>,&lt;func_rend>,&lt;g>,&lt;func_ind>,&lt;ensayos>[,&lt;tipo_salida>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>vars</td>
+			<td>Variables aleatorias como vector <b class="monospace">[X<sub>1</sub>,X<sub>2</sub>,…,X<sub>n</sub>]</b></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>prob_func</td>
+			<td>Funciones de probabilidad de las variables aleatorias como vector <b class="monospace">[P(X<sub>1</sub>),P(X<sub>2</sub>),…,P(X<sub>n</sub>)]</b></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>func_rend</td>
+			<td>Función de rendimiento que obtiene las salidas a partir de las muestras.
+				<br/>La función depende de las variables aleatorias <b>X<sub>i</sub></b>. Puede utilizarse la variable interna <b>_sample_</b> que representa al vector <b class="monospace">[X<sub>1</sub>,X<sub>2</sub>,…,X<sub>n</sub>]</b> 
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>g</td>
+			<td>Variable de la función indicatriz</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>func_ind</td>
+			<td>Función indicatriz; función booleana que indica si la salida es acertada o fallida</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>ensayos</td>
+			<td>Nº de ensayos 'n'. El error se reduce en √n al aumentar 'n'</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>tipo_salida</td>
+			<td style="text-align:left; padding-left:1em">Determina que datos se mostrarán (y el rendimiento y memoria del método) usando dos contantes:
+				<br/><b>■ _stats_</b> : se devolverá un diccionario con cuatro entradas, la <b>media</b> de los resultados, la <b>varianza</b>, la <b>probabilidad de fallo</b> y la <b>fiabilidad</b>
+				<br/><b>■ _data_</b> : se devolverá un diccionario con tres entradas, <b>todas las salidas</b> de la función de rendimiento, los <b>aciertos</b> y los <b>fallos</b>. Esto permite al usuario hacer su propio análisis estadístico, pero <b>puede consumir mucha memoria</b> 
+			</td>
+			<td><b>_stats_</b></td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content comment">cálculo de π usando el primer cuadrante del círculo goniomético:
+	<p class="content input"><span class="javaString">montecarlo([x,y],[rand(-1),rand(-1)],abs(x,y),g,g&lt;=1,1e6)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'media'=0.7650038348472198, 'varianza'=0.08109870189471424, 'prob_fallo'=0.213945, 'conf'=0.786055}</p>
+	<p class="content input"><span class="javaString">montecarlo([x,y],[rand(-1),rand(-1)],abs(x,y),g,g&lt;=1,1e6);#;'conf'*4</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3.141504</p>
+	<p class="content input"><span class="javaString">montecarlo([x,y],[rand(-1),rand(-1)],abs(<mark class="gray1">_sample_</mark>),g,g&lt;=1,1e6);#;'conf'*4</span>  <small class="comment">(usando <b>_sample_</b>)</small></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3.14214</p>
+</div>
+
+<div class="example">
+	<p class="content comment">volumen del paraboloide <b class="monospace">x<sup>2</sup>+y<sup>2</sup> en [-3,3]x[-3,3]x[0,18]</b>:
+	<p class="content input"><span class="javaString">montecarlo([x,y,z],[rand(-3,3),rand(-3,3),rand(0,18)],sqr(x)+sqr(y)-z,g,g>=0,1e6);#;'conf'*6*6*18</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 216.00496800000002  <small class="monospace">(256)</small></p>
+</div>
+
+<div class="example">
+	<p class="content comment">distintas funciones de probabilidad para cada variable:
+	<p class="content input"><span class="javaString"><a class="discLink" href="enumerar.html">enumerar</a>(montecarlo([x,y,z],[rand(-10,10),randint(1,6),randgauss(100,4)],x+y+z,g,verdadero,1e6))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		|   'media'     103.49105758650461 |
+		|  'varianza'   52.233970994566334 |
+		| 'prob.fallo'          0          |
+		| 'fiabilidad'          1          |</p>
+</div>
+
+<div class="example">
+	<p class="content comment">obtener las salidas en lugar de los resultados estadísticos:
+	<p class="content input"><span class="javaString"><a class="discLink" href="enumerar.html">enumerar</a>(montecarlo([x,y],[rand(-1),rand(-1)],y-sqr(x),g,g&lt;=0,30,_data_))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 'fallo'                                                                                                                                       [0.5747195844676536,0.7090150154066867,0.05785646498770347,0.39327315854654027,0.5808507589127483,0.33371712194160197,0.4348703902901088,0.07573740526871103,0.37678628126369057,0.1441494730007826,0.06381300073396177,0.04382138071562003,0.20795494100113193,0.034066216926430026,0.7296851739711961,0.6348434256991684,0.07931829667851908]                                                                                                                                      |
+		| 'seguro'                                                                                                                                                                         [-0.7179739238311573,-0.14649077587704454,-0.5557761175578415,-0.6439247868694995,-0.5909925633784799,-0.059538229113307306,-0.058177899620397544,-0.7145038504140971,-0.16546609427268194,-0.1303040172343878,-0.842017664377174,-0.20016104242537047,-0.683783351609421]                                                                                                                                                                        |
+		|  'todo'   [0.5747195844676536,0.7090150154066867,-0.7179739238311573,0.05785646498770347,-0.14649077587704454,-0.5557761175578415,0.39327315854654027,-0.6439247868694995,0.5808507589127483,0.33371712194160197,-0.5909925633784799,0.4348703902901088,0.07573740526871103,0.37678628126369057,0.1441494730007826,0.06381300073396177,-0.059538229113307306,0.04382138071562003,0.20795494100113193,-0.058177899620397544,-0.7145038504140971,0.034066216926430026,0.7296851739711961,-0.16546609427268194,0.6348434256991684,-0.1303040172343878,0.07931829667851908,-0.842017664377174,-0.20016104242537047,-0.683783351609421] |</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.3.7</p>
+<p class="content modificado">v0.4.4</p>
+
+		
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="morse" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<style> 
+		#morse td { font-family: monospace; }
+		#morse td:nth-child(even) { color: aqua; background: black; }
+		#morse td:nth-child(odd) { padding-left: 1em; padding-right: 1em }
+	</style>
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Morse</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Convierte cadena de texto a Morse o viceversa.</p>
+<p class="content">Los espacios se usan para separar letras y / <code>(slash)</code> para separar palabras (espacio).</p>
+<p class="content">El alfabeto utilizado es <b>latino</b></p>
+<br/>
+<table id="morse" class="content dataTable larger">
+	<thead><tr><th colspan="14" style="font-size: small">Caracteres Morse reconocibles, alfabeto latino&emsp;</th></tr></thead>
+	<tr>
+		<td>A</td>
+		<td>.-</td>
+		<td>B</td>
+		<td>-...</td>
+		<td>C</td>
+		<td>-.-.</td>
+		<td>D</td>
+		<td>-..</td>
+		<td>E</td>
+		<td>.</td>
+		<td>F</td>
+		<td>..-.</td>
+		<td>G</td>
+		<td>--.</td>
+	<tr>
+	<tr>
+		<td>H</td>
+		<td>....</td>
+		<td>I</td>
+		<td>..</td>
+		<td>J</td>
+		<td>.---</td>
+		<td>K</td>
+		<td>-.-</td>
+		<td>L</td>
+		<td>.-..</td>
+		<td>M</td>
+		<td>--</td>
+		<td>N</td>
+		<td>-.</td>
+	</tr>
+	<tr>
+		<td>Ñ</td>
+		<td>--.--</td>
+		<td>O</td>
+		<td>...</td>
+		<td>P</td>
+		<td>.--.</td>
+		<td>Q</td>
+		<td>--.-</td>
+		<td>R</td>
+		<td>.-.</td>
+		<td>S</td>
+		<td>...</td>
+		<td>T</td>
+		<td>-</td>
+	</tr>
+	<tr>
+		<td>U</td>
+		<td>..-</td>
+		<td>V</td>
+		<td>...-</td>
+		<td>W</td>
+		<td>.--</td>
+		<td>X</td>
+		<td>-..-</td>
+		<td>Y</td>
+		<td>-.--</td>
+		<td>Z</td>
+		<td>--..</td>
+		<td>0</td>
+		<td>-----</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>.----</td>
+		<td>2</td>
+		<td>..---</td>
+		<td>3</td>
+		<td>...--</td>
+		<td>4</td>
+		<td>....-</td>
+		<td>5</td>
+		<td>-----</td>
+		<td>6</td>
+		<td>----.</td>
+		<td>7</td>
+		<td>---..</td>
+	</tr>
+	<tr>
+		<td>8</td>
+		<td>--...</td>
+		<td>9</td>
+		<td>-....</td>
+		<td>.</td>
+		<td>.-.-.-</td>
+		<td>,</td>
+		<td>-.-.--</td>
+		<td>?</td>
+		<td>..--..</td>
+		<td>¿</td>
+		<td>..-.-</td>
+		<td>'</td>
+		<td>.----.</td>
+	</tr>
+	<tr>
+		<td>"</td>
+		<td>.-..-.</td>
+		<td>¡</td>
+		<td>--...-</td>
+		<td>!</td>
+		<td>-.-.--</td>
+		<td>/</td>
+		<td>-..-.</td>
+		<td>(</td>
+		<td>-.--.</td>
+		<td>)</td>
+		<td>-.--.-</td>
+		<td>&amp;</td>
+		<td>.-...</td>
+	</tr>
+	<tr>
+		<td>:</td>
+		<td>---...</td>
+		<td>;</td>
+		<td>-.-.-.</td>
+		<td>=</td>
+		<td>-...-</td>
+		<td>+</td>
+		<td>.-.-.</td>
+		<td>-</td>
+		<td>-....-</td>
+		<td>_</td>
+		<td>..--.-</td>
+		<td>$</td>
+		<td>...-..-</td>
+	</tr>
+	<tr>
+		<td>@</td>
+		<td>.--.-.</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">morse</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">morse</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">morse(&lt;mensaje>[,&lt;sentido>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>mensaje</td>
+			<td>Mensaje de texto o Morse, dependiendo del sentido</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>sentido</td>
+			<td><code>verdadero</code> para convertir texto a Morse, <code>falso</code> para Morse a texto</td>
+			<td><code>verdadero</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">morse('¡Hola Mundo!')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '--...- .... --- .-.. .- / -- ..- -. -.. --- -.-.--'</p>
+	<p class="content input"><span class="javaString">morse('--...- .... --- .-.. .- / -- ..- -. -.. --- -.-.--',falso)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '¡HOLA MUNDO!'</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">morse('Lorem ipsum dolor sit amet, consectetur adipiscing elit.')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '.-.. --- .-. . -- / .. .--. ... ..- -- / -.. --- .-.. --- .-. / ... .. - / .- -- . - --..-- / -.-. --- -. ... . -.-. - . - ..- .-. / .- -.. .. .--. .. ... -.-. .. -. --. / . .-.. .. - .-.-.-'</p>
+	<p class="content input"><span class="javaString">morse('.-.. --- .-. . -- / .. .--. ... ..- -- / -.. --- .-.. --- .-. / ... .. - / .- -- . - --..-- / -.-. --- -. ... . -.-. - . - ..- .-. / .- -.. .. .--. .. ... -.-. .. -. --. / . .-.. .. - .-.-.-')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT.'</p>
+</div>
+
+<div class="example">
+	<p class="content comment">Mensaje convertido a Morse y vuelto a convertir a texto, ignorando mayúsculas:</p>
+	<p class="content input"><span class="javaString">eval(<mark class="gray1">msj$=$morse(morse(msj),false)</mark>,msj,'(7x+2y=0)')</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content modificado">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

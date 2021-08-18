@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="gr_floydwar, floyd, warshall, grafo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Algoritmo de Floyd-Warshall</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Aplica el algoritmo de Floyd-Warshall para obtener la matriz de distancias y/o caminos</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">gr_floydwar</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">GRAFO.floydwar</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">gr_floydwar(&lt;grafo>[,&lt;retorno>])</p>
+	
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>grafo</td>
+			<td>Diccionario válido de grafo</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>retorno</td>
+			<td><ul>
+					<li>0: devuelve un vector con la matriz de distancias y la matriz de caminos <code>[m<sub>d</sub>,m<sub>c</sub>]</code></li>
+					<li>1: devuelve sólo la matriz de distancias</li>
+					<li>2: devuelve sólo la matriz de caminos</li>
+				</ul>
+			</td>
+			<td>1</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<br/><br/>
+	<span class="content comment">Pseudografo disconexo de 8 nodos:</span>
+	<p class="content input"><span class="javaString">gr_nuevo([[0,0,1,1,1,0,0,0],[0,0,1,0,0,0,0,0],[1,1,1,1,0,0,0,0],[1,0,1,0,1,0,0,0],[1,0,0,1,0,0,0,0],[0,0,0,0,0,0,2,1],[0,0,0,0,0,2,0,1],[0,0,0,0,0,1,1,1]],false,false,true,true)</span></p>
+	<p class="content output"><span class="jmeType">Salida en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_8nodos_pseudografo.png"/>
+	</p>
+	<span class="content comment">Matriz de distancias, si el grafo no es ponderado, los arcos pesan 1:</span>
+	<p class="content input"><span class="javaString">gr_floydwar(gr_nuevo([[0,0,1,1,1,0,0,0],[0,0,1,0,0,0,0,0],[1,1,1,1,0,0,0,0],[1,0,1,0,1,0,0,0],[1,0,0,1,0,0,0,0],[0,0,0,0,0,0,2,1],[0,0,0,0,0,2,0,1],[0,0,0,0,0,1,1,1]],false,false,true,true))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		|    0         2         1         1         1      Infinity  Infinity  Infinity |
+		|    2         0         1         2         3      Infinity  Infinity  Infinity |
+		|    1         1         0         1         2      Infinity  Infinity  Infinity |
+		|    1         2         1         0         1      Infinity  Infinity  Infinity |
+		|    1         3         2         1         0      Infinity  Infinity  Infinity |
+		| Infinity  Infinity  Infinity  Infinity  Infinity     0         1         1     |
+		| Infinity  Infinity  Infinity  Infinity  Infinity     1         0         1     |
+		| Infinity  Infinity  Infinity  Infinity  Infinity     1         1         0     |</p>
+	<span class="content comment">Matriz de distancias y caminos, si el grafo no es ponderado, los arcos pesan 1:</span>
+	<p class="content input"><span class="javaString">gr_floydwar(gr_nuevo([[0,0,1,1,1,0,0,0],[0,0,1,0,0,0,0,0],[1,1,1,1,0,0,0,0],[1,0,1,0,1,0,0,0],[1,0,0,1,0,0,0,0],[0,0,0,0,0,0,2,1],[0,0,0,0,0,2,0,1],[0,0,0,0,0,1,1,1]],false,false,true,true),0)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| [0,2,1,1,1,Infinity,Infinity,Infinity]  [2,0,1,2,3,Infinity,Infinity,Infinity]  [1,1,0,1,2,Infinity,Infinity,Infinity]  [1,2,1,0,1,Infinity,Infinity,Infinity]  [1,3,2,1,0,Infinity,Infinity,Infinity]  [Infinity,Infinity,Infinity,Infinity,Infinity,0,1,1]  [Infinity,Infinity,Infinity,Infinity,Infinity,1,0,1]  [Infinity,Infinity,Infinity,Infinity,Infinity,1,1,0] |
+		|           [0,2,0,0,0,0,0,0]                       [2,1,1,2,0,1,1,1]                       [2,2,2,2,0,2,2,2]                       [3,2,3,3,3,3,3,3]                       [4,2,0,4,4,4,4,4]                              [5,5,5,5,5,5,5,5]                                     [6,6,6,6,6,6,6,6]                                     [7,7,7,7,7,7,7,7]                   |
+</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="gr_dijkstra.html">gr_dijkstra</a>,
+	<a href="gr_camino.html">gr_camino</a>
+</p>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

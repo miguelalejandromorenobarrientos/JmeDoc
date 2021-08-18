@@ -1,0 +1,2709 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-language" content="es"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="distribution" content="Global" />
+    <meta name="audience" content="all" />
+    <meta name="robots" content="index,follow" />
+	<!-- Google verification -->
+	<meta name="google-site-verification" content="KqLWPpQ8e5Gw3u_o1x0LbwzloNvd10ugBedefb9R6jg" />
+
+	<!-- icon -->
+    <link href="images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="css/jme_doc.css" rel="stylesheet" type="text/css" >
+
+	<style>
+		#constTable td:first-child
+		{
+			font-size: larger;
+			font-weight: bolder;
+			font-family: monospace;
+		}
+		#constTable td:nth-child(4)
+		{
+			font-weight: bolder;
+			font-family: monospace;
+		}
+		#funcTable td:first-child
+		{
+			font-size: larger;
+		}
+		td, th
+		{
+			word-break: break-all !important;
+		}
+		td ul
+		{
+			padding-left: 16px;
+		}
+	</style>
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="js/jme_doc.js" charset="UTF-8"></script>
+	
+</head>
+
+<body>
+	
+<header class="title" style="align-items:center;display:flex">
+	<img src="images/jme_logo.png" width=48 style="min-width:48px"/>
+	<span style="margin-left: 0.75em;font-size:1.25em" class="webname"></span>  
+	<small style="margin-left: 0.5em;margin-right: 1em" class="version"></small>
+	<span style="margin-left:auto">
+		<a class="homepage discLink"><b>JME Homepage</b></a>
+		<a href="html/jmescript/jmescript.html" class="discLink" style="color: #335"><b>JMEScript</b></a>
+		<a href="html/developers/dev_index.html" class="discLink" style="color: #335"><b>Manual del Desarrollador</b></a> 
+		<input style="margin-left:20px;font-size:14px" type="text" id="search" placeholder="&#x1F50E; función/operador..." size="20" />
+	</span>
+</header>
+
+<hr/>
+
+<table id="index" style="border: 1px solid black;max-width:430px;margin-left: 3%">
+	<tr><td><a href="#typesTable">Tipos de datos</a></td></tr>
+	<tr><td><a href="#opTable">Operadores</a></td></tr>
+	<tr><td><a href="#funcTable">Funciones</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_exp</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_log</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_trig</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_analisis</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_round</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_suc</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_cmplj</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_minmax</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_frac</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_tipo</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_checktype</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_vect</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_matrix</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_dic</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_text</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_cuant</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_coords</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_comb</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_stat</a></td></tr>
+	<tr><td>&emsp;&emsp;* <a class="index">cdf</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_sp</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_dist</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_solve</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_rec</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_selec</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_logic</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_trozos</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_trozos_cont</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_eval</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_num_teo</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_digit</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_rand</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_fractal</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_float</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_geom</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_fisica</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_time</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_excep</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_finan</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_conver</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_csv</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_archivo</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_java</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_jmescript</a></td></tr>
+	<tr><td>&emsp;■ <a class="index">f_misc</a></td></tr>
+	<tr><td><a href="#constTable">Constantes predefinidas</a></td></tr>
+</table>
+
+<hr/>
+
+<span class="hideShow content" data-id="typesTable">Tabla de tipos de datos &#x25BC;</span>
+<table class="centerTable dataTable" id="typesTable">
+	<thead>
+	<tr>
+		<th colspan="3">Tipos de datos en JME</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<th>Nombre</th>
+		<th>Descripción</th>
+		<th>Entrada</th>
+	</tr>
+	<tr id="realdoble">
+		<td><b>RealDoble</b></td>
+		<td>Números flotantes<br/><small>IEEE 754 floating point<br/>+max.: <span>1.7976931348623157E308</span><br/>+min.: <span>4.9406564584124654E-324</span><br/>-min.: <span>-1.7976931348623157E308</span></small></td>
+		<td>
+			<ul>
+				<li>número entero o flotante:
+					<br/>&nbsp;&nbsp;<b>3.1416</b></li>
+				<li>notación científica:
+					<br/>&nbsp;&nbsp;<b>-2.5E-3</b> (-0.0025)</li>
+				<li>valores especiales:
+					<br/>&nbsp;&nbsp;<b>inf</b> (+infinity)
+					<br/>&nbsp;&nbsp;<b>-inf</b> (-infinity)
+					<br/>&nbsp;&nbsp;<b>nan</b> (Not a Number)</li>
+				<li>función de conversión:
+					<br/>&nbsp;&nbsp;<b><a href="html/functions/realdoble.html" class="discLink">realdoble</a>(</b>&lt;terminal><b>)</b></li>				
+			</ul>
+		</td>
+	</tr>
+	<tr id="complejo">
+		<td><b>Complejo</b></td>
+		<td>Número complejo<br/><small>RE: IEEE 754 floating point<br/>IM: IEEE 754 floating point</small></td>
+		<td>
+			<ul>
+				<li>valores especiales:
+					<br/>&nbsp;&nbsp;token <b class="larger">î</b> o constante <b class="larger">ui</b> (unidad imaginaria <i>i</i> )</li>
+				<li>forma binomial:
+					<br/>&nbsp;&nbsp;<b>3-2î</b>, o <b>3-2ui</b> (paréntesis podrían ser necesarios)</li>
+				<li>función <i><a href="html/functions/cmplj.html" class="discLink">cmplj</a></i> para forma binomial:
+					<br/>&nbsp;&nbsp;<b>cmplj(3,-2)</b> → 3-2I</li>
+				<li>función <i><a href="html/functions/polar.html" class="discLink">polar</a></i> para forma polar:
+					<br/>&nbsp;&nbsp;<b>polar(2,pi/2)</b> → 2I</li>
+				<li>función de conversión:
+					<br/>&nbsp;&nbsp;<b><a href="html/functions/complejo.html" class="discLink">complejo</a>(</b>&lt;terminal><b>)</b></li>
+			</ul>
+		</td>
+	</tr>
+	<tr id="enterogrande">
+		<td><b>EnteroGrande</b></td>
+		<td>Entero de precisión arbitraria<br/></td>
+		<td>
+			<ul>
+				<li>entero con sufijo 'b':
+					<br/>&nbsp;&nbsp;<b>3b</b>
+					<br/>&nbsp;&nbsp;<b>-12345678901234567890123456789b</b></li>
+				<li>función de conversión:
+					<br/>&nbsp;&nbsp;<b><a href="html/functions/enterogrande.html" class="discLink">enterogrande</a>(</b>&lt;terminal><b>)</b></li>
+			</ul>
+		</td>
+	</tr>
+	<tr id="realgrande">
+		<td><b>RealGrande</b></td>
+		<td>Flotante de precisión arbitraria<br/></td>
+		<td>
+			<ul>
+				<li>número entero o flotante con sufijo 'd':
+					<br/>&nbsp;&nbsp;<b>-3.1d</b>
+					<br/>&nbsp;&nbsp;<b>1234567890.123456789012345678901234567d</b></li>
+				<li>notación científica con sufijo 'd':
+					<br/>&nbsp;&nbsp;<b>1e10000d</b></li>
+				<li>función de conversión:
+					<br/>&nbsp;&nbsp;<b><a href="html/functions/realgrande.html" class="discLink">realgrande</a>(</b>&lt;terminal><b>)</b></li>
+			</ul>
+		</td>
+	</tr>
+	<tr id="booleano">
+		<td><b>Booleano</b></td>
+		<td>Dos valores, <i>verdadero</i> y <i>falso</i></td>
+		<td>
+			<ul>
+				<li>valores booleanos en español o inglés:
+					<br/>&nbsp;&nbsp;<b>verdadero</b>/<b>falso</b> y <b>true</b>/<b>false</b></li>
+				<li>función de conversión:
+					<br/>&nbsp;&nbsp;<b><a href="html/functions/booleano.html" class="discLink">booleano</a>(</b>&lt;terminal><b>)</b></li>
+			</ul>
+		</td>
+	</tr>
+	<tr id="vector">
+		<td><b>Vector</b></td>
+		<td>Colección ordenada de cualquier tipo JME, incluidos otros vectores.<br/>Al evaluar un vector el resultado es del tipo <b>VectorEvaluado</b>, un vector que solo contiene terminales</td>
+		<td>
+			<ul>
+				<li>otros terminales o expresiones JME separados por comas entre corchetes:
+					<br/>&nbsp;&nbsp;<b>[1,nan,inf,2.3d,0b,falso]</b>
+					<br/>&nbsp;&nbsp;<b>[]</b> (vacío)
+					<br/>&nbsp;&nbsp;<b>[6+3,4^2,1/3]</b></li>
+				<li>como parámetro de función se puede prescindir de corchetes:
+					<br/>&nbsp;&nbsp;<b>suma(3,2,4,-1)</b> (eq. suma([3,2,4,-1]) )</li>
+			</ul>
+		</td>
+	</tr>
+	<tr id="texto">
+		<td><b>Texto</b></td>
+		<td>Cadena de texto</td>
+		<td>
+			<ul>
+				<li>texto entre comillas simples:
+					<br/>&nbsp;&nbsp;<b>'Hola Mundo'</b>
+					<br/>&nbsp;&nbsp;<b>''</b> <small>(cadena vacía)</small>
+					<br/>&nbsp;&nbsp;<b>'Foo Mc\'Bar'</b> <small>(escape comillas)</small></li>
+				<li>funciones de conversión:
+					<br/>&nbsp;&nbsp;<b><a href="html/functions/salida_texto.html" class="discLink">stexto</a>(</b>&lt;terminal><b>)</b> para cadena de salida de terminal
+					<br/>&nbsp;&nbsp;<b><a href="html/functions/entrada_texto.html" class="discLink">etexto</a>(</b>&lt;terminal><b>)</b> para cadena de entrada de terminal</li>
+			</ul>
+		</td>
+	</tr>
+	<tr id="diccionario">
+		<td><b>Diccionario</b></td>
+		<td>Diccionario (mapa) de entradas clave/valor.<br/>Tanto las claves como los valores pueden ser cualquier terminal, pero las claves deben ser únicas</td>
+		<td>
+			<ul>
+				<li>Usando la función <a href="html/functions/dic.html" class="discLink">&nbsp;<b>dic</b>&nbsp;</a> con un vector:
+					<br/>&nbsp;&nbsp;<b>dic('x',3,'y',2,'z',0)</b>
+					<br/>&nbsp;&nbsp;<b>dic(0,_e,1,pi,2,phi)</b></li>
+				<li>Usando la función <a href="html/functions/dic.html" class="discLink">&nbsp;<b>dic</b>&nbsp;</a> con una cadena JSON:
+					<br/>&nbsp;&nbsp;<b>dic('{hola:hi,mundo:world}')</b>
+					<br/>&nbsp;&nbsp;<b>dic('{x:3,y:2,z:0}')</b></li>
+				<li>Usando la función <a href="html/functions/dic.html" class="discLink">&nbsp;<b>dic</b>&nbsp;</a> con una cadena XML:
+					<br/>&nbsp;&nbsp;<b>dic('xml:&lt;hola>hi&lt;/hola>&lt;mundo>world&lt;/mundo>')</b>
+					<br/>&nbsp;&nbsp;<b>dic('xml:&lt;obj color=#F21>circulo&lt;/obj>')</b></li>
+				<li>Valores especiales:
+					<br/>&nbsp;&nbsp;<b>dic0</b> o <b>dic([])</b> o <b>dic('{}')</b> o <b>dic('xml:')</b> (diccionario vacío)</li>				
+			</ul>
+		</td>
+	</tr>
+	</tbody>
+	<thead>
+	<tr>
+		<th colspan="3">Pseudo-Tipos</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr id="matriz">
+		<td><em>matriz</em></td>
+		<td>Un vector que contiene vectores de una misma dimensión.<br/>
+			Una matriz sigue siendo de tipo 'Vector', pero hay operadores y funciones <br/>especialmente diseñados para este tipo de vector.<br/>
+			Cada elemento de la matriz es un vector 'fila' de la matriz
+		</td>
+		<td>
+			<ul>
+				<li>vector con vectores de la misma dimensión:
+					<br/>&nbsp;&nbsp;<b>[[2,3,4],[ui,0,-3d]]</b></li>
+				<li>usando la función <i><a href="html/functions/matriz.html" class="discLink">matriz</a></i> a partir de un vector:
+					<br/>&nbsp;&nbsp;<b>matriz([2,3,4,ui,0,-3d],2,3)</b> → [[2,3,4],[I,0,-3]]</li>
+			</ul>
+		</td>
+	</tr>
+	<tr id="conjunto">
+		<td><em>conjunto</em></td>
+		<td>Un vector que no contiene duplicados y en el que la posición de los elementos no es importante.<br/>
+			Un conjunto sigue siendo de tipo 'Vector', pero hay operadores y funciones <br/>especialmente diseñados para este tipo de vector o que devuelven este tipo de vector al operar cualquier vector (union,intersección,…).<br/>
+		</td>
+		<td>
+			<ul>
+				<li>vector sin duplicados:
+					<br/>&nbsp;&nbsp;<b>[5,2,0,-1,9]</b>
+					<br/>&nbsp;&nbsp;<b>[]</b> <small>(∅)</small></li>
+				<li>función de conversión:
+					<br/>&nbsp;&nbsp;<b><a href="html/functions/conjunto.html" class="discLink">conjunto</a>(2,3,2,1,3)</b> → [3,2,1] <small>(sin duplicados, orden indeterminado)</small></li>
+			</ul>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+<hr/>
+
+<span class="hideShow content" data-id="opTable">Tabla de operadores &#x25BC;</span>
+<table class="centerTable dataTable" id="opTable">
+	<thead>
+	<tr>
+		<th colspan="5">Operadores en JME por orden de precedencia</th>
+	</tr>
+	<tr>
+		<th>Operador</th>
+		<th>Entrada</th>
+		<th>Descripción</th>
+		<th>Precedencia</th>
+		<th>Tipo</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/elemento.html">Elemento</a></td>
+		<td class="operator">;#;</td>
+		<td>Elemento de vector</td>
+		<td rowspan="9">MAX_VALUE</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/pertenencia.html">Pertenencia</a></td>
+		<td class="operator">;i;</td>
+		<td>Pertenencia a vector/conjunto</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/subconjunto.html">Subconjunto</a></td>
+		<td class="operator">{i}</td>
+		<td>Comprobar si A es subconjunto de B</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/incremento.html">Incremento</a></td>
+		<td class="operator">++</td>
+		<td>Incremento en uno</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/decremento.html">Decremento</a></td>
+		<td class="operator">--</td>
+		<td>Decremento en uno</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/opuesto.html">Opuesto</a></td>
+		<td class="operator">-</td>
+		<td>Elemento opuesto</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/factorial.html">Factorial</a></td>
+		<td class="operator">!</td>
+		<td>Factorial y NOT lógico</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/not_bit.html">Not bit a bit</a></td>
+		<td class="operator">~</td>
+		<td>NOT bit a bit (complemento a la 1)</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/clonar.html">Clonar</a></td>
+		<td class="operator">@</td>
+		<td>Clonar</td>
+		<td>Unario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/conjunto_potencia.html">Conjunto Potencia</a></td>
+		<td class="operator">{^}</td>
+		<td>Conjunto potencia de un conjunto</td>
+		<td rowspan="16">MAX_VALUE-1</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/secuencia.html">Secuencia</a></td>
+		<td class="operator">;s;</td>
+		<td>Secuencias de longitud n de los elementos de un vector</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/permutacion_vector.html">Permutacion Vector</a></td>
+		<td class="operator">;!;</td>
+		<td>Obtener todas las permutaciones de los elementos de un vector</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/permutacion_n_vector.html">Permutacion N Vector</a></td>
+		<td class="operator">;p;</td>
+		<td>Obtener todas las permutaciones de longitud n de los elementos de un vector</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/primera_ocurrencia.html">Primera ocurrencia</a></td>
+		<td class="operator">;?;</td>
+		<td>Encontrar primera ocurrencia de elemento en vector</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/encontrar_todas.html">Todas las ocurrencias</a></td>
+		<td class="operator">;*;</td>
+		<td>Encontrar todas las ocurrencias de un elemento en vector</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/factorial_doble.html">Factorial Doble</a></td>
+		<td class="operator">!!</td>
+		<td><a href="https://es.wikipedia.org/wiki/Doble_factorial" class="tooltip">Factorial Doble<span class="tooltiptext">https://es.wikipedia.org/wiki/Doble_factorial</span></a></td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/superfactorial.html">Superfactorial</a></td>
+		<td class="operator">$!</td>
+		<td><a href="https://en.wikipedia.org/wiki/Factorial#Superfactorial" class="tooltip">Superfactorial<span class="tooltiptext">(inglés) https://en.wikipedia.org/wiki/Factorial#Superfactorial</span></a></td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/hiperfactorial.html">Hiperfactorial</a></td>
+		<td class="operator">!h!</td>
+		<td><a href="https://en.wikipedia.org/wiki/Factorial#Hyperfactorial" class="tooltip">Hiperfactorial<span class="tooltiptext">(inglés) https://en.wikipedia.org/wiki/Factorial#Hyperfactorial</span></a></td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/factorial_alternado.html">Factorial alternado</a></td>
+		<td class="operator">-!</td>
+		<td><a href="https://en.wikipedia.org/wiki/Alternating_factorial" class="tooltip">Factorial alternado<span class="tooltiptext">(inglés) https://en.wikipedia.org/wiki/Alternating_factorial</span></a></td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/subfactorial.html">Subfactorial</a></td>
+		<td class="operator">¡</td>
+		<td><a href="https://es.wikipedia.org/wiki/Subfactorial" class="tooltip">Subfactorial<span class="tooltiptext">https://es.wikipedia.org/wiki/Subfactorial</span></a></td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/primorial.html">Primorial</a></td>
+		<td class="operator">#</td>
+		<td><a href="https://es.wikipedia.org/wiki/Primorial" class="tooltip">Primorial<span class="tooltiptext">https://es.wikipedia.org/wiki/Primorial</span></a></td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/grados.html">Grados</a></td>
+		<td class="operator">º</td>
+		<td>Convertir radianes a grados sexagesimales</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/radianes.html">Radianes</a></td>
+		<td class="operator">ª</td>
+		<td>Convertir grados sexagesimales a radianes</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/porcentaje.html">Porcentaje a tanto por uno</a></td>
+		<td class="operator">*%</td>
+		<td>Porcentaje a tanto por uno</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/invporcentaje.html">Tanto por uno a porcentaje</a></td>
+		<td class="operator">/%</td>
+		<td>Tanto por uno a porcentaje</td>
+		<td>Unario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/potencia.html">Potencia</a></td>
+		<td class="operator">^</td>
+		<td>Potencia</td>
+		<td rowspan="4">60</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/tetracion.html">Tetración</a></td>
+		<td class="operator">^^</td>
+		<td><a href="https://es.wikipedia.org/wiki/Tetraci%C3%B3n" class="tooltip">Tetración<span class="tooltiptext">https://es.wikipedia.org/wiki/Tetraci%C3%B3n</span></a></td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/minusculas.html">Minúsculas</a></td>
+		<td class="operator">$a$</td>
+		<td>Convierte a minúsculas</td>
+		<td>Unario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/mayusculas.html">Mayúsculas</a></td>
+		<td class="operator">$A$</td>
+		<td>Convierte a mayúsculas</td>
+		<td>Unario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/producto.html">Producto</a></td>
+		<td class="operator">*</td>
+		<td>Potencia</td>
+		<td rowspan="5">50</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/cociente.html">Cociente</a></td>
+		<td class="operator">/</td>
+		<td>Cociente</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/cociente_entero.html">Cociente Entero</a></td>
+		<td class="operator">//</td>
+		<td>Cociente entero</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/modulo.html">Módulo</a></td>
+		<td class="operator">%</td>
+		<td>Módulo (resto)</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/interseccion.html">Intersección</a></td>
+		<td class="operator">{*}</td>
+		<td>Intersección de conjuntos</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/suma.html">Suma</a></td>
+		<td class="operator">+</td>
+		<td>Suma</td>
+		<td rowspan="9">40</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/diferencia.html">Diferencia</a></td>
+		<td class="operator">-</td>
+		<td>Diferencia</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/anexar.html">Anexar</a></td>
+		<td class="operator">;</td>
+		<td>Agregar elemento por el final a vector</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/anexar_vector.html">Anexar todo</a></td>
+		<td class="operator">;;</td>
+		<td>Agregar todos los elementos de un vector|diccionario al final de otro vector|diccionario</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/eliminar.html">Eliminar elemento</a></td>
+		<td class="operator">;-;</td>
+		<td>Elimina elementos de un vector, subcadenas de un texto o una entrada de un diccionario</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/union.html">Unión</a></td>
+		<td class="operator">{+}</td>
+		<td>Unión de conjuntos</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/diferencia_conjuntos.html">Diferencia conjuntista</a></td>
+		<td class="operator">{\}</td>
+		<td>Diferencia de conjuntos</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/diferencia_simetrica.html">Diferencia simétrica</a></td>
+		<td class="operator">{:}</td>
+		<td>Diferencia simétrica de conjuntos</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/producto_cartesiano.html">Producto cartesiano</a></td>
+		<td class="operator">{x}</td>
+		<td>Producto cartesiano de dos conjuntos</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/desplazamiento_izquierda.html">Desplazamiento izquierda</a></td>
+		<td class="operator">&lt;&lt;</td>
+		<td>Desplazamiento a la izquierda de bits o elementos de vector</td>
+		<td rowspan="3">30</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/desplazamiento_derecha.html">Desplazamiento derecha</a></td>
+		<td class="operator">>></td>
+		<td>Desplazamiento a la derecha de bits o elementos de vector</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/desplazamiento_derecha_sin_signo.html">Desplazamiento derecha sin signo</a></td>
+		<td class="operator">>>></td>
+		<td>Desplazamiento a la derecha de bits sin tener en cuenta signo</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/menor_que.html">Menor que</a></td>
+		<td class="operator">&lt;</td>
+		<td>Menor que</td>
+		<td rowspan="4">20</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/mayor_que.html">Mayor que</a></td>
+		<td class="operator">></td>
+		<td>Mayor que</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/menor_igual.html">Menor o Igual</a></td>
+		<td class="operator">&lt;=</td>
+		<td>Menor o igual que</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/mayor_igual.html">Mayor o Igual</a></td>
+		<td class="operator">>=</td>
+		<td>Mayor o igual que</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/igual.html">Igual</a></td>
+		<td class="operator">=</td>
+		<td>Igualdad entre operandos</td>
+		<td rowspan="7">10</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/igual_exacto.html">Igual exacto</a></td>
+		<td class="operator">==</td>
+		<td>Igualdad exacta entre operandos (sin margen de error)</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/igual_estricto.html">Igual estricto</a></td>
+		<td class="operator">===</td>
+		<td>Igualdad exacta entre operandos en valor y tipo</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/referencia.html">Referencia</a></td>
+		<td class="operator">=*=</td>
+		<td>Idéntica referencia</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/distinto.html">Distinto/XOR</a></td>
+		<td class="operator">!=</td>
+		<td>Distinto de y XOR lógico</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/igualdad_conjuntos.html">Igualdad conjuntista</a></td>
+		<td class="operator">{=}</td>
+		<td>Igualdad entre conjuntos</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/equals_ignore_case.html">Equals ignore case</a></td>
+		<td class="operator">$=$</td>
+		<td>Igualdad de cadenas ignorando mayús./minús.</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/truncar.html">Truncar</a></td>
+		<td class="operator">$</td>
+		<td>Truncar a 'n' cifras decimales</td>
+		<td rowspan="2">5</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/cifras_significativas.html">Cifras significativas</a></td>
+		<td class="operator">&lt;#></td>
+		<td>Establecer sifras significativas</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/and_bit.html">AND bit a bit</a></td>
+		<td class="operator">&amp;</td>
+		<td>AND entre bits de un número</td>
+		<td rowspan="1">4</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/xor_bit.html">XOR bit a bit</a></td>
+		<td class="operator">&lt;></td>
+		<td>XOR entre bits de un número</td>
+		<td rowspan="1">3</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/or_bit.html">OR bit a bit</a></td>
+		<td class="operator">|</td>
+		<td>OR entre bits de un número</td>
+		<td rowspan="1">2</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/and.html">AND</a></td>
+		<td class="operator">&amp;&amp;</td>
+		<td>AND lógico</td>
+		<td rowspan="2">1</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/nand.html">NAND</a></td>
+		<td class="operator">!&amp;</td>
+		<td>NAND lógico</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+		<td><a href="html/operators/or.html">OR</a></td>
+		<td class="operator">||</td>
+		<td>OR lógico</td>
+		<td rowspan="4">0</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/nor.html">NOR</a></td>
+		<td class="operator">!|</td>
+		<td>NOR lógico</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/implicacion.html">Implicación</a></td>
+		<td class="operator">-></td>
+		<td>Implicación lógica</td>
+		<td>Binario</td>
+	</tr>
+	<tr>
+		<td><a href="html/operators/implicacion_inversa.html">Implicación inversa</a></td>
+		<td class="operator">&lt;-</td>
+		<td>Implicación en sentido inverso</td>
+		<td>Binario</td>
+	</tr>
+	</tbody>
+</table>
+	
+<hr/>
+
+<span class="hideShow content" data-id="funcTable">Tabla de funciones &#x25BC;</span>
+
+<table class="centerTable dataTable" id="funcTable">
+	<thead>
+	<tr>
+		<th colspan="2">Funciones JME</th>
+	</tr>
+	<tr>
+		<th>Entrada</th>
+		<th>Descripción</th>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_exp">Funciones exponenciales</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td><a href="html/functions/raiz_cuadrada.html">sqrt</a></td>
+		<td>Raíz cuadrada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cuadrado.html">sqr</a></td>
+		<td>Cuadrado</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/raiz_cuadrada_entera.html">isqrt</a></td>
+		<td>Raíz cuadrada entera</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/raiz_cubica.html">cbrt</a></td>
+		<td>Raíz cúbica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cubo.html">cb</a></td>
+		<td>Cubo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/exponencial.html">exp</a></td>
+		<td>Exponencial</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/modpot.html">modpot</a></td>
+		<td>Módulo de una potencia</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/inverso.html">inv</a></td>
+		<td>Inverso de números o matrices cuadradas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/powm1.html">powm1</a></td>
+		<td>Potencia entera de -1</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/pow2.html">pow2</a></td>
+		<td>Potencia entera de 2</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_log">Funciones logarítmicas</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/log_natural.html">ln</a></td>
+		<td>Logaritmo natural</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/log_decimal.html">log</a></td>
+		<td>Logaritmo decimal o en base especificada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/log1p.html">ln1p</a></td>
+		<td>Logaritmo natural de 1+x</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_trig">Funciones trigonométricas</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cos.html">cos</a></td>
+		<td>Coseno</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sin.html">sin</a></td>
+		<td>Seno</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/tan.html">tan</a></td>
+		<td>Tangente</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sec.html">sec</a></td>
+		<td>Secante</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cosec.html">cosec</a></td>
+		<td>Cosecante</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cotg.html">cotg</a></td>
+		<td>Cotangente</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/acos.html">acos</a></td>
+		<td>Arcocoseno</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/asin.html">asin</a></td>
+		<td>Arcoseno</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/atan.html">atan</a></td>
+		<td>Arcotangente</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/atan2.html">atan2</a></td>
+		<td>Función ATAN2</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cosh.html">cosh</a></td>
+		<td>Coseno hiperbólico</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sinh.html">sinh</a></td>
+		<td>Seno hiperbólico</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/tanh.html">tanh</a></td>
+		<td>Tangente hiperbólica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sech.html">sech</a></td>
+		<td>Secante hiperbólica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cosech.html">cosech</a></td>
+		<td>Cosecante hiperbólica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cotgh.html">cotgh</a></td>
+		<td>Cotangente hiperbólica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/acosh.html">acosh</a></td>
+		<td>Arcocoseno hiperbólico</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/asinh.html">asinh</a></td>
+		<td>Arcoseno hiperbólico</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/atanh.html">atanh</a></td>
+		<td>Arcotangente hiperbólica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/radianes.html">rad</a></td>
+		<td>Pasa de grados a radianes en el rango [0,2π)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/grados.html">deg</a></td>
+		<td>Pasa de radianes a grados en el rango [0,360)</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_analisis">Funciones de Análisis Matemático</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/derivada.html">dif</a></td>
+		<td>Derivada numérica de orden uno a cuatro</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/integral.html">int</a></td>
+		<td>Integral numérica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/integral_linea.html">intlinea</a></td>
+		<td>Integral de línea numérica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/integral_compleja.html">zint</a></td>
+		<td>Integral numérica compleja</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/integral_linea_compleja.html">zintlinea</a></td>
+		<td>Integral de línea numérica compleja</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/gradiente.html">gradiente</a></td>
+		<td>Gradiente numérico</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/divergencia.html">divergencia</a></td>
+		<td>Divergencia numérica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/rotacional.html">rot</a></td>
+		<td>Rotacional numérico</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/derivada_direccional.html">difdir</a></td>
+		<td>Derivada direccional numérica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/parte_par.html">partepar</a></td>
+		<td>Parte par de una función</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/parte_impar.html">parteimpar</a></td>
+		<td>Parte impar de una función</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_round">Funciones de redondeo</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/floor.html">floor</a></td>
+		<td>Redondeo al entero menor</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/ceil.html">ceil</a></td>
+		<td>Redondeo al entero mayor</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/round.html">round</a></td>
+		<td>Redondeo al entero más cercano</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/parte_entera.html">p_entera</a></td>
+		<td>Parte entera de un número</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/parte_decimal.html">p_decimal</a></td>
+		<td>Parte decimal de un número</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/alisar.html">alisar</a></td>
+		<td>Redondea a cero valores muy cercanos a cero</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/roundp.html">roundp</a></td>
+		<td>Redondea valores muy cercanos a un entero a ese entero</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cercano.html">cercano</a></td>
+		<td>Comprueba que un valor está en el rango [x-&epsi;,x+&epsi;]</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_suc">Funciones sobre sucesiones</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sumatorio.html">sum</a></td>
+		<td>Sumatorio</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/productorio.html">prod</a></td>
+		<td>Productorio</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sucesion.html">sucesion</a></td>
+		<td>Crea un secuencia basada en una expresión</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sucesion_condicionada.html">condsuc</a></td>
+		<td>Crea un secuencia basada en una expresión en la que los elementos se introducen según una condición</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sucesion_constante.html">const</a></td>
+		<td>Crea un secuencia constante a partir de un elemento dado</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/while.html">while</a></td>
+		<td>Crea una secuencia a partir de una expresión mientras se cumpla una condición</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/secuencia_rango.html">rango</a></td>
+		<td>Crea una secuencia de números enteros</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_cmplj">Funciones sobre complejos</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/parte_real.html">re</a></td>
+		<td>Parte real</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/parte_imaginaria.html">im</a></td>
+		<td>Parte imaginaria</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/abs.html">mod</a> o <a href="html/functions/abs.html">abs</a></td>
+		<td>Módulo de un complejo o vector y valor absoluto de un número</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/argumento.html">arg</a></td>
+		<td>Argumento de un complejo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/conjugado.html">conj</a></td>
+		<td>Conjugado de un complejo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cmplj.html">cmplj</a></td>
+		<td>Crear complejo a partir de la parte real e imaginaria</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/polar.html">polar</a></td>
+		<td>Crea un complejo a partir del módulo y argumento</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_minmax">Funciones de máximos y mínimos</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/maximo.html">max</a></td>
+		<td>Máximo de una serie de elementos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/minimo.html">min</a></td>
+		<td>Mínimo de una serie de elementos</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_frac">Funciones sobre fracciones</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fraccion.html">frac</a></td>
+		<td>Convierte número en vector2D representando su fracción generatriz exacta o aproximada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/ifrac.html">ifrac</a></td>
+		<td>Aproxima una fracción con la precisión y redondeo especificados</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fraccion_mixta.html">mix</a></td>
+		<td>Convierte número en vector3D representando su fracción mixta exacta o aproximada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/irreducible.html">irreduc</a></td>
+		<td>Fracción irreducible</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fraccion_continua.html">fcont</a></td>
+		<td>Fracción contínua de un número</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fraccion_continua_numero.html">invfcont</a></td>
+		<td>Fracción continua a número</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_tipo">Funciones de conversión de tipo</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/booleano.html">booleano</a></td>
+		<td>Convierte a <i>Booleano</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/realdoble.html">realdoble</a></td>
+		<td>Convierte a <i>RealDoble</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/realgrande.html">realgrande</a></td>
+		<td>Convierte a <i>RealGrande</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/enterogrande.html">enterogrande</a></td>
+		<td>Convierte a <i>EnteroGrande</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/complejo.html">complejo</a></td>
+		<td>Convierte a <i>Complejo</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/entrada_texto.html">etexto</a></td>
+		<td>Convierte a <i>Texto</i> a partir de entrada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/salida_texto.html">stexto</a></td>
+		<td>Convierte a <i>Texto</i> a partir de salida</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/conjunto.html">conjunto</a></td>
+		<td>Convierte vector en conjunto (vector sin duplicados)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/matriz.html">matriz</a></td>
+		<td>Convierte vector en matriz</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/zvector.html">zvector</a></td>
+		<td>Convierte complejo a vector2D <i>[re,im]</i></td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_checktype">Funciones de comprobación de tipo</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/tipo.html">tipo</a></td>
+		<td>Devuelve el nombre de la clase Java del terminal como cadena</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esbooleano.html">esbooleano</a></td>
+		<td>Comprueba si el valor es <i>Booleano</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esrealdoble.html">esrealdoble</a></td>
+		<td>Comprueba si el valor es <i>RealDoble</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esrealgrande.html">esrealgrande</a></td>
+		<td>Comprueba si el valor es <i>RealGrande</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esenterogrande.html">esenterogrande</a></td>
+		<td>Comprueba si el valor es <i>EnteroGrande</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/escomplejo.html">escomplejo</a></td>
+		<td>Comprueba si el valor es <i>Complejo</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esentero.html">esentero</a></td>
+		<td>Comprueba si un valor numérico de cualquier tipo es equivalente a un entero</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esnumero.html">esnumero</a></td>
+		<td>Comprueba si el valor es <i>Numero</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/estexto.html">estexto</a></td>
+		<td>Comprueba si el valor es <i>Texto</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esdiccionario.html">esdiccionario</a></td>
+		<td>Comprueba si el valor es <i>Diccionario</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esvector.html">esvector</a></td>
+		<td>Comprueba si el valor es <i>Vector</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esmatriz.html">esmatriz</a></td>
+		<td>Comprueba si el valor es una matriz</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esconjunto.html">esconjunto</a></td>
+		<td>Comprueba si el valor es un conjunto (sin duplicados)</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_vect">Funciones sobre vectores</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/producto_vectorial.html">cross</a></td>
+		<td>Producto vectorial de vectores 3D</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/dimension.html">dim</a></td>
+		<td>Dimensión del vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/vector_unitario.html">unit</a></td>
+		<td>Vector unitario a partir de vector o ángulo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/gram_schmidt.html">orto</a></td>
+		<td>Ortogonalización/Ortonormalización de Gram-Schmidt</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/suma_vector.html">suma</a></td>
+		<td>Sumatorio de los elementos de un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/mul_vector.html">mul</a></td>
+		<td>Productorio de los elementos de un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cabecera.html">cabecera</a></td>
+		<td>Primer elemento de un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cola.html">cola</a></td>
+		<td>Último elemento de un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/set.html">set</a></td>
+		<td>Reemplaza un elemento del vector en una posición data por un nuevo elemento</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/swap.html">swap</a></td>
+		<td>Intercambia dos elementos de un vector o dos filas de una matriz</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/frecuencia.html">frec</a></td>
+		<td>Frecuencia de un elemento en un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/flatten.html">flatten</a></td>
+		<td>Aplana un vector un nivel</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/profundidad.html">prof</a></td>
+		<td>Profundidad, o nivel de indexación del vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/revertir.html">revertir</a></td>
+		<td>Invierte la posición de los elementos de un vector o las entradas de un diccionario</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/ordenar.html">ordenar</a></td>
+		<td>Ordena los elementos de un vector si son números reales</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/orden_comparador.html">ordcomp</a></td>
+		<td>Ordena un vector para cualquier tipo de elementos según un comparador dado</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/filtrar.html">filtrar</a></td>
+		<td>Filtra los elementos de un vector según una condición</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/contar.html">contar</a></td>
+		<td>Cuenta los elementos de un vector que cumplen una condición</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/enumerar.html">enumerar</a></td>
+		<td>Enumera los elementos de un vector según un contador o los elementos de otro vector. También convierte un diccionario en enumeración</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_matrix">Funciones sobre matrices</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/dimension_matriz.html">matdim</a></td>
+		<td>Dimensión de una matriz</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/matriz_traspuesta.html">trasp</a></td>
+		<td>Matriz traspuesta</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/matriz_unidad.html">mat1</a></td>
+		<td>Matriz unidad de dimensión dada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/determinante.html">det</a></td>
+		<td>Determinante de matriz cuadrada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/rango.html">rg</a></td>
+		<td>Rango de la matriz</td>
+	</tr>
+	<!--<tr>
+		<td>cof</td>
+		<td>Cofactor de una matriz cuadrada respecto de un elemento pivote</td>
+	</tr>-->
+	<tr>
+		<td><a href="html/functions/matriz_cofactores.html">mcof</a></td>
+		<td>Matriz de cofactores de una matriz cuadrada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/matriz_adjunta.html">adj</a></td>
+		<td>Matriz adjunta de una matriz cuadrada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/traza.html">tr</a></td>
+		<td>Traza de una matriz cuadrada</td>
+	</tr>
+	<!--<tr>
+		<td>menor1</td>
+		<td>Primer menor de una matriz cuadrada respecto a un elemento pivote</td>
+	</tr>-->
+	<tr>
+		<td><a href="html/functions/matriz_rotacion.html">mrot</a></td>
+		<td>Matriz de rotación 2D o 3D en coordenadas homogéneas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/matriz_escalado.html">mscale</a></td>
+		<td>Matriz de escalado en coordenadas homogéneas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/matriz_traslacion.html">mtras</a></td>
+		<td>Matriz de translación en coordenadas homogéneas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/eigenvalores.html">autovalores|eigenvalores</a></td>
+		<td>Autovalores de matrices cuadradas de 2x2 y 3x3</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/vandermonde.html">vandermonde</a></td>
+		<td>Determinante de Vandermonde</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_dic">Funciones sobre diccionarios</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/dic.html">dic</a></td>
+		<td>Crea un diccionario</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/entradas.html">entradas</a></td>
+		<td>Devuelve las entradas del diccionario en un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/claves.html">claves</a></td>
+		<td>Devuelve las claves del diccionario en un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/valores.html">valores</a></td>
+		<td>Devuelve los valores del diccionario en un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/json.html">json</a></td>
+		<td>Devuelve cadena JSON desde diccionario</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/xml.html">xml</a></td>
+		<td>Devuelve cadena XML desde diccionario</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_text">Funciones sobre cadenas de texto</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/longitud.html">longitud</a></td>
+		<td>Longitud de una cadena o de la cadena de salida de otro terminal</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/concatenar.html">concat</a></td>
+		<td>Concatena varias cadenas mediante un conector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/partir.html">partir</a></td>
+		<td>Divide un texto según un separador</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/reemplazar.html">reemplazar</a></td>
+		<td>Reemplaza todas las ocurrencias de una subcadena por otra</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/format.html">format</a></td>
+		<td>Formatea la salida textual de un conjunto de datos mediante un patrón</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/chr.html">chr</a></td>
+		<td>Carácter UTF-16 desde codepoint</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/codepoint.html">codepoint</a></td>
+		<td>Codepoint desde carácter UTF-16</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/trim.html">trim</a></td>
+		<td>Eliminar espacios y caracteres de control en los extremos de una cadena</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/patron.html">patron</a></td>
+		<td>Comprueba si una cadena encaja en un patrón definido por una <a class="tooltip" href="https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular">regex<span class="tooltiptext">https://es.wikipedia.org/wiki/Expresi%C3%B3n_regular</span></a></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/empiezacon.html">empiezacon</a></td>
+		<td>Comprueba si la cadena empieza con un prefijo determinado</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/terminacon.html">terminacon</a></td>
+		<td>Comprueba si la cadena termina con un sufijo determinado</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_cuant">Cuantificadores</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/para_todo.html">paratodo</a></td>
+		<td>Comprueba que todos los elementos de un vector cumplen una propiedad</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/existe.html">existe</a></td>
+		<td>Comprueba que algún elemento de un vector cumple una propiedad</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_coords">Funciones de cambio de coordenadas</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/car_a_cil.html">car_a_cil</a></td>
+		<td>Convierte cartesianas a cilíndricas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cil_a_car.html">cil_a_car</a></td>
+		<td>Convierte cilíndricas a cartesianas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/car_a_esf.html">car_a_esf</a></td>
+		<td>Convierte cartesianas a esféricas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esf_a_car.html">esf_a_car</a></td>
+		<td>Convierte esféricas a cartesianas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cil_a_esf.html">cil_a_esf</a></td>
+		<td>Convierte cilíndricas a esféricas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esf_a_cil.html">esf_a_cil</a></td>
+		<td>Convierte esféricas a cilíndricas</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_comb">Funciones de combinatoria</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/variaciones.html">var</a></td>
+		<td>Variaciones de 'm' elementos tomados de 'n' en 'n'</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/combinaciones.html">comb</a></td>
+		<td>Combinaciones de 'm' elementos tomados de 'n' en 'n'</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/multinomial.html">coefmultinomial</a></td>
+		<td>Coeficiente multinomial</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/catalan.html">catalan</a></td>
+		<td>Números de Catalan</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_stat">Funciones de probabilidad y estadística</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/mapafrecuencias.html">mapafrec</a></td>
+		<td>Devuelve un mapa de frecuencias de elementos de un vector, valores de diccionario, caracteres de cadena o digitos de un entero</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/media_aritmetica.html">media</a></td>
+		<td>Media aritmética de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/esperanza.html">esperanza</a></td>
+		<td>Esperanza matemática de una función continua de distribución</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/media_geometrica.html">mediag</a></td>
+		<td>Media geométrica de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/media_ponderada.html">pond</a></td>
+		<td>Media ponderada de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/media_armonica.html">mediah</a></td>
+		<td>Media armónica de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/media_cuadratica.html">rms</a></td>
+		<td>Media cuadrática de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/media_aritmetico_geometrica.html">agm</a></td>
+		<td>Media aritmético-geométrica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/moda.html">moda</a></td>
+		<td>Moda de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/mediana.html">mediana</a></td>
+		<td>mediana de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/mediana_continua.html">fmediana</a></td>
+		<td>Mediana de una función continua de distribución</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cuantil.html">cuantil</a></td>
+		<td>Cuantil de una función continua de distribución</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/desviacion_tipica.html">desv</a></td>
+		<td>Desviación típica muestral insesgada de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/varianza.html">varianza</a></td>
+		<td>Varianza muestral insesgada de una serie de datos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/varianza_continua.html">fvarianza</a></td>
+		<td>Varianza de una función continua de distribución</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/entropia.html">entropia</a></td>
+		<td>Entropía de una función continua de distribución</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/gaussiana.html">gauss</a></td>
+		<td><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_gaussiana" class="tooltip">Función gaussiana<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_gaussiana</span></a></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/probabilidad_union.html">probsum</a></td>
+		<td>Probabilidad de la unión de sucesos independientes</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/regresion.html">reg</a></td>
+		<td>Recta de regresión lineal y coeficiente de correlación lineal o parábola de ajuste de una serie de datos</td>
+	</tr>
+	<tr>
+		<th colspan="2" style="background:linear-gradient(to right,#DDF,#CBF,#BAD) !important;text-align:center" class="subHeader index" id="cdf">Funciones de densidad (cuantía/masa) y de distribución</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/normal.html">normal</a></td>
+		<td>Función de densidad normal N(μ,σ)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/distribucion_normal.html">normaldist</a></td>
+		<td>Función de distribución normal N(μ,σ)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/uniforme.html">uniforme</a></td>
+		<td>Función de densidad uniforme continua</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/uniformedist.html">uniformedist</a></td>
+		<td>Función de distribución uniforme continua</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/triangular.html">triangular</a></td>
+		<td>Función de densidad triangular</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/triangulardist.html">triangulardist</a></td>
+		<td>Función de distribución triangular</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/binomial.html">binomial</a></td>
+		<td>Función de densidad binomial</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/binomialdist.html">binomialdist</a></td>
+		<td>Función de distribución binomial</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/poisson.html">poisson</a></td>
+		<td>Función de densidad de Poisson</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/poissondist.html">poissondist</a></td>
+		<td>Función de distribución de Poisson</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/hipergeometrica.html">hipergeom</a></td>
+		<td>Función de densidad hipergeométrica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/hipergeometricadist.html">hipergeomdist</a></td>
+		<td>Función de distribución hipergeométrica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/geometrica.html">geom</a></td>
+		<td>Función de densidad geométrica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/geometricadist.html">geomdist</a></td>
+		<td>Función de distribución geométrica</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fdexponencial.html">exponencial</a></td>
+		<td>Función de densidad exponencial</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/exponencialdist.html">exponencialdist</a></td>
+		<td>Función de distribución exponencial</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/binomialneg.html">binomialneg</a></td>
+		<td>Función de densidad binomial negativa</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/binomialnegdist.html">binomialnegdist</a></td>
+		<td>Función de distribución binomial negativa</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fdgamma.html">fdgamma</a></td>
+		<td>Función de densidad de la distribución gamma</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/gammadist.html">gammadist</a></td>
+		<td>Función de distribución gamma</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fdbeta.html">fdbeta</a></td>
+		<td>Función de densidad de la distribución beta</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/betadist.html">betadist</a></td>
+		<td>Función de distribución beta</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cauchy.html">cauchy</a></td>
+		<td>Función de densidad de Cauchy</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cauchydist.html">cauchydist</a></td>
+		<td>Función de distribución de Cauchy</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/chi2.html">chi2</a></td>
+		<td>Función de densidad χ² <small>(chi-cuadrada)</small></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/chi2dist.html">chi2dist</a></td>
+		<td>Función de distribución χ² <small>(chi-cuadrada)</small></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/f.html">fdf</a></td>
+		<td>Función de densidad F de Fisher-Snedecor</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fdist.html">fdist</a></td>
+		<td>Función de distribución F de Fisher-Snedecor</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/t.html">fdt</a></td>
+		<td>Función de densidad <i>t</i> de Student</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/tdist.html">tdist</a></td>
+		<td>Función de distribución <i>t</i> de Student</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/laplace.html">laplace</a></td>
+		<td>Función de densidad de Laplace</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/laplacedist.html">laplacedist</a></td>
+		<td>Función de distribución de Laplace</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/logistica.html">logistica</a></td>
+		<td>Función de densidad logística</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/logisticadist.html">logisticadist</a></td>
+		<td>Función de distribución logística</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_sp">Funciones especiales</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/gamma.html">gamma</a></td>
+		<td>Gamma de Euler <b>Γ</b> y Gamma incompleta superior <b class="monospace">Γ(a;x)</b></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/igamma.html">igamma</a></td>
+		<td>Gamma incompleta inferior <span class="monospace larger">γ(a;x)</span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/gammap.html">gammap</a></td>
+		<td>Gamma incompleta regularizada inferior <span class="monospace larger">P(a;x)</span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/gammaq.html">gammaq</a></td>
+		<td>Gamma incompleta regularizada superior <span class="monospace larger">Q(a;x)</span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/lngamma.html">lngamma</a></td>
+		<td>Logaritmo de la Gamma de Euler</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/digamma.html">digamma</a></td>
+		<td>Digamma ψ</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/trigamma.html">trigamma</a></td>
+		<td>Trigamma ψ<sub>1</sub></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/beta.html">beta</a></td>
+		<td>Función Beta de Euler <span class="monospace larger">B(a,b)</span> y Beta incompleta <span class="monospace larger">B(x;a,b)</span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/ibeta.html">ibeta</a></td>
+		<td>Beta incompleta regularizada <span class="monospace larger">I<sub>x</sub>(a,b)</span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/lnbeta.html">lnbeta</a></td>
+		<td>Logaritmo de la Beta de Euler</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/pi_gauss.html">fpi</a></td>
+		<td>Pi de Gauss</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/erf.html">erf</a></td>
+		<td><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_error" class="tooltip">Función error de Gauss (ERF)<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_error</span></a></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/erfc.html">erfc</a></td>
+		<td><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_error" class="tooltip">Función error complementaria (ERFC)<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_error</span></a></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/ierf.html">ierf</a></td>
+		<td><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_error" class="tooltip">Función error recíproca (ERF<sup>-1</sup>)<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_error</span></a></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/eliptica.html">eliptica</a></td>
+		<td>Integral elíptica completa/incompleta de 1ª y 2ª especie</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/lambert_w0.html">w0</a></td>
+		<td>Rama principal de la W de Lambert (W<sub>0</sub>)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/zeta_riemann.html">zeta</a><span class="beta"></span></td>
+		<td>Zeta de Riemann</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_dist">Funciones de distancia</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/distancia.html">dist</a></td>
+		<td>Distancia euclídea entre dos puntos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/dist_ascensor.html">ascensor</a></td>
+		<td>Distancia del ascensor entre dos puntos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/distancia.html">distman</a></td>
+		<td>Distancia Manhattan entre dos puntos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/dist_chebyshev.html">distche</a></td>
+		<td>Distanca Chebyshev entre dos puntos</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_solve">Funciones de resolución de ecuaciones</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sol_lineal.html">sol_lineal</a></td>
+		<td>Resuelve una ecuación lineal <i class="monospace">ax+b=0</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sol_grado2.html">sol_grado2</a></td>
+		<td>Resuelve una ecuación de segundo grado <i class="monospace">ax<sup>2</sup>+bx+c=0</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sol_grado3.html">sol_grado3</a></td>
+		<td>Resuelve una ecuación de tercer grado <i class="monospace">ax<sup>3</sup>+bx<sup>2</sup>+cx+d=0</i></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sol_sis.html">sol_sis</a></td>
+		<td>Resuelve un sistema compatible determinado a partir de la matriz ampliada del sistema</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sol_newton.html">sol_newton</a></td>
+		<td>Aplica el método de Newton especificando la derivada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/newton.html">newton</a></td>
+		<td>Aplica el método de Newton sin especificar la derivada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sol_bisec.html">sol_bisec</a></td>
+		<td>Aplica el método de la bisección</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sol_sec.html">sol_sec</a></td>
+		<td>Aplica el método de la secante</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/montecarlo.html">montecarlo</a></td>
+		<td>Aplica el método de Montecarlo</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_rec">Funciones de recurrencias</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/iterar.html">iter</a></td>
+		<td>Devuelve el resultado de iterar 'n' veces una expresión a partir de un valor inicial</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/orbita.html">orbit</a></td>
+		<td>Devuelve la órbita resultante de iterar 'n' veces una expresión a partir de un valor inicial</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/reduce.html">reduce</a></td>
+		<td>Opera reiteradamente los elementos de un vector de forma asociativa</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_selec">Funciones de selección</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/if.html">if</a></td>
+		<td>Selecciona entre dos valores según una condición</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/elsif.html">elsif</a></td>
+		<td>Selecciona entre varios valores a partir de condiciones else-if sucesivas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/switch.html">switch</a></td>
+		<td>Selecciona entre varios valores a partir de un valor</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/seccion.html">seccion</a></td>
+		<td>Selecciona un elemento en el intervalo especificado por un valor</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_logic">Funciones de lógica</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/tabla_verdad.html">tverdad</a></td>
+		<td>Construye la tabla de verdad de una expresión booleana</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/tauto.html">tauto</a></td>
+		<td>Comprueba si una expresión booleana es una tautología</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/and.html">and</a></td>
+		<td>AND múltiple</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/or.html">or</a></td>
+		<td>OR múltiple</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/xor.html">xor</a></td>
+		<td>XOR múltiple</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_trozos">Funciones definidas a trozos discontinuas</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/signo.html">sgn</a></td>
+		<td>Función signo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/intervalo.html">intervalo</a></td>
+		<td>Devuelve uno si un valor está entre otros dos, o cero en caso contrario</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/escalon.html">step</a></td>
+		<td>Función escalón de Heaviside</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_trozos_cont">Funciones definidas a trozos continuas</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/acotar.html">clip</a></td>
+		<td>Acota la función entre un máximo y un mínimo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/rampa.html">ramp</a></td>
+		<td><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_rampa" class="tooltip">Función rampa<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_rampa</span></a></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/nonn.html">nonn</a></td>
+		<td>Devuelve NaN para valores negativos y la identidad para positivos</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_eval">Funciones de evaluación</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/eval.html">eval</a></td>
+		<td>Evalúa una expresión para una o más variables-valores</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/evaldic.html">evaldic</a></td>
+		<td>Evalúa una expresión tomando las variables desde un diccionario</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/propagar.html">propagar</a></td>
+		<td>Propaga una expresión a partir de los valores de un vector o diccionario</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_num_teo">Funciones de Teoría de Números</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/mcd.html">mcd</a></td>
+		<td>Máximo Común Divisor</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/mcm.html">mcm</a></td>
+		<td>mínimo común múltiplo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/par.html">par</a></td>
+		<td>Indica si el nº es par</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/impar.html">impar</a></td>
+		<td>Indica si el nº es impar</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/primo.html">primo</a></td>
+		<td>Determina si un número es primo, o probablemente primo, u obtiene el siguiente primo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/orden.html">ord</a></td>
+		<td>Orden de magnitud de un número</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/div.html">div</a></td>
+		<td>Conjunto ordenado de todos los divisores de un número</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/factor.html">factor</a></td>
+		<td>Matriz 'Nx2' con todos los factores primos 'N' y multiplicidad de éstos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/funcion_divisor.html">fdiv</a></td>
+		<td><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_divisor" class="tooltip">Función divisor<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_divisor</span></a></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/suma_alicuota.html">alisum</a></td>
+		<td>Suma alícuota</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/sucesion_alicuota.html">alisuc</a><span class="beta"></span></td>
+		<td>Sucesión alícuota</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/funcion_indicatriz_euler.html">euler</a></td>
+		<td><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_%CF%86_de_Euler" class="tooltip">Función Indicatriz de Euler φ<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_%CF%86_de_Euler</span></a></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fibonacci.html">fib</a></td>
+		<td>Devuelve términos de la sucesión de Fibonacci o de la función analítica que la generaliza en recta real y plano complejo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/contador_primos.html">pc</a></td>
+		<td><a href="https://es.wikipedia.org/wiki/Funci%C3%B3n_contador_de_n%C3%BAmeros_primos" class="tooltip">Función contador de números primos π(x)<span class="tooltiptext">https://es.wikipedia.org/wiki/Funci%C3%B3n_contador_de_n%C3%BAmeros_primos</span></a> (prime-counting function)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/numero_armonico.html">armonico</a></td>
+		<td>n-ésimo número armónico</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/numero_poligonal.html">npolig</a></td>
+		<td>Número poligonal de orden 'n' y lado 'l'</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_digit">Funciones sobre dígitos</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/adigitos.html">adigitos</a></td>
+		<td>Convierte los dígitos de un número a vector o cadena</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/frecuencia_digitos.html">digfrec</a></td>
+		<td>Vector con la frecuencia de cada cifra en un entero para una determinada base</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/digitsum.html">digsum</a></td>
+		<td>Suma los dígitos de un entero</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/escala.html">escala</a></td>
+		<td>Escala de un número flotante</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/precision.html">precision</a></td>
+		<td>Precisión de un número flotante</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/unscaled.html">unscaled</a></td>
+		<td>Representación entera de las cifras de un número real eliminando la escala</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/complemento1.html">comp1</a></td>
+		<td>Complemento a la uno</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/complemento2.html">comp2</a></td>
+		<td>Complemento a la dos</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_rand">Funciones aleatorias</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/rand.html">rand</a></td>
+		<td>Devuelve un nº pseudoaleatorio en [min,max)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/randint.html">randint</a></td>
+		<td>Entero pseudoaleatorio en [a,b]</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/shuffle.html">shuffle</a></td>
+		<td>Baraja los elementos de un vector</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/elegir.html">elegir</a></td>
+		<td>Elige un elemento o elementos de un vector aleatoriamente</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/randgauss.html">randgauss</a></td>
+		<td>Devuelve nº pseudoaleatorio con distrubución gaussiana N(&mu;,&sigma;)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/rfrec.html">rfrec</a></td>
+		<td>Devuelve un entero en [1,n], según la dimensión 'n' y pesos de un vector de frecuencias</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/randprimo.html">randprimo</a></td>
+		<td>Devuelve un número primo aleatorio de 'n' bits</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/genrand.html">genrand</a></td>
+		<td>Número aleatorio a partir de función de densidad</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_fractal">Funciones sobre fractales de algoritmo de escape</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/escape.html">escape</a></td>
+		<td>Itera una expresión un determinado nº de veces o hasta superar un umbral, y devuelve el nº de iteraciones</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/mandelbrot.html">mandelbrot</a></td>
+		<td>Calcula el nº de iteraciones de escape en el <a class="tooltip" href="https://es.wikipedia.org/wiki/Conjunto_de_Mandelbrot">Conjunto de Mandelbrot<span class="tooltiptext">https://es.wikipedia.org/wiki/Conjunto_de_Mandelbrot</span></a> para un punto dado</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/julia.html">julia</a></td>
+		<td>Calcula el nº de iteraciones de escape en un <a class="tooltip" href="https://es.wikipedia.org/wiki/Conjunto_de_Julia">Conjunto de Julia<span class="tooltiptext">https://es.wikipedia.org/wiki/Conjunto_de_Julia</span></a> para un punto y constante dada</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_float">Funciones sobre flotantes</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/ulp.html">ulp</a></td>
+		<td>(<a href="https://en.wikipedia.org/wiki/Unit_in_the_last_place" class="tooltip">Unit in the last place<span class="tooltiptext">https://en.wikipedia.org/wiki/Unit_in_the_last_place</span></a>), devuelve la distancia al siguiente flotante</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/next.html">next</a></td>
+		<td>Siguiente flotante</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/prev.html">prev</a></td>
+		<td>Anterior flotante</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_geom">Funciones de geometría</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/geometria.html">geometria</a></td>
+		<td>Devuelve el valor de propiedades como el perímetro, área, volumen, etc. de diferentes figuras geométricas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/hypot.html">hypot</a></td>
+		<td>Cálculo de la hipotenusa</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_fisica">Funciones de Física</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/resistencia_paralela.html">rpara</a></td>
+		<td>Calcula la resistencia o impedancia paralela equivalente</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/resistencia_equivalente.html">requi</a></td>
+		<td>Calcula la resistencia o impedancia equivalente para resistores en serie y paralelo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/energia_cinetica.html">ec</a></td>
+		<td>Calcula la energía cinética</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fuerza_gravitatoria.html">fuerzag</a></td>
+		<td>Fuerza gravitatoria entre dos masas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fuerza_electrica.html">fuerzae</a></td>
+		<td>Fuerza eléctrica entre dos cargas</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fuerza_magnetica.html">fuerzam</a></td>
+		<td>Fuerza magnética sobre una carga en un campo magnético</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/fuerza_lorentz.html">lorentz</a></td>
+		<td>Fuerza de Lorentz sobre una carga en un campo electromagnético</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cin_r.html">cin_r</a></td>
+		<td>Calcula la posición final en la expresión <span class="monospace">r(t):=r<sub>0</sub>+v<sub>0</sub>t+0.5at<sup>2</sup></span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cin_r2.html">cin_r2</a></td>
+		<td>Calcula la posición final en la expresión <span class="monospace">r(t):=r<sub>0</sub>+0.5(v+v<sub>0</sub>)t</span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cin_v.html">cin_v</a></td>
+		<td>Calcula el módulo de la velocidad final en la expresión <span class="monospace">|v(t)|:=&#x221A;(v<sub>0</sub>+2a(x-x<sub>0</sub>))</span></td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_time">Funciones de tiempo</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/tiempo.html">tiempo</a></td>
+		<td>Devuelve distintos valores del reloj del sistema</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/cpu.html">cpu</a></td>
+		<td>Tiempo (en nanosegundos) de CPU en evaluar una expresión una o más veces</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/bisiesto.html">bisiesto</a></td>
+		<td>Comprueba si un determinado año es bisiesto u obtiene el bisiesto anterior o previo al dado</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_excep">Funciones de excepciones</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/throw.html">_throw_</a></td>
+		<td>Fuerza un error de evaluación</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/catch.html">_catch_</a></td>
+		<td>Captura una excepción al evaluar y devuelve un valor</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/assert.html">_assert_</a></td>
+		<td>Lanza una excepción o un valor dado según una condición</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_finan">Funciones financieras</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/interes.html">interes</a></td>
+		<td>Calcula capital final con interés simple, compuesto y contínuo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/van.html">van</a></td>
+		<td>VAN de una inversión</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/tir.html">tir</a></td>
+		<td>TIR de una inversión</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_conver">Funciones de conversión de unidades</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/funciones_conversion.html" style="text-decoration: none"><i>ver tabla</i></a></td>
+		<td>Convierten de una unidad de medida en otra</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_csv">Exportación/Importación CSV</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/acsv.html">acsv</a></td>
+		<td>Convierte vector a cadena CSV con el formato especificado</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/desdecsv.html">desdecsv</a></td>
+		<td>Convierte cadena CSV a vector con el formato especificado</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_archivo">Funciones de E/S por archivo</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/archivotxt.html">archivotxt</a></td>
+		<td>Carga archivos de texto (como scripts <i>JMEScript</i>, por ejemplo)</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/guardararchivotxt.html">guardararchivotxt</a></td>
+		<td>Guarda dato (terminal) en archivo de texto</td>
+	</tr>	
+	<tr>
+		<td><a href="html/functions/archivobin.html">archivobin</a></td>
+		<td>Carga dato (terminal) desde archivo binario</td>
+	</tr>	
+	<tr>
+		<td><a href="html/functions/guardararchivobin.html">guardararchivobin</a></td>
+		<td>Guarda dato (terminal) en archivo binario</td>
+	</tr>	
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_java">Acceso a Java</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/java.html">java</a><span class="beta"></span></td>
+		<td>Ejecuta ciertos métodos estáticos de Java. <span style="border-bottom:double">Necesita de algún conocimiento previo de Java</span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/javaconst.html">jconst</a></td>
+		<td>Convierte constantes estáticas Java a JME. <span style="border-bottom:double">Necesita de algún conocimiento previo de Java</span></td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/return.html">return</a></td>
+		<td>Devuelve el valor especificado en la ejecución de una expresión</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_jmescript">Funciones para JMEScript</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/script.html">script</a></td>
+		<td>Ejecuta un script <i>JMEScript</i> y retorna el valor devuelto por el script o uno especificado</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/indefinido.html">indefinido</a></td>
+		<td>Comprueba si esta definida una variable o asigna valor por defecto</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/imprimir.html">imprimir</a></td>
+		<td>Imprime terminal por salida especificada</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/dormir.html">dormir</a></td>
+		<td>Detiene la evaluación los nanosegundos especificados</td>
+	</tr>
+	<tr>
+		<th colspan="2" class="subHeader index" id="f_misc">Miscelánea</th>
+	</tr>
+	<tr>
+		<td><a href="html/functions/mc.html">mc</a></td>
+		<td>Crear contexto matemático</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/exec.html">exec</a></td>
+		<td>Ejecuta comandos</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/map.html">map</a></td>
+		<td>Extrapola un valor en un intervalo a otro intervalo</td>
+	</tr>
+	<tr>
+		<td><a href="html/functions/hash.html">hash</a></td>
+		<td>Crea un resumen de un mensaje de texto mediante 'hashing'</td>
+	</tr>
+	</tbody>
+</table>
+
+<hr/>
+
+<span class="hideShow content" data-id="constTable">Tabla de constantes predefinidas &#x25BC;</span>
+
+<table class="centerTable dataTable" id="constTable">
+	<thead>
+	<tr>
+		<th colspan="4">Constantes predefinidas en JME</th>
+	</tr>
+	<tr>
+		<th>Entrada</th>
+		<th>Descripción</th>
+		<th>Tipo</th>
+		<th>Valor</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>nulo</td>
+		<td>Valor pseudo-nulo</td>
+		<td>Texto</td>
+		<td><code>'__null__'</code></td>
+	</tr>
+	<tr>
+		<th colspan="4" class="subHeader">Numéricas y vectoriales</th>
+	</tr>
+	<tr>
+		<td>ui</td>
+		<td>Unidad imaginaria</td>
+		<td>Complejo.UnidadImaginaria</td>
+		<td>î</td>
+	</tr>
+	<tr>
+		<td>inf</td>
+		<td>+infinito</td>
+		<td>RealDoble</td>
+		<td>inf</td>
+	</tr>
+	<tr>
+		<td>nan</td>
+		<td>Not a Number (NaN)</td>
+		<td>RealDoble</td>
+		<td>nan</td>
+	</tr>
+	<tr>
+		<td>pi</td>
+		<td>Valor de π</td>
+		<td>RealDoble</td>
+		<td>3.141592653589793</td>
+	</tr>
+	<tr>
+		<td>rgpi</td>
+		<td>Valor de π con 50 cifras significativas</td>
+		<td>RealGrande</td>
+		<td>3.1415926535897932384626433832795028841971693993751d</td>
+	</tr>
+	<tr>
+		<td>pi2</td>
+		<td>Valor de 2π</td>
+		<td>RealDoble</td>
+		<td>6.283185307179586</td>
+	</tr>
+	<tr>
+		<td>mpi</td>
+		<td>Valor de <span class="frac"><span>π</span><span></span><span>2</span></span></td>
+		<td>RealDoble</td>
+		<td>1.5707963267948966</td>
+	</tr>
+	<tr>
+		<td>_e</td>
+		<td>Valor de <i>e</i></td>
+		<td>RealDoble</td>
+		<td>2.718281828459045</td>
+	</tr>
+	<tr>
+		<td>rge</td>
+		<td>Valor de <i>e</i> con 50 cifras significativas</td>
+		<td>RealGrande</td>
+		<td>2.7182818284590452353602874713526624977572470936999d</td>
+	</tr>
+	<tr>
+		<td>phi</td>
+		<td>Número áureo φ</td>
+		<td>RealDoble</td>
+		<td>1.618033988749895</td>
+	</tr>
+	<tr>
+		<td>rgphi</td>
+		<td>Número áureo φ con 50 cifras significativas</td>
+		<td>RealGrande</td>
+		<td>1.6180339887498948482045868343656381177203091798057</td>
+	</tr>
+	<tr>
+		<td>rt2</td>
+		<td>√2</td>
+		<td>RealDoble</td>
+		<td>1.4142135623730951</td>
+	</tr>
+	<tr>
+		<td>rt3</td>
+		<td>√3</td>
+		<td>RealDoble</td>
+		<td>1.7320508075688772</td>
+	</tr>
+	<tr>
+		<td>rt5</td>
+		<td>√5</td>
+		<td>RealDoble</td>
+		<td>2.23606797749979</td>
+	</tr>
+	<tr>
+		<td>rt6</td>
+		<td>√6</td>
+		<td>RealDoble</td>
+		<td>2.449489742783178</td>
+	</tr>
+	<tr>
+		<td>rt7</td>
+		<td>√7</td>
+		<td>RealDoble</td>
+		<td>2.6457513110645907</td>
+	</tr>
+	<tr>
+		<td>rt8</td>
+		<td>√8</td>
+		<td>RealDoble</td>
+		<td>2.8284271247461903</td>
+	</tr>
+	<tr>
+		<td>v2i</td>
+		<td>Vector 2D unitario <i>i</i></td>
+		<td>Vector</td>
+		<td>[1,0]</td>
+	</tr>
+	<tr>
+		<td>v2j</td>
+		<td>Vector 2D unitario <i>j</i></td>
+		<td>Vector</td>
+		<td>[0,1]</td>
+	</tr>
+	<tr>
+		<td>v3i</td>
+		<td>Vector 3D unitario <i>i</i></td>
+		<td>Vector</td>
+		<td>[1,0,0]</td>
+	</tr>
+	<tr>
+		<td>v3j</td>
+		<td>Vector 3D unitario <i>j</i></td>
+		<td>Vector</td>
+		<td>[0,1,0]</td>
+	</tr>
+	<tr>
+		<td>v3k</td>
+		<td>Vector 3D unitario <i>k</i></td>
+		<td>Vector</td>
+		<td>[0,0,1]</td>
+	</tr>
+	<tr>
+		<td>v0y</td>
+		<td>Vector 2D nulo</td>
+		<td>Vector</td>
+		<td>[0,0]</td>
+	</tr>
+	<tr>
+		<td>v0z</td>
+		<td>Vector 3D nulo</td>
+		<td>Vector</td>
+		<td>[0,0,0]</td>
+	</tr>
+	<tr>
+		<td>max_value</td>
+		<td>Máximo valor double</td>
+		<td>RealDoble</td>
+		<td>1.7976931348623157E308</td>
+	</tr>
+	<tr>
+		<td>min_value</td>
+		<td>Mínimo valor double+</td>
+		<td>RealDoble</td>
+		<td>4.9E-324</td>
+	</tr>
+	<tr>
+		<td>float_max_value</td>
+		<td>Máximo valor float</td>
+		<td>RealGrande</td>
+		<td>3.4028235E+38</td>
+	</tr>
+	<tr>
+		<td>float_min_value</td>
+		<td>Mínimo valor float+</td>
+		<td>RealGrande</td>
+		<td>1.4E-45</td>
+	</tr>
+	<tr>
+		<td>long_max_value</td>
+		<td>Máximo valor long</td>
+		<td>EnteroGrande</td>
+		<td>9223372036854775807</td>
+	</tr>
+	<tr>
+		<td>long_min_value</td>
+		<td>Mínimo valor long-</td>
+		<td>EnteroGrande</td>
+		<td>-9223372036854775808</td>
+	</tr>
+	<tr>
+		<td>int_max_value</td>
+		<td>Máximo valor int</td>
+		<td>RealDoble</td>
+		<td>2.147483647E9</td>
+	</tr>
+	<tr>
+		<td>int_min_value</td>
+		<td>Mínimo valor int-</td>
+		<td>RealDoble</td>
+		<td>-2.147483648E9</td>
+	</tr>
+	<tr>
+		<td>em_gamma</td>
+		<td>Constante de Euler-Mascheroni γ</td>
+		<td>RealDoble</td>
+		<td>0.5772156649015329</td>
+	</tr>
+	<tr>
+		<td>brun</td>
+		<td>Constante de Brun</td>
+		<td>RealDoble</td>
+		<td>1.902160583104</td>
+	</tr>
+	<tr>
+		<td>googol</td>
+		<td>googol</td>
+		<td>RealDoble</td>
+		<td>1E100</td>
+	</tr>
+	<tr>
+		<th colspan="4" class="subHeader">Texto</th>
+	</tr>
+	<tr>
+		<td>eol</td>
+		<td>Salto de línea</td>
+		<td>Texto</td>
+		<td><small>depende del sistema</small></td>
+	</tr>
+	<tr>
+		<td>eol_split</td>
+		<td>REGEX de salto de línea</td>
+		<td>Texto</td>
+		<td><small>equivalente a \R en Java 8+</small></td>
+	</tr>
+	<tr>
+		<td>tab</td>
+		<td>Tabulador</td>
+		<td>Texto</td>
+		<td>'\t'</td>
+	</tr>
+	<tr>
+		<td>comillas_simples</td>
+		<td>Comillas simples</td>
+		<td>Texto</td>
+		<td>'\''</td>
+	</tr>
+	<tr>
+		<td>file_separator</td>
+		<td>Separador de nombres de archivo/directorio (típicamente '\\' o '/')</td>
+		<td>Texto</td>
+		<td><small>depende del sistema</small></td>
+	</tr>
+	<tr>
+		<th colspan="4" class="subHeader">Contextos</th>
+	</tr>
+	<tr>
+		<td>mc0</td>
+		<td>Wrapper de <b>MathContext.UNLIMITED</b></td>
+		<td>JMEContext</td>
+		<td>precision=0 roundingMode=HALF_UP</td>
+	</tr>
+	<tr>
+		<td>mc128</td>
+		<td>Wrapper de <b>MathContext.DECIMAL128</b></td>
+		<td>JMEContext</td>
+		<td>precision=34 roundingMode=HALF_EVEN</td>
+	</tr>
+	<tr>
+		<td>mc64</td>
+		<td>Wrapper de <b>MathContext.DECIMAL64</b></td>
+		<td>JMEContext</td>
+		<td>precision=16 roundingMode=HALF_EVEN</td>
+	</tr>
+	<tr>
+		<td>mc32</td>
+		<td>Wrapper de <b>MathContext.DECIMAL32</b></td>
+		<td>JMEContext</td>
+		<td>precision=7 roundingMode=HALF_EVEN</td>
+	</tr>
+	<tr>
+		<th colspan="4" class="subHeader">Científicas</th>
+	</tr>
+	<tr>
+		<td>_na</td>
+		<td>Número de Avogadro N<sub>a</sub></td>
+		<td>RealDoble</td>
+		<td>6.022140857E23</td>
+	</tr>
+	<tr>
+		<td>_si_c</td>
+		<td><i>c</i>, velocidad de la luz en m/s</td>
+		<td>RealDoble</td>
+		<td>2.99792458E8</td>
+	</tr>
+	<tr>
+		<td>_si_g</td>
+		<td>Constante de gravitación en N·m<sup>2</sup>/kg<sup>2</sup></td>
+		<td>RealDoble</td>
+		<td>6.67408E-11</td>
+	</tr>
+	<tr>
+		<td>_si_ke</td>
+		<td>Constante de Coulomb en N·m<sup>2</sup>/C<sup>2</sup></td>
+		<td>RealDoble</td>
+		<td>8.987551787368176E9</td>
+	</tr>
+	<tr>
+		<td>_si_h</td>
+		<td>Constante de Planck en el SI (J·s)</td>
+		<td>RealDoble</td>
+		<td>6.62607015E-34</td>
+	</tr>
+	<tr>
+		<td>_si_h_</td>
+		<td>Constante reducida de Planck en el SI (J·s)</td>
+		<td>RealDoble</td>
+		<td>1.0545718176461565E-34</td>
+	</tr>
+	<tr>
+		<td>_si__e</td>
+		<td>Carga del electrón en Coulombs</td>
+		<td>RealDoble</td>
+		<td>-1.602176565E-19</td>
+	</tr>
+	<tr>
+		<td>_si_me</td>
+		<td>Masa del electrón en kg</td>
+		<td>RealDoble</td>
+		<td>9.10938291E-31</td>
+	</tr>
+	<tr>
+		<td>_si_mp</td>
+		<td>Masa del protón en kg</td>
+		<td>RealDoble</td>
+		<td>1.672621898E-27</td>
+	</tr>
+	<tr>
+		<td>_si_mn</td>
+		<td>Masa del neutrón en kg</td>
+		<td>RealDoble</td>
+		<td>1.67492729E-27</td>
+	</tr>
+	<tr>
+		<td>_si_mt</td>
+		<td>Masa de la Tierra en kg</td>
+		<td>RealDoble</td>
+		<td>5.9722E24</td>
+	</tr>
+	<tr>
+		<td>_si_rt</td>
+		<td>Radio medio de la Tierra en m</td>
+		<td>RealDoble</td>
+		<td>6371000</td>
+	</tr>
+	<tr>
+		<td>_si_ret</td>
+		<td>Radio ecuatorial de la Tierra en m</td>
+		<td>RealDoble</td>
+		<td>6378100</td>
+	</tr>
+	<tr>
+		<td>_si_rpt</td>
+		<td>Radio polar de la Tierra en m</td>
+		<td>RealDoble</td>
+		<td>6356800</td>
+	</tr>
+	<tr>
+		<td>_si_gsup</td>
+		<td>Aceleración de la gravedad en la superficie (m/s<sup>2</sup>)</td>
+		<td>RealDoble</td>
+		<td>9.80665</td>
+	</tr>
+	<tr>
+		<td>_si_rl</td>
+		<td>Radio medio de la Luna en m</td>
+		<td>RealDoble</td>
+		<td>1737000</td>
+	</tr>
+	<tr>
+		<td>_si_roml</td>
+		<td>Radio órbital medio de la Luna en m</td>
+		<td>RealDoble</td>
+		<td>3.844E8</td>
+	</tr>
+	</tbody>
+</table>
+
+<br/>
+<img style="margin-top:64px" class="centerImg" src="images/jme_logo.png" width=128px/>
+
+<hr/>
+
+<button onclick="topFunction()" id="myBtn" title="Ir arriba">^</button>
+	
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author">Miguel Alejandro Moreno Barrientos</span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

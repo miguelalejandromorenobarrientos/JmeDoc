@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="desplazamiento, derecha" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Desplazamiento derecha</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">BINARIO (30)</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<ul class="content listIcon" style="padding-left: 0">
+	<li>Desplazamiento a la derecha de 'n' bits</li>
+	<li>Desplazamiento cíclico a la derecha de 'n' posiciones en vector</li>
+	<li>Desplazamiento cíclico a la derecha de 'n' caracteres en una cadena</li>
+</ul>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">>></p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">>></p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf"><span class="nonTerminal">&lt;cic-elem></span> >> <span class="nonTerminal">&lt;desplazamiento></span>
+	  <span class="nonTerminal">&lt;cic_elem></span>::= &lt;entero>|&lt;vector>|&lt;texto>
+	  <span class="nonTerminal">&lt;desplazamiento></span>::= &lt;entero>
+</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">8>>1</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 4</p>
+	<p class="content input"><span class="javaString">8b>>1</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 4</p>
+	<p class="content input"><span class="javaString">12>>2</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3</p>
+	<p class="content input"><span class="javaString">-256>>4</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: -16</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[1,2,3,4,5]>>2</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [4,5,1,2,3]</p>
+	<p class="content input"><span class="javaString">rango(6,20)>>100</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [18,19,6,7,8,9,10,11,12,13,14,15,16,17]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">"Hola Mundo">>2</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'doHola Mun'</p>
+	<p class="content input"><span class="javaString">'Hola Mundo'>>-2</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'la MundoHo'</p>
+	<p class="content input"><span class="javaString">'Hola Mundo'>>25</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'MundoHola '</p>
+</div>
+
+<!-- SEE ALSO  -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="desplazamiento_izquierda.html">desplazamiento izquierda</a>,
+	<a href="desplazamiento_derecha_sin_signo.html">desplazamiento derecha sin signo</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

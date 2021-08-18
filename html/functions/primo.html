@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="primo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Primo</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<ul class="listIcon">
+	<li>Comprueba si un número entero es primo o probablemente primo</li>
+	<li>Devuelve el número probablemente primo más cercano a otro número dado menor</li>
+</ul>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">primo</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">primo</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">primo(&lt;entero>[,&lt;probabilidad>|&lt;certeza>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>entero</td>
+			<td>Entero a comprobar si es primo o encontrar el siguiente probable primo. Valores no enteros se truncarán</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>probabilidad</td>
+			<td>Valor real en (0,1) indicando la probabilidad de que un nº sea primo (compuestos siempre devuelven <i>falso</i>).
+				<br/>La certeza está ligada a la probabilidad por <b class="monospace larger">certeza=⌈-log<sub>2</sub>(1-probabilidad)⌉</b></td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>certeza</td>
+			<td>Valor <i>EnteroGrande</i> >0 indicando la certeza de que un nº primo sea primo (compuestos siempre devuelven <i>falso</i>).
+				<br/>A mayor valor, más seguridad de que el nº es primo, a costa de eficiencia.
+				<br/>La probabilidad está ligada a la certeza por <b class="monospace larger">probabilidad=1-0.5<sup>certeza</sup></b></td>
+			<td>∅</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- VALUE RETURNED -->
+<p class="subtitle">Valor devuelto</p>
+
+<ul class="listIcon">
+	<li><i>Booleano</i> cuando <b>&lt;entero></b> no es <i>EnteroGrande</i> o se especifica <b>&lt;probabilidad>|&lt;certeza></b></li>
+	<li><i>EnteroGrande</i> con el siguiente probable primo cuando <b>&lt;entero></b> es <i>EnteroGrande</i> y no se especifica segundo parámetro</li>
+</ul>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">primo(5)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">primo(1)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+	<p class="content input"><span class="javaString">primo(-2)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: falso</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">primo(2b^89-1,1b)</span> <small class="comment">(10º primo de Mersenne con certeza=1)</small></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">primo(2b^89-1,99*%)</span> <small class="comment">(10º primo de Mersenne con probabilidad=99%)</small></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">primo(17b)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 19</p>
+	<p class="content input"><span class="javaString">primo(100b!)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000229</p>
+	<p class="content input"><span class="javaString">orbit(primo(n),n,2b,24)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="factor.html">factores primos</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

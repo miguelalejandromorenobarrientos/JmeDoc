@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="hash" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	<link href="../../css/default.css" rel="stylesheet" type="text/css" />        
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../../js/highlight.pack.js" charset="UTF-8"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Hash</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Crea un resumen de mensaje de texto a partir de un algoritmo de <i>hashing</i> especificado</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">hash</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">HASH</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">hash(&lt;mensaje>,&lt;método>[,&lt;formato>[,&lt;charset>]])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>mensaje</td>
+			<td>texto a resumir</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>método</td>
+			<td>Algoritmo de hash:<br/>
+				<ul>
+					<li>'MD2'</li>
+					<li>'MD5'</li>
+					<li>'SHA-1'</li>
+					<li>'SHA-224'</li>
+					<li>'SHA-256'</li>
+					<li>'SHA-384'</li>
+					<li>'SHA-512'</li>
+				</ul>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>formato</td>
+			<td>formato de salida:
+				<ul>
+					<li>'HEX' <small>cadena hexadecimal</small></li>
+					<li>'DEC' <small>cadena decimal</small></li>
+					<li>'BYTE' <small>vector de bytes</small></li>
+				</ul>
+			</td>
+			<td>'HEX'</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>charset</td>
+			<td>juego de caracteres:
+				<ul>
+					<li>'US-ASCII'</li>
+					<li>'ISO-8859-1'</li>
+					<li>'UTF-8'</li>
+					<li>'UTF-16BE'</li>
+					<li>'UTF-16LE'</li>
+					<li>'UTF-16'</li>
+				</ul>
+			</td>
+			<td><i>charset del sistema</i></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">hash('Lorem ipsum','SHA-512')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'e2e9cdde07e34612b5a6a81aa41e065fbc8ba5c6dbfd637314b9f2349263dc4a3037bad914f766075e423b5061538adc9650ca25a318c323d9bef4c8940498a4'</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">eval(enumerar(propagar(hash('Lorem ipsum','SHA-1',formato),formato,formatos),formatos),formatos,['HEX','DEC','BYTE'])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 'HEX'                 '94912be8b3fb47d4161ea50e5948c6296af6ca05'                |
+		| 'DEC'             '848168067148755915901647514117220685546094250501'            |
+		| 'BYTE'  [148,145,43,232,179,251,71,212,22,30,165,14,89,72,198,41,106,246,202,5] |
+	</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">eval(enumerar(propagar(hash('Lorem ipsum',metodo),metodo,metodos),metodos),metodos,['MD2','MD5','SHA-1','SHA-224','SHA-256','SHA-384','SHA-512'])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		|   'MD2'                                                    '385d71a2311487d285f9ab449b1a56ba'                                                 |
+		|   'MD5'                                                    '956d2fbd5d5c29844a4d21ed2f76e0c'                                                  |
+		|  'SHA-1'                                               '94912be8b3fb47d4161ea50e5948c6296af6ca05'                                             |
+		| 'SHA-224'                                      '2aee968c503916313629d08b564aa3284d00f153fa86bfc060a38383'                                     |
+		| 'SHA-256'                                  'a9a66978f378456c818fb8a3e7c6ad3d2c83e62724ccbdea7b36253fb8df5edd'                                 |
+		| 'SHA-384'                  'a3230ba694ebda0a5253920d9e24109d64d082d0aef6b2b3b7dfe28b44fb506632af63997dee3c402477f46a85bde5a4'                 |
+		| 'SHA-512'  'e2e9cdde07e34612b5a6a81aa41e065fbc8ba5c6dbfd637314b9f2349263dc4a3037bad914f766075e423b5061538adc9650ca25a318c323d9bef4c8940498a4' |
+	</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.1</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

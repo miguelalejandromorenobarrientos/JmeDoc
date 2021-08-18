@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-language" content="es"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keyword" content="jmescriptgui, gui, jmescript, evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="description" content="JMEScriptGUI documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="distribution" content="Global" />
+    <meta name="audience" content="all" />
+    <meta name="robots" content="index,follow" />
+
+	<!-- icon -->
+    <link href="images_jmes/jmescriptgui_logo.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	<link href="../../css/default.css" rel="stylesheet" type="text/css" />        
+
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../../js/highlight.pack.js" charset="UTF-8"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	<style>
+		td, th
+		{
+			word-break: break-all !important;
+		}
+	</style>
+	
+</head>
+
+<body>
+
+<header class="title" style="align-items:center;display:flex">
+	<img src="images_jmes/jmescriptgui_logo.png" width=48 style="min-width:48px"/>
+	<b style="margin-left: 0.75em;font-size:1.25em">JMEScriptGUI</b>  
+	<small style="margin-left: 0.5em;margin-right: 1em">v0.1.1</small>
+	<span style="margin-left:auto">
+		<a class="homepage discLink"><b>JME Homepage</b></a>
+		<a href="../../index.html" class="discLink" style="color: #335"><b>Manual de Usuario de JME</b></a> 
+		<a href="jmescript.html" class="discLink" style="color: #335"><b>JMEScript</b></a> 
+	</span> 
+</header>
+
+<hr/>
+
+
+<div class="tema content">
+<h3 class="subSection">Descripción</h3>
+<br/>
+<p class="content">
+<b>JMEScriptGUI</b> es un pequeño <i>entorno integrado de desarrollo (IDE)</i> para la ejecución de scripts <i>JMEScript</i>,
+implementado en JAVA 8 y distribuido en <i>jar ejecutable</i> y código fuente, con licencia GPLv3
+<a href=" http://www.gnu.org/licenses/gpl-3.0.html">http://www.gnu.org/licenses/gpl-3.0.html</a>.
+</p>
+<br/>
+<h3 class="subSection">Descarga</h3>
+<br/>
+<p class="content" style="font-size: 1.25em">
+	<img src="images_jmes/download.png"/>&nbsp;&nbsp;
+	<a class="discLink monospace" href="https://drive.google.com/file/d/1OKjxyJhxbVRyyZb1WQRfauJKc2tnws2k/view?usp=sharing"><b>jmescriptgui_xxx.jar</b></a>  &lt;1MB Ejecutable
+</p>
+<p class="content" style="font-size: 1.25em">
+	<img src="images_jmes/download.png"/>&nbsp;&nbsp;
+	<a class="discLink monospace" href="https://drive.google.com/file/d/1NAj9PfyPVO50CaSWP13QsLOtcwtgh13l/view?usp=sharing"><b>jmescriptgui_xxx.exe</b></a>  &lt;1MB Win Ejecutable
+</p>
+<p class="content" style="font-size: 1.25em">
+	<img src="images_jmes/download.png"/>&nbsp;&nbsp;
+	<a class="discLink monospace" href="https://drive.google.com/file/d/1RDzmqbAWDnLyYkjd609hQ3NevchjP9z4/view?usp=sharing"><b>jmescriptgui_xxx_src.jar</b></a> &lt;0.1MB Código
+</p>
+<br/>
+<p class="content">Versión para Android 5+ (beta):</p>
+<p class="content" style="font-size: 1.25em">
+	<img src="images_jmes/download.png"/>&nbsp;&nbsp;
+	<a class="discLink monospace" href="https://drive.google.com/file/d/1hbjxpJ3Xeq41H9udUnE2PsboK_Lgz55A/view?usp=sharing"><b>jmescriptgui_xxx_beta.apk</b></a>  &lt;2MB App
+</p>
+<p class="content" style="font-size: 1.25em">
+	<img src="images_jmes/download.png"/>&nbsp;&nbsp;
+	<a class="discLink monospace" href="https://drive.google.com/file/d/1ddusMMx-TPCQb7G2cNv18QYbwVE2urvG/view?usp=sharing"><b>JMEScriptGUI_AndroidStudio_src.rar</b></a>  &lt;35MB App
+</p>
+<small class="content">Nota: la instrucción <i>leer</i> es ignorada en la versión Android</small>
+<br/><br/>
+<h3 class="subSection">Características</h3>
+<br/>
+<p class="content">
+∎ Interfaz simple y autoexplicativo:
+<br/><br/>
+<img class="centerImg" src="images_jmes/jmescriptgui1.png"/>
+</p>
+<br/>
+<p class="content">
+∎ <b>Ejecución</b> y <b>Parada</b> de scripts <i>JMEScript</i>:
+<br/><br/>
+<img class="centerImg" src="images_jmes/jmescriptgui2.png"/>
+</p>
+<br/>
+<p class="content">
+∎ Establecimiento de mapa de <b>variables iniciales</b>:
+<br/><br/>
+<img class="centerImg" src="images_jmes/jmescriptgui3.png"/>
+</p>
+<br/>
+<p class="content">
+∎ Salida por GUI o por terminal (si se arranca la aplicación desde uno):
+<br/><br/>
+<img class="centerImg" src="images_jmes/jmescriptgui4.png"/>
+</p>
+<br/>
+<p class="content">
+∎ Entrada por diálogo de variable:
+<br/><br/>
+<img class="centerImg" src="images_jmes/jmescriptgui5.png"/>
+</p>
+<br/>
+<p class="content">
+∎ Android app:
+<br/><br/>
+<table style="max-width:800px; margin: auto">
+	<tr>
+		<td><img class="centerImg" src="images_jmes/jmescriptgui_android1.png"/></td>
+		<td style="padding-left: 60px"><img class="centerImg" src="images_jmes/jmescriptgui_android2.png"/></td>
+	</tr>
+</table>
+<br/>
+<h3 class="subSection">Editor y Notepad++</h3>
+<br/>
+<p class="content">
+El editor permite guardar y cargar scripts, pero en la versión actual carece de sintaxis resaltada y características avanzadas
+de edición. Como se comenta en la sección de <i>JMEScript</i>, Puede utilizarse 
+<a href="https://drive.google.com/file/d/1uI_rHE_lshlhGY5PlOry3nzC9ldpTZKL/view?usp=sharing">este</a> descriptor de lenguaje definido por el usuario
+(<a href="https://ivan-radic.github.io/udl-documentation/">UDL</a>)
+para <a href="https://notepad-plus-plus.org/download/v7.5.8.html">Notepad++</a> que permite usar la sintaxis resaltada para <i>JMEScript</i>, y pegar el
+código en el editor. 
+</p>
+<br/>
+<img style="margin-top:64px" class="centerImg" src="images_jmes/jmescriptgui_logo.png" width=128px/>
+</div>
+
+
+
+
+<hr/>
+
+
+<button onclick="topFunction()" id="myBtn" title="Ir arriba">^</button>
+
+
+<footer>
+	<p>JMEScriptGUI IDE <span>v0.1.1</span> // <span class="author">Miguel Alejandro Moreno Barrientos</span>, <span>(C) 2018-2019</span></p>
+</footer>
+
+</body>
+
+</html>

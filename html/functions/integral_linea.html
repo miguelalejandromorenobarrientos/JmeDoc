@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="integral, linea, intlinea" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Integral de Línea</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">
+	<a class="tooltip" href="https://es.wikipedia.org/wiki/Integral_de_linea">Integral de línea<span class="tooltiptext">https://es.wikipedia.org/wiki/Integral_de_linea</span></a>
+	(o curvilínea) numérica para campos escalares (<i><a class="tooltip" href="https://es.wikipedia.org/wiki/Integral_de_l%C3%ADnea#Integral_curvil%C3%ADnea_de_un_campo_escalar">integral de trayectoria<span class="tooltiptext">https://es.wikipedia.org/wiki/Integral_de_l%C3%ADnea#Integral_curvil%C3%ADnea_de_un_campo_escalar</span></a></i>)
+	y vectoriales
+</p>
+<p class="content comment">Nota: Se usa el método de integración de Boole</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">intlinea</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">&#x222B;γ</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">intlinea(&lt;función{varnames}>,&lt;varnames>,&lt;c(t)>,&lt;t>,&lt;min_t>,&lt;max_t>[,&lt;divisiones>[,&lt;h>]])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>función{varnames}</td>
+			<td>Campo escalar o vectorial a integrar.
+				<br/>Si es vectorial, se introduce como vector de expresiones; <b class="monospace">[f<sub>1</sub>,f<sub>2</sub>,…,f<sub>n</sub>]</b>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varnames</td>
+			<td>Variables de la que depende la función del campo en la forma <b class="monospace">[x<sub>1</sub>,x<sub>2</sub>,…,x<sub>n</sub>]</b></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>c(t)</td>
+			<td>Curva paramétrica como vector de expresiones; <b class="monospace">[c<sub>1</sub>(t),c<sub>2</sub>(t),…,c<sub>n</sub>(t)]</b></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>paramname</td>
+			<td>Nombre del parámetro de la curva</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>min_t</td>
+			<td>Valor inicial del parámetro</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>max_t</td>
+			<td>Valor final del parámetro</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>divisiones</td>
+			<td>Divisiones en el cálculo de la integral numérica</td>
+			<td>1000</td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>h</td>
+			<td>Precisión en la derivada numérica para aproximar vector tangente a la curva (valores entre 0.01 y 0.001 dan buen resultado)</td>
+			<td>0.01</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content comment">integrales de trayectoria:</p>
+	<p class="content input"><span class="javaString">intlinea(sqr(x)+sqr(y)+sqr(z),[x,y,z],[cos(t),sin(t),t],t,0,pi2)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 125.81775785527157</p>
+	<p class="content input"><span class="javaString">intlinea(1+y/3,[x,y],[3cb(cos(t)),3cb(sin(t))],t,0,mpi)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 6.2999999139311225  <span class="comment">(valor real: 6.3)</span></p>
+	<p class="content input"><span class="javaString">intlinea(1+y/3,[x,y],[3cb(cos(t)),3cb(sin(t))],t,0,mpi,1e4,1e-4)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 6.2999999999993594  <span class="comment">(valor real: 6.3)</span></p>
+	<p class="content input"><span class="javaString">intlinea(1+y/3,[x,y],<mark class="error">3</mark>[cb(cos(t)),cb(sin(t))],t,0,mpi)</span>  <span class="comment">(la curva debe introducirse como un vector de expresiones, el 3 no puede extraerse del vector)</span></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">&lt;&lt;&lt;FuncionException>>> en funcion "intlinea": El nº de variables '2' debe ser igual al de componentes de la curva parametrica '1' --> intlinea(Vector:[1+y/3,[x,y],3*[cb(cos(t)),cb(sin(t))],t,0,1.5707963267948966])</mark></p>
+	<br/>
+	<p class="content comment">integrales de trayectoria para calcular longitud de curvas con f:R<sup>n</sup>->R=1:</p>
+	<p class="content input"><span class="javaString">intlinea(1,[_,_],[2cos(t),sin(t)],t,0,pi2)</span>  <span class="comment">perímetro de la elipse 2x1. <b class="nonItalic monospace">[_,_]</b> es un vector de variables 'dummy'</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 9.688448217318074</p>
+	<p class="content input"><span class="javaString">intlinea(1,[_,_,_],[cos(t),sin(t),t],t,0,pi2)</span>  <span class="comment">perímetro de una espiral. <b class="nonItalic monospace">[_,_,_]</b> es un vector de variables 'dummy'</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 8.885765876317441</p>
+</div>
+
+<div class="example">
+	<p class="content comment">campo vectorial:</p>
+	<p class="content input"><span class="javaString">intlinea([sin(z),cos(z),-cbrt(x*y)],[x,y,z],[cb(cos(t)),cb(sin(t)),t],t,0,7mpi,1e5)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: -0.4999999999999994  <span class="comment">(valor real: -0.5)</span></p>
+	<p class="content input"><span class="javaString">intlinea([cb(x),y,z],[x,y,z],[0,cos(t),sin(t)],t,0,pi2)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 5.519591402371251E-16  <span class="comment">(valor real: 0)</span></p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.4.10</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="integral.html">integral</a>,
+	<a href="integral_linea_compleja.html">zintlinea</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="desdecsv,csv,comma,separated,values" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Importar desde CSV</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Importa un texto CSV a vector de datos con el formato especificado.</p>
+<p class="content">Los items se convertirán al tipo JME por defecto. Si no se reconoce el item, se convertirá a texto.</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">desdecsv</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">desdeCSV</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">desdecsv(&lt;csv>[,&lt;separador>[,&lt;comillas>[,&lt;índice>[,&lt;trim>]]]])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>csv</td>
+			<td>Cadena CSV</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>separador</td>
+			<td>Separador entre items (carácter), por defecto coma</td>
+			<td>','</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>comillas</td>
+			<td>Comillas para textos complejos (carácter), generalmente comillas simples o dobles (defecto). <b>Escape \ no permitido</b></td>
+			<td>'"'</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>índice</td>
+			<td>Línea de inicio para la importación (2 para ignorar posibles encabezados)</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>trim</td>
+			<td>Ignorar espacios en blanco entre items</td>
+			<td><i>verdadero</i></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content" style="white-space: pre;font-family: monospace"><i><b>addresses.csv</b></i>
+	John,Doe,120 jefferson st.,Riverside, NJ, 08075
+	Jack,McGinnis,220 hobo Av.,Phila, PA,09119
+	"John ""Da Man""",Repici,120 Jefferson St.,Riverside, NJ,08075
+	Stephen,Tyler,"7452 Terrace ""At the Plaza"" road",SomeTown,SD, 91234
+	,Blankman,,SomeTown, SD, 00298
+	"Joan ""the bone"", Anne",Jet,"9th, at Terrace plc",Desert City,CO,00123</p>
+	<p class="content input"><span class="javaString">desdecsv(<a class="discLink" href="archivotxt.html">archivotxt</a>('C:/&hellip;/&hellip;/addresses.csv',verdadero))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+	|         'John'             'Doe'            '120 jefferson st.'           'Riverside'   'NJ'  8075  |
+	|         'Jack'           'McGinnis'            '220 hobo Av.'               'Phila'     'PA'  9119  |
+	|     'John "Da Man"'       'Repici'          '120 Jefferson St.'           'Riverside'   'NJ'  8075  |
+	|        'Stephen'          'Tyler'    '7452 Terrace "At the Plaza" road'   'SomeTown'    'SD'  91234 |
+	|           ''             'Blankman'                  ''                   'SomeTown'    'SD'   298  |
+	| 'Joan "the bone", Anne'    'Jet'           '9th, at Terrace plc'         'Desert City'  'CO'   123  |</p>
+</div>
+
+<div class="example">
+	<p class="content" style="white-space: pre;font-family: monospace"><i><b>example_mod.csv</b></i>
+	TOK&amp; UPDATE&amp; DATE&amp; SHOT&amp; TIME&amp; $AUX&amp;$$HEAT$&amp; PHASE&amp; STATE&amp; PGASA&amp; PGASZ&amp; BGASA&amp; BGASZ&amp; BGASA2&amp; BGASZ2&amp; PIMPA&amp; PIMPZ&amp; PELLET&amp; RGEO&amp; RMAG&amp; AMIN&amp; SEPLIM&amp; XPLIM&amp; KAPPA&amp; DELTA&amp; INDENT&amp; AREA&amp; VOL&amp; CONFIG&amp; IGRADB&amp; WALMAT&amp; DIVMAT&amp; LIMMAT&amp; EVAP&amp; BT&amp; IP&amp; VSURF&amp; Q95&amp; BEPMHD&amp; BETMHD&amp; BEPDIA&amp; NEL&amp; DNELDT&amp; ZEFF&amp; PRAD&amp; POHM&amp; ENBI&amp; PINJ&amp; BSOURCE&amp; PINJ2&amp; BSOURCE2&amp; COCTR&amp; PNBI&amp; ECHFREQ&amp; ECHMODE&amp; ECHLOC&amp; PECH&amp; ICFREQ&amp; ICSCHEME&amp; ICANTEN&amp; PICRH&amp; LHFREQ&amp; LHNPAR&amp; PLH&amp; IBWFREQ&amp; PIBW&amp; TE0&amp; TI0&amp; WFANI&amp; WFICRH&amp; MEFF&amp; ISEQ&amp; WTH&amp; WTOT&amp; DWTOT&amp; PL&amp; PLTH&amp; TAUTOT&amp; TAUTH
+	JET&amp; 20031201&amp; 20001006&amp; 53521&amp; 1.000E+01&amp; NBIC&amp; HSELM&amp; TRANS&amp; 2.000E+00&amp; 1.000E+00&amp; 2&amp; 1&amp; 0&amp; 0&amp; 1.658E+01&amp; 8.152E+00&amp; NONE&amp; 2.888E+00&amp; 3.047E+00&amp; 9.807E-01&amp; 2.924E-02&amp; 7.304E-02&amp; 1.572E+00&amp; 1.781E-01&amp; 0.000E+00&amp; 4.572E+00&amp; 8.161E+01&amp; LSN&amp; 1&amp; IN/C&amp; BE&amp; C/BE&amp; BE&amp; 3.598E+00&amp; 2.000E+06&amp; 1.013E-01&amp; 6.001E+00&amp; 1.053E+00&amp; 9.252E-01&amp; 1.128E+00&amp; 3.106E+19&amp; 3.106E+19&amp; 6.612E+00&amp; 4.515E+06&amp; 5.122E+04&amp; 1.000E+05&amp; 1.466E+07&amp; 771706&amp; 0.000E+00&amp; 652114&amp; 1.000E+00&amp; 1.420E+07&amp; -9.999E-09&amp; NONE&amp; NONE&amp; 0.000E+00&amp; 5.100E+07&amp; HMIN&amp; MONOPOLE&amp; 4.027E+06&amp; 3.700E+09&amp; 1.840E+00&amp; 2.000E+06&amp; -9.999E-09&amp; 0.000E+00&amp; 9.295E+03&amp; 1.373E+04&amp; 6.913E-01&amp; 7.319E+05&amp; 2.000E+00&amp; NONE&amp; 3.715E+06&amp; 5.381E+06&amp; 1.282E+06&amp; 1.297E+07&amp; 1.210E+07&amp; 4.445E-01&amp; 2.194E-01</p>
+	<p class="content input"><span class="javaString">desdecsv(<a class="discLink" href="archivotxt.html">archivotxt</a>('C:/&hellip;/&hellip;/example_mod.csv',verdadero),'&amp;','$')</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+	| 'TOK'   'UPDATE'      'DATE'     'SHOT'  'TIME'  'AUX&amp;$HEAT'  'PHASE'  'STATE'  'PGASA'  'PGASZ'  'BGASA'  'BGASZ'  'BGASA2'  'BGASZ2'  'PIMPA'  'PIMPZ'  'PELLET'  'RGEO'  'RMAG'  'AMIN'  'SEPLIM'  'XPLIM'  'KAPPA'  'DELTA'  'INDENT'  'AREA'  'VOL'  'CONFIG'  'IGRADB'  'WALMAT'  'DIVMAT'  'LIMMAT'  'EVAP'  'BT'    'IP'    'VSURF'  'Q95'  'BEPMHD'  'BETMHD'  'BEPDIA'   'NEL'    'DNELDT'  'ZEFF'  'PRAD'   'POHM'  'ENBI'  'PINJ'   'BSOURCE'  'PINJ2'  'BSOURCE2'  'COCTR'  'PNBI'  'ECHFREQ'  'ECHMODE'  'ECHLOC'  'PECH'  'ICFREQ'  'ICSCHEME'  'ICANTEN'   'PICRH'  'LHFREQ'  'LHNPAR'   'PLH'   'IBWFREQ'  'PIBW'  'TE0'  'TI0'  'WFANI'  'WFICRH'  'MEFF'  'ISEQ'   'WTH'   'WTOT'   'DWTOT'   'PL'    'PLTH'  'TAUTOT'  'TAUTH' |
+	| 'JET'  2.0031201E7  2.0001006E7  53521     10      'NBIC'     'HSELM'  'TRANS'     2        1        2        1        0         0       16.58    8.152    'NONE'   2.888   3.047   0.9807  0.02924   0.07304   1.572   0.1781      0      4.572   81.61   'LSN'       1       'IN/C'     'BE'     'C/BE'    'BE'   3.598  2000000  0.1013   6.001   1.053     0.9252    1.128    3.106E19  3.106E19  6.612   4515000  51220   100000  1.466E7   771706       0       652114       1     1.42E7  -9.999E-9   'NONE'     'NONE'     0      5.1E7      'HMIN'    'MONOPOLE'  4027000   3.7E9      1.84    2000000  -9.999E-9    0     9295   13730  0.6913    731900     2     'NONE'  3715000  5381000  1282000  1.297E7  1.21E7   0.4445   0.2194  |</p>
+	<p class="content input"><span class="javaString">desdecsv(<a class="discLink" href="archivotxt.html">archivotxt</a>('C:/&hellip;/&hellip;/example_mod.csv',verdadero),'&amp;','$',2,falso)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+	| 'JET'  2.0031201E7  2.0001006E7  53521  10  ' NBIC'  ' HSELM'  ' TRANS'  2  1  2  1  0  0  16.58  8.152  ' NONE'  2.888  3.047  0.9807  0.02924  0.07304  1.572  0.1781  0  4.572  81.61  ' LSN'  1  ' IN/C'  ' BE'  ' C/BE'  ' BE'  3.598  2000000  0.1013  6.001  1.053  0.9252  1.128  3.106E19  3.106E19  6.612  4515000  51220  100000  1.466E7  771706  0  652114  1  1.42E7  -9.999E-9  ' NONE'  ' NONE'  0  5.1E7  ' HMIN'  ' MONOPOLE'  4027000  3.7E9  1.84  2000000  -9.999E-9  0  9295  13730  0.6913  731900  2  ' NONE'  3715000  5381000  1282000  1.297E7  1.21E7  0.4445  0.2194 |
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="acsv.html">acsv</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

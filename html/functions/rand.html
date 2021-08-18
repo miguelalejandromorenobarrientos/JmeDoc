@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="rand" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Rand</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve un número flotante pseudoaleatorio en el rango <b class="monospace">[min,max)</b> o un booleano aleatorio</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">rand</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">rand</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">rand(&lt;semilla>)
+	   | rand(&lt;min>,&lt;max>[,&lt;semilla>])
+</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>min</td>
+			<td>Extremo inferior del intervalo (INCLUIDO)</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>max</td>
+			<td>Extremo superior del intervalo (EXCLUIDO)</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>1|3</td>
+			<td>semilla</td>
+			<td>
+				<ul class="listIcon">
+					<li><b>-1</b>; siguiente nº aleatorio</li>
+					<li><b>0</b>; usar reloj del sistema</li>
+					<li><b>falso</b>; siguiente booleano</li>
+					<li><b>verdadero</b>; booleano usando reloj del sistema</li>
+					<li><i>otro valor</i>; valor fijo</li>
+				</ul>
+			</td>
+			<td>-1</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">rand(-1)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.8353267872701102</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sucesion(rand(-10,10),_,1,5)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [-7.059124454993622,-3.1512724473369236,-9.60066437866743,0.8072040330115744,7.084929585217822]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[rand(0,5,10),rand(0,5,10),rand(0,5,10)]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [3.652151483717136,3.652151483717136,3.652151483717136]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[rand(0),rand(-1),<mark class="gray1">rand(3)</mark>,rand(-1),<mark class="gray1">rand(3)</mark>,rand(-1)]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [0.24306612529839333,0.6836260544213165,<mark class="gray1">0.731057369148862</mark>,0.07099203475193139,<mark class="gray1">0.731057369148862</mark>,0.07099203475193139]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">[rand(verdadero),rand(falso),rand(falso),rand(falso)]</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [falso,verdadero,verdadero,falso]</p>
+</div>
+
+<div class="example">
+	<p class="content comment">Para <i>EnteroGrande</i> devuelve un <i>EnteroGrande</i> en el rango [0,2<sup>n</sup>)</p>
+	<p class="content input"><span class="javaString">rand(10b)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 888</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="randint.html">randint</a>,
+	<a href="randgauss.html">randgauss</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

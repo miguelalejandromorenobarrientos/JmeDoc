@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="ordenar" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Ordenar vector</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Ordena un vector de números reales</p>
+
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">ordenar</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">ordenar</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">ordenar(&lt;vectorReal>[,&lt;sentido>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>vector</td>
+			<td>Vector de números reales</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>sentido</td>
+			<td>Booleano <i>verdadero</i> para orden decreciente, y <i>falso</i> para creciente</td>
+			<td>falso <small>(creciente)</small></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">ordenar(sucesion(rand(-10,10),_,1,10))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [-9.300413785957321,-8.976105585436008,-5.532246789540989,-5.3496519996465945,-4.975284277409433,1.0690617202103159,1.0905303364756236,3.8996149604770167,8.269808210614269,8.35276693359156]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">ordenar(sucesion(rand(-10,10),_,1,10),verdadero)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [9.364395872127623,8.943312738581206,7.678143969962701,6.7900265252243415,5.786894088770257,5.2051960258805945,3.649551556744516,0.21825192278358685,-0.9764289180515462,-4.607117606760902]</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="orden_comparador.html">ordenar por comparador</a>,
+	<a href="revertir.html">revertir</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

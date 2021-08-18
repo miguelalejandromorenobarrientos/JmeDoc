@@ -1,0 +1,18 @@
+################################################
+## JMEScript v0.1.0: ejemplo de script
+## factorial como rutina recursiva
+################################################
+
+rutina factorial(n, var fact) inicio:
+  si n>1 inicio:
+    llamar a factorial( n-1, fact )
+    fact*=n
+  fin
+  si no inicio:
+    fact := 1b
+  fin
+fin
+
+llamar a factorial( 100b ,fact)
+
+devolver fact

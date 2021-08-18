@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="enumerar" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Enumerar</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<ul class="listIcon">
+	<li>Enumera los elementos de un vector mediante un contador con inicio y paso, o usando los elementos de otro vector índices. Este vector debe tener al menos la misma dimensión</li>
+	<li>Convierte diccionario en vector enumerado por las claves</li>
+</ul>	
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">enumerar</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">enumerar</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">enumerar(&lt;vector>,(&lt;inicio>[,&lt;paso>]) | &lt;vector_índices>)
+          | enumerar(&lt;diccionario>)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>vector|diccionario</td>
+			<td>Vector de elementos a enumerar o diccionario</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>inicio</td>
+			<td>Valor del primer índice (se convertirá a <i>RealGrande</i> para mayor precisión)</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>vector de índices</td>
+			<td>Vector de índices que se asignarán consecutivamente a los del vector de elementos. Debe contener suficientes índices</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>paso</td>
+			<td>Incremento del índice (se convertirá a <i>RealGrande</i> para mayor precisión)</td>
+			<td>1|∅</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enumerar(sucesion(sqr(n),n,1,10),1)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| <i>1</i>    1  |
+		| <i>2</i>    4  |
+		| <i>3</i>    9  |
+		| <i>4</i>   16  |
+		| <i>5</i>   25  |
+		| <i>6</i>   36  |
+		| <i>7</i>   49  |
+		| <i>8</i>   64  |
+		| <i>9</i>   81  |
+		| <i>10</i>  100 |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enumerar([14,5,-4,-13,-22],-10,-5)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| <i>-10</i>  14  |
+		| <i>-15</i>   5  |
+		| <i>-20</i>  -4  |
+		| <i>-25</i>  -13 |
+		| <i>-30</i>  -22 |</p>
+	<p class="content input"><span class="javaString">enumerar(rango(10),0,0.001)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		|   0    0 |
+		| 0.001  1 |
+		| 0.002  2 |
+		| 0.003  3 |
+		| 0.004  4 |
+		| 0.005  5 |
+		| 0.006  6 |
+		| 0.007  7 |
+		| 0.008  8 |
+		| 0.009  9 |
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enumerar([phi,_e,pi],<a href="partir.html" class="discLink">partir</a>('# áureo, # de Euler, pi',', '))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		|  '# áureo'    1.618033988749895 |
+		| '# de Euler'  2.718281828459045 |
+		|     'pi'      3.141592653589793 |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enumerar(dic('{x:2,y:9,z:-1}'))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 'x'  2  |
+		| 'y'  9  |
+		| 'z'  -1 |</p> 
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.4.2</p>
+<p class="content modificado">v0.4.4</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>
