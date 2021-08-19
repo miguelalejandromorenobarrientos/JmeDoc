@@ -5,6 +5,8 @@ const webName = 'JME Manual de Usuario';
 const webDeveloper = 'JME Manual del Desarrollador';
 const author = 'Miguel Alejandro Moreno Barrientos';
 const version = '0.6.2.0';
+const versionJMS = '0.2.0';
+const versionJMSGUI = '0.1.2.0';
 const copyright = '2012-2021';
 const homepage = 'http://morenobarrientos-jme.site44.com/';
 
@@ -18,6 +20,8 @@ function init()
 	setTextTags( "webdeveloper", webDeveloper );
 	setTextTags( "author", author );
 	setTextTags( "version", "v" + version );
+	setTextTags( "versionJMS", "v" + versionJMS );
+	setTextTags( "versionJMSGUI", "v" + versionJMSGUI );
 	setTextTags( "copyright", "(C)" + copyright );
 	
 	// set href on special links
