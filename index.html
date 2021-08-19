@@ -17,34 +17,38 @@
 	content="KqLWPpQ8e5Gw3u_o1x0LbwzloNvd10ugBedefb9R6jg">
 <!-- icon -->
 <link href="images/iconojme.png" rel="shortcut icon" type="image/png">
-<!-- CSS -->
-<link href="css/jme_doc.css" rel="stylesheet" type="text/css">
-<style>
-#constTable td:first-child {
-	font-size: larger;
-	font-weight: bolder;
-	font-family: monospace;
-}
 
-#constTable td:nth-child(4) {
-	font-weight: bolder;
-	font-family: monospace;
-}
+	<!-- CSS -->
+	<link href="css/jme_doc.css" rel="stylesheet" type="text/css">
 
-#funcTable td:first-child {
-	font-size: larger;
-}
+	<style>
+		#constTable td:first-child {
+			font-size: larger;
+			font-weight: bolder;
+			font-family: monospace;
+		}
+		
+		#constTable td:nth-child(4) {
+			font-weight: bolder;
+			font-family: monospace;
+		}
+		
+		#funcTable td:first-child {
+			font-size: larger;
+		}
+		
+		td, th {
+			word-break: break-all !important;
+		}
+		
+		td ul {
+			padding-left: 16px;
+		}
+	</style>
 
-td, th {
-	word-break: break-all !important;
-}
-
-td ul {
-	padding-left: 16px;
-}
-</style>
-<!-- JAVASCRIPT -->
-<script type="text/javascript" src="js/jme_doc.js" charset="UTF-8"></script>
+	<!-- JAVASCRIPT -->
+	<script type="text/javascript" src="js/jme_doc.js" charset="UTF-8"></script>
+	
 </head>
 <body>
 	<header class="title" style="align-items: center; display: flex">
@@ -3395,7 +3399,7 @@ td ul {
 		src="images/jme_logo.png" width="128px/">
 	<hr>
 	<button onclick="topFunction()" id="myBtn" title="Ir arriba">^</button>
-	<footer>
+	<footer class="final">
 		<p>
 			JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span>
 		</p>
