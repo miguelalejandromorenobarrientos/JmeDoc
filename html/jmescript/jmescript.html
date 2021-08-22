@@ -136,16 +136,18 @@
 <br/>
 <div class="tema content">
 <p class="content">
-<b>JMEScript</b> es un lenguaje estructurado dinámicamente tipado para la creación de scripts que hacen uso
-del lenguaje <b>JME</b> para representación de tipos y expresiones. Es un lenguaje orientado al <i>Cálculo Numérico</i>,
-aunque no limitado a éste.
+<b>JMEScript</b> es un lenguaje estructurado, dinámicamente tipado, para la creación de scripts que hacen uso
+del lenguaje funcional <b>JME</b> para representación de tipos y expresiones. Es un lenguaje que nació orientado al <i>Cálculo Numérico</i>
+pero no limitado a éste, ya que puede ejecutar acciones definidas sobre la propia aplicación que utilice el lenguaje para interactuar
+con la propia aplicación y crear scripts y macros avanzados sobre ella.
 </p>
 <p class="content">
-<i>JMEScript</i> es fácil de usar, consta básicamente de;<br/>
+<i>JMEScript</i> consta básicamente de;<br/>
 ∎ estructuras de selección;&emsp;<i class="monospace">si / si no, si / si no / seleccionar</i><br/>
 ∎ cuatro tipos de bucles;&emsp; <i class="monospace">mientras / para / para cada / repetir hasta que</i><br/> 
 ∎ procedimientos locales y globales con parámetros de entrada y de entrada/salida<br/>
 ∎ variables dinámicas que contienen tipos JME<br/>
+∎posibilidad de llamar a acciones de la propia aplicación implementante para crear scripts sobre ella
 ∎ creación de funciones y operadores JME definidos por el usuario<br/>
 </p>
 <p class="content">
@@ -2803,7 +2805,2006 @@ catch ( Throwable e )
 <h3 class="subSection" id="abstractctx2d">Implementación de soporte gráfico</h3>
 <section class="content">
 <br/>
-<p><b>Sección en construcción, disculpe las molestias :(</b></p>
+<p>Para implementar lienzos 2D y E/S mediante un interfaz gráfico, es necesario implementar el interfaz <code>jme.script.ctx2d.AbstractPrimitivas2D</code>,
+y asignar la clase implementante al script, antes de ejecutarlo, mediante <code>Script#getListaPrimitivas#add</code> o 
+<code>Script#setListaPrimitivas</code> para asignar una lista de contextos gráficos. Puede utilizarse la clase adaptadora <code>me.script.ctx2d.Primitivas2DAdapter</code>.
+</p>
+<p><b>Interfaz <code>jme.script.ctx2d.AbstractPrimitivas2D</code>:</b></p>
+<pre><code class="java">package jme.script.ctx2d;
+
+import java.io.File;
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+
+import jme.Expresion;
+import jme.abstractas.Numero;
+import jme.abstractas.Terminal;
+import jme.script.Script;
+import jme.terminales.RealDoble;
+import jme.terminales.Texto;
+import jme.terminales.VectorEvaluado;
+
+/**
+ * Primitivas gráficas a implementar en cada sistema gráfico
+ * @author Miguel Alejandro Moreno Barrientos, (C)2020-2021
+ * @since 0.6.2.0, JMEScript 0.2.0
+ * @version 0.6.2.1, JMEScript 0.2.0
+ */
+public interface AbstractPrimitivas2D 
+{	
+	//////////////////////////////////////////////////////
+	// ENUMERACIONES VÁLIDAS PARA PARÁMETROS ENUMERADOS
+	//////////////////////////////////////////////////////
+	
+	/** Estilo de texto */
+	static enum ESTILO { /** Texto plano */
+						 PLANO,
+						 /** Texto en negrita */
+						 NEGRITA,
+						 /** Texto en cursiva */
+						 CURSIVA,
+						 /** Texto en negrita y cursiva */
+						 NEG_CUR, 
+						 OTRO1, OTRO2, OTRO3 };
+	/** Estilo de resaltado 3D */
+	static enum RECT3D { RESALTADO, GRABADO, NINGUNO, OTRO1, OTRO2, OTRO3 };
+	/** Estilo de redondeo de línea */
+	static enum CAP { REDONDO, CUADRADO, TOPE, OTRO1, OTRO2, OTRO3 };
+	/** Estilo de unión de líneas */
+	static enum JOIN { REDONDO, BISEL, INGLETE, OTRO1, OTRO2, OTRO3 };
+	/** Estilo de gradiente */
+	static enum CICLO { CICLO, REFLEJO, NO_CICLO }
+	/** Tipos de puntos */
+	static enum PUNTO { /** Punto simple o círculo dependiendo del grosor */
+						PIXEL,
+						/** Punto con forma de rombo */
+						ROMBO,
+						/** Punto con forma de cruz */
+						CRUZ,
+						/** Punto con forma de mira */
+						MIRA, 
+						OTRO1, OTRO2, OTRO3 };
+	/** Tipos de cierre de arco */
+	static enum CIERRE { /** Deja el arco abierto */ 
+						 ABIERTO,
+						 /** Cierra el arco con un segmento */
+						 CUERDA,
+						 /** Cierra el arco uniendo con el centro */
+						 TARTA };
+	/** Tipos de segmentos en una ruta */
+	static enum RUTA { /** Desplazar a posición */
+					   MOVER_A,
+					   /** Segmento desde la última posición */
+					   LINEA_A,
+					   /** Segmento de curva mediante tres nuevos puntos */
+					   CURVA_A,
+					   /** Segmento de curva mediante dos nuevos puntos */
+					   CUAD_A,
+					   /** Cerrar ruta */					   
+					   CERRAR,
+					   /** Aplica regla No Cero */
+					   NO_CERO,
+					   /** Aplica regla Par-Impar */
+					   PAR_IMPAR, 
+					   OTRO1, OTRO2, OTRO3 };
+	/** Tipos de mensajes */
+	static enum MSJ { /** Mensaje de información */
+					  INFO,
+					  /** Mensaje de advertencia */
+					  WARNING,
+					  /** Mensaje de error */
+					  ERROR,
+					  /** Mensaje de consulta al usuario */
+					  QUESTION,
+					  /** Mensaje plano */
+					  PLAIN,
+					  /** Mensaje de depuración */
+					  DEBUG,
+					  /** Mensaje de confirmación */ 
+					  CONFIRM,
+					  /** Mensaje de éxito */
+					  OK, 
+					  OTRO1, OTRO2,  OTRO3 }
+	/** tipos de entrada de datos por parte del usuario */
+	static enum ENTRADA { /** Introducir booleano o valor binario */
+						  BOOLEANO,
+						  /** Introducir texto directamente sin delimitador 
+						   * {@link Texto#DELIMITADOR} */
+						  TEXTO,
+						  /** Introducir expresión JME */
+						  EXPRESION,
+						  /** Introducir valor desde conjunto de opciones */
+						  OPCIONES, 
+						  OTRO1, OTRO2, OTRO3 }
+
+	
+	////////////////////////////////////////////////
+	// INFORMACIÓN DEL SISTEMA GRÁFICO Y LIBRERÍA
+	////////////////////////////////////////////////
+
+	/**
+	 * Nombre de entorno gráfico en el que ejecutará JMEScript (ej: Swing, AWT, JavaFx, Android,...)
+	 * @return nombre del UI
+	 * @since 0.6.2.0, JMEScript 0.2.0
+	 */
+	String getUIName();
+	
+	/**
+	 * Nombre de versión del entorno gráfico (si existe)
+	 * @return nombre de la versión del UI
+	 * @since 0.6.2.0, JMEScript 0.2.0
+	 */
+	String getUIVersionName();
+	
+	/**
+	 * Versión del entorno gráfico (ej: 0.2.0, v3.7)
+	 * @return versión numérica del UI
+	 * @since 0.6.2.0, JMEScript 0.2.0
+	 */
+	String getUIVersion();
+	
+	/**
+	 * Nombre de esta implementación 
+	 * @return nombre
+	 */
+	String getPrim2DName();
+	
+	/**
+	 * Nombre de versión de esta implementación
+	 * @return nombre de versión
+	 */
+	String getPrim2DVersionName();
+	
+	/**
+	 * Versión de esta implementación
+	 * @return versión numérica de la versión
+	 */
+	String getPrim2DVersion();
+
+	
+	////////////////////////////////////
+	// PRIMITIVAS DE CONTEXTO GRÁFICO
+	////////////////////////////////////	
+	
+	/**
+	 * Obtiene el componente padre del lienzo
+	 * @return componente padre o <i>null</i>
+	 */
+	Object getPadre();
+	
+	/**
+	 * Inicia un lienzo (canvas) para dibujar y le asigna un índice único
+	 * @param indice índice del contexto {@code idx>0}
+	 * @param ancho ancho del lienzo
+	 * @param alto alto del lienzo
+	 * @param posX posición inicial x
+	 * @param posY posición inicial y
+	 * @param titulo título del lienzo (o null)
+	 */
+	void iniciarContexto( int indice, int ancho, int alto, int posX, int posY, String titulo );
+	
+	/**
+	 * Cerrar lienzo
+	 */
+	void finalizarContexto();
+	
+	/**
+	 * Comprobar si se ha iniciado el lienzo
+	 * @return {@code true} si está iniciado
+	 */
+	boolean esContextoIniciado();
+	
+	/**
+	 * Repintar el lienzo especificado (generalmente éste)
+	 * @param indice índice del lienzo
+	 */
+	void repintar( int indice );
+	
+	/**
+	 * Ancho del lienzo 
+	 * @return ancho en pixels del lienzo
+	 */
+	int getAncho();
+	
+	/**
+	 * Alto del lienzo 
+	 * @return alto en pixels del lienzo
+	 */
+	int getAlto();	
+	
+	/**
+	 * Ancho del dispositivo 
+	 * @return ancho del dispositivo en pixels
+	 */
+	int getAnchoPantalla();
+	
+	/**
+	 * Alto del dispositivo  
+	 * @return alto del dispositivo en pixels
+	 */
+	int getAltoPantalla();	
+
+	/**
+	 * Obtiene un mapa de propiedades del sistema definidas por el desarrollador 
+	 * @return mapa de propiedades del sistema 
+	 */
+	Map<Object,Object> getPropiedadesEntorno();
+	
+	
+	//////////////////////////////
+	// PRIMITIVAS DE E/S  (I/O)
+	//////////////////////////////
+	
+	/**
+	 * Muestra un mensaje al usuario mediante diálogo o tostada
+	 * @param msj mensaje
+	 * @param tipo {@link MSJ}
+	 * @param posX coordenada X del mensaje. Puede ser <i>null</i>
+	 * @param posY coordenada Y del mensaje. Puede ser <i>null</i>
+	 * @param tiempo tiempo a mostrar el mensaje. Puede ser <i>null</i>
+	 */
+	void mostrarMensaje( String msj, MSJ tipo, Integer posX, Integer posY, Integer tiempo );
+	
+	/**
+	 * Lectura de entradas de usuario.<br>
+	 * El valor almacenado deberá ser
+	 * <b>{@link Expresion.ERROR#__error1__}</b>
+	 * si se cancela la entrada.<br>
+	 * Si se evalúa un expresión y se obtiene un error, el valor almacenado deberá ser
+	 * <b>{@link Expresion.ERROR#__error2__}</b>
+	 * @param script script actual
+	 * @param entrada tipo de entrada de usuario; {@link ENTRADA}
+	 * @param varname variable para almacenar el valor
+	 * @param msj mensaje de petición de datos al usuario
+	 * @param opciones opciones para el tipo {@link ENTRADA#OPCIONES}. Puede ser <i>null</i>
+	 */
+	void entradaUsuario( Script script, ENTRADA entrada, String varname, String msj, 
+						 String[] opciones );
+	
+	/**
+	 * Lista de pulsaciones de teclas a consumir 
+	 * @return lista de pulsaciones
+	 */
+	List<AbstractKeyStroke> getStrokeList();
+	
+	/**
+	 * Lista de toques en pantalla o clicks de ratón a consumir 
+	 * @return lista de eventos de ratón/toque
+	 */
+	List<AbstractRatonEvent> getRatonEventList();
+	
+	/**
+	 * Permite seleccionar uno o varios archivos del sistema 
+	 * @param path ruta actual <i>(<b>ruta vacía</b> mantiene el directorio actual, 
+	 *             <b>ruta errónea</b> establece la ruta por defecto)</i>
+	 * @param titulo título de un posible diálogo de selección o <i>null</i> para valor por defecto
+	 * @return array de archivos seleccionados con la ruta completa.
+	 *         Si no se selecciona ninguno devuelve <i>array vacío</i> y <i>null</i> si hay un error 
+	 */
+	File[] seleccionarArchivos( String path, String titulo );
+		
+	
+	///////////////////////////////////
+	// PRIMITIVAS GRÁFICAS
+	///////////////////////////////////	
+	
+	// COLOR	
+	/**
+	 * Obtiene una factoría (definida a partir de un AbstractColor) para obtener nuevos colores
+	 * @return factoría de color
+	 */
+	AbstractColor getColorFactory();
+	
+	/**
+	 * Establecer color de línea del lienzo
+	 * @param color color de línea
+	 */
+	void setColor( AbstractColor color );
+	/**
+	 * Establecer color de relleno del lienzo
+	 * @param color color de relleno
+	 */
+	void setRelleno( AbstractColor color );
+	/**
+	 * Establecer color de fondo del lienzo
+	 * @param color color de fondo
+	 */
+	void setFondo( AbstractColor color );
+	
+	/**
+	 * Color de línea del lienzo
+	 * @return color de línea
+	 */
+	AbstractColor getColor();
+	/**
+	 * Color de relleno del lienzo
+	 * @return color de relleno
+	 */
+	AbstractColor getRelleno();
+	/**
+	 * Color de fondo del lienzo
+	 * @return color de fondo
+	 */
+	AbstractColor getFondo();
+	
+	// TRAZO
+	void setTrazo( float grosor );
+	void setTrazo( float grosor, CAP extremo, JOIN union, Float inglete, float[] raya, 
+				   Float faseRaya );
+	
+	// GRADIENTE	
+	/**
+	 * Gradiente aplicado a relleno y línea
+	 * @param x1 inicio x del primer color o centro x
+	 * @param y1 inicio y del primer color o centro y
+	 * @param x2 final x del último color o foco X
+	 * @param y2 final y del último color o foco y
+	 * @param radio radio del gradiente radial
+	 * @param fracciones división ponderada del patrón de color
+	 * @param colores color asociado a cada fracción
+	 * @param ciclo {@link CICLO#CICLO}, {@link CICLO#REFLEJO}, {@link CICLO#NO_CICLO} 
+	 * @param transform matriz de transformación (puede ser AffineTransform en escritorio o Matrix
+	 *                  en Android)
+	 */
+	void setGradiente( double x1, double y1, double x2, double y2, Double radio, float[] fracciones,
+					   AbstractColor[] colores, CICLO ciclo, Object transform );
+	
+	// TRANSFORMACIONES
+	
+	/**
+	 * Matriz de transformación del lienzo {@code [[sx,shx,tx],[shy,sy,ty],[0,0,1]]}
+	 * @param storeMatrizTransformacion matriz 3x3 inicializada donde se almacenará la matriz
+	 * @return la propia matriz {@code storeMatrizTransformacion} actualizada
+	 */
+	double[] getMatriz( double[] storeMatrizTransformacion );
+	/**
+	 * Establece la matriz del lienzo {@code [[sx,shx,tx],[shy,sy,ty],[0,0,1]]}
+	 * @param matrizTransformacion matriz 3x3
+	 */
+	void setMatriz( double[] matrizTransformacion );
+	
+	// LIMPIAR ZONA
+	/**
+	 * Borra una parte del lienzo, con el color de fondo especificado
+	 * @param x extremo superior izquierda x
+	 * @param y extremo superior izquierda y
+	 * @param ancho ancho del rectángulo de borrado
+	 * @param alto alto del rectángulo de borrado
+	 * @param cfondo color de fondo
+	 */
+	void limpiar( int x, int y, int ancho, int alto, AbstractColor cfondo );	
+	
+	// FIGURAS Y TEXTO
+	
+	/**
+	 * Dibuja un punto del tipo especificado, con el grosor establecido con 'trazo' y color 
+	 * de línea establecido
+	 * @param x coordenada X del punto
+	 * @param y coordenada Y del punto
+	 * @param tipo {@link PUNTO}
+	 */
+	void punto( double x, double y, PUNTO tipo );
+	
+	/**
+	 * Traza segmento entre dos puntos con el color de línea establecido
+	 * @param x1 coordenada X del extremo inicial
+	 * @param y1 coordenada Y del extremo inicial
+	 * @param x2 coordenada X del extremo final
+	 * @param y2 coordenada Y del extremo final
+	 */
+	void segmento( double x1, double y1, double x2, double y2 );
+	
+	/**
+	 * Dibuja circunferencias, círculos y arcos
+	 * @param cx coordenada X del centro
+	 * @param cy coordenada Y del centro
+	 * @param radio radio
+	 * @param ang ángulo inicial (grados)
+	 * @param arco longitud del arco (grados)
+	 * @param tipo {@link CIERRE#ABIERTO}, {@link CIERRE#CUERDA}, {@link CIERRE#TARTA}
+	 * @param relleno {@code verdadero} para dibujar el interior (círculo) con color de relleno
+	 * @param borde {@code verdadero} para dibujar la circunferencia o arco. <u>Si {@code relleno}
+	 * 				es {@code falso}, debe dibujarse aunque {@code borde} sea falso</u>
+	 */
+	void circunferencia( double cx, double cy, double radio, double ang, double arco, CIERRE tipo, 
+						 boolean relleno, boolean borde );
+	
+	/**
+	 * Dibuja elipses
+	 * @param x1 extremo superior izquierda x
+	 * @param y1 extremo superior izquierda y
+	 * @param x2 extremo inferior derecha x
+	 * @param y2 extremo inferior derecha y
+	 * @param relleno <i>true</i> para dibujar el interior con color de relleno
+	 * @param borde {@code verdadero} para dibujar el borde. <u>Si {@code relleno}
+	 * 				es {@code falso}, debe dibujarse aunque {@code borde} sea falso</u>
+	 */
+	void elipse( double x1, double y1, double x2, double y2, boolean relleno, boolean borde );
+	
+	/**
+	 * Dibuja un rectángulo recto, redondeado o 3D. Con relleno y/o borde.
+	 * @param x1 x extremo superior izquierda
+	 * @param y1 y extremo superior izquierda
+	 * @param x2 x extremo inferior derecha
+	 * @param y2 y extremo inferior derecha
+	 * @param anchoArco ancho esquinas redondeadas
+	 * @param altoArco alto esquinas redondeadas
+	 * @param relleno <i>true</i> para dibujar el interior con color de relleno
+	 * @param borde {@code verdadero} para dibujar el borde. <u>Si {@code relleno}
+	 * 				es {@code falso}, debe dibujarse aunque {@code borde} sea falso</u>
+	 * @param rect3d {@link RECT3D#GRABADO}, {@link RECT3D#RESALTADO}, {@link RECT3D#NINGUNO}
+	 */
+	void rectangulo( double x1, double y1, double x2, double y2, double anchoArco, double altoArco, 
+					 boolean relleno, boolean borde, RECT3D rect3d );
+	
+	/**
+	 * Dibuja un polígono o polilínea
+	 * @param x array de coordenadas x
+	 * @param y array de coordenadas y (mismo tamaño y punto correspondiente)
+	 * @param cerrar {@code verdadero} para cerrar primer y último punto
+	 * @param relleno <i>true</i> para dibujar el interior con color de relleno
+	 * @param borde {@code verdadero} para dibujar el borde. <u>Si {@code relleno}
+	 * 				es {@code falso}, debe dibujarse aunque {@code borde} sea falso</u>
+	 */
+	void poligono( double[] x, double[] y, boolean cerrar, boolean relleno, boolean borde );
+	
+	/**
+	 * Dibuja un texto.
+	 * <br>Puede incluir sombreado si <i>{@code sombraX}</i> o <i>{@code sombraY}</i> no son 
+	 * iguales a 0. El color del sombreado será el <i><b>color de relleno</b></i>
+	 * @param texto texto a graficar
+	 * @param posX coordenada X del texto
+	 * @param posY coordenada Y del texto
+	 * @param tama tamaño del texto
+	 * @param sombraX desplazamiento de la sombra en X
+	 * @param sombraY desplazamiento de la sombra en Y
+	 * @param familia familia del texto
+	 * @param estilo estilo del texto; {@link ESTILO}
+	 */
+	void texto( String texto, int posX, int posY, int tama, int sombraX, int sombraY, 
+				String familia, ESTILO estilo );
+
+	/**
+	 * Devuelve la dimensión del texto a graficar
+	 * @param texto texto a graficar
+	 * @param tama tamaño del texto
+	 * @param sombraX desplazamiento de la sombra en X
+	 * @param sombraY desplazamiento de la sombra en Y
+	 * @param familia familia del texto
+	 * @param estilo estilo del texto; {@link ESTILO}
+	 * @return array <b>{@code [ancho,alto]}</b>
+	 */
+	int[] medirTexto( String texto, int tama, int sombraX, int sombraY, String familia, 
+					  ESTILO estilo );
+	
+	/**
+	 * Dibuja una figura en base a una ruta especificada por diferentes acciones
+	 * @param accionPuntos
+	 * @param regla regla de relleno del interior: {@link RUTA#PAR_IMPAR}, {@link RUTA#NO_CERO}
+	 * @param relleno <i>true</i> para dibujar el interior con color de relleno
+	 * @param borde {@code verdadero} para dibujar el borde. <u>Si {@code relleno}
+	 * 				es {@code falso}, debe dibujarse aunque {@code borde} sea falso</u>
+	 */
+	void ruta( AccionPuntos[] accionPuntos, RUTA regla, boolean relleno, boolean borde );
+	
+	
+	////////////////////////////////////
+	// INTERFACES Y CLASES ABSTRACTAS
+	////////////////////////////////////
+
+	/**
+	 * Holder para la primitiva 
+	 * {@link AbstractPrimitivas2D#ruta(AccionPuntos[], RUTA, boolean, boolean)}
+	 */
+	static class AccionPuntos
+	{
+		public RUTA accion;
+		public double[][] puntos;
+	}
+
+	/**
+	 * Implementa de forma abstracta un color ARGB, dado por sus canales
+	 */
+	static abstract class AbstractColor implements Serializable
+	{
+		private static final long serialVersionUID = 1L;
+
+		// MÉTODOS FACTORÍA
+		/**
+		 * Obtiene un color a partir de los canales RGB
+		 * @param r red
+		 * @param g green
+		 * @param b blue
+		 * @return nuevo color
+		 */
+		public abstract AbstractColor nuevaInstancia( int r, int g, int b );
+		/**
+		 * Obtiene un color a partir de los canales ARGB
+		 * @param r reg
+		 * @param g green
+		 * @param b blue
+		 * @param a alpha
+		 * @return nuevo color
+		 */
+		public abstract AbstractColor nuevaInstancia( int r, int g, int b, int a );
+		/**
+		 * Obtiene un color a partir de una cadena hexadecimal (ej.: #AABBCC)
+		 * @param stringcolor cadena hexadecimal
+		 * @return nuevo color
+		 */
+		public AbstractColor nuevaInstancia( String stringcolor )
+		{
+			throw new UnsupportedOperationException();
+		}
+		/**
+		 * Obtiene un color a partir de un entero AARRGGBB desde el bit 0 a 31
+		 * @param intcolor entero de 32 bits
+		 * @return nuevo color
+		 */
+		public AbstractColor nuevaInstancia( int intcolor )		
+		{
+			throw new UnsupportedOperationException();
+		}
+		
+		/**
+		 * Convierte un terminal a un formato de color aceptado
+		 * @param color color como terminal compatible
+		 * @param factory factoría de color
+		 * @return nuevo color
+		 */
+		public static AbstractColor colorDesdeTerminal( Terminal color, AbstractColor factory )
+		{
+			// RGB & RGBA
+			if ( color.esVector() )
+			{
+				final VectorEvaluado vcolor = (VectorEvaluado) color;
+				try
+				{
+					int r = ((Numero) vcolor.getComponente(0)).ent(),
+						g = ((Numero) vcolor.getComponente(1)).ent(),
+						b = ((Numero) vcolor.getComponente(2)).ent();
+				
+					if ( vcolor.dimension() == 4 )  // RGBA
+						return factory.nuevaInstancia( r, g, b, 
+													   ((Numero) vcolor.getComponente(3)).ent() );
+					else  // RGB
+						return factory.nuevaInstancia( r, g, b );
+				}
+				catch ( Exception e )
+				{
+					throw new IllegalArgumentException( 
+												color + " no es un formato de color aceptado", e );
+				}
+			}
+			// color mediante entero
+			else if ( color.esEntero() )
+				return factory.nuevaInstancia( ((Numero) (color)).ent() );
+			// color por formato de texto
+			else if ( color.esTexto() )
+				return factory.nuevaInstancia( ((Texto) color).textoPlano() );
+			else
+				throw new IllegalArgumentException( color + " no es un formato de color aceptado" );
+		}
+		
+		/**
+		 * Devuelve el canal rojo del color
+		 * @return red
+		 */
+		public abstract int red();
+		/**
+		 * Devuelve el canal green del color
+		 * @return green
+		 */
+		public abstract int green();
+		/**
+		 * Devuelve el canal azul del color
+		 * @return blue
+		 */
+		public abstract int blue();
+		/**
+		 * Devuelve el canal alpha del color
+		 * @return alpha
+		 */
+		public abstract int alpha();
+		/**
+		 * Devuelve el color como entero
+		 * @return AARRGGBB (0-31 bits)
+		 */
+		public int intcolor() { throw new UnsupportedOperationException(); }
+		/**
+		 * Devuelve el color como cadena
+		 * @return cadena hexadecimal
+		 */
+		public int stringcolor() { throw new UnsupportedOperationException(); }
+		/**
+		 * Devuelve el color como vector JME
+		 * @return vector [R,G,B,A]
+		 */
+		public VectorEvaluado vectorColor() 
+		{
+			return new VectorEvaluado( new RealDoble( red() ),
+									   new RealDoble( green() ),
+									   new RealDoble( blue() ),
+									   new RealDoble( alpha() ) );
+		}
+		
+	}  // class AbstractColor
+	
+	/**
+	 * Intefaz para la representación de pulsaciones de teclas 
+	 */
+	static interface AbstractKeyStroke extends Serializable 
+	{
+		/** Zona del teclado */
+		static enum LOCALIZACION { ESTANDAR, IZQUIERDA, DERECHA, NUMPAD, DESCONOCIDA }
+		/** Valores para los modificadores (máscaras) del evento, idénticos a los especificados para 
+		 * {@link java.awt.event.InputEvent}*/
+		static int SHIFT = 64,
+				   CONTROL = 128,
+				   META = 256,
+				   ALT = 512,
+				   BUTTON1 = 1024,
+				   BUTTON2 = 2048,
+				   BUTTON3 = 4096,
+				   ALT_GRAPH = 8192;				   
+		
+		/** key code de la pulsación */
+		int getKeycode();
+		/** marca de tiempo del evento (ms) */
+		long getTimeStamp();
+		/** modificadores de la pulsación 
+		 * @return {@link #SHIFT}, {@link #CONTROL}, {@link #META}, {@link #ALT}, {@link #BUTTON1}, 
+		 *         {@link #BUTTON2}, {@link #BUTTON3}, {@link #ALT_GRAPH}
+		 * */
+		int getModifiers();
+		/** modificadores como texto (dependiente de la plataforma) */
+		String getModifiersText();
+		/** carácter pulsado si corresponde a un simbolo no de control */ 
+		char getKeychar();
+		/** <i>verdadero</i> si la tecla es soltada, <i>falso</i> para presionada */
+		boolean isKeyReleased();
+		/** Localización en que ocurre el evento (dos SHIFTS, dos CONTROL, teclado numérico,...)*/
+		LOCALIZACION getLocalizacion();
+		/** <i>verdadero</i> si es una tecla de acción (teclas de dirección, CAPS, PAGE DOWN,...)*/
+		boolean isAccion();
+		
+	}  // interface AbstractKeyStroke
+	
+	/**
+	 * Interfaz para la representación de eventos de ratón o toques táctiles
+	 */
+	static interface AbstractRatonEvent extends Serializable 
+	{
+		/** botón pulsado (B2 central) */
+		static enum BOTON { BOTON1, BOTON2, BOTON3, NO_BOTON, OTRO1, OTRO2, OTRO3 };
+		/** tipo de evento de ratón o toque */
+		static enum RATON_ID { PRESSED, RELEASED, CLICKED, MOVED, DRAGGED, ENTERED, EXITED, WHEEL, 
+							   OTRO1, OTRO2, OTRO3 }
+		
+		/** id de evento */
+		RATON_ID getId();
+		/** marca de tiempo del evento (ms) */
+		long getTimeStamp();
+		/** array [x,y] respecto a componente padre */
+		int[] getPosicion();
+		/** array [x,y] respecto a pantalla */
+		int[] getPosicionEnPantalla();
+		/** id de botón */
+		BOTON getButton();
+		/** nº de clicks */
+		int getClicks();
+		/** rotación de rueda */
+		double getRotacion();
+		
+	}  // interface AbstractRatonEvent
+	
+}  // interface AbstractPrimitivas2D
+</code></pre>
+<hr/>
+<p>El siguiente es un ejemplo de implementación incompleta del adaptador para <b>Swing</b>. JMEscriptGUI completa esta implementación.</p>
+<pre><code class="java">package swing_primitivas;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
+import java.awt.MultipleGradientPaint.ColorSpaceType;
+import java.awt.MultipleGradientPaint.CycleMethod;
+import java.awt.RadialGradientPaint;
+import java.awt.Shape;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Arc2D;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Path2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
+import java.io.File;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
+import jme.Expresion;
+import jme.ExpresionThread;
+import jme.abstractas.Token;
+import jme.script.Script;
+import jme.script.ScriptException;
+import jme.script.ctx2d.AbstractPrimitivas2D;
+import jme.script.ctx2d.Primitivas2DAdapter;
+import jme.terminales.Booleano;
+import jme.terminales.Texto;
+
+/**
+ * Implementación básica de {@link AbstractPrimitivas2D} para Swing. 
+ * @author Miguel Alejandro Moreno Barrientos, (C)2021
+ * @since 0.1.0, JME v0.6.2.0, JMEScript 0.1.3.0
+ */
+public class JMEPrimitivas2DParaSwing extends Primitivas2DAdapter 
+{
+	private Graphics2D g2;
+	
+	/** máximo tiempo de ejecución de las expresiones en la entrada (ms) */
+	public long maxTiempoDeEvaluacion = 4000L;
+	
+	public static JFileChooser fileChooser;
+	
+	private List<AbstractKeyStroke> strokeList = 
+							Collections.synchronizedList( new LinkedList<AbstractKeyStroke>() );
+	private List<AbstractRatonEvent> ratonEventList = 
+							Collections.synchronizedList( new LinkedList<AbstractRatonEvent>() );
+	
+	protected Color colorRelleno = Color.BLACK;  // color de relleno en figuras
+	
+	public JMEPrimitivas2DParaSwing() {}
+	
+	public JMEPrimitivas2DParaSwing( Graphics2D g2 ) 
+	{
+		this();
+		this.g2 = g2;
+	}
+	
+	public Graphics2D getGraphics() { return g2; }	
+	public void setGraphics( Graphics2D g2 ) { this.g2 = g2; }
+	
+	@Override
+	public String getUIName() { return "Swing"; }
+	
+	@Override
+	public String getUIVersion() 
+	{ 
+		try
+		{
+			return System.getProperty("java.version");
+		}
+		catch ( SecurityException e )
+		{
+			return "?";
+		}
+	}
+	
+	@Override
+	public String getPrim2DName() { return "Implementacion Basica de Primitivas2D para SWING"; }
+	
+	@Override
+	public String getPrim2DVersionName() { return "Cuarentena"; }
+	
+	@Override
+	public String getPrim2DVersion() { return "0.1.0"; }
+	
+	@Override
+	public int getAnchoPantalla() { return Toolkit.getDefaultToolkit().getScreenSize().width; }
+	
+	@Override
+	public int getAltoPantalla() { return Toolkit.getDefaultToolkit().getScreenSize().height; }
+
+	@Override
+	public void mostrarMensaje( String msj, MSJ tipo, Integer posX, Integer posY, Integer tiempo ) 
+	{
+		int msjTipo;
+		switch( tipo )
+		{
+			case WARNING: msjTipo = JOptionPane.WARNING_MESSAGE; break;
+			case ERROR: msjTipo = JOptionPane.ERROR_MESSAGE; break;
+			case QUESTION: msjTipo = JOptionPane.QUESTION_MESSAGE; break;
+			case PLAIN: msjTipo = JOptionPane.PLAIN_MESSAGE; break;
+			default: msjTipo = JOptionPane.INFORMATION_MESSAGE;
+		}
+		JOptionPane.showConfirmDialog( getPadre() instanceof Component 
+									   ? (Component) getPadre() 
+									   : null, 
+									   msj, 
+									   "Script mensaje:", 
+									   JOptionPane.OK_CANCEL_OPTION, 
+									   msjTipo ); 
+	}
+	
+	@Override
+	public void entradaUsuario( Script script, ENTRADA entrada, String varname, String msj, 
+								String[] opciones ) 
+	{
+		final Map<String,Token> scriptVars = script.getVarMap();
+		final Component padre = getPadre() instanceof Component ? (Component) getPadre() : null;
+		
+		switch ( entrada )
+		{
+			default:
+			// solicitud de texto
+			case TEXTO:
+			{
+				String txt = JOptionPane.showInputDialog( padre, msj, 
+												String.format( "Solicitud de <%s> JME para '%s'", 
+														Texto.class.getSimpleName(), varname ),
+												JOptionPane.QUESTION_MESSAGE );
+				if ( txt == null )  // entrada cancelada
+					txt = Expresion.ERROR.__error1__.name();
+				// establecer variable en script
+				scriptVars.put( varname, new Texto( txt ) ); 
+				break;
+			}
+			// solicitud de expresión
+			case EXPRESION:    
+			{
+				final String exptxt = JOptionPane.showInputDialog( padre, msj, 
+												String.format( "Solicitud de <%s> JME para '%s'", 
+														Expresion.class.getSimpleName(), varname ),
+												JOptionPane.QUESTION_MESSAGE ); 
+				if ( exptxt == null )  // entrada cancelada
+				{
+					scriptVars.put( varname, new Texto( Expresion.ERROR.__error1__.name() ) );
+					break;
+				}
+
+				final ExpresionThread expThread;
+				try
+				{
+					// crear expresión
+					final Expresion exp = new Expresion( exptxt )
+									.setVariables( new HashMap<String,Token>( script.getVarMap() ) );
+					// crear hilo y ejecutar
+					expThread = new ExpresionThread( exp, maxTiempoDeEvaluacion );
+					expThread.startAndJoin();
+				}
+				catch ( Throwable e )
+				{
+					scriptVars.put( varname, new Texto( Expresion.ERROR.__error2__.name() ) );
+					break;
+				}
+				// establecer variable en script
+				scriptVars.put( varname, expThread.getResultado() ); 
+				break;
+			}
+			// solicitud de confirmación (booleano)
+			case BOOLEANO:
+			{
+				// seleccionar SI/NO
+				final int opcion = JOptionPane.showConfirmDialog( padre, msj, 
+										String.format( "Solicitud de <%s> para '%s'", 
+													   Booleano.class.getSimpleName(), varname ),
+										JOptionPane.YES_NO_OPTION ); 
+				if ( opcion == JOptionPane.CLOSED_OPTION )  // entrada cancelada
+					scriptVars.put( varname, new Texto( Expresion.ERROR.__error1__.name() ) );
+				else  // establecer variable en script
+					scriptVars.put( varname, Booleano.booleano( opcion == JOptionPane.YES_OPTION ) ); 
+				break;
+			}
+			// selección de opciones
+			case OPCIONES:
+			{
+				// obtener índice de la opción
+				final int opcion = JOptionPane.showOptionDialog( padre, msj, 
+						"Opciones para '" + varname + "'", 
+						JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, null );
+				if ( opcion == JOptionPane.CLOSED_OPTION )  // entrada cancelada
+					scriptVars.put( varname, new Texto( Expresion.ERROR.__error1__.name() ) );
+				else  // establecer variable en script
+					scriptVars.put( varname, new Texto( opciones[opcion] ) ); 
+				break;
+			}
+		}		
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 * <br><br>
+	 * <i>Nota: <b>aunque sea sincronizada, es necesario acceder en bloque, o se obtendrá en 
+	 * ocasiones un error de concurrencia<b></i> 
+	 */
+	@Override	
+	public List<AbstractKeyStroke> getStrokeList() { return strokeList; }
+	
+	/**
+	 * {@inheritDoc}
+	 * <br><br>
+	 * <i>Nota: <b>aunque sea sincronizada, es necesario acceder en bloque, o se obtendrá en 
+	 * ocasiones un error de concurrencia<b></i> 
+	 */
+	@Override
+	public List<AbstractRatonEvent> getRatonEventList() { return ratonEventList; }
+
+	@Override
+	public File[] seleccionarArchivos( String path, String titulo ) 
+	{
+		fileChooser = fileChooser != null ? fileChooser : new JFileChooser();
+		fileChooser.setMultiSelectionEnabled(true);
+		fileChooser.setFileSelectionMode( JFileChooser.FILES_AND_DIRECTORIES );
+		fileChooser.setCurrentDirectory( path != null ? new File(path) : null );
+		fileChooser.setDialogTitle( titulo );
+		fileChooser.updateUI();
+		switch( fileChooser.showOpenDialog( getPadre() instanceof Component 
+											? (Component) getPadre() 
+											: null ) )
+		{
+			case JFileChooser.APPROVE_OPTION: return fileChooser.getSelectedFiles();
+			case JFileChooser.CANCEL_OPTION: return new File[0];
+			case JFileChooser.ERROR_OPTION:
+			default: return null;
+		}		
+	}
+	
+	@Override
+	public void limpiar( int x, int y, int ancho, int alto, AbstractColor cfondo ) 
+	{
+		// guardar color y matriz originales
+		final AffineTransform oriMatriz = g2.getTransform();
+		final Color oriColor = g2.getColor();
+		// establecer matriz identidad
+		g2.setTransform( new AffineTransform() );
+		// establecer color de fondo
+		if ( cfondo != null )
+			g2.setColor( new Color( cfondo.red(), cfondo.green(), cfondo.blue(), cfondo.alpha() ) );
+		else  if ( g2.getPaint() instanceof Color )
+			g2.setColor( g2.getBackground() );
+		// dibujar rectángulo de fondo
+		g2.fill( new Rectangle2D.Double( x, y, ancho, alto ) );
+		// recuperar color y matriz originales
+		g2.setColor( oriColor );			
+		g2.setTransform( oriMatriz );
+	}
+	
+	@Override
+	public AbstractColor getColorFactory() { return new JSColor(); }
+	
+	public static class JSColor extends AbstractColor
+	{
+		private static final long serialVersionUID = 1L;
+		
+		protected Color color = Color.BLACK;
+		
+		public JSColor() {}
+		public JSColor( Color color ) { this.color = color; }
+		public JSColor( int r, int g, int b, int a ) { color = new Color( r, g, b, a ); }
+		public JSColor( int r, int g, int b ) { this( r, g, b, 255 ); }
+		public JSColor( int intcolor ) { color = new Color( intcolor, true ); }
+		public JSColor( String stringcolor ) { color = Color.decode( stringcolor ); }
+
+		@Override
+		public JSColor nuevaInstancia( int r, int g, int b, int a ) 
+		{
+			return new JSColor( r, g, b, a );
+		}
+		
+		@Override
+		public JSColor nuevaInstancia( int r, int g, int b ) 
+		{
+			return new JSColor( r, g, b );
+		}
+		
+		@Override
+		public JSColor nuevaInstancia( String stringcolor ) 
+		{
+			return new JSColor( stringcolor );
+		}
+		
+		@Override
+		public JSColor nuevaInstancia( int intcolor ) 
+		{
+			return new JSColor( intcolor );
+		}
+		
+		@Override
+		public int red() { return color.getRed(); }
+		
+		@Override
+		public int green() { return color.getGreen(); }
+		
+		@Override
+		public int blue() { return color.getBlue(); }
+
+		@Override
+		public int alpha() { return color.getAlpha(); }
+
+	}  // class JSColor
+	
+
+	/////////////////////////
+	// PRIMITIVAS GRÁFICAS
+	/////////////////////////
+	
+	@Override
+	public void setColor( AbstractColor color ) 
+	{
+		g2.setColor( new Color( color.red(), color.green(), color.blue(), color.alpha() ) );
+	}
+	
+	@Override
+	public AbstractColor getColor() 
+	{
+		return esContextoIniciado() ? new JSColor( g2.getColor() ) : new JSColor();
+	}
+	
+	@Override
+	public void setRelleno( AbstractColor color ) 
+	{
+		// eliminar gradiente si se modifica el relleno
+		if ( !(g2.getPaint() instanceof Color) )
+			g2.setPaint( colorRelleno );
+		
+		colorRelleno = new Color( color.red(), color.green(), color.blue(), color.alpha() );
+	}
+	
+	@Override
+	public AbstractColor getRelleno() 
+	{
+		return esContextoIniciado() ? new JSColor( colorRelleno ) : new JSColor();
+	}
+	
+	@Override
+	public void setFondo( AbstractColor color ) 
+	{
+		final Color c = new Color( color.red(), color.green(), color.blue(), color.alpha() );
+
+		// eliminar gradiente si se modifica el fondo
+		if ( !(g2.getPaint() instanceof Color) )
+			g2.setPaint( c );
+		
+		g2.setBackground( c );
+	}
+	
+	@Override
+	public AbstractColor getFondo() 
+	{
+		return esContextoIniciado() ? new JSColor( g2.getBackground() ) : new JSColor();
+	}
+	
+	@Override
+	public double[] getMatriz( double[] storeMatrizTransformacion ) 
+	{
+		if ( !esContextoIniciado() )
+			return null;
+		
+		getGraphics().getTransform().getMatrix(storeMatrizTransformacion);
+		
+		return storeMatrizTransformacion;
+	}
+	
+	@Override
+	public void setMatriz( double[] matrizTransformacion ) 
+	{
+		getGraphics().setTransform( new AffineTransform( matrizTransformacion ) );
+	}
+
+	@Override
+	public void setTrazo( float grosor )
+	{
+		getGraphics().setStroke( 
+						 new BasicStroke( grosor, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND ) );
+	}
+	
+	@Override
+	public void setTrazo( float grosor, CAP extremo, JOIN union, Float inglete, float[] raya, 
+						  Float faseRaya )
+	{
+		final BasicStroke oldStroke = g2.getStroke() instanceof BasicStroke 
+									  ? (BasicStroke) g2.getStroke() 
+									  : new BasicStroke();
+									
+	    int awtExtremo = ((BasicStroke) g2.getStroke()).getEndCap();
+		if ( extremo != null )
+		{
+			switch ( extremo )
+			{
+				case REDONDO: awtExtremo = BasicStroke.CAP_ROUND; break;
+				case TOPE: awtExtremo = BasicStroke.CAP_BUTT; break;
+				case CUADRADO: awtExtremo = BasicStroke.CAP_SQUARE; break;
+				default:
+			}
+		}
+		
+	    int awtUnion = ((BasicStroke) g2.getStroke()).getLineJoin();
+		if ( union != null )
+		{
+			switch ( union )
+			{
+				case BISEL: awtUnion = BasicStroke.JOIN_BEVEL; break;
+				case INGLETE: awtUnion = BasicStroke.JOIN_MITER; break;
+				case REDONDO: awtUnion = BasicStroke.JOIN_ROUND; break;
+				default:
+			}
+		}		
+		g2.setStroke( new BasicStroke( grosor, 
+									   awtExtremo, 
+									   awtUnion, 
+									   inglete != null ? inglete : oldStroke.getMiterLimit(), 
+									   raya != null 
+									   ? (raya.length == 1 && raya[0] == 0f ? null : raya) 
+									   : oldStroke.getDashArray(), 
+									   faseRaya != null ? faseRaya : oldStroke.getDashPhase() ) );
+	}
+	
+	@Override
+	public void setGradiente( double x1, double y1, double x2, double y2, Double radio, 
+							  float[] fracciones, AbstractColor[] colores, CICLO ciclo, 
+							  Object transform ) 
+	{
+		// convertir ciclo desde especificación a AWT
+		final CycleMethod metCiclo;
+		switch ( ciclo )
+		{
+			default:
+			case CICLO: metCiclo = CycleMethod.REPEAT; break;
+			case REFLEJO: metCiclo = CycleMethod.REFLECT; break;
+			case NO_CICLO: metCiclo = CycleMethod.NO_CYCLE; break;
+		}
+		// convertir colores
+		final Color[] awtColores = new Color[colores.length];
+		for ( int i = 0; i < colores.length; i++ )
+			awtColores[i] = new Color( colores[i].red(), colores[i].green(), 
+									   colores[i].blue(), colores[i].alpha() );
+		
+		// gradiente lineal
+		if ( radio == null )
+		{
+			final LinearGradientPaint lgrad = new LinearGradientPaint( 
+						new Point2D.Double( x1, y1 ), new Point2D.Double( x2, y2 ), 
+						fracciones, awtColores, metCiclo, ColorSpaceType.LINEAR_RGB, 
+						transform == null ? new AffineTransform() : (AffineTransform) transform );
+			g2.setPaint( lgrad );
+		}
+		// gradiente radial
+		else
+		{
+			final RadialGradientPaint rgrad = new RadialGradientPaint( 
+					new Point2D.Double( x1, y1 ), radio.floatValue(), new Point2D.Double( x2, y2 ), 
+					fracciones, awtColores, metCiclo, ColorSpaceType.LINEAR_RGB, 
+					transform == null ? new AffineTransform() : (AffineTransform) transform );
+			g2.setPaint( rgrad );					
+		}
+	}
+	
+	@Override
+	public void punto( double x, double y, PUNTO tipo ) 
+	{
+		switch ( tipo )
+		{
+			default:
+			case PIXEL: g2.draw( new Line2D.Double( x, y, x, y ) ); break;
+			case ROMBO: 
+			{
+				final float grosor = ((BasicStroke) g2.getStroke()).getLineWidth();
+				final double[] valoresX = { x, x + grosor, x, x - grosor },
+							   valoresY = { y + grosor, y, y - grosor, y };				
+				final Path2D poly = new Path2D.Double();				
+
+				poly.moveTo( valoresX[0], valoresY[0] );
+				for( int i = 1; i < valoresX.length; i++ )
+				   poly.lineTo(valoresX[i], valoresY[i]);
+				poly.closePath();
+				
+				g2.fill( poly );
+				break;
+			}
+			case CRUZ: 
+			{
+				final float grosor = ((BasicStroke) g2.getStroke()).getLineWidth();
+				g2.draw( new Line2D.Double( x - grosor, y, x + grosor, y ) );
+				g2.draw( new Line2D.Double( x, y - grosor, x, y + grosor ) );
+				break;
+			}
+			case MIRA: 
+			{
+				final float grosor = ((BasicStroke) g2.getStroke()).getLineWidth(),
+							grosor2 = grosor*3/2f;
+				g2.draw( new Line2D.Double( x, y + grosor2, x, y + grosor*2 ) );
+				g2.draw( new Line2D.Double( x, y - grosor2, x, y - grosor*2 ) );
+				g2.draw( new Line2D.Double( x + grosor2, y, x + grosor*2, y ) );
+				g2.draw( new Line2D.Double( x - grosor2, y, x - grosor*2, y ) );
+				break;
+			}
+		}
+	}
+	
+	@Override
+	public void segmento( double x1, double y1, double x2, double y2 ) 
+	{
+		g2.draw( new Line2D.Double( x1, y1, x2, y2 ) );
+	}
+
+	/**
+	 * {@inheritDoc}<br><br>
+	 * <b>Nota:</b> <i>los rectángulos 3D no aceptan valores flotantes, por lo que serán redondeados 
+	 * a enteros. Las coordenadas normalizadas a rangos pequeños como [0,1] no funcionarán 
+	 * correctamente</i>.<br>
+	 * <b>Nota2:</b> <i>No dibuja rectángulos redondeados 3D</i>.
+	 */
+	@Override
+	public void rectangulo( double x1, double y1, double x2, double y2, double anchoArco, 
+							double altoArco, boolean relleno, boolean borde, RECT3D rect3d ) 
+	{
+		final double ancho = x2 - x1, 
+					 alto = y2 - y1;		
+		final Shape rect;
+		
+		// rectángulo recto o 3D
+		if ( anchoArco <= 0 && altoArco <= 0 )
+			rect = rect3d == RECT3D.NINGUNO ? new Rectangle2D.Double( x1, y1, ancho, alto ) : null;
+		// rectángulo redondeado
+		else
+			rect = new RoundRectangle2D.Double( x1, y1, ancho, alto, anchoArco, altoArco );
+		
+		// relleno
+		if ( relleno )
+		{
+			// color
+			if ( g2.getPaint() instanceof Color || rect == null )
+			{
+				final Color oriColor = g2.getColor();
+				g2.setColor( colorRelleno );
+				if ( rect != null )
+					g2.fill( rect );
+				else
+					g2.fill3DRect( (int) Math.round(x1), (int) Math.round(y1), 
+								   (int) Math.round(ancho), (int) Math.round(alto), 
+								   rect3d == RECT3D.RESALTADO );
+				g2.setColor( oriColor );
+			}
+			// gradiente
+			else
+				g2.fill( rect );
+		}
+		// borde
+		if ( /*!relleno || */borde )
+		{
+			if ( rect != null )
+				g2.draw( rect );
+			else
+				g2.draw3DRect( (int) Math.round(x1), (int) Math.round(y1), 
+							   (int) Math.round(ancho), (int) Math.round(alto), 
+							   rect3d == RECT3D.RESALTADO );
+		}
+	}
+	
+	@Override
+	public void circunferencia( double cx, double cy, double radio, double ang, double arco, 
+								CIERRE tipo, boolean relleno, boolean borde )
+	{
+		final Shape circ;		
+
+		// circunferencia
+		if ( arco >= 360. )
+			circ = new Ellipse2D.Double( cx-radio, cy-radio, 2*radio, 2*radio );
+		// arco
+		else
+		{
+			final int cierre;
+			switch ( tipo )
+			{
+				default:
+				case ABIERTO: cierre = Arc2D.OPEN; break;
+				case TARTA: cierre = Arc2D.PIE; break;
+				case CUERDA: cierre = Arc2D.CHORD;
+			}
+			circ = new Arc2D.Double( cx-radio, cy-radio, 2*radio, 2*radio, ang, arco, cierre );
+		}
+		
+		drawOrFill( circ, relleno, borde );
+	}
+
+	@Override
+	public void elipse( double x1, double y1, double x2, double y2, boolean relleno, boolean borde ) 
+	{
+		drawOrFill( new Ellipse2D.Double( x1, y1, x2 - x1, y2 - y1 ), relleno, borde );
+	}
+
+	@Override
+	public void poligono( double[] x, double[] y, boolean cerrar, boolean relleno, boolean borde ) 
+	{
+		if ( x.length != y.length )
+			throw new ScriptException( 
+								"Las coordenadas del poligono/polilinea son de distinto tamano" );
+		
+		final Path2D poly = new Path2D.Double();				
+
+		poly.moveTo( x[0], y[0] );
+		for( int i = 1; i < x.length; i++ )
+		   poly.lineTo( x[i], y[i] );
+		if ( cerrar )
+			poly.closePath();		
+
+		drawOrFill( poly, relleno, borde );
+	}
+	
+	@Override
+	public void ruta( AccionPuntos[] accionPuntos, RUTA regla, boolean relleno, boolean borde ) 
+	{
+		final Path2D.Double path = new Path2D.Double( 
+							regla == RUTA.NO_CERO ? Path2D.WIND_NON_ZERO : Path2D.WIND_EVEN_ODD );
+		
+		for ( AccionPuntos ap : accionPuntos )
+		{
+			switch ( ap.accion )
+			{
+				case MOVER_A: path.moveTo( ap.puntos[0][0], ap.puntos[0][1] ); break;
+				case LINEA_A: path.lineTo( ap.puntos[0][0], ap.puntos[0][1] ); break;
+				case CURVA_A: path.curveTo( ap.puntos[0][0], ap.puntos[0][1],
+											 ap.puntos[1][0], ap.puntos[1][1],
+											 ap.puntos[2][0], ap.puntos[2][1] ); break;
+				case CUAD_A: path.quadTo( ap.puntos[0][0], ap.puntos[0][1],
+						 				   ap.puntos[1][0], ap.puntos[1][1] ); break;
+				case CERRAR: path.closePath(); break;
+				default: throw new IllegalArgumentException( ap.accion.toString() );
+			}
+		}
+		
+		drawOrFill( path, relleno, borde );
+	}
+	
+	private void drawOrFill( Shape figura, boolean relleno, boolean borde )
+	{
+		if ( relleno )
+		{
+			// color
+			if ( g2.getPaint() instanceof Color )
+			{
+				final Color oriColor = g2.getColor();
+				g2.setColor( colorRelleno );
+				g2.fill( figura );
+				g2.setColor( oriColor );
+			}
+			// gradiente
+			else
+				g2.fill( figura );
+		}
+		if ( /*!relleno ||*/ borde )
+			g2.draw( figura );
+	}
+	
+	@Override
+	public void texto( String texto, int posX, int posY, int tama, int sombraX, int sombraY, 
+					   String familia, ESTILO estilo ) 
+	{
+		final int awtEstilo;
+		switch (estilo)
+		{
+			case PLANO: awtEstilo = Font.PLAIN; break;
+			case NEGRITA: awtEstilo = Font.BOLD; break;
+			case CURSIVA: awtEstilo = Font.ITALIC; break;
+			case NEG_CUR: awtEstilo = Font.ITALIC|Font.BOLD; break;
+	
+			default: awtEstilo = Font.PLAIN;
+		}
+		
+		final Font oriFont = g2.getFont(), nuevaFont = new Font( familia, awtEstilo, tama );
+		
+		g2.setFont( nuevaFont );
+		final FontMetrics fm = g2.getFontMetrics( nuevaFont );
+		if ( sombraX != 0 || sombraY != 0 )
+		{
+			final Color oriColor = g2.getColor();
+			g2.setColor( colorRelleno );
+			g2.drawString( texto, posX + sombraX, posY + sombraY + fm.getHeight() - fm.getDescent() /*- fm.getAscent()*/ );
+			g2.setColor( oriColor );
+		}
+		g2.drawString( texto, posX, posY + fm.getHeight() - fm.getDescent() /*- fm.getAscent()*/ );
+		g2.setFont( oriFont );
+	}
+	
+	@Override
+	public int[] medirTexto( String texto, int tama, int sombraX, int sombraY, String familia, 
+							 ESTILO estilo ) 
+	{
+		final int awtEstilo;
+		switch (estilo)
+		{
+			case PLANO: awtEstilo = Font.PLAIN; break;
+			case NEGRITA: awtEstilo = Font.BOLD; break;
+			case CURSIVA: awtEstilo = Font.ITALIC; break;
+			case NEG_CUR: awtEstilo = Font.ITALIC|Font.BOLD; break;
+	
+			default: awtEstilo = Font.PLAIN;
+		}
+		
+		final FontMetrics fm = g2.getFontMetrics( new Font( familia, awtEstilo, tama ) );
+		
+		return new int[] { fm.stringWidth( texto ) + sombraX, fm.getHeight() + sombraY };
+	}	
+	
+	public static class KeyStrokeEvent implements AbstractKeyStroke 
+	{
+		private static final long serialVersionUID = 1L;
+		
+		final protected KeyEvent kEvent;
+		
+		public KeyStrokeEvent( KeyEvent kEvent ) 
+		{
+			this.kEvent = kEvent;
+		}
+		
+		@Override
+		public boolean isKeyReleased() { return kEvent.getID() == KeyEvent.KEY_RELEASED; }
+		@Override
+		public int getModifiers() { return kEvent.getModifiersEx(); }
+		@Override
+		public String getModifiersText() 
+		{ 
+			return KeyEvent.getModifiersExText( kEvent.getModifiersEx() ); 
+		}
+		@Override
+		public int getKeycode() { return kEvent.getKeyCode(); }
+		@Override
+		public char getKeychar() { return kEvent.getKeyChar(); }
+		@Override
+		public long getTimeStamp() { return kEvent.getWhen(); }
+		@Override
+		public boolean isAccion() { return kEvent.isActionKey(); }
+		@Override
+		public LOCALIZACION getLocalizacion() 
+		{
+			switch ( kEvent.getKeyLocation() ) 
+			{
+				case KeyEvent.KEY_LOCATION_STANDARD: return LOCALIZACION.ESTANDAR;
+				case KeyEvent.KEY_LOCATION_LEFT: return LOCALIZACION.IZQUIERDA;
+				case KeyEvent.KEY_LOCATION_RIGHT: return LOCALIZACION.DERECHA;
+				case KeyEvent.KEY_LOCATION_NUMPAD: return LOCALIZACION.NUMPAD;
+				case KeyEvent.KEY_LOCATION_UNKNOWN: return LOCALIZACION.DESCONOCIDA;
+				default: return null;
+			}
+		}
+	}
+	
+	/**
+	 * Implementación de evento de click/toque para AWT/Swing 
+	 */
+	public static class RatonEvent implements AbstractRatonEvent
+	{
+		private static final long serialVersionUID = 1L;
+
+		final protected MouseEvent mEvent;
+		
+		public RatonEvent( MouseEvent mEvent ) 
+		{
+			this.mEvent = mEvent;
+		}
+		
+		public MouseEvent getMouseEvent() { return mEvent; }
+		
+		@Override
+		public RATON_ID getId() 
+		{ 
+			switch ( mEvent.getID() )
+			{
+				case MouseEvent.MOUSE_PRESSED: return RATON_ID.PRESSED;
+				case MouseEvent.MOUSE_RELEASED: return RATON_ID.RELEASED;
+				case MouseEvent.MOUSE_CLICKED: return RATON_ID.CLICKED;
+				case MouseEvent.MOUSE_MOVED: return RATON_ID.MOVED;
+				case MouseEvent.MOUSE_DRAGGED: return RATON_ID.DRAGGED;
+				case MouseEvent.MOUSE_ENTERED: return RATON_ID.ENTERED;
+				case MouseEvent.MOUSE_EXITED: return RATON_ID.EXITED;
+				case MouseEvent.MOUSE_WHEEL: return RATON_ID.WHEEL;
+				default: return null;
+			}
+		}
+		
+		@Override
+		public BOTON getButton() 
+		{
+			switch( mEvent.getButton() )
+			{
+				case MouseEvent.BUTTON1: return BOTON.BOTON1;
+				case MouseEvent.BUTTON2: return BOTON.BOTON2;
+				case MouseEvent.BUTTON3: return BOTON.BOTON3;
+				case MouseEvent.NOBUTTON:
+				default: return BOTON.NO_BOTON;
+			}
+		}
+		
+		@Override
+		public int getClicks() { return mEvent.getClickCount(); }
+		
+		@Override
+		public int[] getPosicion() { return new int[] { mEvent.getX(), mEvent.getY() }; }
+		
+		@Override
+		public int[] getPosicionEnPantalla()
+		{ 
+			return new int[] { mEvent.getXOnScreen(), mEvent.getYOnScreen() }; 
+		}
+		
+		@Override
+		public long getTimeStamp() { return mEvent.getWhen(); }
+		
+		@Override
+		public double getRotacion() 
+		{
+			return mEvent instanceof MouseWheelEvent 
+				   ? ((MouseWheelEvent) mEvent).getPreciseWheelRotation() 
+				   : 0.; 
+		}
+		
+	}  // class RatonEvent
+	
+}  // class JMEPrimitivas2DParaSwing
+</code></pre>
+<hr/>
+<p>Implementación de <code>JMEPrimitivas2DParaSwing</code> en <i>JMEScriptGUI</i>:</p>
+<pre><code class="java">package jmescriptgui;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RenderingHints;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.stream.Collectors;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JColorChooser;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import jme.script.ctx2d.AbstractPrimitivas2D;
+import swing_primitivas.JMEPrimitivas2DParaSwing;
+
+/**
+ * Implementación de las primitivas de interfaz gráfico de JMEScript para JMEScriptGUI 
+ * @author Miguel Alejandro Moreno Barrientos
+ * @since 0.1.2, JME 0.6.2.0, JMEScript 0.2.0
+ */
+public class JmeScriptGuiPrimitivas2D extends JMEPrimitivas2DParaSwing
+{
+	final private GUI gui;  // componente padre
+	private Dialogo ctxDialog;  // diálogo que contiene el lienzo de dibujo
+	
+	public JmeScriptGuiPrimitivas2D( GUI gui ) 
+	{
+		super();
+		this.gui = gui;
+	}
+
+
+	///////////////////////////////////
+	// PRIMITIVAS GRÁFICAS
+	///////////////////////////////////	
+	
+	/**
+	 * Esta implementación incluye tostadas y usa la superclase para los mensajes
+	 */
+	@Override
+	public void mostrarMensaje( String msj, MSJ tipo, Integer posX, Integer posY, Integer tiempo )
+	{
+		// diálogo de mensaje por defecto
+		if ( tiempo == null || tiempo < 0 )
+			super.mostrarMensaje( msj, tipo, posX, posY, tiempo );
+		// tostada
+		else
+		{
+			final Point point = posX == null || posY == null ? null : new Point( posX, posY );
+			switch( tipo )
+			{
+				case OK: ToastFactory.createOkToast( msj, point, tiempo ).showToast(); break;
+				case WARNING: ToastFactory.createWarningToast(msj,point,tiempo).showToast(); break;
+				case ERROR: ToastFactory.createErrorToast( msj, point, tiempo ).showToast(); break;
+				default: ToastFactory.createToast( msj, point, tiempo ).showToast();
+			}
+		}
+	}	
+	
+	@Override
+	public String getUIName() { return GUI.APPNAME; }
+	
+	@Override
+	public String getUIVersion() { return GUI.VERSION; }
+	
+	@Override
+	public String getPrim2DName() { return GUI.APPNAME + " Primitivas2D"; }
+	
+	@Override
+	public String getPrim2DVersionName() 
+	{ 
+		return super.getPrim2DVersionName() + " para " + GUI.APPNAME; 
+	}
+	
+	@Override
+	public GUI getPadre() { return gui; }
+	
+	@Override
+	public void iniciarContexto(int indice, int ancho, int alto, int posX, int posY, String titulo) 
+	{
+		// crear diálogo gráfico y canvas
+		ctxDialog = new Dialogo( indice, ancho, alto, posX, posY, titulo );
+		ctxDialog.setVisible(true);
+		ctxDialog.pack();
+		if ( posX >= 0 && posY >= 0 )
+			ctxDialog.setLocation( posX, posY );
+		else
+			ctxDialog.setLocationRelativeTo( gui );
+		ctxDialog.canvas.requestFocusInWindow();
+	}
+
+	@Override
+	public void finalizarContexto() 
+	{
+		if ( esContextoIniciado() && ctxDialog.isVisible() )
+		{
+			ctxDialog.setVisible( false );
+			ctxDialog.dispose();
+			ctxDialog = null;
+		}
+	}
+	
+	@Override
+	public boolean esContextoIniciado() { return ctxDialog != null; }
+	
+	@Override
+	public void repintar( int indice ) 
+	{
+		if ( !esContextoIniciado() )
+			throw new IllegalStateException( 
+								"El contexto " + indice + " no esta inicializado o esta cerrado" );
+		ctxDialog.canvas.repaint();
+		
+		synchronized ( ctxDialog )
+		{
+			ctxDialog.imagenActual = new BufferedImage( 
+									ctxDialog.backImage.getWidth(), ctxDialog.backImage.getHeight(), 
+									BufferedImage.TYPE_INT_RGB );
+			ctxDialog.imagenActual.getGraphics().drawImage( 
+								ctxDialog.backImage, 0, 0, ctxDialog.canvas.getBackground(), null );			
+		}
+	}
+	
+	@Override
+	public int getAncho() 
+	{ 
+		return esContextoIniciado() ? ctxDialog.backImage.getWidth() : -1; 
+	}
+	
+	@Override
+	public int getAlto()
+	{ 
+		return esContextoIniciado() ? ctxDialog.backImage.getHeight() : -1; 
+	}
+	
+	@Override
+	public Map<Object,Object> getPropiedadesEntorno() 
+	{
+		final Properties prop = System.getProperties();
+		prop.putAll( System.getenv()
+					 .entrySet()
+					 .parallelStream()
+					 .collect( Collectors.toMap( entry -> (Object) entry.getKey(), 
+							 					 entry -> (Object) entry.getValue() ) ) );
+		
+		return Collections.unmodifiableMap(prop);
+	}
+	
+	
+	///////////////////
+	// CLASE DIALOGO
+	///////////////////
+	
+	private static final JColorChooser COLOR_CHOOSER = new JColorChooser();  // selector de color del lienzo
+	private static final JFileChooser fileChooser = new JFileChooser();  // selector de archivo para guardar lienzo
+	
+	static
+	{
+		fileChooser.addChoosableFileFilter( 
+									  new FileNameExtensionFilter( "imagen JPEG", "jpg", "jpeg" ) );
+		fileChooser.addChoosableFileFilter( new FileNameExtensionFilter( "imagen PNG", "png" ) );
+		fileChooser.addChoosableFileFilter( new FileNameExtensionFilter( "imagen GIF", "gif" ) );
+		fileChooser.setAcceptAllFileFilterUsed(false);
+	}
+	
+	/**
+	 * Diálogo creado en {@link JmeScriptGuiPrimitivas2D#iniciarContexto} que contiene el lienzo
+	 * y opciones de manipulación de éste
+	 */
+	private class Dialogo extends JDialog
+	{
+		private JPanel canvas;
+		private BufferedImage backImage,		
+							  imagenActual;
+
+		@SuppressWarnings("serial")
+		public Dialogo( int indice, int ancho, int alto, int posX, int posY, String titulo ) 
+		{
+			super( gui, titulo != null ? titulo : "Contexto  " + indice );
+			
+			// TOOLBAR
+			final JToolBar toolbar = new JToolBar( "Herramientas lienzo" );
+			getContentPane().add( toolbar, BorderLayout.NORTH );
+			
+			// BUTTON selector de fondo del lienzo
+			toolbar.add( new JButton( new ImageIcon( getClass().getResource( 
+	   												GUI.resourcePath + "color_select.png" ) ) ) {
+				{
+					setHideActionText(true);
+					setToolTipText( "Color de fondo del lienzo" );
+					addActionListener( e -> {
+						COLOR_CHOOSER.setColor( canvas.getBackground() );
+						JColorChooser.createDialog( ctxDialog, "Color del fondo del lienzo", true, 
+													COLOR_CHOOSER, null, null ).setVisible(true);
+						final Color nuevoColor = COLOR_CHOOSER.getColor();
+						if ( nuevoColor != null )
+						{
+							setFondo( new JSColor( nuevoColor ) );
+							/*limpiar( 0, 0, getAncho(), getAlto(), null );
+							repintar( indice );*/
+						}
+					});
+				}
+			});
+			// BUTTON repintar
+			toolbar.add( new JButton( new ImageIcon( getClass().getResource( 
+										   			GUI.resourcePath + "repintar_icon.png" ) ) ) {
+				{
+					setHideActionText(true);
+					setToolTipText( "Repintar lienzo" );
+					addActionListener( e -> canvas.repaint() );
+				}
+			});
+			// BUTTON guardar lienzo
+			toolbar.add( new JButton( new ImageIcon( getClass().getResource( 
+														GUI.resourcePath + "save_icon.png" ) ) ) {
+				{
+					setHideActionText(true);
+					setToolTipText( "Guardar lienzo como imagen" );
+					addActionListener( e -> {
+						fileChooser.setDialogTitle( 
+											"Guardar lienzo de <" + ctxDialog.getTitle() + ">" );
+						if ( fileChooser.showSaveDialog(ctxDialog) == JFileChooser.APPROVE_OPTION )
+						{
+							String filename = fileChooser.getSelectedFile().getAbsolutePath(), ext;
+							final int extIdx = filename.lastIndexOf( '.' );
+							if ( extIdx >= 0 )
+								ext = filename.substring( extIdx+1 ).toLowerCase();
+							else
+							{
+								ext = ((FileNameExtensionFilter) fileChooser.getFileFilter())
+									  .getExtensions()[0];
+								filename += "." + ext;
+							}
+							final BufferedImage imagenFinal;
+							synchronized ( ctxDialog )  // asegurar que la imagen actual está actualizada
+							{
+								if ( ext.equals("jpg") || ext.equals("jpeg") )  // quitar alfa en JPEG
+								{
+									imagenFinal = new BufferedImage( 
+												imagenActual.getWidth(), imagenActual.getHeight(), 
+												BufferedImage.TYPE_INT_RGB );
+									imagenFinal.getGraphics().setColor( canvas.getBackground() );
+									imagenFinal.getGraphics().drawImage( 
+												imagenActual, 0, 0, canvas.getBackground(), null );
+								}
+								else
+									imagenFinal = imagenActual;
+							}
+							try 
+							{
+							    ImageIO.write( imagenFinal, ext, new File(filename) );
+							} 
+							catch (IOException ex) 
+							{
+								JOptionPane.showMessageDialog( gui, 
+														   	   ex.getMessage(), 
+														   	   "Error al salvar " + filename, 
+														   	   JOptionPane.ERROR_MESSAGE );
+							}
+						}
+					});
+				}
+			});
+			// BUTTON tamaño original
+			toolbar.add( new JButton( new ImageIcon( getClass().getResource( 
+														GUI.resourcePath + "pack_icon.png" ) ) ) {
+				{
+					setHideActionText(true);
+					setToolTipText( "Tamaño por defecto" );
+					addActionListener( e -> ctxDialog.pack() );
+				}
+			});
+			// BUTTON cerrar todo
+			toolbar.add( new JButton( new ImageIcon( getClass().getResource( 
+												GUI.resourcePath + "cerrar_todo_icon.png" ) ) ) {
+				{
+					setHideActionText(true);
+					setToolTipText( "Cerrar todo" );
+					addActionListener( e -> {
+						final List<AbstractPrimitivas2D> primitivas = 
+															gui.runningScript.getListaPrimitivas(); 
+						primitivas.forEach( prim2d -> prim2d.finalizarContexto() );
+					});
+				}
+			});
+			
+			// crear imagen de respaldo del lienzo
+			backImage = new BufferedImage(ancho, alto, BufferedImage.TYPE_INT_ARGB);
+			
+			// crear canvas
+			canvas = new JPanel() {
+				@Override
+				protected void paintComponent(Graphics g) {
+					super.paintComponent(g);
+					g.drawImage( backImage, 
+								 0, 0, getWidth(), getHeight(), 
+								 0, 0, backImage.getWidth(), backImage.getHeight(), 
+								 null );
+				}
+			};
+			canvas.setBackground( Color.BLACK );
+			canvas.setPreferredSize( new Dimension( ancho, alto ) );
+			canvas.setFocusable(true);
+			// keylistener para detectar key strokes en el lienzo 
+			canvas.addKeyListener( new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) 
+				{
+					synchronized( getStrokeList() )
+					{
+						getStrokeList().add( new KeyStrokeEvent( e ) );
+					}
+				}
+				@Override
+				public void keyReleased(KeyEvent e)
+				{
+					synchronized( getStrokeList() )
+					{
+						getStrokeList().add( new KeyStrokeEvent( e ) );
+					}
+				};
+			});
+			// mouseadapter para detectar eventos de ratón
+			final MouseAdapter mouseAdap = new MouseAdapter() {
+				@Override
+				public void mousePressed( MouseEvent e ) 
+				{
+					synchronized( getRatonEventList() )
+					{
+						getRatonEventList().add( new RatonEvent( e ) );
+					}
+				}
+				@Override
+				public void mouseReleased(MouseEvent e)
+				{
+					synchronized( getRatonEventList() )
+					{
+						getRatonEventList().add( new RatonEvent( e ) );
+					}
+				}
+				@Override
+				public void mouseEntered(MouseEvent e) 
+				{
+					synchronized( getRatonEventList() )
+					{
+						getRatonEventList().add( new RatonEvent( e ) );
+					}
+				}
+				@Override
+				public void mouseExited( MouseEvent e ) 
+				{
+					synchronized( getRatonEventList() )
+					{
+						getRatonEventList().add( new RatonEvent( e ) );
+					}
+				};
+				@Override
+				public void mouseDragged(MouseEvent e) 
+				{
+					synchronized( getRatonEventList() )
+					{
+						getRatonEventList().add( new RatonEvent( e ) );
+					}
+				}
+				@Override
+				public void mouseMoved(MouseEvent e) 
+				{
+					synchronized( getRatonEventList() )
+					{
+						getRatonEventList().add( new RatonEvent( e ) );
+					}
+				}
+				@Override
+				public void mouseWheelMoved( MouseWheelEvent e ) 
+				{
+					synchronized( getRatonEventList() )
+					{
+						getRatonEventList().add( new RatonEvent( e ) );
+					}
+				}
+			};
+			canvas.addMouseListener( mouseAdap );
+			canvas.addMouseMotionListener( mouseAdap );
+			canvas.addMouseWheelListener( mouseAdap );
+			
+			add( canvas );
+			
+			// cerrar ventana
+			addWindowListener( new WindowAdapter() {
+				public void windowClosing(WindowEvent e) 
+				{
+					finalizarContexto();
+				};
+			});
+			
+			// añadir acción pausa/reanudar
+			getRootPane().getActionMap().put( "pause_resume", gui.actionMap.get( "pause_resume" ) );
+			getRootPane().getInputMap( JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT )
+						 .put( KeyStroke.getKeyStroke( "PAUSE" ), "pause_resume" );
+			
+			// definir Graphics2D desde imagen de respaldo
+			final Graphics2D g2 = backImage.createGraphics();
+			//g2.setColor( Color.BLACK );  // defecto blanco
+			setGraphics( g2 );
+			// establecer alta calidad
+			g2.setRenderingHint( RenderingHints.KEY_TEXT_ANTIALIASING,
+		  				 		 RenderingHints.VALUE_TEXT_ANTIALIAS_ON );
+			g2.setRenderingHint( RenderingHints.KEY_ANTIALIASING, 
+			  			 		 RenderingHints.VALUE_ANTIALIAS_ON );
+			g2.setRenderingHint( RenderingHints.KEY_RENDERING, 
+				  			 	 RenderingHints.VALUE_RENDER_QUALITY );
+			g2.setRenderingHint( RenderingHints.KEY_ALPHA_INTERPOLATION, 
+				  			 	 RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY );
+			g2.setRenderingHint( RenderingHints.KEY_COLOR_RENDERING, 
+				  			 	 RenderingHints.VALUE_COLOR_RENDER_QUALITY );
+			g2.setRenderingHint( RenderingHints.KEY_DITHERING, 
+				  			 	 RenderingHints.VALUE_DITHER_ENABLE );
+			g2.setRenderingHint( RenderingHints.KEY_INTERPOLATION,
+				    			 RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		}
+		
+		private static final long serialVersionUID = 1L;
+
+	}  // class Dialogo
+	
+}  // class JMEScriptGuiPrimitivas2D
+</code></pre>
+
 </section>
 
 <br/><br/>
@@ -2812,7 +4813,7 @@ catch ( Throwable e )
 <br/>
 <p>
 Para implementar soporte SQL a una aplicación que use <code>JMEScript</code>, sólo es necesario implentar el interfaz 
-<code>jme.script.sql.AbstractSQL</code>, y asigne la clase implementante al script, antes de ejecutarlo, mediante <code>Script#getListaSgbdrSql#add</code>, 
+<code>jme.script.sql.AbstractSQL</code>, y asignar la clase implementante al script, antes de ejecutarlo, mediante <code>Script#getListaSgbdrSql#add</code> 
 o <code>Script#setListaSgbdrSql</code> para asignar una lista de SGBDR.
 </p>
 <pre><code class="java">package jme.script.sql;
