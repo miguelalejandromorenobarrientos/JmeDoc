@@ -55,7 +55,7 @@ blockquote:before
   display: inline;
 }*/
 
-footer.final, footer:last-child
+footer.final, footer
 {
    	background: linear-gradient(transparent,#CAF,#A9F,#87D);
 	padding-top: 5em;
