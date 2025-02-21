@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-language" content="es"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keyword" content="jme, jmescriptgui, jmescript, evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel, alejandro, moreno, barrientos, evaluador, expresiones, matematicas, math expressions, evaluador, aritmeticas, arithmetic, expressions" />
+	<meta name="description" content="JMEScriptGUI documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+    <meta name="distribution" content="Global" />
+    <meta name="audience" content="all" />
+    <meta name="robots" content="index,follow" />
+
+	<!-- icon -->
+    <link href="img/jme_logo.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="css/jme_doc.css" rel="stylesheet" type="text/css" >
+	<link href="css/default.css" rel="stylesheet" type="text/css" />        
+
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="js/jme_doc.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/highlight.pack.js" charset="UTF-8"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	<style>
+		td, th
+		{
+			word-break: break-all !important;
+		}
+	</style>
+	
+</head>
+
+<body>
+
+<header class="title" style="align-items:center;display:flex">
+	<img style="box-shadow: 1px 1px 2px #0007" src="img/jme_logo.png" width="80px" style="min-width:60px"/>
+	<table style="margin-left: 2em; color: #213;text-shadow: 2px 2px 4px #0007">
+		<tr style="margin-left: 0.75em;font-size:1.5em"><th>JME</th><th>&emsp;y&emsp;</th><th>JMEScript</th></tr>
+		<tr style="text-align: center;font-size: 0.6em; font-style: italic;"><td class="version"></td><td></td><td class="versionJMS"></td></tr>
+	</table>
+	<span style="margin-left:auto">
+		<a href="WebContent/html/jmescript/jmescript.html" class="discLink" style="color: #335"><b>JMEScript</b></a> 
+		<a href="WebContent/index.html" class="discLink" style="color: #335"><b>Manual de Usuario de JME</b></a> 
+	</span> 
+</header>
+
+<hr/>
+
+
+<div class="tema" style="margin-left: 15%; margin-right: 15%">
+<h3 class="subSection">Descripción</h3>
+<br/>
+<section class="content">
+<p><b>JME</b> (Java Math Expression) es un evaluador open source de expresiones matemáticas y lógicas a partir de una cadena para entornos Java.</p>
+<p>Se distribuye mediante una biblioteca en <code>jar</code> ejecutable (que lanza un <a href="https://es.wikipedia.org/wiki/REPL">REPL</a> de JME).</p> 
+<p>La biblioteca incluye el lenguaje <b>JMEScript</b>, un potente lenguaje estructurado de script en español que utiliza JME para la evaluación de expresiones aritmético-lógicas.</p>
+<p>JME realiza cálculos numéricos, no es una biblioteca de cálculo simbólico (CAS), por lo que no simplificará expresiones o resolverá ecuaciones algebraicamente (si algunas numéricas). En lugar de eso devolverá como resultado los tipos de datos del lenguaje.</p>
+<p>JME/JMEScript es <code>case insensitive</code>, por lo que todas las variables, constantes, funciones y caracteres en general no diferencian mayúsculas-minúsculas (excepto para el tipo Texto y ciertos operadores). Los tokens del lenguaje están formados por distintas clases de números, operadores, funciones, identificadores, paréntesis, booleanos, vectores y cadenas. JME <b>no</b> es <code>thread-safe</code>, por lo que el programador debe encargarse de la programación multihilo.</p>
+<p>La clase <code>jme.Expresion</code> es la clase principal de la biblioteca JME, encargada de crear, almacenar y evaluar las expresiones.</p>
+</section>
+
+<br/>
+<h3 class="subSection">Descarga</h3>
+<br/>
+<section class="content">
+<p>&emsp;<b class="version "></b>, JMEScript <b class="versionJMS"></b></p>
+<a class="buttonDownload" href='descargables/jme_6_2_5.jar'>&emsp;Descargar biblioteca JME (jme_6_2_5.jar) - 1.3MB</a>
+<hr style="width: 50%"/>
+<img src="img/download.png"/>&nbsp;&nbsp;
+<a class="discLink monospace" style="font-size: 1.25em" href="descargables/jme_6_2_5_src.jar"><b>Descargar códigp (jme_doc_6_2_5_src_jar) - 791KB</b></a>
+<br/><br/>
+<img src="img/download.png"/>&nbsp;&nbsp;
+<a class="discLink monospace" style="font-size: 1.25em" href="descargables/jme_6_2_5_javadoc.zip"><b>Descargar javadoc (jme_6_2_5_javadoc.zip) - 4.39MB</b></a>
+<hr style="width: 50%"/>
+<p>Para la escritura y ejecución de scripts puede utilizarse el IDE <a href="WebContent/html/jmescript/jmescriptgui.html" class="discLink" style="color: #335"><b>JMEScriptGUI</b></a>.</p>
+</section>
+
+<br/><br/>
+<h3 class="subSection">Principales características</h3>
+<br/>
+<section class="content">
+<ul style="font-size: 1.2em">
+	<li>8 tipos de datos, que actúan de envolventes (wrappers) de tipos Java:
+		<ul>
+			<li><b>RealDoble</b> (<code>double</code>)</li>
+			<li><b>Complejo</b> (holder <code>double,double</code>)</li>
+			<li><b>EnteroGrande</b> (<code>BigInteger</code>)</li>
+			<li><b>RealGrande</b> (<code>BigDecimal</code>)</li>
+			<li><b>Booleano</b> (<code>boolean</code>)</li>
+			<li><b>Texto</b> (<code>String</code>)</li>
+			<li><b>Vector</b> (<code>List&lt;Terminal></code>)</li>
+			<li><b>Diccionario</b> (<code>Map&lt;Terminal,Terminal></code>)</li>
+		</ul>
+	</li>
+	<li>4 pseudotipos:
+		<ul>
+			<li><i>matrices</i> (<code>Vector</code>)</li>
+			<li><i>conjuntos</i> (<code>Vector</code>)</li>
+			<li><i>grafos</i> (<code>Diccionario</code>)</li>
+			<li><i>correspondencias/relaciones finitas (<code>Diccionario</code>)</i></li>
+		</ul>
+	</li>
+	<li>Álgebra vectorial y matricial</li>
+	<li>Álgebra compleja</li>
+	<li>Álgebra booleana</li>
+	<li>Álgebra de conjuntos</li>
+	<li>Operaciones sobre cadenas de texto</li>
+	<li>Más de 60 operadores y más de 450 funciones</li>
+	<li>Establecimiento de variables y constantes</li>
+	<li>Establecimiento de operadores y funciones definidas por el usuario</li>
+	<li><b>REPL</b> en jar ejecutable</li>
+	<li>Exportación/Importación de datos vectoriales y matriciales a CSV y exportación a HTML table, además de JSON y XML</li>	
+	<li>Lenguaje de script <b>JMEScript</b>, que consta principalmente de
+		<ul>
+			<li>estructuras de selección;&emsp;<i class="monospace">si / si no, si / si no / seleccionar</i></li>
+			<li>cuatro tipos de bucles;&emsp; <i class="monospace">mientras / para / para cada / repetir hasta que</i></li> 
+			<li>procedimientos locales y globales con parámetros de entrada y de entrada/salida</li>
+			<li>variables dinámicas que contienen tipos JME<br/>
+			<li>posibilidad de llamar a acciones de la propia aplicación implementante para crear scripts sobre ella</li>
+			<li>captura de excepciones</li>
+		</ul>	
+	</li>
+</ul>
+</section>
+
+<br/><br/>
+<h3 class="subSection">Ejemplos</h3>
+<br/>
+<section class="content">
+<p><b>Entrada y salida de expresiones JME:</b></p>
+
+<div class="example">
+	<p class="content comment">masa probabilística en [μ-σ,μ+σ] para N(0,1):</p>
+	<p class="content input"><span class="javaString">stexto(normaldist(-1,1)/%$2)+'%'</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '68.26%'</p>
+	<p class="content comment">masa probabilística en [3,+∞) para N(-1,2):</p>
+	<p class="content input"><span class="javaString">stexto(normaldist(3,inf,-1,2)/%$2)+'%'</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '2.27%'</p>
+</div>
+
+<div class="example">
+	<span class="content comment">Digrafo de 8 nodos:</span>
+	<p class="content input"><span class="javaString">gr_nuevo([[0,1,0,0,0,0,0,0],[0,0,1,0,1,1,0,0],[0,0,0,1,0,0,1,0],[0,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,1,0]],['a','b','c','d','e','f','g','h'],verdadero)</span></p>
+	<p class="content output"><span class="jmeType">Grafo en JMEScriptGUI con <b><a class="discLink" href="grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="img/grafo_8nodos_dirigido.png"/>
+	</p>
+	<span class="content comment">Vecindad del nodo 'b':</span>
+	<p class="content input"><span class="javaString">gr_vecindad(gr_nuevo([[0,1,0,0,0,0,0,0],[0,0,1,0,1,1,0,0],[0,0,0,1,0,0,1,0],[0,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,1,0]],['a','b','c','d','e','f','g','h'],verdadero),<mark class="gray1">'b'</mark>)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+		{     'etiquetas': ['c','e','f']
+		            'ady': [[0,0,0],[0,0,1],[0,0,0]]
+		     'esDirigido': verdadero
+		    'esPonderado': falso
+		  'esPseudografo': falso
+		   'esMultigrafo': falso
+		       'nodoData': '__null__'
+		     'aristaData': '__null__' }</p>
+	<span class="content comment">Vecindad del nodo 'c', 'd' y 'h':</span>
+	<p class="content input"><span class="javaString">gr_vecindad(gr_nuevo([[0,1,0,0,0,0,0,0],[0,0,1,0,1,1,0,0],[0,0,0,1,0,0,1,0],[0,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,1,0]],['a','b','c','d','e','f','g','h'],verdadero),<mark class="gray1">['c','d','h']</mark>)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+		{     'etiquetas': ['g']
+		            'ady': [[0]]
+		     'esDirigido': verdadero
+		    'esPonderado': falso
+		  'esPseudografo': falso
+		   'esMultigrafo': falso
+		       'nodoData': '__null__'
+		     'aristaData': '__null__' }</p>
+	<span class="content comment">Vecindad <b>cerrada</b> del nodo 'c', 'd' y 'h':</span>
+	<p class="content input"><span class="javaString">gr_vecindad(gr_nuevo([[0,1,0,0,0,0,0,0],[0,0,1,0,1,1,0,0],[0,0,0,1,0,0,1,0],[0,0,1,0,0,0,0,1],[1,0,0,0,0,1,0,0],[0,0,0,0,0,0,1,0],[0,0,0,0,0,1,0,0],[0,0,0,1,0,0,1,0]],['a','b','c','d','e','f','g','h'],verdadero),<mark class="gray1">[2,'d',7]</mark>,<mark class="gray2">verdadero</mark>)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+		{     'etiquetas': ['c','d','g','h']
+		            'ady': [[0,1,1,0],[1,0,0,1],[0,0,0,0],[0,1,1,0]]
+		     'esDirigido': verdadero
+		    'esPonderado': falso
+		  'esPseudografo': falso
+		   'esMultigrafo': falso
+		       'nodoData': '__null__'
+		     'aristaData': '__null__' }</p>
+</div>
+
+<hr/>
+
+<p><b>Salida en REPL:</b></p>
+<div class="console content javaOutput" style="width: 680px"><pre>
+>>> set grafo=gr_nuevo([[0,1,1,0],[0,0,0,1],[0,0,0,1],[1,0,0,0]],true)||
+>>> gr_fuerteconexo(grafo)
+
+         ==> Booleano: verdadero
+
+        (parse: 120µs(10%) / eval: 1,1ms(90%) / total: 1,2ms)
+
+>>> gr_subyacente(grafo)
+
+         ==> Diccionario:
+
+                {     'etiquetas': ['v0','v1','v2','v3']
+                            'ady': [[0,1,1,1],[1,0,0,1],[1,0,0,1],[1,1,1,0]]
+                     'esDirigido': falso
+                    'esPonderado': falso
+                  'esPseudografo': falso
+                   'esMultigrafo': falso
+                       'nodoData': '__null__'
+                     'aristaData': '__null__' }
+
+        (parse: 171µs(15%) / eval: 948µs(85%) / total: 1,1ms)
+
+>>> gr_conexo(ans)
+
+         ==> Booleano: verdadero
+
+        (parse: 124µs(12%) / eval: 876µs(88%) / total: 1ms)
+
+>>> enumerar(grafo>&lt;'ady',grafo>&lt;'etiquetas')
+
+         ==> VectorEvaluado:
+
+                | 'v0'  [0,1,1,0] |
+                | 'v1'  [0,0,0,1] |
+                | 'v2'  [0,0,0,1] |
+                | 'v3'  [1,0,0,0] |
+
+
+        (parse: 262µs(20%) / eval: 1,1ms(80%) / total: 1,3ms)</pre>
+</div>
+
+<hr/>
+
+<p><b>Script que ejecuta acciones sobre JMEScriptGUI:</b></p>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Ejemplo de sentencia 'accion' en JMEScriptGUI</figcaption>
+	<img src="img/accion_ejemplo.png" class="centerImg"/>
+</figure>
+<br/>
+<figure style="margin: auto">
+	<figcaption style="caption-side: top">Salida en JMEScriptGUI</figcaption>
+	<img src="img/accion_resultado.gif" class="centerImg"/>
+</figure>
+<br/>
+</section>
+
+<br/><br/>
+<h3 class="subSection">Aplicación para representación de gráficas y fractales <b>JGE</b></h3>
+<br/>
+<section class="content">
+ 	<p><b>JGE</b> (Java Graphical Expression) es una aplicación freeware para gráficas y fractales usando expresiones JME. Entre sus principales características:</p>
+	   <ul>
+	       <li>Representación de funciones reales</li>
+	       <li>Representación de fractales iterativos mediante algoritmo de escape</li>
+	       <li>Representación de funciones complejas en el plano</li>
+	       <li>Representación de campo vectoriales en el plano</li>
+	   </ul>
+	<br/>
+	<img src="img/download.png"/>&nbsp;&nbsp;	       
+	<a href="https://drive.google.com/file/d/1IWNHCgcqan1nd2-wuwFDDQ6_CUsG8h32/view?usp=sharing" class="discLink monospace" style="font-size: 1.25em;color: #335"><b>JGE 0.1.2</b></a>
+</section>
+
+<br/><br/>
+<h3 class="subSection">Autor y mail</h3>
+<br/>
+<section class="content">
+	<br/>
+    <table style="border-bottom: 2px dashed #0003; border-top: 2px solid #0003">
+        <tr>
+            <td class="negrita">Autor:</td>
+            <td><code>Miguel Alejandro Moreno Barrientos</code></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td class="cursiva"><i>Ingeniero Técnico en Informática de Sistemas por la Universidad de Córdoba (España)</i></td>
+        </tr>
+    </table>
+    <br/>
+    <div>
+    	<span>Comentarios, dudas, bugs, etc.:</span>
+    	<a href="mailto:proyectojme@gmail.com">proyectojme@gmail.com</a>
+        <hr/>
+    </div>
+</section>
+
+<br/>
+<img style="margin-top:64px" class="centerImg" src="img/jme_logo.png" width=128px/>
+</div>
+
+<hr/>
+
+<button onclick="topFunction()" id="myBtn" title="Ir arriba">^</button>
+
+
+<footer class="final">
+	<p>
+		Parser JME <span class="version"></span> y lenguaje JMEScript <span class="versionJMS"></span> // <span class="author"></span>, <span class="copyright"></span>
+	</p>
+
+	<div id = "contador" style="font-size: 0.5em; color: #B79FFF" >
+		<!-- inicio codigo contador -->
+		<script type='text/javascript' src='http://dstats.net/sitetracker.php?url=http://morenobarrientos-jme.site44.com/'></script>
+		<script type='text/javascript'>document.write(dsCounter);</script>
+        <!-- fin codigo contador -->        
+    </div>
+</footer>
+    
+</body>
+
+</html>
