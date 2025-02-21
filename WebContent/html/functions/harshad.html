@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="harshad, niven, numero" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	<link href="../../css/default.css" rel="stylesheet" type="text/css" />        
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="../../js/highlight.pack.js" charset="UTF-8"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Números de Harshad/Niven</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Comprueba si un número natural es de 
+<a href="https://es.wikipedia.org/wiki/N%C3%BAmero_de_Harshad" class="tooltip">Harshad (Niven)<span class="tooltiptext">https://es.wikipedia.org/wiki/N%C3%BAmero_de_Harshad</span></a></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">harshad / niven</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">harshad / niven</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">harshad(&lt;n>[,&lt;base>])</p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">harshad(1000)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p> 
+	<p class="content input"><span class="javaString">enumerar(condsuc(niven(n),n,n,0,25),1)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+	| 1   1  |
+	| 2   2  |
+	| 3   3  |
+	| 4   4  |
+	| 5   5  |
+	| 6   6  |
+	| 7   7  |
+	| 8   8  |
+	| 9   9  |
+	| 10  10 |
+	| 11  12 |
+	| 12  18 |
+	| 13  20 |
+	| 14  21 |
+	| 15  24 |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">enumerar(condsuc(niven(n,2),[adigitos(n,2,''),n],n,1,200),1)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+	| 1       ['1',1]      |
+	| 2       ['10',2]     |
+	| 3      ['100',4]     |
+	| 4      ['110',6]     |
+	| 5      ['1000',8]    |
+	| 6     ['1010',10]    |
+	| 7     ['1100',12]    |
+	| 8     ['10000',16]   |
+	| 9     ['10010',18]   |
+	| 10    ['10100',20]   |
+	| 11    ['10101',21]   |
+	| 12    ['11000',24]   |
+	| 13   ['100000',32]   |
+	| 14   ['100010',34]   |
+	| 15   ['100100',36]   |
+	| 16   ['101000',40]   |
+	| 17   ['101010',42]   |
+	| 18   ['110000',48]   |
+	| 19   ['110111',55]   |
+	| 20   ['111100',60]   |
+	| 21   ['1000000',64]  |
+	| 22   ['1000010',66]  |
+	| 23   ['1000100',68]  |
+	| 24   ['1000101',69]  |
+	| 25   ['1001000',72]  |
+	| 26   ['1010000',80]  |
+	| 27   ['1010001',81]  |
+	| 28   ['1010100',84]  |
+	| 29   ['1011100',92]  |
+	| 30   ['1100000',96]  |
+	| 31  ['1101100',108]  |
+	| 32  ['1101110',110]  |
+	| 33  ['1110011',115]  |
+	| 34  ['1110100',116]  |
+	| 35  ['1111000',120]  |
+	| 36  ['1111110',126]  |
+	| 37  ['10000000',128] |
+	| 38  ['10000010',130] |
+	| 39  ['10000100',132] |
+	| 40  ['10001000',136] |
+	| 41  ['10001010',138] |
+	| 42  ['10010000',144] |
+	| 43  ['10011011',155] |
+	| 44  ['10011100',156] |
+	| 45  ['10100000',160] |
+	| 46  ['10100010',162] |
+	| 47  ['10101000',168] |
+	| 48  ['10101100',172] |
+	| 49  ['10110100',180] |
+	| 50  ['10111000',184] |
+	| 51  ['10111001',185] |
+	| 52  ['11000000',192] |</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.4</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

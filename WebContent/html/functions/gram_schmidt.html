@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="orto, Gram, Schmidt, ortogonalizacion, ortonormalizacion" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Método de Gram-Schmidt para ortogonalización/ortonormalización</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Método de ortogonalización y ortonormalización de Gram-Schmidt</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">orto</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">orto</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">orto(&lt;vectores>[,&lt;normalizar>[,&lt;validar_rango>]])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>vectores</td>
+			<td>Vectores a ortogonalizar/ortonormalizar dados como matriz</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>normalizar</td>
+			<td>Si es <i>verdadero</i>, normaliza los vectores resultantes</td>
+			<td><i>verdadero</i></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>validar_rango</td>
+			<td>Si es <i>verdadero</i>, lanza una excepción si los vectores dados no son linealmente independientes (rango no máximo)</td>
+			<td><i>falso</i></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">orto([1,1,0],[0,2,1],[0,0,-3])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| <span style="border: 1px dashed gray">0.7071067811865475   0.7071067811865475           0          </span>|
+		| <span style="border: 1px dashed gray">-0.5773502691896256   0.577350269189626   0.5773502691896258 </span>|
+		| <span style="border: 1px dashed gray">-0.4082482904638631  0.40824829046386324  -0.816496580927726 </span>|</p>
+	<p class="content input"><span class="javaString"><a class="discLink" href="roundp.html">roundp</a>(orto([[1,1,0],[0,2,1],[0,0,-3]],falso))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 1   1  0  |
+		| -1  1  1  |
+		| -1  1  -2 |</p>
+	<p class="content input"><span class="javaString">orto([[1,1,0],[0,2,1],[0,4,2]],falso,verdadero)</span></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">Error en la entrada: &lt;&lt;&lt;FuncionException>>> en funcion "orto": Los vectores no son linealmente independientes. Dimension 3, rango 2 --> orto(Vector:[[[1,1,0],[0,2,1],[0,4,2]],falso,verdadero])</mark></p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">orto([[3,-ui,0,1],[3+2ui,ui,0,-7]],falso)&lt;#>3</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		|      3            -I       0       1       |
+		| 2.72+0.363I  -0.545+1.09I  0  -7.09-0.545I |</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

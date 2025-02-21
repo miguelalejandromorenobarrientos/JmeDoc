@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="gr_subinducido, subgrafo, inducido, grafo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Subgrafo Inducido</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Crea un subgrafo inducido por una serie de nodos</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">gr_subinducido</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">GRAFO.subinducido</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">gr_subinducido(&lt;grafo>,&lt;nodos>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<span class="content comment">Pseudografo de 6 nodos:</span>
+	<p class="content input"><span class="javaString">gr_nuevo([[0,1,1,0,0,3],[1,0,0,0,0,0],[1,0,0,2,0,0],[0,0,2,0,1,1],[0,0,0,1,1,0],[3,0,0,1,0,0]],falso,falso,verdadero,verdadero)</span></p>
+	<p class="content output"><span class="jmeType">Grafo en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_6nodos_pseudografo_no_dirigido2.png"/>
+	</p>
+	<span class="content comment">Subgrafo inducido por los nodos 'v0','v1' y 'v5':</span>
+	<p class="content input"><span class="javaString">gr_subinducido(gr_nuevo([[0,1,1,0,0,3],[1,0,0,0,0,0],[1,0,0,2,0,0],[0,0,2,0,1,1],[0,0,0,1,1,0],[3,0,0,1,0,0]],falso,falso,verdadero,verdadero),[0,'v5','v1'])</span></p>
+	<p class="content output"><span class="jmeType">Grafo en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_3nodos_subinducido.png"/>
+	</p>
+	<br/><br/>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="gr_es_subgrafo.html">gr_essubgrafo</a>,
+	<a href="gr_es_subgrafo_gen.html">gr_essubgrafogen</a>
+</p>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

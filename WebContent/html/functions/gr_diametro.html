@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="gr_diametro, diametro, grafo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Diámetro de un Grafo</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Máxima excentricidad de los nodos del grafo.</p>
+<p class="content">Si el grafo no es ponderado, se tomarán las aristas con peso igual a 1 y la ausencia de ellas como infinito</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">gr_diametro</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">GRAFO.diametro</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">gr_diametro(&lt;grafo>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<br/>
+	<span class="content comment">Grafo de 8 nodos ponderado:</span>
+	<p class="content input"><span class="javaString">gr_nuevo([[inf,3,1,inf,inf,inf,inf,inf],[3,inf,inf,1,inf,inf,5,inf],[1,inf,inf,2,inf,5,inf,inf],[inf,1,2,inf,4,2,inf,inf],[inf,inf,inf,4,inf,inf,2,1],[inf,inf,5,2,inf,inf,inf,3],[inf,5,inf,inf,2,inf,inf,inf],[inf,inf,inf,inf,1,3,inf,inf]],['A','B','C','D','E','F','G','H'],falso,verdadero)</span></p>
+	<p class="content output"><span class="jmeType">Salida en JMEScriptGUI con <b><a class="discLink" href="../jmescript/scripts/grafos_jme.jmes">visor de grafos</a></b> v0.1: </span>
+		<br/><img class="zoom" src="../jmescript/images_jmes/grafo_8nodos_ponderado_positivo_dijkstra.png"/>
+	</p>
+	<span class="content comment">Diámetro:</span>
+	<p class="content input"><span class="javaString">gr_diametro(gr_nuevo([[inf,3,1,inf,inf,inf,inf,inf],[3,inf,inf,1,inf,inf,5,inf],[1,inf,inf,2,inf,5,inf,inf],[inf,1,2,inf,4,2,inf,inf],[inf,inf,inf,4,inf,inf,2,1],[inf,inf,5,2,inf,inf,inf,3],[inf,5,inf,inf,2,inf,inf,inf],[inf,inf,inf,inf,1,3,inf,inf]],['A','B','C','D','E','F','G','H'],falso,verdadero))</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 8</p>
+	<br/>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="gr_radio.html">gr_radio</a>,
+	<a href="gr_excentricidad.html">gr_excentricidad</a>,
+	<a href="gr_centro.html">gr_centro</a>
+</p>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>
