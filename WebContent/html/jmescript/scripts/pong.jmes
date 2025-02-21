@@ -1,0 +1,261 @@
+########################################################
+# CLAY COURT PONG
+# ----------------------------------------------------
+# Juego de tenis en pista de tierra para dos jugadores
+# ----------------------------------------------------
+# JMEScript 0.2.0
+########################################################
+# Miguel Alejandro Moreno Barrientos, (C)2021
+#
+# Versión Python en CodeSkulptor 2:
+# http://www.codeskulptor.org/#user41_Kv4IBeaDT8_80.py
+########################################################
+# Q-A: mover raqueta izquierda
+# Flecha arriba-abajo: mover raqueta derecha
+# ESC: salir
+# P: pausa
+########################################################
+
+# inicia la bola al centro y una velocidad y dirección aleatorias
+procedimiento global reaparecer_bola() inicio:
+	bola_pos := [_ancho,_alto]/2  # centrar bola
+	bola_vel := [powm1(randint(0,1))rand(4,6),
+				> powm1(randint(0,1))rand(2,4)]
+fin
+
+# mueve la bola y comprueba rebote arriba y abajo
+procedimiento global mover_bola() inicio:
+	bola_pos += bola_vel
+	# rebote en la parte superior
+	si bola_pos;#;2 < _bola_radio inicio:
+		bola_pos{2} := 2*_bola_radio - bola_pos;#;2
+		bola_vel{2} := -bola_vel;#;2
+	fin
+	# rebote en la parte inferior
+	si no, si bola_pos;#;2 + _bola_radio > _alto inicio:
+		bola_pos{2} := 2*_alto - bola_pos;#;2 - 2*_bola_radio
+		bola_vel{2} := -bola_vel;#;2
+	fin
+fin
+
+# comprueba si la bola rebota en raqueta o punto para el contrario
+procedimiento global rebote_o_punto() inicio:
+	# raqueta izquierda (1)
+	si bola_pos;#;1 - _bola_radio < _raqueta_ancho inicio:
+		rpos_y := raquetas_pos;#;1;#;2
+		# rebote en raqueta
+		si intervalo( rpos_y, bola_pos;#;2, rpos_y + _raqueta_alto ) = 1 inicio:  
+			bola_vel := [-rand(1,1.5)*bola_vel;#;1, 
+						> rand(1,1.5)*bola_vel;#;2]
+		fin
+		# punto para raqueta derecha (2)
+		si no inicio:  
+			puntuacion{2} := puntuacion;#;2++
+			llamar a reaparecer_bola()
+			llamar a reaparecer_raquetas()
+			jme: dormir(5e8)
+			ctx2d pulsacion consumir
+		fin
+	fin
+	# raqueta derecha (2)
+	si no, si bola_pos;#;1 + _bola_radio > _ancho - _raqueta_ancho inicio:
+		rpos_y := raquetas_pos;#;2;#;2
+		# rebote en raqueta
+		si intervalo( rpos_y, bola_pos;#;2, rpos_y + _raqueta_alto ) = 1 inicio:  
+			bola_vel := [-rand(1,1.5)*bola_vel;#;1, 
+						> rand(1,1.5)*bola_vel;#;2]
+		fin
+		# punto para raqueta izquierda (1)
+		si no inicio:  
+			puntuacion{1} := puntuacion;#;1++
+			llamar a reaparecer_bola()
+			llamar a reaparecer_raquetas()
+			jme: dormir(5e8)
+			ctx2d pulsacion consumir
+		fin
+	fin
+fin
+
+# iniciar raquetas al centro y velocidad nula
+procedimiento global reaparecer_raquetas() inicio:
+    raquetas_pos := [ [ 0, (_alto - _raqueta_alto)/2 ], 
+    				> [ _ancho - _raqueta_ancho, (_alto - _raqueta_alto)/2 ] ]
+    raquetas_vel := [0,0]  # [vy1,vy2]    	
+fin
+
+# manejador de teclado
+procedimiento global key_handler() inicio:
+	ctx2d pulsacion en key
+	si !indefinido(['key']) inicio:
+		si key;#;'iskeyreleased' inicio:
+			# parar raqueta izquierda
+			si (key;#;'keychar'$A$);i;['Q','A'] inicio:
+				raquetas_vel{1} := 0
+			fin
+			# parar raqueta derecha
+			si no, si key;#;'keycode';i;[38,40] inicio:
+				raquetas_vel{2} := 0
+			fin
+		fin
+		si no inicio:  # "pressed"
+			# raqueta izquierda abajo
+			si key;#;'keychar'$A$ = 'A' inicio:
+				raquetas_vel{1} := _raqueta_max_vel
+			fin
+			# raqueta izquierda arriba
+			si no, si key;#;'keychar'$A$ = 'Q' inicio:
+				raquetas_vel{1} := -_raqueta_max_vel
+			fin
+			# raqueta derecha abajo
+			si no, si key;#;'keycode' = 40 inicio:
+				raquetas_vel{2} := _raqueta_max_vel
+			fin
+			# raqueta derecha arriba
+			si no, si key;#;'keycode' = 38 inicio:
+				raquetas_vel{2} := -_raqueta_max_vel
+			fin
+			# terminar
+			si no, si key;#;'keycode' = 27 inicio:
+				ctx2d finalizar
+				devolver
+			fin
+			# pausa
+			si no, si key;#;'keychar'$A$ = 'P' inicio:
+				pausa := !pausa
+			fin
+		fin
+	fin	
+fin
+
+# mueve las raquetas
+procedimiento global mover_raquetas() inicio:
+	raquetas_pos{1} := [raquetas_pos;#;1;#;1,
+						> max( 0, min( _alto - _raqueta_alto, 
+									 > raquetas_pos;#;1;#;2+raquetas_vel;#;1))]
+	raquetas_pos{2} := [raquetas_pos;#;2;#;1,
+						> max( 0, min( _alto - _raqueta_alto, 
+									 > raquetas_pos;#;2;#;2+raquetas_vel;#;2))]
+fin
+
+# dibuja el lienzo del juego
+procedimiento global pintar() inicio:
+	# tierra
+	ctx2d color fondo '#DD5500'
+	ctx2d limpiar
+	# dibujar rayas de pista y red
+	ctx2d color linea [ 180, 180, 180 ]
+	ctx2d trazo grosor 2
+	ctx2d segmento inicio [ _raqueta_ancho, 0 ] 
+				   > final [ _raqueta_ancho, _alto ]
+	ctx2d segmento inicio [ _ancho - _raqueta_ancho, 0 ] 
+				   > final [ _ancho - _raqueta_ancho, _alto ]
+	ctx2d segmento inicio [ _ancho*0.23, 0 ]
+				   > final [ _ancho*0.23, _alto ]
+	ctx2d segmento inicio [ _ancho*0.77, 0 ] 
+				   > final [ _ancho*0.77, _alto ]
+	ctx2d segmento inicio [ _ancho*0.23, _alto/2 ] 
+				   > final [ _ancho*0.77, _alto/2 ]
+	ctx2d color linea [ 255, 255, 255 ]
+	ctx2d trazo grosor 4
+	ctx2d segmento inicio [ _raqueta_ancho, 2 ] 
+				   > final [ _ancho - _raqueta_ancho, 2 ]
+	ctx2d segmento inicio [ _raqueta_ancho, _alto - 3 ] 
+				   > final [ _ancho - _raqueta_ancho,_alto - 3 ]
+	ctx2d color linea [ 222, 222, 222 ]
+	ctx2d trazo grosor 8
+	ctx2d segmento inicio [ _ancho/2, 0 ] 
+				   > final [ _ancho/2, _alto ]
+	# dibujar raquetas
+	para cada i:=1,pos en raquetas_pos inicio:
+		ctx2d gradiente inicio [ pos;#;1, pos;#;2 ]
+						> final [ pos;#;1, pos;#;2 + _raqueta_alto ]
+						> fracciones [ 0, 1, 2 ]
+						> colores if( i=1, 
+									  > ['#00DD00','#000000','#00DD00'], 
+									  > ['#0000DD','#000000','#0000DD'] )
+						> matriz mtras(0,tiempo(falso)/1e7%_raqueta_alto)
+		ctx2d rectangulo inicio pos
+						 > final pos + [_raqueta_ancho,_raqueta_alto]
+						 > relleno verdadero
+						 > borde falso
+	fin	
+	# dibujar marcador
+	marcador_offset := marcador_offset + pi/60
+	tama_marcador := _alto/10
+	marcador_familia := 'Comic Sans MS'
+	marcador_estilo := 'negrita'
+	ctx2d color linea '#00FF00' relleno '#112211'
+	marcador := stexto( puntuacion;#;1 )	
+	ctx2d texto marcador 
+				> dimension en marcdim 
+				> tama tama_marcador
+				> familia marcador_familia
+				> estilo marcador_estilo
+	ctx2d texto marcador
+				> posicion [_ancho/2 - marcdim><0 - 50,
+						   > (1+cos(marcador_offset))*0.5*tama_marcador]
+				> tama tama_marcador
+				> sombra [2,2]
+				> familia marcador_familia
+				> estilo marcador_estilo
+	ctx2d color linea '#0000FF' relleno '#111122'
+	marcador := stexto( puntuacion;#;2 )
+	ctx2d texto marcador
+				> posicion [_ancho/2 + 50,
+						   > (1+cos(marcador_offset+pi))*0.5*tama_marcador]
+				> tama tama_marcador
+				> sombra [2,2]
+				> familia marcador_familia
+				> estilo marcador_estilo
+	# dibujar bola
+	ctx2d gradiente inicio bola_pos + [_bola_radio,_bola_radio]/3
+					> final bola_pos
+					> radio _bola_radio
+					> fracciones [0,5,7]
+					> colores ['#BBBB00','#113300','#889900']
+					> matriz mtras(bola_pos;#;1,bola_pos;#;2)mrot( rad(realdoble(tiempo(falso)/1e6%360)) )mtras(-bola_pos;#;1,-bola_pos;#;2)
+	ctx2d circunferencia centro bola_pos
+						 > radio _bola_radio
+						 > relleno verdadero
+						 > borde falso
+fin
+
+
+# inicializar parámetros (constantes expresadas con _)
+ctx2d entorno en ent
+_ancho := indefinido('_ancho',ent;#;'pantalla.ancho'*0.9)
+_alto := _ancho * 0.46  # proporción típica en una pista
+ent :=
+_fps := 60
+_bola_radio := _ancho / 150
+_raqueta_ancho := _ancho / 100
+_raqueta_alto := _alto / 8
+_raqueta_max_vel := _alto / _fps
+marcador_offset := 0
+puntuacion := [0,0]  # [jugador1,jugador2]
+pausa := falso
+
+# iniciar contexto gráfico
+ctx2d iniciar _ancho _alto titulo 'Clay Court Pong'
+
+# iniciar juego
+llamar a reaparecer_bola()
+llamar a reaparecer_raquetas()
+llamar a pintar()
+ctx2d repintar
+
+# bucle de juego
+mientras verdadero inicio:
+	si !pausa inicio:
+		llamar a mover_raquetas()
+		llamar a mover_bola()
+		llamar a rebote_o_punto()
+	fin
+
+	llamar a key_handler()
+
+	llamar a pintar()
+	ctx2d repintar
+
+	jme: dormir(1e9/_fps)  # aprox. FPS a 60
+fin

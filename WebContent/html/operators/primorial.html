@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="primorial" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Operador: <span class="titleItem">Primorial</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- TYPE -->
+<p class="subtitle">Tipo y precedencia</p>
+
+<p class="content">
+	UNARIO  
+	<span class="tooltip">(máxima-1)
+		<span class="tooltiptext" style="width:240px; margin-left:-120px">java.lang.Integer.MAX_VALUE-1</span>
+	</span>
+</p>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content"><a href="https://es.wikipedia.org/wiki/Primorial" class="tooltip">Primorial<span class="tooltiptext">https://es.wikipedia.org/wiki/Primorial</span></a></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="operatorInputOutput content">#</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="operatorInputOutput content">#</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">&lt;natural>#</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content comment">Con precisión de RealDoble el mayor primorial exacto es 46# y el mayor no infinito 742#. Para EnteroGrande o RealGrande el resultado es exacto.</p>
+	<p class="content input"><span class="javaString">46#</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1.308276133167003E16</p>
+	<p class="content input"><span class="javaString">46b#</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 13082761331670030</p>
+	<p class="content input"><span class="javaString">47#</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 6.1488978258849139E17</p>
+	<p class="content input"><span class="javaString">47b#</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 614889782588491410</p>
+	<p class="content input"><span class="javaString">742#</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3.90817700074735E306</p>
+	<p class="content input"><span class="javaString">742b#</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 3908177000747348321700100759308398929805153111668611880351469501101790517001229002312460060980213102675619607636584941527790930906235562824079949016718014203749011797888980406196495862653449645285465653919281456479491361528965182486538161242107442955100036959501529904367137665909362506870253689250775433970</p>
+	<p class="content input"><span class="javaString">743#</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: Infinity</p>
+	<p class="content input"><span class="javaString">743b#</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 2903775511555279803023174864166140404845228761969778627101141839318630354131913148718157825308298335287985368473982611555148661663333023178291402119421484553385515765831512441803996425951513086447100980862026122164262081616021130587497853802885830115639327460909636718944783285770656342604598491113326147439710</p>
+</div>
+
+<div class="example">
+	<p class="content comment">Producto de los compuestos a partir del factorial y primorial</p>
+	<p class="content input"><span class="javaString">100b!/100b#</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 40478622579503143982640460496848031649430094584524928694772860444085831207405755545018678855807795200000000000000000000000</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sucesion([n,enterogrande(n)#],n,0,25)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 0       1     |
+		| 1       1     |
+		| 2       2     |
+		| 3       6     |
+		| 4       6     |
+		| 5      30     |
+		| 6      30     |
+		| 7      210    |
+		| 8      210    |
+		| 9      210    |
+		| 10     210    |
+		| 11    2310    |
+		| 12    2310    |
+		| 13    30030   |
+		| 14    30030   |
+		| 15    30030   |
+		| 16    30030   |
+		| 17   510510   |
+		| 18   510510   |
+		| 19   9699690  |
+		| 20   9699690  |
+		| 21   9699690  |
+		| 22   9699690  |
+		| 23  223092870 |
+		| 24  223092870 |
+		| 25  223092870 |
+	</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="factorial.html">factorial</a>,
+	<a href="factorial_doble.html">factorial doble</a>,
+	<a href="subfactorial.html">subfactorial</a>,
+	<a href="../functions/superfactorial.html">superfactorial</a>,
+	<a href="../functions/hiperfactorial.html">hiperfactorial</a>,
+	<a href="../functions/factorial_alternado.html">factorial alternado</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

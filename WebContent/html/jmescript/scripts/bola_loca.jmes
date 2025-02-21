@@ -1,0 +1,83 @@
+#########################################################
+# Movimiento de bola entre varios lienzos
+# <JMEScript 0.2.0>
+#########################################################
+# Author: Miguel Alejandro Moreno Barrientos
+# (C) 2020
+# Este código puede distribuirse/modificarse libremente
+#########################################################
+
+# preguntar al usuario
+ctx2d leer en lienzo tipo 'opciones' opciones rango(1,5) msj '# de lienzo en el que apuesta que parara la bola (1-4): '
+imprimir lienzo
+
+# tamaño lienzos
+w,h :== [300,300]
+
+# arrancar lienzos
+ctx2d #1# iniciar w h posicion [20,20] titulo 'Mi lienzo'
+ctx2d #2# iniciar w h posicion [20+w,20]
+ctx2d #3# iniciar w h posicion [20,20+h]
+ctx2d #4# iniciar w h posicion [20+w,20+h]
+
+# establecer coordenadas en lienzos
+ctx2d #1# matriz mscale(1,-1)mtras(0,-h)
+ctx2d #2# matriz mscale(1,-1)mtras(-w,-h)
+ctx2d #3# matriz mscale(1,-1)mtras(0,-2h)
+ctx2d #4# matriz mscale(1,-1)mtras(-w,-2h)
+
+# inicializar bola
+posicion := [200,200]
+radio := 20
+direccion := unit(-5+rand(-1)*10,-5+rand(-1)*10)
+
+# establecer color
+para i:=1 hasta 4 inicio:
+	ctx2d #i# color relleno [255,255,127] fondo [0,0,127]
+fin
+
+# mover bola
+para i:=1 hasta 1000 inicio:
+	x,y :== posicion
+	# determinar canvas donde está la bola
+	si par(floor(x/w)) inicio:
+		si par(floor(y/h)) inicio:
+			canvas := 1
+		fin
+		si no inicio:
+			canvas := 3
+		fin
+	fin
+	si no inicio:
+		si par(floor(y/h)) inicio:
+			canvas := 2
+		fin
+		si no inicio:
+			canvas := 4
+		fin
+	fin
+	jme: dormir(1e7)
+	# limpiar lienzos
+	para i:=1 hasta 4 inicio:
+		ctx2d #i# limpiar		
+	fin
+	# dibujar bola
+	ctx2d #canvas# circunferencia centro posicion radio radio relleno verdadero
+	# nueva posición
+	direccion += [-1+2*rand(-1),-1+2*rand(-1)]/3
+	direccion := unit(direccion)
+	velocidad := 7
+	posicion += direccion*velocidad
+	posicion := [(posicion;#;1+2w)%(2w),(posicion;#;2+2h)%(2h)]	
+	# actualizar
+	para i:=1 hasta 4 inicio:
+		ctx2d #i# repintar
+	fin
+fin
+
+# mostrar resultado
+ctx2d msj if(canvas=lienzo,'¡¡ACERTÓ!!','NO ACERTÓ') tipo if(canvas=lienzo,'info','error')
+
+# cerrar lienzos
+jme: dormir(1e9)
+ctx2d finalizar *

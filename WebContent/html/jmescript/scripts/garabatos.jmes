@@ -1,0 +1,63 @@
+##################################################################################
+# Ejemplo de uso de ctx2d click (captura de eventos de ratón, touch, toque,...).
+# Script de dibujo de garabatos
+# ------------------------------------------
+# (Arrastrar): dibujar puntos
+# (Botón derecho): limpiar lienzo
+# (Botón central): cerrar script
+# (Rueda): Ampliar/Reducir grosor de línea
+# ------------------------------------------
+# JMEScript 0.2.0
+##################################################################################
+# Miguel Alejandro Moreno Barrientos, 2020
+# Este script se puede distribuir/modificar libremente
+##################################################################################
+
+# iniciar contexto gráfico y parámetros
+ctx2d iniciar indefinido('ancho',800) indefinido('alto',600)
+grosor_linea := 4
+i := 0  # índice de iteración
+
+mientras verdadero inicio:
+	# leer siguiente evento de ratón
+	ctx2d click en raton_evt
+	# comprobar evento (variable indefinida indica que no hay ningún evento)
+	si !indefinido(['raton_evt']) inicio:
+		# ratón arrastrando o presionado
+		si raton_evt;#;'id';i;['DRAGGED','PRESSED'] inicio:
+			# dibujar nuevo segmento
+			si raton_evt;#;'boton';i;['BOTON1','NO_BOTON'] inicio:
+    			ctx2d color línea [ if( impar(i//( 3*256 )), (i/3)%256, 255-(i/3)%256 ),
+								  > if( impar(i//( 5*256 )), (i/5)%256, 255-(i/5)%256 ),
+								  > if( impar(i//( 7*256 )), (i/7)%256, 255-(i/7)%256 ) ]
+    			ctx2d segmento inicio indefinido( 'vieja_pos', raton_evt;#;'posicion' ) 
+							   > final raton_evt;#;'posicion'
+				vieja_pos := raton_evt;#;'posicion'
+				i++
+			fin
+			# limpiar lienzo
+			si no, si raton_evt;#;'boton' = 'BOTON3' inicio:
+				ctx2d limpiar
+			fin
+			# terminar script
+			si no, si raton_evt;#;'boton' = 'BOTON2' inicio:
+				ctx2d finalizar
+				devolver
+			fin
+			ctx2d repintar
+		fin
+		# levantar pincel
+		si no, si raton_evt;#;'id' = 'RELEASED' inicio:
+			vieja_pos :=
+		fin
+		# rueda, aumentar/disminuir grosor de línea
+		si no, si raton_evt;#;'id' = 'WHEEL' inicio:
+			grosor_linea := max( 1, grosor_linea - raton_evt;#;'rotaciones' )
+			ctx2d trazo grosor grosor_linea
+		fin
+	fin  # si: !indefinido
+	# esperar 10 millis hasta el siguiente evento de ratón si en esta iteración no se ha lanzado ninguno
+	si no inicio:
+		jme: dormir(1e7)
+	fin
+fin

@@ -1,0 +1,382 @@
+############################################################
+# <2048>
+# --------------------------------------------
+# Clon del popular juego 2048 para JMEScript
+#
+# Teclas:
+# - (teclas de dirección) para mover las baldosas
+# - (ESC) para parar script
+# - (R) para reiniciar
+# --------------------------------------------
+# JMEScript 0.2.0
+############################################################
+# Miguel Alejandro Moreno Barrientos, 2020
+# Este código puede distribuirse/modificarse libremente
+############################################################
+# Versión Python 2: 
+# http://www.codeskulptor.org/#user40_ntyd9O4ZQtVJss3_0.py
+############################################################
+
+
+####################################
+# Reinicia los parámetros de juego
+####################################
+procedimiento global reiniciar() inicio:
+	# iniciar marcador y contador de movimientos
+	puntuacion, movimientos := 0
+	# crear tablero de baldosas cero
+	tablero := const( const( ancho ), alto )
+	# añadir dos baldosas
+	llamar a nueva_baldosa( tablero )
+	llamar a nueva_baldosa( tablero )
+	# actualizar máxima baldosa
+	llamar a max_baldosa( tablero, max_baldosa )
+	# actualizar GAME OVER
+	llamar a game_over( tablero, game_over )
+fin
+
+##############################################################
+# Devuelve el valor de la baldosa de más valor en el tablero
+# @param [Matriz] tablero: matriz de juego
+# @return [Numero+] max_baldosa: baldosa de máximo valor
+##############################################################
+procedimiento max_baldosa( tablero, var max_baldosa ) inicio:
+	max_baldosa := max( flatten(tablero) )
+fin
+
+############################################
+# Número de huecos en el tablero (ceros)
+# @param [Matriz] tablero: matriz de juego
+# @return [Numero+] huecos: nº de huecos
+############################################
+procedimiento huecos( tablero, var huecos ) inicio:
+	huecos := contar( item = 0, item, flatten(tablero) )
+fin 
+
+######################################################
+# Añade una nueva baldosa con valor 2 o 4 al tablero
+# @return [Matriz] tablero: matriz de juego
+######################################################
+procedimiento nueva_baldosa( var tablero ) inicio:
+	# seleccionar valor 2 con una probabilidad del 90% frente al 4
+	valor := if( rand(-1) < 0.9, 2, 4 )
+	# seleccionar un hueco aleatorio
+	llamar a huecos( tablero, huecos )  # número de huecos
+	hueco := randint( 1, huecos )
+	# buscar hueco en tablero
+	alto,ancho :== matdim(tablero)
+	num_hueco := 0
+	para fila := 1 hasta alto inicio:
+		para col := 1 hasta ancho inicio:
+			si tablero;#;fila;#;col = 0 inicio:  # la baldosa es un hueco
+				num_hueco++
+				si num_hueco = hueco inicio:  # encontrado el hueco buscado
+					tab_fila := tablero;#;fila
+					tab_fila{col} := valor					
+					romper rutina
+				fin
+			fin
+		fin  # para: col
+	fin  # para: fila	
+fin 
+
+#######################################################################################################
+# Mezcla las baldosas de una fila/columna y devuelve la línea resultado y la puntuación del movimiento
+# @param [Vector] linea: fila o columna del tablero
+# @return [Vector] linea_mezclada: resultado de mezclar la línea original
+# @return [Numero+] puntuacion_linea: puntuación resultante de mezclar la línea
+#######################################################################################################
+procedimiento mezclar( linea, var linea_mezclada, var puntuacion_linea ) inicio:
+	mezclar_baldosa := falso
+	puntuacion_linea := 0
+	indice := 0  # índice del resultado
+	linea_mezclada := const( 0, dim(linea) )
+	para cada baldosa en linea inicio:
+		# saltar baldosas vacías
+		si baldosa != 0 inicio:
+			# mover baldosa a la posición actual 'indice' porque no puede ser mezclada
+			si !mezclar_baldosa inicio:
+				indice++
+				linea_mezclada{indice} := baldosa
+				mezclar_baldosa := verdadero
+			fin
+			# mover baldosa a la posición actual porque la baldosa precedente no es igual
+			si no, si baldosa != linea_mezclada;#;indice inicio:
+				indice++
+				linea_mezclada{indice} := baldosa
+			fin
+			# mezclar baldosa precedente y actual
+			si no inicio:
+				linea_mezclada{indice} := 2*linea_mezclada;#;indice
+				puntuacion_linea += linea_mezclada;#;indice
+				# la siguiente baldosa no puede ser mezclada
+				mezclar_baldosa := falso  
+			fin
+		fin
+	fin  # para_cada: baldosa
+fin
+
+#################################################
+# Mueve el tablero en la dirección especificada
+# direccion [Constante] direccion
+#################################################
+procedimiento global mover( direccion ) inicio:
+	cambio := falso  # cambio en tablero
+	puntuacion_movimiento := 0
+	inicio := dic( _arriba, sucesion([1,i],i,1,ancho),
+				   > _abajo, sucesion([alto,i],i,1,ancho),
+				   > _izquierda, sucesion([i,1],i,1,alto),
+				   > _derecha, sucesion([i,ancho],i,1,alto) )
+	long := if( direccion;i;[_arriba,_abajo], alto, ancho )
+	
+	para indice:= 1 hasta dim(inicio;#;direccion) inicio:
+		puntos_iniciales := inicio;#;direccion;#;indice
+		lista_vieja := sucesion( tablero
+					 > ;#;(puntos_iniciales;#;1+paso*_offsets;#;direccion;#;1)
+					 > ;#;(puntos_iniciales;#;2+paso*_offsets;#;direccion;#;2), 
+					 > paso, 0, long-- )
+		llamar a mezclar( lista_vieja, lista_nueva, puntuacion_linea )
+		puntuacion_movimiento += puntuacion_linea
+		si lista_nueva != lista_vieja inicio:
+			cambio := verdadero
+			para paso:=0 hasta dim(lista_nueva)-- inicio:
+				fila := tablero;#;( puntos_iniciales;#;1
+									> + paso*_offsets;#;direccion;#;1 )
+				fila{puntos_iniciales;#;2+paso*_offsets;#;direccion;#;2} := 
+														> lista_nueva;#;(paso++)
+			fin  # para: paso
+		fin		
+	fin  # para: indice
+	si cambio inicio:
+		movimientos++
+		puntuacion += puntuacion_movimiento
+		llamar a nueva_baldosa( tablero )
+		llamar a max_baldosa( tablero, max_baldosa )		
+	fin
+fin
+
+######################################################################
+# Comprueba GAME OVER en el tablero
+# @param [Matriz] tablero: matriz de juego
+# @return [Booleano] game_over: verdadero si el juego está terminado
+######################################################################
+procedimiento game_over( tablero, var game_over ) inicio:
+	# si hay huecos no es GAME OVER
+	llamar a huecos( tablero, huecos )
+	si huecos != 0 inicio:
+		game_over := falso
+		romper rutina
+	fin
+	# comprobar columnas por duplicados adyacentes
+	alto,ancho :== matdim(tablero)
+	para ifila := 1 hasta alto inicio:
+		para icol := 2 hasta ancho inicio:
+			si tablero;#;ifila;#;(icol-1) = tablero;#;ifila;#;icol inicio:
+				game_over := falso
+				romper rutina
+			fin
+		fin
+	fin
+	# comprobar filas por duplicados adyacentes
+	para ifila := 2 hasta alto inicio:
+		para icol := 1 hasta ancho inicio:
+			si tablero;#;(ifila-1);#;icol = tablero;#;ifila;#;icol inicio:
+				game_over := falso
+				romper rutina
+			fin
+		fin
+	fin
+	
+	game_over := verdadero
+fin
+
+###################################################################
+# Imprime el estado actual de las principales variables del juego
+###################################################################
+procedimiento global imprimir_estado() inicio:
+	imprimir msj vertical
+			 > 'Movimientos:  ' + stexto(movimientos),
+			 > 'Puntuación:   ' + stexto(puntuacion),
+			 > 'Baldosa Max.: ' + stexto(max_baldosa),
+			 > 'GAME OVER: ' + stexto(game_over),
+			 > tablero,
+fin
+
+####################################
+# Redibuja el tablero en el lienzo
+####################################
+procedimiento global repintar() inicio:
+	baldosa_tama := [_lienzo_tama / ancho, (_lienzo_tama-48) / alto]
+	# limpiar fondo
+	ctx2d limpiar color '#BCADA1'
+	# dibujar tablero
+	para ifila:=1 hasta alto inicio:
+		para icol:=1 hasta ancho inicio:
+			valor := tablero;#;ifila;#;icol
+			bal_color := _colores;#;if(valor<=2048,valor,2048)
+			posIni := [(icol--)*baldosa_tama;#;1,48+(ifila--)*baldosa_tama;#;2]
+			posFinal := posIni + baldosa_tama
+			# sombra de baldosa
+			ctx2d color relleno [0,0,0,127]
+			ctx2d rectángulo inicio posIni + [4,4] + [2,2]
+							 > final posFinal - [4,4] + [2,2]
+							 > esquina baldosa_tama/5
+							 > relleno verdadero
+			# baldosa
+			ctx2d color relleno bal_color
+			ctx2d rectángulo inicio posIni + [4,4] 
+							 > final posFinal - [4,4]
+							 > esquina baldosa_tama/5
+							 > relleno verdadero
+			si valor != 0 inicio:  # mostrar valor de la baldosa
+    			ctx2d texto stexto(valor) 
+    						> dimension en txtdim 
+    						> tama baldosa_tama;#;2 / 3
+							> estilo 'negrita'
+				ctx2d color línea if(valor<=4,'#776E65','#FFFFFF') 
+							> relleno [0,0,0,63]
+    			ctx2d texto stexto(valor) 
+    						> posicion posIni 
+									   > + [(baldosa_tama;#;1-txtdim;#;1)/2,
+											> (baldosa_tama;#;2-txtdim;#;2)/2]
+    						> tama baldosa_tama;#;2 / 3
+							> sombra [2,2]
+							> estilo 'negrita'
+			fin
+		fin  # para: icol
+	fin  # para: ifila
+	# parámetros de juego
+	ctx2d color linea [0,63,255] relleno [0,0,0,127]
+	ctx2d texto 'Puntuación: ' + stexto(puntuacion)
+				> posicion [2,1]
+				> tama 32
+				> sombra [1,1]
+	ctx2d color linea [0,127,32]
+	ctx2d texto 'Movimientos: ' + stexto(movimientos)
+				> posicion [300,1]
+				> tama 32
+				> sombra [1,1]
+	ctx2d color linea [127,127,32]
+	ctx2d texto 'Baldosa: ' + stexto(max_baldosa)
+				> posicion [600,1]
+				> tama 32
+				> sombra [1,1]
+	# GAME OVER
+	si game_over inicio:
+		ctx2d limpiar color [255,100,100,64]
+		txt := '<<GAME OVER>>'
+		ctx2d color línea [200,200,100] relleno [0,0,0,200]
+		ctx2d texto txt dimension en txtdim tama 50 estilo 'negrita'
+		ctx2d texto txt 
+					> posicion [(_lienzo_tama-txtdim;#;1)/2,
+								> (_lienzo_tama-txtdim;#;2)/2]
+					> tama 50
+					> sombra [3,3]
+					> estilo 'negrita'
+	fin
+
+	ctx2d repintar
+fin
+
+
+##############
+# -- INIT -- 
+##############
+
+# --CONSTANTES--
+# direcciones 
+_arriba, _abajo, _izquierda, _derecha :== [ 1, 2, 3, 4 ]
+# factor de desplazamiento en cada dirección
+_offsets := dic( _arriba, [ 1, 0 ], 
+				 > _abajo, [ -1, 0 ], 
+				 > _izquierda, [ 0, 1 ], 
+				 > _derecha, [ 0, -1 ] )
+# colores
+_colores := dic( 0, '#CDC5BF',
+				 > 2, '#EEE4DA',
+				 > 4, '#EDE0C8',
+				 > 8, '#F2B179',
+				 > 16, '#F59563',
+				 > 32, '#F67C60',
+				 > 64, '#F65E3B',
+				 > 128, '#EDCF72',
+				 > 256, '#EDCC62',
+				 > 512, '#EDC851',
+				 > 1024, '#EDC746',
+				 > 2048, '#EDC22E' )
+# dimensiones del tablero
+_dimensiones := dic( '3x3', 3, 
+					 > '4x4', 4, 
+					 > '5x5', 5, 
+					 > '6x6', 6, 
+					 > '7x7', 7, 
+					 > '8x8', 8,
+					 > '10x10', 10,
+					 > '12x12', 12 )
+
+# --INICIAR JUEGO--
+mientras verdadero inicio:
+
+	# pedir dimensión del tablero
+	ctx2d leer en dimension
+				  > tipo 'opciones' 
+				  > opciones claves(_dimensiones)
+				  > msj 'Tamaño de tablero...'
+	ancho,alto := _dimensiones;#;dimension
+
+	# tamaño del lienzo
+	ctx2d entorno en ent
+	_lienzo_tama := round(min(ent;#;'pantalla.ancho',ent;#;'pantalla.alto')*0.8)
+	ent :=
+	ctx2d iniciar _lienzo_tama _lienzo_tama titulo '2048'
+
+	# iniciar/reiniciar
+    llamar a reiniciar()
+    llamar a repintar()
+    llamar a imprimir_estado()
+    
+	# bucle principal
+    mientras !game_over inicio:
+    	# leer key strokes
+    	ctx2d pulsacion en tecla
+    	si !indefinido(['tecla']) inicio:
+			# leer teclas solo al presionar
+    		si !tecla;#;'iskeyreleased' inicio:
+				# teclas de dirección
+    			si tecla;#;'keycode' >= 37 && tecla;#;'keycode' <= 40 inicio:
+    				llamar a mover( dic( 37,_izquierda, 
+    									 > 40,_abajo, 
+    									 > 39,_derecha, 
+    									 > 38,_arriba )
+    								> ;#;(tecla;#;'keycode') )
+    				llamar a game_over( tablero, game_over )
+    				llamar a repintar()				
+    				llamar a imprimir_estado()
+					# comprobar GAME OVER
+					si game_over inicio:
+						ctx2d leer en opcion 
+								   > msj '¡Game Over!' + 2*eol 
+										 > + 'Puntuación: ' + stexto(puntuacion) 
+										 > + 2*eol + '¿Volver a jugar?'
+						ctx2d finalizar
+						si !opcion inicio:
+							devolver
+						fin
+					fin
+    			fin
+				# ESCAPE, interrumpir script
+        		si no, si tecla;#;'keycode' = 27 inicio:
+        			ctx2d finalizar
+        			imprimir msj 'Juego interrumpido'
+        			devolver
+        		fin
+				# [rR], parar partida y reiniciar
+				si no, si tecla;#;'keychar'$a$ = 'r' inicio:
+					ctx2d finalizar
+					romper  # mientras: !game_over
+				fin
+    		fin  # si: iskeyreleased
+       	fin
+    	jme: dormir(1e7)
+    fin  # mientras: !game_over
+fin  # mientras: verdadero

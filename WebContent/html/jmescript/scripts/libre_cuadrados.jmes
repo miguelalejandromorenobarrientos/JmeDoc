@@ -1,0 +1,17 @@
+##################################################
+## JMEScript 0.1.3: ejemplo de script
+## <Enteros libres de cuadrados [A005117,OEIS]>
+##################################################
+
+#############################
+## Variables externas: m, n
+#############################
+
+m,n :== [indefinido( 'm', 1 ), indefinido( 'n', 100 )]
+
+# todas las multiplicidades de los factores deben ser 1
+libreCuadrados := filtrar( paratodo( fact, factor(num), fact;#;2=1 ), num, rango(m,n++) )
+
+imprimir format( '%s enteros libres de cuadrados (A005117) en el intervalo [%s,%s]: %s', [dim(libreCuadrados),m,n,libreCuadrados] ) 
+imprimir
+imprimir format( 'Densidad aproximada %s, teorica 6/pi^2=%s', [dim(libreCuadrados)/(n-m+1), 6/sqr(pi)] )

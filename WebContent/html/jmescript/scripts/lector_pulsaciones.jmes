@@ -1,0 +1,23 @@
+############################################
+# Lector de eventos de teclado
+# ------------------
+# (ESC) para salir
+# ------------------
+# JMEScript 0.2.0
+############################################
+# Miguel Alejandro Moreno Barrientos, 2020
+############################################
+
+ctx2d iniciar 200 200
+
+# Es necesario usar 'or' en lugar del operador ||, ya que 'or' realiza la evaluación
+# en cortocircuito, y el operador || no
+mientras or( indefinido(['tecla']), tecla;#;'keycode' != 27 ) inicio:
+	ctx2d pulsacion en tecla
+	si !indefinido(['tecla']) inicio:
+		imprimir vertical tecla
+	fin
+	jme: dormir(1e6)
+fin
+
+ctx2d finalizar
