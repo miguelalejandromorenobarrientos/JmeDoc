@@ -8,7 +8,7 @@ const version = '0.6.2.5';
 const versionJMS = '0.2.1.2';
 const versionJMSGUI = '0.1.2.2';
 const copyright = '2012-2025';
-const homepage = 'http://morenobarrientos-jme.site44.com/';
+const homepage = 'https://miguelalejandromorenobarrientos.github.io/JmeDoc/';
 
 function init()
 {
