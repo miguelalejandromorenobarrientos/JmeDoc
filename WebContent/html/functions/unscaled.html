@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="unscaled" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Unscaled</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Convierte un número real a entero sin decimales o sin ceros finales (elimina la escala mediante&nbsp;&nbsp;<b class="monospace larger">n=x*10<sup>escala(x)</sup></b>)</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">unscaled</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">unscaled</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">unscaled(&lt;real>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">unscaled(pi)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 3141592653589793</p>
+	<p class="content input"><span class="javaString">unscaled(rgpi)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 31415926535897932384626433832795028841971693993751</p>
+	<p class="content input"><span class="javaString">unscaled(0.001)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 1</p>
+	<p class="content input"><span class="javaString">unscaled(1.5E4)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 150000</p>
+	<p class="content input"><span class="javaString">unscaled(1.5E4d)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 15</p>
+	<p class="content input"><span class="javaString">unscaled(0.10)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 1</p>
+	<p class="content input"><span class="javaString">unscaled(0.10d)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 10</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="escala.html">escala</a>,
+	<a href="precision.html">precision</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

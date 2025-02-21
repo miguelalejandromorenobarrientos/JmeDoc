@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="seccion" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Sección</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Selecciona el valor que se encuentra en el intervalo especificado por un valor dado.
+<br/><span class="comment">Nota: los valores posteriores al caso seleccionado no se evaluarán.</span></p>
+<p class="content">Esta función permite definir fácilmente funciones definidas a trozos</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">seccion</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">seccion</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">seccion(&lt;valor_selector>,&lt;extremo>[,&lt;valor>,&lt;extremo>]+[,&lt;caso_else>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>valor_selector</td>
+			<td>Valor que determina el intervalo especificado (real)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2+2i</td>
+			<td>extremo</td>
+			<td>Extremo inferior o superior (real) del intervalo seleccionado por el valor selector.
+			<br/>El primer extremo inferior es inclusivo, los demás exclusivos. Los superiores son inclusivos</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3+2j</td>
+			<td>valor</td>
+			<td>Valor devuelto si el intervalo es seleccionado</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5+2(n-1)</td>
+			<td>caso_else</td>
+			<td>Valor devuelto si ningún intervalo es seleccionado. Si no se especifica, se lanzará una excepción</td>
+			<td>∅</td>
+		</tr>
+	</tbody>
+	<tfoot><tr><td colspan="4"><i class="monospace">i∈[0..n],j∈[0..n-1], n:=</i>nº de intervalos</td></tr></tfoot>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">seccion(<mark class="gray1">7.5</mark>,0,[0],prev(5),[1],<mark class="gray1">prev(7),[2],prev(9)</mark>,[3],prev(10),[4])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [2]</p>
+	<p class="content input"><span class="javaString">seccion(<mark class="gray1">10</mark>,0,[0],prev(5),[1],prev(7),[2],prev(9),[3],prev(10),<mark class="gray1">[4]</mark>)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [4]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">seccion(20,0,[0],prev(5),[1],prev(7),[2],prev(9),[3],prev(10))</span></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">&lt;&lt;&lt;FuncionException>>> en funcion "seccion": Caso por defecto no establecido --> seccion(Vector:[20,0,[0],prev(5),[1],prev(7),[2],prev(9),[3],prev(10)])</mark></p>
+</div>
+
+<div class="example">
+	<p class="content comment"><br/>función definida a trozos:</p>
+	<span class="content" style="font-size: 6.5em; margin-right: 0px !important" >{</span>
+	<ul class="monospace" style="list-style-type:none; display: inline-block; padding-left: 0em; vertical-align: bottom">
+		<li><b>x</b>, x∈(-∞,-2]</li>
+		<li><b>-2</b>, x∈(-2,0]</li>
+		<li><b>√x-2</b>, x∈(0,2]</li>
+		<li><b>1+cos(x-2)</b>, x∈(2,4π+2]</li>
+		<li><b>2</b>, x∈(4π+2,∞)</li>
+	</ul>
+	<p class="content input"><span class="javaString">seccion(x,-inf,<mark>x</mark>,-2,<mark>-2</mark>,0,<mark>sqr(x)-2</mark>,2,<mark>1+cos(x-2)</mark>,4pi+2,<mark>2</mark>)</span></p>
+	<p class="content output"><span class="jmeType">Salida JGE</span>:<img src="../../images/seccion.png" class="zoom"/></p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="elsif.html">else-if</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

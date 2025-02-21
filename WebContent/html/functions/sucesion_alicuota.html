@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="sucesion, alicuota, alisuc" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Sucesión Alícuota<span class="beta"></span></span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Sucesión alícuota de un número natural.</p>
+<p class="content comment">Esta función podría sufrir modificaciones y/u optimizaciones</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">alisuc</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">alisuc</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">alisuc(&lt;natural>[,&lt;iteraciones>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>natural</td>
+			<td>Número natural a devolver secuencia alícuota.
+				<br/>Un valor alto de este parámetro o un valor de un número de secuencia aún desconocida podría tomar mucho tiempo de cómputo</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>iteraciones</td>
+			<td>Número de elementos máximos si no se encuentra el final antes o no se puede calcular valor.
+				<br/>Algunos valores están establecidos a máximo de 30-50 iteraciones por su dificultad de cálculo (como 276, 702 o 1464 por ejemplo)</td>
+			<td>200</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content comment">secuencias finitas (terminan siempre en …,1,0):</p>
+	<p class="content input"><span class="javaString">alisuc(12)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [12,16,15,9,4,3,1,0]</p>
+</div>
+
+<div class="example">
+	<p class="content comment">números perfectos, secuencias periódicas de período 1:</p>
+	<p class="content input"><span class="javaString">alisuc(6)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [6,[6]]  <small class="comment monospace nonItalic">6,6,6,6,6,…</small></p>
+	<p class="content input"><span class="javaString">alisuc(8128)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [8128,[8128]]  <small class="comment monospace nonItalic">8128,8128,8128,8128,8128,…</small></p>
+</div>
+
+<div class="example">
+	<p class="content comment">números amigos, secuencias periódicas de período 2:</p>
+	<p class="content input"><span class="javaString">alisuc(220)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [220,284,[220,284]]  <small class="comment monospace nonItalic">220,284,220,284,220,…</small></p>
+</div>
+
+<div class="example">
+	<p class="content comment">números sociables en general, período mayor que 1:</p>
+	<p class="content input"><span class="javaString">alisuc(1264460)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1264460,1547860,1727636,1305184,[1264460,1547860,1727636,1305184]] <small class="comment monospace nonItalic">1264460,1547860,1727636,1305184,1264460,1547860,…</small></p>
+</div>
+
+<div class="example">
+	<p class="content comment">números aspirantes, su secuencia termina en un número perfecto (período 1):</p>
+	<p class="content input"><span class="javaString">alisuc(95)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [95,25,6,[6]]  <small class="comment monospace nonItalic">95,25,6,6,6,6,…</small></p>
+</div>
+
+<div class="example">
+	<p class="content comment">números cuya secuencia se desconoce si es infinita aperiodica (el primero es <b>276</b>):</p>
+	<p class="content input"><span class="javaString">alisuc(276)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [276,396,696,1104,1872,3770,3790,3050,2716,2772,5964,10164,19628,19684,22876,26404,30044,33796,38780,54628,54684,111300,263676,465668,465724,465780,1026060,2325540,5335260,11738916,23117724,45956820,121129260,266485716,558454764,1092873236,1470806764,1471882804,1642613196,2737688884,2740114636,2791337780,4946860492,4946860548,9344070652,9344070708,15573451404,27078171764,27284104204,27410152084,<mark class="gray1">'Limite de iteraciones alcanzado (50) o error al intentar calcular siguiente termino'</mark>]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">alisuc(10002,10)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [10002,10014,10026,11736,20244,33964,34020,88284,147364,163996,'<mark class="gray1">Limite de iteraciones alcanzado (<b>10</b>) o error al intentar calcular siguiente termino'</mark>]</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="suma_alicuota.html">suma alícuota</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

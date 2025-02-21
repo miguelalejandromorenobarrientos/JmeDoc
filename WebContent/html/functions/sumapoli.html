@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="sumapoli, polinomio, suma" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Sumar polinomios</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Suma de dos o más polinomios.</p>
+<p class="content">Los polinomios se introducen como coeficientes de grado mayor a 
+término independiente&emsp;<b><code>[a<sub>n</sub>,a<sub>n-1</sub>,&hellip;,a<sub>0</sub>]</code></b></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">sumapoli</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">sumapoli</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">sumapoli(&lt;polinomio>[,&lt;polinomio>]+)</p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">sumapoli([2,3,4],[1,2],[-1])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [2,4,5]</p>
+	<p class="content input"><span class="javaString"><a href="txtpoli.html" class="discLink">txtpoli</a>(sumapoli([2,3,4],[1,2],[-1]))</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '2x^2+4x+5'</p>
+</div>
+
+<div class="example">
+	<p class="content comment">Resta de polinomios como suma con opuesto:</p>
+	<p class="content input"><span class="javaString">txtpoli(sumapoli([1,2,3],-[1,2,0]))</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '3'</p>
+</div>
+
+<div class="example">
+	<p class="content comment">Suma de polinomios sobre el cuerpo de los complejos:</p>
+	<p class="content input"><span class="javaString">txtpoli(sumapoli([-3-ui,2ui,-ui],[ui,1+10ui]),'z')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '(-3-î)z^2+(3î)z+(1+9î)'</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">eval(concat(propagar(txtpoli(poli),poli,[p1,p2,p3]),'  +  ')+'  =  '+txtpoli(sumapoli(p1,p2,p3)),[p1,p2,p3],[[3,2],[1,0,0],[2,5,-1,-2]])</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '3x+2  +  x^2  +  2x^3+5x^2-x-2  =  2x^3+6x^2+2x'</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.4</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="prodpoli.html">producto de polinomios</a>,
+	<a href="divpoli.html">cociente de polinomios</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

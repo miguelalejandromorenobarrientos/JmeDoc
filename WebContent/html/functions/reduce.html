@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="reduce" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Reduce</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Reduce los elementos de un vector combinándolos con asociatividad de izquierda a derecha mediante una función de dos variables.</p>
+<p class="content">Por ejemplo, reducir <span class="monospace">[2,4,7,1,0,3]</span> para la operación suma sería igual a <b style="color: blue" class="monospace">(((((2+4)+7)+1)+0)+3) → 17</b>.</p>
+<p class="content">En la primera iteración, Si no se especifica elemento inicial, combina los dos primeros elementos. Si se especifica, combina el valor inicial con el primero del vector</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">reduce</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">reduce</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">reduce(&lt;función{varname1,varname2}>,&lt;varname1>,&lt;varname2>,&lt;vector>[,&lt;valor_inicial>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>función{varname1,varname2}</td>
+			<td>Función a iterar, que depende de dos variables representando dos elementos del vector a operar</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varname1</td>
+			<td>primer elemento a operar</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>varname</td>
+			<td>segundo elemento a operar</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>vector</td>
+			<td>Vector de elementos a operar asociativamente de izquierda a derecha</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>valor_inicial</td>
+			<td>Si se especifica, se tomará como primer elemento a operar con el primero del vector. Si no, se tomarán primero y segundo del vector</td>
+			<td>∅</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">reduce(2a+b,a,b,[1,2,3,4])</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 26</p>
+</div>
+
+<div class="example">
+	<p class="content comment">unión múltiple de conjuntos:</p>
+	<p class="content input"><span class="javaString">reduce(c1{+}c2,c1,c2,[[1,2],[inf,-1,3d,nan],[falso,2],[1,0,falso]])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [falso,NaN,3,1,2,Infinity,-1,0]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">reduce([x,y],x,y,[1,2,3],[])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [[[[],1],2],3]</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="iterar.html">iterar</a>,
+	<a href="orbita.html">órbita</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

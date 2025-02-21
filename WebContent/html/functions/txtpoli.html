@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="txtpoli, polinomio" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Polinomio a texto</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Convierte coeficientes a representación de 'entrada' de polinomio.</p>
+<p class="content">Los polinomios se introducen como coeficientes de grado mayor a 
+término independiente&emsp;<b><code>[a<sub>n</sub>,a<sub>n-1</sub>,&hellip;,a<sub>0</sub>]</code></b></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">txtpoli</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">txtpoli</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">txtpoli(&lt;polinomio>[,&lt;varname>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>polinomio</td>
+			<td>Polinomio a partir de coeficientes <b><code>[a<sub>n</sub>,a<sub>n-1</sub>,&hellip;,a<sub>0</sub>]</code></b></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varname</td>
+			<td>nombre de la variable del polinomio</td>
+			<td>'x'</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">txtpoli(5,-1,-2,0,1)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '5x^4-x^3-2x^2+1'</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">txtpoli([-ui,3+2ui,0,-1-ui],'z')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '(-î)z^3+(3+2î)z^2+(-1-î)'</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">eval(txtpoli(2,3,0,-10),x,0,false)=<a href="evalpoli.html" class="discLink">evalpoli</a>([2,3,0,-10],0)</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">txtpoli(rgpi,rge,30b!,0)</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '3.1415926535897932384626433832795028841971693993751dx^3+2.7182818284590452353602874713526624977572470936999dx^2+265252859812191058636308480000000bx'</p>
+</div>
+
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.4</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="script, jmescript" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Script</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Ejecuta un script <a class="discLink" href="../jmescript/jmescript_usuario.html"><i><b>JMEScript</b></i></a> y devuelve el resultado o, si no devuelve valor, permite retornar
+un valor por defecto. Además permite el paso de parámetros al script para usarlo como un módulo o función.</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">script</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">SCRIPT</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">script(&lt;cod_fuente>[,&lt;varmap>[,&lt;valor_defecto>[,&lt;tiempo_max>]]])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>cod_fuente</td>
+			<td>Código <i>JMEScript</i> a ejecutar. Se puede introducir como un vector de cadenas de texto
+			en el que cada cadena es una línea del script o como un único texto (con saltos de línea obligatorios)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varmap</td>
+			<td>Mapa de variables externas; cada clave es un texto con un nombre válido de variable y el valor el terminal asignado a la variable</td>
+			<td>dic([])</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>valor_defecto</td>
+			<td>En caso de que el script no devuelva un valor, se asignará este valor (o se devolverá error si no se especifica este valor)</td>
+			<td>∅</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>tiempo_max</td>
+			<td>Máximo tiempo de ejecución del script en milisegundos antes de lanzar una excepción. Un valor infinito o negativo no activará el temporizador.<br/></td>
+			<td>∞</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<br/>
+	<img class="content centerImg" src="../../images/script_sample.png"/>
+	<br/>
+	<p class="content input"><span class="javaString">script(<a href="archivotxt.html" class="discLink">archivotxt</a>('test.jmes',verdadero))</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'Ok'</p>
+</div>
+
+<div class="example">
+	<br/>
+	<img class="content centerImg" src="../../images/script_sample2.png"/>
+	<br/>
+	<p class="content input"><span class="javaString">script(<a href="archivotxt.html" class="discLink">archivotxt</a>('lib.jmes'),dic([]),'Biblioteca cargada')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'Biblioteca cargada'</p>
+</div>
+
+<div class="example">
+	<p class="content">Si se introducen las líneas de código como vector, es necesario pasar el mapa de variables (aunque sea vacío):</p>
+	<p class="content input"><span class="javaString">script(['lista:=[randint(1,6)]','mientras cola(lista)!=6 inicio:','lista;=randint(1,6)','fin','devolver lista'],dic([]))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [3,3,2,5,1,5,5,1,1,2,1,4,3,3,2,2,5,1,6]</p>
+</div>
+
+<div class="example">
+	<p class="content">
+	Script que recibe una variable externa, en caso contrario inicializa por defecto mediante
+	<a class="discLink" href="indefinido.html"><b>indefinido</b></a> :
+	</p>
+	<img class="content centerImg" src="../../images/script_ext_sample.png"/>
+	<br/>
+	<p class="content input"><span class="javaString">script(<a href="archivotxt.html" class="discLink">archivotxt</a>('palindromo.jmes'),dic([]))</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'ALOH ODNUM'
+	<p class="content input"><span class="javaString">script(<a href="archivotxt.html" class="discLink">archivotxt</a>('palindromo.jmes'),dic('text','Euler Galois Russell'))</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'RELUE SIOLAG LLESSUR'
+</div>
+
+<div class="example">
+	<p class="content">Bucle infinito:</p>
+	<p class="content input"><span class="javaString">script(['mientras verdadero inicio:','fin'],dic([]),0,1000)</span></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">&lt;&lt;&lt;FuncionException>>> en funcion "script": Tiempo excedido en script: 1000ms --> script(Vector:[['mientras verdadero inicio:','fin'],dic([]),0,1000])</mark></p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.5.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

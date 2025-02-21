@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="return" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Return</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Evalúa una expresión y devuelve el valor especificado. El principal propósito de esta
+función (además del uso en depuración), es devolver un valor alternativo a '<b>[]</b>' en las funciones '<b>void</b>'
+o '<b>null</b>' de Java cuando son llamadas con la función <a href="java.html" class="discLink monospace"><b>java</b></a></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">return</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">return</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">return(&lt;expresión>,&lt;valor_devuelto>[,excepción])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>expresión</td>
+			<td>Expresión a evaluar, aunque su resultado no se devolverá</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>valor_devuelto</td>
+			<td>Valor a devolver</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>excepción</td>
+			<td>Booleano. En caso de ocurrir una excepción en la evaluación de la expresión, se lanzará la excepción, pero si este parámetro es <i>falso</i>, se devolverá el valor especificado</td>
+			<td>verdadero</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">return(<a class="discLink" href="java.html">java</a>('java.lang.System.runFinalization'),verdadero)</span>  <small class="comment">(sugiere llamada a método #finalize de los objetos pendientes)</small></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+	<p class="content input"><span class="javaString">return(<a class="discLink" href="java.html">java</a>('java.lang.System.gc'),nan)</span>  <small class="comment">(sugerencia al colector de basura)</small></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: NaN
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">return(cos(falso),-1,verdadero)</span></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">&lt;&lt;&lt;FuncionException>>> en funcion "return": &lt;&lt;&lt;FuncionException>>> en funcion "cos": funcion no definida para Booleano --> cos(Booleano:falso) --> return(Vector:[cos(falso),-1,verdadero])</mark></p>
+	<p class="content input"><span class="javaString">return(cos(falso),-1,falso)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: -1</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.4.4</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="java.html">java</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

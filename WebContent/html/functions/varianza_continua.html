@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="varianza, continua, fvarianza" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Varianza</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Varianza de una función continua de distribución</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">fvarianza</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">Var</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">fvarianza(&lt;funcion_densidad>,&lt;varname>,&lt;a>,&lt;b>[,&lt;n>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>funcion_densidad</td>
+			<td>Función de densidad definida en (a,b)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varname</td>
+			<td>Variable aleatoria</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>a</td>
+			<td>Extremo inferior del dominio de la función de densidad (-∞ no válido)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>b</td>
+			<td>Extremo superior del dominio de la función de densidad (∞ no válido)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>n</td>
+			<td>Número de subintervalos en la integral</td>
+			<td>1000</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">fvarianza(<a href="normal.html" class="discLink">normal</a>(x,<mark>10</mark>,4),x,-1000,1000)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 16.00000000000003</p>
+	<p class="content input"><span class="javaString">fvarianza(<a href="fdbeta.html" class="discLink">fdbeta</a>(x,1,3),x,0,1)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.03747956835443901    <span class="comment">(valor real: <span class="frac"><span>αβ</span><span></span><span>(α+β)<sup>2</sup>(α+β+1)</span></span>=0.0375)</span></p>
+	<p class="content input"><span class="javaString">round(fvarianza(<a href="fdbeta.html" class="discLink">fdbeta</a>(x,1,3),x,0,1,1e5),6)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.0375</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.4.10</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="varianza.html">varianza</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>
