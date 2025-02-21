@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="iterar, iter" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Iterar</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Itera una expresión sobre si misma a partir de un valor inicial y un nº de iteraciones</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">iter</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">iter</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">iter(&lt;expresión_recurrencia>,&lt;varname>,&lt;valor_inicial>,&lt;iteraciones>[,&lt;parar_punto_fijo>[,&lt;varname_iter>]])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>expresión_recurrencia</td>
+			<td>Expresión a iterar, que depende del valor anterior y opcionalmente del índice de iteración</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varname</td>
+			<td>Variable que toma el valor anterior (o el inicial en la primera iteración)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>valor_inicial</td>
+			<td>Valor en la iteración 0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>iteraciones</td>
+			<td>Número de iteraciones máximas antes de devolver el resultado</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>parar_punto_fijo</td>
+			<td>Booleano que indica si debe finalizar la iteración al repetirse el último valor en la nueva iteración (punto fijo)</td>
+			<td>falso</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>varname_iter</td>
+			<td>Variable de iteración, toma los valores 1,2,&hellip;,&lt;iteraciones>. En la iteración 0, no toma valor</td>
+			<td>∅</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">iter(3x+2,x,1,4)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 161 <span class="comment">(1,5,17,53,161)</span></p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">iter(cos(x),x,0,1000)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.7390851332151607 <span class="comment">(1000 iteraciones)</span></p>
+	<p class="content input"><span class="javaString">iter(cos(x),x,0,1000,true)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.7390851332151607 <span class="comment">(94 iteraciones, <b class="monospace nonItalic">cos(0.7390851332151607)=0.7390851332151607</b>)</span></p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">iter(i*n,n,1,10,false,i)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3628800 <span class="comment">(1,1,2,6,24,120,720,5040,40320,362880,3628800)</span></p>
+</div>
+
+<div class="example">
+	<p class="content comment">sucesión de Fibonacci a partir de su expresión de recurrencia <b class="monospace">f<sub>n+2</sub>=f<sub>n+1</sub>+f<sub>n</sub></b>:</p>
+	<p class="content input"><span class="javaString">eval(<mark class="gray1">iter(list;(list;#;-2+cola(list)),list,[0,1],n--)</mark>,n,10)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [0,1,1,2,3,5,8,13,21,34,55]</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="orbita.html">órbita</a>,
+	<a href="reduce.html">reduce</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

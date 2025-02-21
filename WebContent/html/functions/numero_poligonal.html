@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="numero, poligonal, npolig" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Número Poligonal</span><a href="../../index.html">Volver</a></header>
+
+<b class="content monospace" style="font-size:2em">p<sub><b style="color:red">n</b>,<b style="color:blue">L</b></sub> = <span class="frac"><span><b style="color:red">n</b>((<b style="color:blue">L</b>-2)<b style="color:red">n</b>-(<b style="color:blue">L</b>-4))</span><span></span><span>2</span></span></b>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve el número poligonal para un determinado número de lados y orden</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">npolig</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">npolig</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">npolig(&lt;lados>,&lt;orden>)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>lados</td>
+			<td>Número de lados, entero mayor que 2</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>orden</td>
+			<td>Número de iteraciones, entero mayor que cero. Si el orden es <i>EnteroGrande</i>, el resultado también</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">npolig(3,5)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 15</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">npolig(1e6,1000000b)</span></p>
+	<p class="content output"><span class="jmeType">EnteroGrande</span>: 499998500002000000</p>
+</div>
+
+<div class="example">
+	<p class="content">Tabla de números poligonales usando la exportación HTML del <b>REPL</b> de JME:</p>
+	<p class="content input"><span class="javaString">export html jme=['LADOS/N';;sucesion('N='+stexto(i),i,1,15)];;sucesion('L='+stexto(lados);;sucesion(npolig(lados,n),n,1,15),lados,3,50)</span></p>
+	<p class="content output"><span class="jmeType">tabla HTML</span>:</p>	
+	<table class="content dataTable" style="font-size: 12px"><tr><td>'LADOS/N'</td><td>'N=1'</td><td>'N=2'</td><td>'N=3'</td><td>'N=4'</td><td>'N=5'</td><td>'N=6'</td><td>'N=7'</td><td>'N=8'</td><td>'N=9'</td><td>'N=10'</td><td>'N=11'</td><td>'N=12'</td><td>'N=13'</td><td>'N=14'</td><td>'N=15'</td></tr><tr><td>'L=3'</td><td>1</td><td>3</td><td>6</td><td>10</td><td>15</td><td>21</td><td>28</td><td>36</td><td>45</td><td>55</td><td>66</td><td>78</td><td>91</td><td>105</td><td>120</td></tr><tr><td>'L=4'</td><td>1</td><td>4</td><td>9</td><td>16</td><td>25</td><td>36</td><td>49</td><td>64</td><td>81</td><td>100</td><td>121</td><td>144</td><td>169</td><td>196</td><td>225</td></tr><tr><td>'L=5'</td><td>1</td><td>5</td><td>12</td><td>22</td><td>35</td><td>51</td><td>70</td><td>92</td><td>117</td><td>145</td><td>176</td><td>210</td><td>247</td><td>287</td><td>330</td></tr><tr><td>'L=6'</td><td>1</td><td>6</td><td>15</td><td>28</td><td>45</td><td>66</td><td>91</td><td>120</td><td>153</td><td>190</td><td>231</td><td>276</td><td>325</td><td>378</td><td>435</td></tr><tr><td>'L=7'</td><td>1</td><td>7</td><td>18</td><td>34</td><td>55</td><td>81</td><td>112</td><td>148</td><td>189</td><td>235</td><td>286</td><td>342</td><td>403</td><td>469</td><td>540</td></tr><tr><td>'L=8'</td><td>1</td><td>8</td><td>21</td><td>40</td><td>65</td><td>96</td><td>133</td><td>176</td><td>225</td><td>280</td><td>341</td><td>408</td><td>481</td><td>560</td><td>645</td></tr><tr><td>'L=9'</td><td>1</td><td>9</td><td>24</td><td>46</td><td>75</td><td>111</td><td>154</td><td>204</td><td>261</td><td>325</td><td>396</td><td>474</td><td>559</td><td>651</td><td>750</td></tr><tr><td>'L=10'</td><td>1</td><td>10</td><td>27</td><td>52</td><td>85</td><td>126</td><td>175</td><td>232</td><td>297</td><td>370</td><td>451</td><td>540</td><td>637</td><td>742</td><td>855</td></tr><tr><td>'L=11'</td><td>1</td><td>11</td><td>30</td><td>58</td><td>95</td><td>141</td><td>196</td><td>260</td><td>333</td><td>415</td><td>506</td><td>606</td><td>715</td><td>833</td><td>960</td></tr><tr><td>'L=12'</td><td>1</td><td>12</td><td>33</td><td>64</td><td>105</td><td>156</td><td>217</td><td>288</td><td>369</td><td>460</td><td>561</td><td>672</td><td>793</td><td>924</td><td>1065</td></tr><tr><td>'L=13'</td><td>1</td><td>13</td><td>36</td><td>70</td><td>115</td><td>171</td><td>238</td><td>316</td><td>405</td><td>505</td><td>616</td><td>738</td><td>871</td><td>1015</td><td>1170</td></tr><tr><td>'L=14'</td><td>1</td><td>14</td><td>39</td><td>76</td><td>125</td><td>186</td><td>259</td><td>344</td><td>441</td><td>550</td><td>671</td><td>804</td><td>949</td><td>1106</td><td>1275</td></tr><tr><td>'L=15'</td><td>1</td><td>15</td><td>42</td><td>82</td><td>135</td><td>201</td><td>280</td><td>372</td><td>477</td><td>595</td><td>726</td><td>870</td><td>1027</td><td>1197</td><td>1380</td></tr><tr><td>'L=16'</td><td>1</td><td>16</td><td>45</td><td>88</td><td>145</td><td>216</td><td>301</td><td>400</td><td>513</td><td>640</td><td>781</td><td>936</td><td>1105</td><td>1288</td><td>1485</td></tr><tr><td>'L=17'</td><td>1</td><td>17</td><td>48</td><td>94</td><td>155</td><td>231</td><td>322</td><td>428</td><td>549</td><td>685</td><td>836</td><td>1002</td><td>1183</td><td>1379</td><td>1590</td></tr><tr><td>'L=18'</td><td>1</td><td>18</td><td>51</td><td>100</td><td>165</td><td>246</td><td>343</td><td>456</td><td>585</td><td>730</td><td>891</td><td>1068</td><td>1261</td><td>1470</td><td>1695</td></tr><tr><td>'L=19'</td><td>1</td><td>19</td><td>54</td><td>106</td><td>175</td><td>261</td><td>364</td><td>484</td><td>621</td><td>775</td><td>946</td><td>1134</td><td>1339</td><td>1561</td><td>1800</td></tr><tr><td>'L=20'</td><td>1</td><td>20</td><td>57</td><td>112</td><td>185</td><td>276</td><td>385</td><td>512</td><td>657</td><td>820</td><td>1001</td><td>1200</td><td>1417</td><td>1652</td><td>1905</td></tr><tr><td>'L=21'</td><td>1</td><td>21</td><td>60</td><td>118</td><td>195</td><td>291</td><td>406</td><td>540</td><td>693</td><td>865</td><td>1056</td><td>1266</td><td>1495</td><td>1743</td><td>2010</td></tr><tr><td>'L=22'</td><td>1</td><td>22</td><td>63</td><td>124</td><td>205</td><td>306</td><td>427</td><td>568</td><td>729</td><td>910</td><td>1111</td><td>1332</td><td>1573</td><td>1834</td><td>2115</td></tr><tr><td>'L=23'</td><td>1</td><td>23</td><td>66</td><td>130</td><td>215</td><td>321</td><td>448</td><td>596</td><td>765</td><td>955</td><td>1166</td><td>1398</td><td>1651</td><td>1925</td><td>2220</td></tr><tr><td>'L=24'</td><td>1</td><td>24</td><td>69</td><td>136</td><td>225</td><td>336</td><td>469</td><td>624</td><td>801</td><td>1000</td><td>1221</td><td>1464</td><td>1729</td><td>2016</td><td>2325</td></tr><tr><td>'L=25'</td><td>1</td><td>25</td><td>72</td><td>142</td><td>235</td><td>351</td><td>490</td><td>652</td><td>837</td><td>1045</td><td>1276</td><td>1530</td><td>1807</td><td>2107</td><td>2430</td></tr><tr><td>'L=26'</td><td>1</td><td>26</td><td>75</td><td>148</td><td>245</td><td>366</td><td>511</td><td>680</td><td>873</td><td>1090</td><td>1331</td><td>1596</td><td>1885</td><td>2198</td><td>2535</td></tr><tr><td>'L=27'</td><td>1</td><td>27</td><td>78</td><td>154</td><td>255</td><td>381</td><td>532</td><td>708</td><td>909</td><td>1135</td><td>1386</td><td>1662</td><td>1963</td><td>2289</td><td>2640</td></tr><tr><td>'L=28'</td><td>1</td><td>28</td><td>81</td><td>160</td><td>265</td><td>396</td><td>553</td><td>736</td><td>945</td><td>1180</td><td>1441</td><td>1728</td><td>2041</td><td>2380</td><td>2745</td></tr><tr><td>'L=29'</td><td>1</td><td>29</td><td>84</td><td>166</td><td>275</td><td>411</td><td>574</td><td>764</td><td>981</td><td>1225</td><td>1496</td><td>1794</td><td>2119</td><td>2471</td><td>2850</td></tr><tr><td>'L=30'</td><td>1</td><td>30</td><td>87</td><td>172</td><td>285</td><td>426</td><td>595</td><td>792</td><td>1017</td><td>1270</td><td>1551</td><td>1860</td><td>2197</td><td>2562</td><td>2955</td></tr><tr><td>'L=31'</td><td>1</td><td>31</td><td>90</td><td>178</td><td>295</td><td>441</td><td>616</td><td>820</td><td>1053</td><td>1315</td><td>1606</td><td>1926</td><td>2275</td><td>2653</td><td>3060</td></tr><tr><td>'L=32'</td><td>1</td><td>32</td><td>93</td><td>184</td><td>305</td><td>456</td><td>637</td><td>848</td><td>1089</td><td>1360</td><td>1661</td><td>1992</td><td>2353</td><td>2744</td><td>3165</td></tr><tr><td>'L=33'</td><td>1</td><td>33</td><td>96</td><td>190</td><td>315</td><td>471</td><td>658</td><td>876</td><td>1125</td><td>1405</td><td>1716</td><td>2058</td><td>2431</td><td>2835</td><td>3270</td></tr><tr><td>'L=34'</td><td>1</td><td>34</td><td>99</td><td>196</td><td>325</td><td>486</td><td>679</td><td>904</td><td>1161</td><td>1450</td><td>1771</td><td>2124</td><td>2509</td><td>2926</td><td>3375</td></tr><tr><td>'L=35'</td><td>1</td><td>35</td><td>102</td><td>202</td><td>335</td><td>501</td><td>700</td><td>932</td><td>1197</td><td>1495</td><td>1826</td><td>2190</td><td>2587</td><td>3017</td><td>3480</td></tr><tr><td>'L=36'</td><td>1</td><td>36</td><td>105</td><td>208</td><td>345</td><td>516</td><td>721</td><td>960</td><td>1233</td><td>1540</td><td>1881</td><td>2256</td><td>2665</td><td>3108</td><td>3585</td></tr><tr><td>'L=37'</td><td>1</td><td>37</td><td>108</td><td>214</td><td>355</td><td>531</td><td>742</td><td>988</td><td>1269</td><td>1585</td><td>1936</td><td>2322</td><td>2743</td><td>3199</td><td>3690</td></tr><tr><td>'L=38'</td><td>1</td><td>38</td><td>111</td><td>220</td><td>365</td><td>546</td><td>763</td><td>1016</td><td>1305</td><td>1630</td><td>1991</td><td>2388</td><td>2821</td><td>3290</td><td>3795</td></tr><tr><td>'L=39'</td><td>1</td><td>39</td><td>114</td><td>226</td><td>375</td><td>561</td><td>784</td><td>1044</td><td>1341</td><td>1675</td><td>2046</td><td>2454</td><td>2899</td><td>3381</td><td>3900</td></tr><tr><td>'L=40'</td><td>1</td><td>40</td><td>117</td><td>232</td><td>385</td><td>576</td><td>805</td><td>1072</td><td>1377</td><td>1720</td><td>2101</td><td>2520</td><td>2977</td><td>3472</td><td>4005</td></tr><tr><td>'L=41'</td><td>1</td><td>41</td><td>120</td><td>238</td><td>395</td><td>591</td><td>826</td><td>1100</td><td>1413</td><td>1765</td><td>2156</td><td>2586</td><td>3055</td><td>3563</td><td>4110</td></tr><tr><td>'L=42'</td><td>1</td><td>42</td><td>123</td><td>244</td><td>405</td><td>606</td><td>847</td><td>1128</td><td>1449</td><td>1810</td><td>2211</td><td>2652</td><td>3133</td><td>3654</td><td>4215</td></tr><tr><td>'L=43'</td><td>1</td><td>43</td><td>126</td><td>250</td><td>415</td><td>621</td><td>868</td><td>1156</td><td>1485</td><td>1855</td><td>2266</td><td>2718</td><td>3211</td><td>3745</td><td>4320</td></tr><tr><td>'L=44'</td><td>1</td><td>44</td><td>129</td><td>256</td><td>425</td><td>636</td><td>889</td><td>1184</td><td>1521</td><td>1900</td><td>2321</td><td>2784</td><td>3289</td><td>3836</td><td>4425</td></tr><tr><td>'L=45'</td><td>1</td><td>45</td><td>132</td><td>262</td><td>435</td><td>651</td><td>910</td><td>1212</td><td>1557</td><td>1945</td><td>2376</td><td>2850</td><td>3367</td><td>3927</td><td>4530</td></tr><tr><td>'L=46'</td><td>1</td><td>46</td><td>135</td><td>268</td><td>445</td><td>666</td><td>931</td><td>1240</td><td>1593</td><td>1990</td><td>2431</td><td>2916</td><td>3445</td><td>4018</td><td>4635</td></tr><tr><td>'L=47'</td><td>1</td><td>47</td><td>138</td><td>274</td><td>455</td><td>681</td><td>952</td><td>1268</td><td>1629</td><td>2035</td><td>2486</td><td>2982</td><td>3523</td><td>4109</td><td>4740</td></tr><tr><td>'L=48'</td><td>1</td><td>48</td><td>141</td><td>280</td><td>465</td><td>696</td><td>973</td><td>1296</td><td>1665</td><td>2080</td><td>2541</td><td>3048</td><td>3601</td><td>4200</td><td>4845</td></tr><tr><td>'L=49'</td><td>1</td><td>49</td><td>144</td><td>286</td><td>475</td><td>711</td><td>994</td><td>1324</td><td>1701</td><td>2125</td><td>2596</td><td>3114</td><td>3679</td><td>4291</td><td>4950</td></tr><tr><td>'L=50'</td><td>1</td><td>50</td><td>147</td><td>292</td><td>485</td><td>726</td><td>1015</td><td>1352</td><td>1737</td><td>2170</td><td>2651</td><td>3180</td><td>3757</td><td>4382</td><td>5055</td></tr></table>
+</div>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

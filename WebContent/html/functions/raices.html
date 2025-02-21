@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="raices" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Raíces enteras de un número complejo</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve el conjunto de raíces enteras de un número complejo <code>z<small><sup><sup><span class="frac"><span>1</span><span class="larger"><b>n</b></span></span></sup></sup></small></code></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">raices</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">raices</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">raices(<span class="nonTerminal">&lt;z></span>,<span class="nonTerminal">&lt;n></span>)</p>
+
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>z</td>
+			<td>Número</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>n</td>
+			<td>exponente entero <code><b>n</b></code> en la expresión <code>z<small><sup><sup><span class="frac larger"><span>1</span><span class="larger"><b>n</b></span></span></sup></sup></small></code></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">trasp(raices(1,5))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		|                    1                    |
+		| 0.30901699437494745+0.9510565162951535I |
+		| -0.8090169943749473+0.5877852522924732I |
+		| -0.8090169943749475-0.587785252292473I  |
+		| 0.30901699437494723-0.9510565162951536I |</p>
+	<p class="content input"><span class="javaString">trasp(raices(2-ui,3))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 1.292074512673103-0.20129431282890373I  |
+		| -0.4717112677893888+1.2196165079717578I |
+		| -0.8203632448837141-1.0183221951428538I |</p>
+	<p class="content input"><span class="javaString">trasp(propagar(roundp(raiz^3),raiz,raices(2-ui,3)))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 2-I |
+		| 2-I |
+		| 2-I |</p>
+	<p class="content input"><span class="javaString">roundp(raices(4,2))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [2,-2]</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.3</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="logaritmo, decimal, log" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Logaritmo Decimal o Genérico</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Logaritmo decimal o en base especificada para reales o complejos</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">log</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">Log</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">log(&lt;n>[,&lt;base>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>n</td>
+			<td>Número <i>RealDoble</i> o <i>Complejo</i></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>base</td>
+			<td>Base del logaritmo, <i>RealDoble</i> o <i>Complejo</i></td>
+			<td>10</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">log(100)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 2</p>
+	<p class="content input"><span class="javaString">log(googol)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 100</p>
+	<p class="content input"><span class="javaString">log(-100)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 2+3.141592653589793I</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">log(ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 0.6821881769209206I</p>
+	<p class="content input"><span class="javaString">log(2-2ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 0.4515449934959718-0.3410940884604603I</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">log(8,2)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3</p>
+	<p class="content input"><span class="javaString">log(-1,ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 2</p>
+	<p class="content input"><span class="javaString">log(-1,3)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 2.8596008673801268I</p>
+	<p class="content input"><span class="javaString">log(3-ui,1-ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 0.8843176908382848+1.0756472688714316I</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.1</p>
+<p class="content modificado">v0.4.8</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="log_natural.html">logaritmo natural</a>,
+	<a href="log1p.html">logaritmo natural 1+X</a>,
+	<a href="exponencial.html">exponencial</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

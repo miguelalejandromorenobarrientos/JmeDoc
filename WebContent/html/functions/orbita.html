@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="orbita, orbit" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Órbita</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Itera una expresión sobre si misma a partir de un valor inicial y un nº de iteraciones como <a href="iterar.html" class="discLink">iter</a>, 
+pero devuelve un vector con todos los resultados intermedios (órbita)</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">orbit</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">orbit</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">iter(&lt;expresión_recurrencia>,&lt;varname>,&lt;valor_inicial>,&lt;iteraciones>[,&lt;parar_punto_fijo>[,&lt;varname_iter>]])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>expresión_recurrencia</td>
+			<td>Expresión a iterar, que depende del valor anterior y opcionalmente del índice de iteración</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>varname</td>
+			<td>Variable que toma el valor anterior (o el inicial en la primera iteración)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>valor_inicial</td>
+			<td>Valor en la iteración 0</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>iteraciones</td>
+			<td>Número de iteraciones máximas antes de devolver el resultado</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>parar_punto_fijo</td>
+			<td>Booleano que indica si debe finalizar la iteración al repetirse el último valor en la nueva iteración (punto fijo)</td>
+			<td>falso</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>varname_iter</td>
+			<td>Variable de iteración, toma los valores 1,2,&hellip;,&lt;iteraciones>. En la iteración 0, no toma valor</td>
+			<td>∅</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">orbit(3x+2,x,1,4)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1,5,17,53,161]</p>
+</div>
+
+<div class="example">
+	<p class="content comment">generar nºs entre 1 y 10 hasta obtener dos valores iguales seguidos:</p>
+	<p class="content input"><span class="javaString">orbit(randint(1,10),_,1,1e6,true)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1,10,2,9,2,4,9,<mark class="gray1">5,5</mark>]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">orbit(i*n,n,1,10,false,i)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1,1,2,6,24,120,720,5040,40320,362880,3628800]</p>
+</div>
+
+<div class="example">
+	<p class="content comment">sucesión de la <a href="https://es.wikipedia.org/wiki/Conjetura_de_Collatz">conjetura de Collatz</a> para 12 usando 10 iteraciones:</p>
+	<p class="content input"><span class="javaString">orbit(if(par(n),n/2,3n+1),n,12,10)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [12,6,3,10,5,16,8,4,2,1,4]</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="iterar.html">iterar</a>,
+	<a href="reduce.html">reduce</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

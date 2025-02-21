@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="interes" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Interés</span><a href="../../index.html">Volver</a></header>
+
+<p class="content monospace" style="font-size:1.75em">C<small><sub>f<sub><small>simple</small></sub></sub></small> = <span style="color:red">C<sub><small>i</small></sub></span>(1+<span style="color:blue">r</span>×<span style="color:green">t</span>)</p>
+<p class="content monospace" style="font-size:1.75em">C<small><sub>f<sub><small>compuesto</small></sub></sub></small> = <span style="color:red">C<sub><small>i</small></sub></span>(1+<span style="color:blue">r</span>)<sup><span style="color:green">t</span></sup></p>
+<p class="content monospace" style="font-size:1.75em">C<small><sub>f<sub><small>continua</small></sub></sub></small> = <span style="color:red">C<sub><small>i</small></sub></span><i>e</i><sup><span style="color:blue">r</span>×<span style="color:green">t</span></sup></p>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve un parámetro de las fórmulas del interés a partir de los otros tres
+(<b>capital final</b>, <b>capital inicial</b>, <b>tasa de interés</b>, <b>nº de períodos</b>)</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">interes</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">interes</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">interes(&lt;diccionario>)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Claves</th>
+		</tr>
+		<tr>
+			<th>Clave</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+			<th>Obligatorio</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>'ci'</td>
+			<td>Capital inicial</td>
+			<td></td>
+			<td>NO (si se definen los demás parámetros)</td>
+		</tr>
+		<tr>
+			<td>'cf'</td>
+			<td>Capital final</td>
+			<td></td>
+			<td>NO (si se definen los demás parámetros)</td>
+		</tr>
+		<tr>
+			<td>'r'</td>
+			<td>Tasa de interés (en tanto por uno, NO tanto por ciento)</td>
+			<td></td>
+			<td>NO (si se definen los demás parámetros)</td>
+		</tr>
+		<tr>
+			<td>'t'</td>
+			<td>Número de periodos</td>
+			<td></td>
+			<td>NO (si se definen los demás parámetros)</td>
+		</tr>
+		<tr>
+			<td>'tipo'</td>
+			<td>Uno de estos tres valores: <b>'simple', 'compuesto', 'continuo'</b></td>
+			<td></td>
+			<td>SI</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">interes(dic('ci',1000,'r',0.01,'t',12,'tipo','simple'))</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1120&emsp;<span class="comment">capital final (cf)</span></p>
+	<p class="content comment">misma llamada con diccionario implícito:</p>
+	<p class="content input"><span class="javaString">interes('ci',1000,'r',0.01,'t',12,'tipo','simple')</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1120</p>
+	<p class="content input"><span class="javaString">interes('{ci:1000,r:0.01,t:12,tipo:simple}')</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1120</p>
+	<p class="content input"><span class="javaString">interes('xml:&lt;ci>1000&lt;/ci>&lt;r>0.01&lt;/r>&lt;t>12&lt;/t>&lt;tipo>simple&lt;/tipo>')</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1120</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString"><a href="format.html" class="discLink">format</a>('r=%s%%',[interes('t',12,'cf',2000,'ci',1000,'tipo','compuesto')<a href="../operators/invporcentaje.html" class="discLink">/%</a><a href="../operators/truncar.html" class="discLink">$</a>2])</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'r=5.94%'</p>
+</div>
+
+<div class="example">
+	<p class="content comment">comparación de los mismos parámetros para cada tipo de interés:</p>
+	<p class="content input"><span class="javaString"><a href="propagar.html" class="discLink">propagar</a>(interes('ci',1000,'r',4*%,'t',12,'tipo',type),type,['simple','compuesto','continuo'])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [1480,1601.0322185676814,1616.0744021928936]</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content modificado">v0.6.2.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="julia" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Julia</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">
+Devuelve el nº de iteraciones, órbita y último valor del algoritmo de escape para el <a href="https://es.wikipedia.org/wiki/Conjunto_de_Julia" class="tooltip">conjunto de Julia<span class="tooltiptext">https://es.wikipedia.org/wiki/Conjunto_de_Julia</span></a>.
+Si no escapa, el nº de iteraciones es <i>Infinity</i>.
+</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">julia</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">julia</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">julia(&lt;C>,&lt;puntoZ>,&lt;maxiter>[,&lt;órbita>[,&lt;valor_interior>]])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>C</td>
+			<td>Punto en el plano complejo que define al conjunto.
+				<br/>Para cada valor en el plano complejo existe un conjunto de Julia, que será conexo si este punto pertenece al conjunto de Mandelbrot
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>puntoZ</td>
+			<td>Punto en el plano complejo</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>maxiter</td>
+			<td>Máximo de iteraciones para considerar un punto como interior del fractal</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>órbita</td>
+			<td><i>true</i> para devolver órbita completa, <i>false</i> devuelve vector vacío</td>
+			<td><i>false</i></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>valor_interior</td>
+			<td>Valor devuelto para los puntos interiores del conjunto</td>
+			<td>inf</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- RETURNED VALUE -->
+<p class="subtitle">Valor devuelto</p>
+
+<p class="content">Diccionario con las entradas</p>
+<ul class="content">
+	<li><b>'iter'</b>, nº de iteraciones (<i>Infinity</i> si el valor no escapa)</li>
+	<li><b>'orbita'</b>, vector de valores de la órbita (vector vacío si <code>&lt;órbita></code> es <i>false</i>)</li>
+	<li><b>'zn'</b>, último valor en la iteración <i>n</i></li>
+	<li><b>'z0'</b>, punto de evaluación inicial (=puntoZ)</li>
+</ul>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">julia(cmplj(1,1),cmplj(0.1,0.2),10000)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+		{     'zn': 0.8592999999999998+3.0176I
+		      'z0': 0.1+0.2I
+		  'orbita': []
+		    'iter': 2 }</p>
+</div>
+
+<div class="example">
+	<p class="content comment">representación textual de un conjunto de Julia:</p>
+	<p class="content input"><span class="javaString">sucesion(sucesion(if(<mark>julia(cmplj(0.285,-0.01),cmplj(x,y),1000);#;'iter'</mark>&lt;30,0,nan),x,-0.9,0.9,0.05),y,-1.1,1.1,0.04)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 0  0   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN   0    0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0    0   NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0   NaN  NaN   0    0   NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN   0    0   NaN   0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0   NaN  NaN  NaN  NaN   0   NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0   NaN  NaN   0    0    0   NaN   0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0   NaN   0    0    0    0    0   NaN  NaN  NaN   0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0   NaN   0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0    0   0 |
+		| 0  0   0    0    0   NaN   0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN   0    0    0    0    0    0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN   0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN   0    0   NaN   0   NaN   0    0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN  NaN   0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN   0    0   0 |
+		| 0  0   0   NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN   0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN  NaN   0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0   NaN   0    0    0    0    0   NaN   0    0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN  NaN   0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0    0   NaN  NaN   0   NaN  NaN  NaN   0    0    0   NaN  NaN  NaN   0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0   NaN  NaN   0   0 |
+		| 0  0   0   NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0   NaN   0   0 |
+		| 0  0  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0   0 |
+		| 0  0  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0   0 |
+		| 0  0  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0   NaN   0   0 |
+		| 0  0   0   NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0   NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0    0   NaN   0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0    0   NaN   0    0    0   NaN   0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0    0    0    0    0    0   NaN   0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0   NaN   0    0   0 |
+		| 0  0   0    0    0   NaN   0    0   NaN   0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN   0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN   0   NaN  NaN   0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0   NaN  NaN   0   NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0   NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0   NaN   0    0   NaN   0    0    0   0 |
+		| 0  0   0    0   NaN   0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0   NaN   0    0    0    0    0    0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0   NaN   0    0    0   NaN   0    0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0   NaN   0    0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN   0   0 |
+		| 0  0   0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN   0   0 |
+		| 0  0   0   NaN   0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  0 |
+		| 0  0   0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  0 |
+		| 0  0   0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  0 |
+		| 0  0   0   NaN   0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN   0   0 |
+		| 0  0   0   NaN  NaN   0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0   NaN  NaN  NaN   0    0    0   NaN  NaN  NaN   0   NaN  NaN   0    0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0   NaN  NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0    0   NaN   0    0    0    0    0   NaN   0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0   NaN  NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0   NaN  NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN   0   0 |
+		| 0  0   0    0   NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0   NaN  NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0    0   NaN   0   NaN   0    0   NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0   NaN  NaN  NaN   0    0    0   0 |
+		| 0  0   0    0    0    0    0    0   NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0   NaN   0    0    0   0 |
+		| 0  0   0    0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0   NaN   0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0   NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0   NaN  NaN  NaN   0    0    0    0    0   NaN   0    0   NaN  NaN  NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0   NaN   0    0    0   NaN  NaN   0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN  NaN   0   NaN  NaN  NaN  NaN   0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0   NaN   0    0   NaN  NaN   0    0    0    0    0    0    0    0   NaN  NaN  NaN   0    0   NaN  NaN   0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0   NaN  NaN  NaN  NaN  NaN   0    0    0    0    0    0    0    0   NaN   0    0    0    0    0    0    0    0    0    0   0 |
+		| 0  0   0    0    0    0    0    0    0    0    0    0   NaN   0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0   0 |</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">julia(cmplj(0.285,-0.01),cmplj(x,y),1000);#;'iter'</span></p>
+	<p class="content output"><span class="jmeType">Salida JGE <b>v0.1</b>: </span><img class="zoom" alt="" src="../../images/julia.png"/></p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content modificado">v0.6.2.0</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="mandelbrot.html">mandelbrot</a>,
+	<a href="escape.html">escape</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>
