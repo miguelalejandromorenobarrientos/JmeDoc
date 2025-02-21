@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="exec" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Ejecutar Comando</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Ejecuta un comando y devuelve la salida del comando y el valor de retorno en un diccionario.</p>
+<p class="content comment">Para usar esta función debe estar activado la ejecución de comandos en JME.</p>
+
+<!-- FOR DEVELOPERS  -->
+<p class="subtitle">Para Desarroladores</p>
+<p class="content">
+Puede activarse/desactivarse la carga de archivos desde JME mediante el método <b class="monospace">Exec#setActivado</b>.
+</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">exec</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">EXEC</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">exec(&lt;comando>,&lt;tiempo_max>)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>comando</td>
+			<td>Nombre y parámetros del comando como texto</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>tiempo_max</td>
+			<td>Tiempo máximo de ejecución. Un tiempo infinito o negativo no activa el temporizador</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">exec('ping localhost',-1)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 		
+		{     <mark>'salida'</mark>: '
+Haciendo ping a ? [::1] con 32 bytes de datos:
+Respuesta desde ::1: tiempo&lt;1m 
+Respuesta desde ::1: tiempo&lt;1m 
+Respuesta desde ::1: tiempo&lt;1m 
+Respuesta desde ::1: tiempo&lt;1m 
+
+Estad¡sticas de ping para ::1:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0
+    (0% perdidos),
+Tiempos aproximados de ida y vuelta en milisegundos:
+    M¡nimo = 0ms, M ximo = 0ms, Media = 0ms
+'
+	  	<mark>'exit_value'</mark>: 0 }</p> 
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">exec('chkdsk',10000)</span></p>
+	<p class="content output"><span class="jmeType">FuncionException</span>: <mark class="error">&lt;&lt;&lt;FuncionException>>> en funcion "exec": Tiempo excedido: 10000ms --> exec(Vector:['chkdsk',10000])</mark></p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.5.0</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

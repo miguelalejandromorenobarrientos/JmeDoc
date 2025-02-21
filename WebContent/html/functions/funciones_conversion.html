@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="conversion" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<style>
+	#funcTable td:first-child, #funcTable td:last-child
+	{
+		font-family: monospace;
+		font-weight: bolder;
+		font-size: larger;
+	}
+	</style>
+
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Funciones de Conversión</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Convierten magnitudes desde una unidad de medida a otra</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf"><span class="nonTerminal">&lt;función></span>(&lt;real>)</p>
+
+<table class="dataTable content" id="funcTable">
+	<thead>
+		<tr>
+			<th colspan="3"><span class="nonTerminal">&lt;función></span>::=</th>
+		</tr>
+		<tr>
+			<th>Función</th>
+			<th>Descripción</th>
+			<th>Inversa</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th colspan="3" class="subHeader">Temperatura</th>
+		</tr>
+		<tr>
+			<td>cel_fah</td>
+			<td>Convierte grados <b>Celsius</b> a <b>Fahrenheit</b></td>
+			<td>fah_cel</td>
+		</tr>
+		<tr>
+			<td>cel_k</td>
+			<td>Convierte grados <b>Celsius</b> a <b>Kelvin</b></td>
+			<td>k_cel</td>
+		</tr>
+		<tr>
+			<th colspan="3" class="subHeader">Velocidad</th>
+		</tr>
+		<tr>
+			<td>kmh_ms</td>
+			<td>Convierte <b>kilómetros/hora</b> a <b>metros/s</b></td>
+			<td>ms_kmh</td>
+		</tr>
+		<tr>
+			<th colspan="3" class="subHeader">Longitud</th>
+		</tr>
+		<tr>
+			<td>m_km</td>
+			<td>Convierte <b>millas</b> a <b>kilómetros</b></td>
+			<td>km_m</td>
+		</tr>
+		<tr>
+			<td>m_ft</td>
+			<td>Convierte <b>metros</b> a <b>pies</b></td>
+			<td>ft_m</td>
+		</tr>
+		<tr>
+			<td>m_in</td>
+			<td>Convierte <b>metros</b> a <b>pulgadas</b></td>
+			<td>in_m</td>
+		</tr>
+		<tr>
+			<td>al_km</td>
+			<td>Convierte <b>años-luz</b> a <b>kilómetros</b></td>
+			<td>km_al</td>
+		</tr>
+		<tr>
+			<td>pc_al</td>
+			<td>Convierte <b>parsecs</b> a <b>años-luz</b></td>
+			<td>al_pc</td>
+		</tr>
+		<tr>
+			<td>ua_km</td>
+			<td>Convierte <b>unidades astronómicas</b> a <b>kilómetros</b></td>
+			<td>km_ua</td>
+		</tr>
+		<tr>
+			<td>ua_al</td>
+			<td>Convierte <b>unidades astronómicas</b> a <b>años-luz</b></td>
+			<td>al_ua</td>
+		</tr>
+		<tr>
+			<th colspan="3" class="subHeader">Masa</th>
+		</tr>
+		<tr>
+			<td>kg_lb</td>
+			<td>Convierte <b>kilos</b> a <b>libras</b></td>
+			<td>lb_kg</td>
+		</tr>
+		<tr>
+			<th colspan="3" class="subHeader">Energía</th>
+		</tr>
+		<tr>
+			<td>j_cal</td>
+			<td>Convierte <b>julios</b> a <b>calorías</b></td>
+			<td>cal_j</td>
+		</tr>
+		<tr>
+			<td>j_kwh</td>
+			<td>Convierte <b>julios</b> a <b>kilowatios/hora</b></td>
+			<td>kwh_j</td>
+		</tr>
+		<tr>
+			<th colspan="3" class="subHeader">Frecuencia</th>
+		</tr>
+		<tr>
+			<td>frec_lamb</td>
+			<td>Convierte de <b>frecuencia</b> a <b>longitud de onda</b> o viceversa en una onda electromagnética.<br/>Un segundo parámetro permite especificar una velocidad de onda distinta de la de la luz</td>
+			<td>(<a href="https://es.wikipedia.org/wiki/Involuci%C3%B3n_(matem%C3%A1tica)" class="tooltip">involución<span class="tooltiptext">https://es.wikipedia.org/wiki/Involuci%C3%B3n_(matem%C3%A1tica)</span></a>)</td>
+		</tr>
+	</tbody>
+</table>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">k_cel(0)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: -273.15</p>
+	<p class="content input"><span class="javaString">ms_kmh(340)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1224</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">frec_lamb(2.4e9)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.12491352416666666</p>
+	<p class="content input"><span class="javaString">frec_lamb(100,340)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 3.4</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">j_cal([100,200],[300,400])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		| 23.884589662749594  47.76917932549919 |
+		| 71.65376898824879   95.53835865099838 |</p>
+</div>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

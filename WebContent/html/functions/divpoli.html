@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="divpoli, polinomio, dividir, cociente" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Dividir polinomios</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Cociente y resto de la división de dos polinomios.</p>
+<p class="content">Los polinomios se introducen como coeficientes de grado mayor a 
+término independiente&emsp;<b><code>[a<sub>n</sub>,a<sub>n-1</sub>,&hellip;,a<sub>0</sub>]</code></b></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">divpoli</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">divpoli</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">divpoli(&lt;poli_dividendo>,&lt;poli_divisor>)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>poli_dividendo</td>
+			<td>Polinomio dividendo a partir de coeficientes <code>[a<sub>n</sub>,a<sub>n-1</sub>,&hellip;,a<sub>0</sub>]</code></b></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>poli_divisor</td>
+			<td>Polinomio divisor a partir de coeficientes <code>[a<sub>n</sub>,a<sub>n-1</sub>,&hellip;,a<sub>0</sub>]</code></b></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- RETURNED VALUE -->
+<p class="subtitle">Valor devuelto</p>
+
+<p class="content">Vector <b><code>[cociente,resto]</code></b></p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">divpoli([1,2,5,1],[3,2])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [[0.3333333333333333,0.4444444444444445,1.3703703703703702],[-1.7407407407407405]]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">eval(eval(dividendo=sumapoli(prodpoli(cociente,divisor),resto),[cociente,resto],divpoli(dividendo,divisor)),[dividendo,divisor],[[1,2,5,1],[3,2]])</span></p>
+	<p class="content output"><span class="jmeType">Booleano</span>: verdadero</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">divpoli([20b!,32.1d,4],[2b,rgpi])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [[1216451004088320000,-1910796768947896810.072672249452664],[6002945091829826176.7281789298057024139775214490340830590195010366897952005986302664]]</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">divpoli([2,3-3ui,-2+5ui],[2ui,3+5ui])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [[-I,I],[3+2I]]</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.4</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="sumapoli.html">suma de polinomios</a>,
+	<a href="prodpoli.html">producto de polinomios</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

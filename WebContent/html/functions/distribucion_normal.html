@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="distribucion, normal, normaldist" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Distribución Normal</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve el valor de la función de <b>distribución</b> normal N(μ,σ) en un punto</p>
+<figure class="content">
+	<img class="zoom" alt="" src="../../images/normal_distribucion.png"/>
+	<figcaption>Función de distribución para diferentes parámetros de la curva normal usando JGE</figcaption>
+</figure>
+<p class="content">La función usa el Algoritmo 26.2.17 <a class="withRef" href="http://people.math.sfu.ca/~cbm/aands/page_932.htm"></a></p>
+
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">normaldist</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">normaldist</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">normaldist([&lt;x1>,]&lt;x2>[,&lt;media>,&lt;desviación>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>x1</td>
+			<td>Inicio del intervalo</td>
+			<td>-∞</td>
+		</tr>
+		<tr>
+			<td>1|2</td>
+			<td>2</td>
+			<td>Fin del intervalo</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2|3</td>
+			<td>media</td>
+			<td>Media de la distribución</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>3|4</td>
+			<td>desviación</td>
+			<td>desviación típica</td>
+			<td>1</td>
+		</tr>
+	</tbody>
+</table>
+
+<p class="content">
+	<span class="monospace">normaldist(media,desviacion,x)=normaldist((x-media)/desviacion)</span>
+	<a class="comment tooltip" href="https://es.wikipedia.org/wiki/Distribuci%C3%B3n_normal#Estandarizaci.C3.B3n_de_variables_aleatorias_normales">(tipificación)<span class="tooltiptext">https://es.wikipedia.org/wiki/Distribuci%C3%B3n_normal#Estandarizaci.C3.B3n_de_variables_aleatorias_normales</span></a>
+</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">normaldist(0)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.49999999947519136</p>
+</div>
+
+<div class="example">
+	<p class="content comment">masa probabilística en [μ-σ,μ+σ] para N(0,1):</p>
+	<p class="content input"><span class="javaString">stexto(normaldist(-1,1)/%$2)+'%'</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '68.26%'</p>
+	<p class="content comment">masa probabilística en [3,+∞) para N(-1,2):</p>
+	<p class="content input"><span class="javaString">stexto(normaldist(3,inf,-1,2)/%$2)+'%'</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '2.27%'</p>
+</div>
+
+<div class="example">
+	<p class="content comment">la masa probabilística en <b class="larger">-∞</b> vale 0, en <b>μ</b> vale 0.5, y en <b class="larger">∞</b> vale 1, para cualquier distribución de probabilidad:</p>
+	<p class="content input"><span class="javaString">propagar(normaldist(valor,-10,3),valor,[-inf,-10,inf])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: [0,0.49999999947519136,1]</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content modificado">v0.4.5</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="normal.html">normal</a>,
+	<a href="gaussiana.html">función gaussiana</a>,
+	<a href="erf.html">erf</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

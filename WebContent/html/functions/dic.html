@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="dic" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Crear Diccionario</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Crea un nuevo diccionario a partir de un vector de <i>2n</i> valores (clave/valor),
+o una cadena JSON o XML.</p>
+<p class="content">
+Tanto los valores como las claves pueden ser cualquier tipo de terminal, aunque cuando se utiliza una
+cadena JSON/XML, los valores serán moldeados previamente por la biblioteca <a href="https://github.com/stleary/JSON-java">JSON-java</a></p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">dic</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">DIC</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">dic(&lt;vector>|&lt;texto_JSON>|<span class="nonTerminal">&lt;texto_XML></span>|&lt;complejo>)
+           <span class="nonTerminal">&lt;texto_XML>::= xml: &lt;contenido_XML></span>
+</p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">dic(<mark class="gray1">'nombre'</mark>,'Viviana',<mark class="gray1">'edad'</mark>,38)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'nombre'='Viviana', 'edad'=38}</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">dic('{nombre:Viviana,edad:38}')</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'nombre'='Viviana', 'edad'=38}</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">dic('xml:&lt;nombre>Viviana&lt;/nombre>&lt;edad>38&lt;/edad>')</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'nombre'='Viviana', 'edad'=38}</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">dic(-2-î)</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: {'RE'=-2, 'IM'=-1}</p>
+</div>
+
+<div class="example">
+	<p class="content comment"><br/>convertir diccionario a matriz Nx2</p>
+	<p class="content input"><span class="javaString">eval(<a href="enumerar.html" class="discLink">enumerar</a>(valores(d),claves(d)),d,dic('rho',3,'theta',2.4,'phi',-0.1))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		|  'rho'    3   |
+		| 'theta'  2.4  |
+		|  'phi'   -0.1 |</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.4.4</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

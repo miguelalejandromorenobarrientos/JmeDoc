@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="correl_restriccion, correspondencia, relacion, restriccion" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Restricción de una Correspondencia/Relación</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Devuelve la correspondencia/relación restricción de otra dada</p>
+ <p class="content">Tipos:</p>
+ <ul class="content">
+	 <li>Restricción a la izquierda o de dominio</li>
+	 <li>Restricción a la derecha o de codominio</li>
+	 <li>Restricción aplicada a relación</li>
+	 <li>Anti-restricción a la izquierda o de dominio o substracción de dominio</li>
+	 <li>Anti-restricción a la derecha o de codominio o substracción de codominio</li>
+	 <li>Anti-restricción aplicada a relación</li>
+ </ul>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">correl_restriccion</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">CORREL.restriccion</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">correl_restriccion(&lt;correspondencia_relacion>,&lt;restricción>[,&lt;tipo>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>correspondencia_relacion</td>
+			<td>Diccionario de la correspondencia/relación</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>restricción</td>
+			<td>Subconjunto del dominio o codominio según el tipo de restricción</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>tipo</td>
+			<td>Tipo de la restricción, con los valores;
+			<code>'RELACION','DERECHA','IZQUIERDA','_RELACION','_DERECHA','_IZQUIERDA'</code>
+			</td>
+			<td>'RELACION'</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- RETURNED VALUE -->
+<p class="subtitle">Valor devuelto</p>
+
+<p class="content"><b class="jmeType larger">Diccionario</b> representando a la restricción</p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">correl_restriccion(correl_desde_exp(rango(1,11),mcd(a,b)=1,[a,b]),[2,5,7])</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>:
+	{   'dominio': [2,5,7]
+	  'codominio': [2,5,7]
+	        'ady': [[0,1,1],[1,0,1],[1,1,0]] }</p>
+	<p class="content input"><span class="javaString">correl_restriccion(correl_desde_exp(rango(1,11),mcd(a,b)=1,[a,b]),[2,5,7],'DERECHA')</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>:
+	{   'dominio': [1,2,3,4,5,6,7,8,9,10]
+	  'codominio': [2,5,7]
+	        'ady': [[1,1,1],[0,1,1],[1,1,1],[0,1,1],[1,0,1],[0,1,1],[1,1,0],[0,1,1],[1,1,1],[0,0,1]] }</p>
+	<p class="content input"><span class="javaString">correl_restriccion(correl_desde_exp(rango(1,11),mcd(a,b)=1,[a,b]),[2,5,7],'IZQUIERDA')</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>:
+	{   'dominio': [2,5,7]
+	  'codominio': [1,2,3,4,5,6,7,8,9,10]
+	        'ady': [[1,0,1,0,1,0,1,0,1,0],[1,1,1,1,0,1,1,1,1,0],[1,1,1,1,1,1,0,1,1,1]] }</p>
+	<p class="content input"><span class="javaString">correl_restriccion(correl_desde_exp(rango(1,11),mcd(a,b)=1,[a,b]),[2,5,7],'_RELACION')</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>:
+	{   'dominio': [1,3,4,6,8,9,10]
+	  'codominio': [1,3,4,6,8,9,10]
+	        'ady': [[1,1,1,1,1,1,1],[1,0,1,0,1,0,1],[1,1,0,0,0,1,0],[1,0,0,0,0,0,0],[1,1,0,0,0,1,0],[1,0,1,0,1,0,1],[1,1,0,0,0,1,0]] }</p>
+	<p class="content input"><span class="javaString">correl_restriccion(correl_desde_exp(rango(1,11),mcd(a,b)=1,[a,b]),[2,5,7],'_DERECHA')</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>:
+	{   'dominio': [1,2,3,4,5,6,7,8,9,10]
+	  'codominio': [1,3,4,6,8,9,10]
+	        'ady': [[1,1,1,1,1,1,1],[1,1,0,0,0,1,0],[1,0,1,0,1,0,1],[1,1,0,0,0,1,0],[1,1,1,1,1,1,0],[1,0,0,0,0,0,0],[1,1,1,1,1,1,1],[1,1,0,0,0,1,0],[1,0,1,0,1,0,1],[1,1,0,0,0,1,0]] }</p>
+	<p class="content input"><span class="javaString">correl_restriccion(correl_desde_exp(rango(1,11),mcd(a,b)=1,[a,b]),[2,5,7],'_IZQUIERDA')</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>:
+	{   'dominio': [1,3,4,6,8,9,10]
+	  'codominio': [1,2,3,4,5,6,7,8,9,10]
+	        'ady': [[1,1,1,1,1,1,1,1,1,1],[1,1,0,1,1,0,1,1,0,1],[1,0,1,0,1,0,1,0,1,0],[1,0,0,0,1,0,1,0,0,0],[1,0,1,0,1,0,1,0,1,0],[1,1,0,1,1,0,1,1,0,1],[1,0,1,0,0,0,1,0,1,0]] }</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.4</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

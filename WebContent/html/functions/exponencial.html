@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="exponencial, exp" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Exponencial</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Exponencial real o compleja</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">exp</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">exp</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">exp(<span class="nonTerminal">&lt;número></span>)
+	   <span class="nonTerminal">&lt;número></span>::= &lt;TipoJME:<i>RealDoble</i>>|&lt;TipoJME:<i>Complejo</i>>|&lt;TipoJME:<i>Vector</i>>
+</p>
+
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">exp(1)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 2.718281828459045</p>
+	<p class="content input"><span class="javaString">exp(0.1)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 1.1051709180756477</p>
+	<p class="content input"><span class="javaString">exp(-2)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.1353352832366127</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">exp(ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: 0.5403023058681398+0.8414709848078965I</p>
+	<p class="content input"><span class="javaString">exp(2-2ui)</span></p>
+	<p class="content output"><span class="jmeType">Complejo</span>: -3.074932320639359-6.71884969742825I</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">exp([0,1],[2,3])</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+		|        1          2.718281828459045  |
+		| 7.38905609893065  20.085536923187668 |</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="log_natural.html">logaritmo natural</a>,
+	<a href="log_decimal.html">logaritmo decimal</a>,
+	<a href="log1p.html">logaritmo natural 1+X</a>
+	<a href="powm1.html">potencia entera de -1</a>,
+	<a href="pow2.html">potencia entera de 2</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

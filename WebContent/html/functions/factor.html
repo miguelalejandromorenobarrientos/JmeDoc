@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="factor, primo" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Factores Primos</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Conjunto ordenado de los factores primos y sus 
+multiplicidades de un número entero</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">factor</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">factor</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">factor(&lt;entero>)</p>
+
+<!-- VALUE RETURNED -->
+<p class="subtitle">Valor devuelto</p>
+
+<p class="content">El resultado será una matriz <b>N×2</b>, cada fila un par factor/multiplicidad
+en la forma,<br/>
+<span class="content monospace" style="white-space: pre">
+<b>|f<sub>1</sub> m<sub>1</sub>|
+|f<sub>2</sub> m<sub>2</sub>|
+|f<sub>3</sub> m<sub>3</sub>|
+|<sup> </sup> ⋱ <sup> </sup>|
+|f<sub>N</sub> m<sub>N</sub>|</b>  n=f<sub>1</sub><sup>m<sub>1</sub></sup>×f<sub>2</sub><sup>m<sub>2</sub></sup>×f<sub>3</sub><sup>m<sub>3</sub></sup>×⋯×f<sub>N</sub><sup>m<sub>N</sub></sup></span>
+</p>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">factor(12)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 2  2 |
+		| 3  1 |  <span class="comment monospace nonItalic">12=2<sup>2</sup>×3<sup>1</sup></span></p>
+	<p class="content input"><span class="javaString">factor(20!)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 2   18 |
+		| 3   8  |
+		| 5   4  |
+		| 7   2  |
+		| 11  1  |
+		| 13  1  |
+		| 17  1  |
+		| 19  1  |  <span class="comment monospace nonItalic">20!=2<sup>18</sup>×3<sup>8</sup>×5<sup>4</sup>×7<sup>2</sup>×11<sup>1</sup>×13<sup>1</sup>×17<sup>1</sup>×19<sup>1</sup></span></p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="div.html">divisores</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>
