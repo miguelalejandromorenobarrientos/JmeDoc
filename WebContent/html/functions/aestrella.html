@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="aestrella, A*" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Algoritmo A*</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Aplica el algoritmo A* (Shortest Path Pathfinder) a un mapa dado por una matriz
+para encontrar el camino mínimo entre el nodo inicial y la meta</p>
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">aestrella</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">A*</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">aestrella(&lt;mapa>,&lt;método>[,&lt;incluirMapa>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>mapa>
+			<td>Matriz del tamaño del mapa con los siguientes valores:
+			<ul>
+				<li><b>0</b> para espacions vacíos</li>
+				<li><b>1</b> para obstáculos</li>
+				<li><b>2</b> para nodo inicial (único)</li>
+				<li><b>3</b> para nodo final (único)</li>
+			</ul>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>método</td>
+			<td><ul>
+				<li><b><code>'vecinos_8'</code></b> para recorrer el camino incluyendo diagonales de 45º</li>
+				<li><b><code>'vecinos_4'</code></b> para recorrer el camino sólo en horizontal y vertical</li>
+				<li><b><code>'vecinos_8_no_esquina'</code></b> para recorrer el camino incluyendo diagonales de 45º si no atraviesan esquinas</li>
+			</ul>
+			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>incluirMapa</td>
+			<td>Booleano. Si es <i>verdadero</i> incluye una representación del mapa como <i>Texto</i></td>
+			<td><code>verdadero</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- RETURNED VALUE -->
+<p class="subtitle">Valor devuelto</p>
+
+<p class="content"><span class="jmeType larger">Diccionario</span> con las claves&hellip;</p>
+<ul class="content">
+	<li><b><code>'camino'</code></b>: vector de parejas <code>[x,y]</code> con las coordenadas ordenadas del camino (coordenadas empiezan en 1) desde el inicio hasta la meta</li>
+	<li><b><code>'distancia'</code></b>: longitud del camino, con paso horizontales/verticales de peso 1, y diagonales &Sqrt;2</li>
+	<li><b><code>'pasos'</code></b>: número de pasos del camino</li>
+	<li><b><code>'mapa'</code></b>: representación textual del mapa una vez aplicado el algoritmo (si se incluye el mapa)</li>
+</ul>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">aestrella([[2,1,0,0,0,0,0,0],[0,1,1,0,1,1,0,0], [0,0,1,0,1,3,0,0], [0,0,0,0,1,1,1,0], [0,0,0,0,0,0,0,0]],'vecinos_8_no_esquina')</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+	{    'camino': [[1,1],[1,2],[1,3],[2,4],[3,4],[4,5],[5,5],[6,5],[7,5],[8,5],[8,4],[8,3],[7,3],[6,3]]
+	  'distancia': 13.8284273147583
+	      'pasos': 13
+	       'mapa': ' O [#] ·  ·  ·  ·  ·  · 
+ * [#][#] · [#][#] ·  · 
+ *  · [#] · [#] X  *  * 
+ ·  *  *  · [#][#][#] * 
+ ·  ·  ·  *  *  *  *  * 
+' }</p>
+</div>
+
+<div class="example content">
+<p class="content"><b>Salida en REPL:</b></p>
+<div class="console content javaOutput"><pre>
+>>> set mapa=[[2,1,0,0,0,0,0,0],[0,1,1,0,1,1,0,0], [0,0,1,0,1,3,0,0], [0,0,0,0,1,1,1,0], [0,0,0,0,0,0,0,0]]
+
+	mapa ==> VectorEvaluado: 
+
+		| 2  1  0  0  0  0  0  0 |
+		| 0  1  1  0  1  1  0  0 |
+		| 0  0  1  0  1  3  0  0 |
+		| 0  0  0  0  1  1  1  0 |
+		| 0  0  0  0  0  0  0  0 |
+
+
+	(parse: 12ms(70%) / eval: 5,1ms(30%) / total: 17,1ms)
+
+>>> eol + aestrella(mapa,'vecinos_8_no_esquina')>&lt;'mapa'
+
+	 ==> Texto: '
+<mark class="gray2"> O </mark>[#] ·  ·  ·  ·  ·  · 
+<mark> * </mark>[#][#] · [#][#] ·  · 
+<mark> * </mark> · [#] · [#]<mark class="correct"> X </mark><mark> * </mark><mark> * </mark> 
+ · <mark> * </mark><mark> * </mark> · [#][#][#]<mark> * </mark> 
+ ·  ·  · <mark> * </mark><mark> * </mark><mark> * </mark><mark> * </mark><mark> * </mark> 
+'
+
+	(parse: 9,8ms(74%) / eval: 3,4ms(26%) / total: 13,2ms)
+
+>>> eol + aestrella(mapa,'vecinos_8')>&lt;'mapa'
+
+	 ==> Texto: '
+<mark class="gray2"> O </mark>[#] ·  · <mark> * </mark><mark> * </mark> ·  · 
+<mark> * </mark>[#][#]<mark> * </mark>[#][#]<mark> * </mark> · 
+ · <mark> * </mark>[#]<mark> * </mark>[#]<mark class="correct"> X </mark> ·  · 
+ ·  · <mark> * </mark> · [#][#][#] · 
+ ·  ·  ·  ·  ·  ·  ·  · 
+'
+
+	(parse: 977µs(27%) / eval: 2,6ms(73%) / total: 3,6ms)
+
+
+>>> eol + aestrella(mapa,'vecinos_4')>&lt;'mapa'
+
+	 ==> Texto: '
+<mark class="gray2"> O </mark>[#] · <mark> * </mark><mark> * </mark><mark> * </mark><mark> * </mark> · 
+<mark> * </mark>[#][#]<mark> * </mark>[#][#]<mark> * </mark> · 
+<mark> * </mark><mark> * </mark>[#]<mark> * </mark>[#]<mark class="correct"> X </mark><mark> * </mark> · 
+ · <mark> * </mark><mark> * </mark><mark> * </mark>[#][#][#] · 
+ ·  ·  ·  ·  ·  ·  ·  · 
+'
+
+	(parse: 2,4ms(59%) / eval: 1,7ms(41%) / total: 4ms)
+</pre>
+</div><br/>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.4</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="gr_dijkstra.html">gr_dijkstra</a>,
+	<a href="gr_floydwar.html">gr_floydwar</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="concatenar, concat" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Concatenar</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Concatena múltiples cadenas con un conector.</p>
+<p class="content">La cadena vacía '' como conector permite concatenar las cadenas directamente.
+<br/>En este caso, esta función es <b>más eficiente</b> para textos 
+largos y/o en gran cantidad que el operador <a href="../operators/suma.html" class="discLink">&nbsp;+&nbsp;</a> y la función <a href="suma_vector.html" class="discLink monospace">suma</a>
+</p>
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">concat</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">concat</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">concat(&lt;vectorTextos>,&lt;conector>)</p>
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">concat(['PACO','ANA','JUAN'],'/')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'PACO/ANA/JUAN'</p>
+	<p class="content input"><span class="javaString">concat(['HOLA',' ','MUNDO','!!'],'')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'HOLA MUNDO!!'</p>
+</div>
+
+<div class="example">
+	<p class="content comment">si en el vector se usan terminales no textuales, se usará su cadena de salida como texto:</p>
+	<p class="content input"><span class="javaString">concat(rango(10),'*')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: '0*1*2*3*4*5*6*7*8*9'</p>
+	<p class="content input"><span class="javaString">concat(sucesion(rand(falso),_,1,5),' // ')</span></p>
+	<p class="content output"><span class="jmeType">Texto</span>: 'verdadero // falso // verdadero // verdadero // verdadero'</p>
+</div>
+
+<div class="example">
+	<p class="content comment">generador automático de claves de 20 caracteres:</p>
+	<p class="content input"><span class="javaString">sucesion([i,<mark class="gray1">concat(sucesion(chr(randint(codepoint('A'),codepoint('Z'))),_,1,20),'')</mark>],i,1,10)</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		| 1   'BKHKHZPAHNPZIXOBGKPB' |
+		| 2   'WDIZKCIGQUEPNQUVAGET' |
+		| 3   'WKRDRDNPTWJXEPVEXWUW' |
+		| 4   'JSIBPYILGJGSWKCYWGCL' |
+		| 5   'FDNEHUJNDTRHDLSRCTGL' |
+		| 6   'FGKZQSNTQURBRVGJGYQX' |
+		| 7   'VIEODXFQSFGMMVSNKAIV' |
+		| 8   'PLGQJTPNFXGSKXUCQRRV' |
+		| 9   'MUONLAJUZTBWSQCLFVRH' |
+		| 10  'COFKRESEWUOXWJZXHCKM' |</p>
+</div>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="partir.html">partir</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

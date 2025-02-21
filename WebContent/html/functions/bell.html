@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="bell, numero, coeficiente, exponencial" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Números de Bell <code>(B<sub>n</sub>)</code></span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Números de Bell <code>(B<sub>n</sub>)</code> <a href=https://oeis.org/A000110>A000110</a>.
+Número de particiones y relaciones de equivalencia en un conjunto</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">bell</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">Bell</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">bell(<span class="nonTerminal">&lt;natural></span>)</p>
+
+	
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">trasp(sucesion(format('B(%s) = %s',[n,bell(n)]),n,0,50))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>:
+		|                         'B(0) = 1'                         |
+		|                         'B(1) = 1'                         |
+		|                         'B(2) = 2'                         |
+		|                         'B(3) = 5'                         |
+		|                        'B(4) = 15'                         |
+		|                        'B(5) = 52'                         |
+		|                        'B(6) = 203'                        |
+		|                        'B(7) = 877'                        |
+		|                       'B(8) = 4140'                        |
+		|                       'B(9) = 21147'                       |
+		|                      'B(10) = 115975'                      |
+		|                      'B(11) = 678570'                      |
+		|                     'B(12) = 4213597'                      |
+		|                     'B(13) = 27644437'                     |
+		|                    'B(14) = 190899322'                     |
+		|                    'B(15) = 1382958545'                    |
+		|                   'B(16) = 10480142147'                    |
+		|                   'B(17) = 82864869804'                    |
+		|                   'B(18) = 682076806159'                   |
+		|                  'B(19) = 5832742205057'                   |
+		|                  'B(20) = 51724158235372'                  |
+		|                 'B(21) = 474869816156751'                  |
+		|                 'B(22) = 4506715738447323'                 |
+		|                'B(23) = 44152005855084346'                 |
+		|                'B(24) = 445958869294805289'                |
+		|               'B(25) = 4638590332229999353'                |
+		|               'B(26) = 49631246523618756274'               |
+		|              'B(27) = 545717047936059989389'               |
+		|              'B(28) = 6160539404599934652455'              |
+		|             'B(29) = 71339801938860275191172'              |
+		|             'B(30) = 846749014511809332450147'             |
+		|            'B(31) = 10293358946226376485095653'            |
+		|           'B(32) = 128064670049908713818925644'            |
+		|           'B(33) = 1629595892846007606764728147'           |
+		|          'B(34) = 21195039388640360462388656799'           |
+		|          'B(35) = 281600203019560266563340426570'          |
+		|         'B(36) = 3819714729894818339975525681317'          |
+		|         'B(37) = 52868366208550447901945575624941'         |
+		|        'B(38) = 746289892095625330523099540639146'         |
+		|       'B(39) = 10738823330774692832768857986425209'        |
+		|       'B(40) = 157450588391204931289324344702531067'       |
+		|      'B(41) = 2351152507740617628200694077243788988'       |
+		|      'B(42) = 35742549198872617291353508656626642567'      |
+		|     'B(43) = 552950118797165484321714693280737767385'      |
+		|     'B(44) = 8701963427387055089023600531855797148876'     |
+		|    'B(45) = 139258505266263669602347053993654079693415'    |
+		|   'B(46) = 2265418219334494002928484444705392276158355'    |
+		|   'B(47) = 37450059502461511196505342096431510120174682'   |
+		|  'B(48) = 628919796303118415420210454071849537746015761'   |
+		| 'B(49) = 10726137154573358400342215518590002633917247281'  |
+		| 'B(50) = 185724268771078270438257767181908917499221852770' |</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.3</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&#x2026;</p>
+
+<p class="content">
+	<a href="multinomial.html">coeficiente multinomial</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

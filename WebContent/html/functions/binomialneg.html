@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="binomial, negativa, binomialneg" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Binomial Negativa</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Función de densidad de la distribución binomial negativa</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">binomialneg</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">binomialneg</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">binomialneg(&lt;x>,&lt;n>,&lt;p>[,&lt;contexto>])</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>x</td>
+			<td>Nº de fallos en la muestra, <span class="monospace">x∈{0,1,2,…}</span></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>n</td>
+			<td>Número de éxitos en la muestra, <span class="monospace">n∈{0,1,2,…}</span></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>p</td>
+			<td>Probabilidad de éxito [0,1]</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>contexto</td>
+			<td>Contexto matemático especificado por la función <a class="discLink" href="mc.html"><b>&nbsp;mc&nbsp;</b></a>.
+			    <br/>Si no se especifica, el resultado será <i>RealDoble</i>, en caso contrario <i>RealGrande</i></td>
+			<td>∅</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">binomialneg(3,3,0.1)</span></p>
+	<p class="content output"><span class="jmeType">RealDoble</span>: 0.007290000000000002</p>
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">binomial(3,3,0.1,mc0)</span></p>
+	<p class="content output"><span class="jmeType">RealGrande</span>: 0.007290</p>
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.4.6</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también…</p>
+
+<p class="content">
+	<a href="binomialnegdist.html">distribución binomial negativa</a>,
+	<a href="mc.html">contexto</a>
+</p>
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="content-language" content="es"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="JME documentación online" />
+	<meta name="author" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="publisher" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="copyright" content="Miguel Alejandro Moreno Barrientos" />
+	<meta name="distribution" content="Global" />
+	<meta name="audience" content="all" />
+	<meta name="robots" content="index,follow" />
+	<meta name="keyword" content="evaluador, evaluacion, evaluador matematico, math parser, parser, arithmetic parser, java, miguel alejandro moreno barrientos, evaluador de expresiones matematicas, math expressions, evaluador de expresiones aritmeticas, arithmetic expressions, jme, fractal, mandelbrot" />
+	<meta name="keyword" content="correl_desde_exp, correspondencia, relacion, nueva" />
+	
+	<!-- ICON -->
+	<link href="../../images/iconojme.png" rel="shortcut icon" type="image/png"/>
+	
+	<!-- CSS -->
+	<link href="../../css/jme_doc.css" rel="stylesheet" type="text/css" >
+	
+	<!-- JAVASCRIPT -->	
+	<script type="text/javascript" src="../../js/jme_doc.js" charset="UTF-8"></script>
+		
+</head>
+
+<body>
+
+<!-- TITLE -->
+<header class="title">Función: <span class="titleItem">Nueva Correspondencia/Relacion desde Expresión</span><a href="../../index.html">Volver</a></header>
+
+<hr/>
+
+<!-- DESCRIPTION -->
+<p class="subtitle">Descripción</p>
+
+<p class="content">Crea una correspondencia/relación finita a partir de una expresión</p>
+
+<!-- INPUT -->
+<p class="subtitle">Cadena de entrada</p>
+
+<p class="functionInputOutput content">correl_desde_exp</p>
+	
+<!-- OUTPUT -->
+<p class="subtitle">Cadena de salida</p>
+
+<p class="functionInputOutput content">CORREL.desde_exp</p>
+	
+<!-- USAGE -->
+<p class="subtitle">Uso</p>
+
+<p class="content bnf">correl_desde_exp(&lt;dominio>[,&lt;codominio>],&lt;expresion>,&lt;varnames-2>)</p>
+
+<table class="dataTable content" style="font-size: small">
+	<thead>
+		<tr>
+			<th colspan="4">Parámetros</th>
+		</tr>
+		<tr>
+			<th>#</th>
+			<th>Parámetro</th>
+			<th>Descripción</th>
+			<th>Valor por defecto</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>dominio</td>
+			<td>Dominio como vector</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>codominio</td>
+			<td>Codominio como vector.<br/>
+			Si se omite, se toma el dominio como codominio, definiéndose una relación</td>
+			<td><code>&lt;dominio></code></td>
+		</tr>
+		<tr>
+			<td>2|3</td>
+			<td>expresion</td>
+			<td>Expresión booleana que toma las dos variables y devuelve verdadero si sus valores están relacionados</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3|4</td>
+			<td>varnames-2</td>
+			<td>Vector con el nombre de dos variables, la primera asignada a cada elemento del dominio y la segunda al codominio</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- RETURNED VALUE -->
+<p class="subtitle">Valor devuelto</p>
+
+<p class="content">Diccionario con</p>
+<ul class="content">
+	<li><b><code>'dominio'</code></b>: vector con etiquetas/elementos del dominio</li>
+	<li><b><code>'codominio'</code></b>: vector con etiquetas/elementos del codominio</li>
+	<li><b><code>'ady'</code></b>: matriz binaria de adyacencia</li>
+</ul>
+
+<!-- EXAMPLES -->
+<p class="subtitle">Ejemplos</p>
+
+<div class="example">
+	<p class="content input"><span class="javaString">correl_desde_exp(rango(1,11),b%a=0,[a,b])</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+	{   'dominio': [1,2,3,4,5,6,7,8,9,10]
+	  'codominio': [1,2,3,4,5,6,7,8,9,10]
+	        'ady': [[1,1,1,1,1,1,1,1,1,1],[0,1,0,1,0,1,0,1,0,1],[0,0,1,0,0,1,0,0,1,0],[0,0,0,1,0,0,0,1,0,0],[0,0,0,0,1,0,0,0,0,1],[0,0,0,0,0,1,0,0,0,0],[0,0,0,0,0,0,1,0,0,0],[0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,0,1,0],[0,0,0,0,0,0,0,0,0,1]] }</p>
+	<p class="content input"><span class="javaString"><a href="tabla.html" class="discLink">tabla</a>('DIVIDE A';;rango(1,11),rango(1,11),booleano(correl_desde_exp(rango(1,11),b%a=0,[a,b])>&lt;'ady'))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+	| 'DIVIDE A'      1          2          3          4          5          6          7          8          9         10     |
+	|     1       verdadero  verdadero  verdadero  verdadero  verdadero  verdadero  verdadero  verdadero  verdadero  verdadero |
+	|     2         falso    verdadero    falso    verdadero    falso    verdadero    falso    verdadero    falso    verdadero |
+	|     3         falso      falso    verdadero    falso      falso    verdadero    falso      falso    verdadero    falso   |
+	|     4         falso      falso      falso    verdadero    falso      falso      falso    verdadero    falso      falso   |
+	|     5         falso      falso      falso      falso    verdadero    falso      falso      falso      falso    verdadero |
+	|     6         falso      falso      falso      falso      falso    verdadero    falso      falso      falso      falso   |
+	|     7         falso      falso      falso      falso      falso      falso    verdadero    falso      falso      falso   |
+	|     8         falso      falso      falso      falso      falso      falso      falso    verdadero    falso      falso   |
+	|     9         falso      falso      falso      falso      falso      falso      falso      falso    verdadero    falso   |
+	|     10        falso      falso      falso      falso      falso      falso      falso      falso      falso    verdadero |</p>	
+</div>
+
+<div class="example">
+	<p class="content input"><span class="javaString">correl_desde_exp(['doom','quake'],['doom 2','quake 3','quake 2','final fantasy VII'],empiezacon(juego,saga),[saga,juego])</span></p>
+	<p class="content output"><span class="jmeType">Diccionario</span>: 
+	{   'dominio': ['doom','quake']
+	  'codominio': ['doom 2','quake 3','quake 2','final fantasy VII']
+	        'ady': [[1,0,0,0],[0,1,1,0]] }
+	</p>
+	<p class="content input"><span class="javaString">eval(<a href="tabla.html" class="discLink">tabla</a>('Saga\Juego';;c>&lt;'codominio',c>&lt;'dominio',booleano(c>&lt;'ady')),c,correl_desde_exp(['doom','quake'],['doom 2','quake 3','quake 2','final fantasy VII'],empiezacon(juego,saga),[saga,juego]))</span></p>
+	<p class="content output"><span class="jmeType">VectorEvaluado</span>: 
+	| 'Saga\Juego'  'doom 2'   'quake 3'  'quake 2'  'final fantasy VII' |
+	|    'doom'     verdadero    falso      falso           falso        |
+	|   'quake'       falso    verdadero  verdadero         falso        |</p>	
+</div>
+
+<!-- SINCE/MODIFIED -->
+<p class="subtitle">Desde / Última modificación</p>
+
+<p class="content desde_version">v0.6.2.4</p>
+
+<!-- SEE ALSO -->
+<p class="subtitle">Véase también&hellip;</p>
+
+<p class="content">
+	<a href="correl_nueva.html">correspondencia desde matriz</a>,
+	<a href="correl_desde_pares.html">correspondencia desde pares</a>
+</p>
+
+
+<footer>
+	<p>JME parser <span class="version"></span> // <span class="author"></span>, <span class="copyright"></span></p>
+</footer>
+
+</body>
+
+</html>
